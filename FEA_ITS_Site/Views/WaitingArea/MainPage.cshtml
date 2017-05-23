@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "MainPage";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    function ActiveTabChanged(s, e) {
+        var tabName = e.tab.name;
+        var item, url;
+
+        if (tabName == "WaitingArea") {
+            item = $("#ifmWaitingArea");
+
+            url = $(item).attr("src");
+            if (url.length == 0 || url == "") {
+                url = "@FEA_ITS_Site.Helper.Ultilities.Root/WaitingArea/Index";
+                $(item).attr("src", url);
+            }
+        }
+        else if (tabName == "HistoryApprove") {
+            item = $("#ifmHistoryApprove");
+            url = $(item).attr("src");
+
+            if (url.length == 0 || url == "") {
+                url = "@FEA_ITS_Site.Helper.Ultilities.Root/WaitingArea/DocumentSigned";
+                $(item).attr("src", url);
+            }
+        }
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.NavigationAndLayout})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.NavigationAndLayout})
+
+@Html.DevExpress().PageControl(
+        settings =>
+        {
+            settings.Name = "pcFeatures";
+            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+            settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+            settings.ControlStyle.CssClass = "dxTab";
+            settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+
+            settings.TabPages.Add(@Resources.Resource.WaitingArea, "WaitingArea").SetContent(() =>
+            {
+
+                ViewContext.Writer.Write(
+                        "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/WaitingArea/Index\" id=\"ifmWaitingArea\" style=\"height: 760px;\"></iframe>"
+                    );
+            });
+            settings.TabPages.Add(@Resources.Resource.HistoryApprove, "HistoryApprove").SetContent(() =>
+            {
+
+                ViewContext.Writer.Write(
+                        "<iframe src='' id=\"ifmHistoryApprove\" style=\"height: 760px;\"></iframe>"
+                    );
+            });
+        }).GetHtml()

@@ -1,0 +1,35 @@
+﻿
+@model Dictionary<string,string>
+@Html.DevExpress().ComboBox(
+                                    settings =>
+                                    {
+                                        settings.Name = "cboItem";
+                                        settings.CallbackRouteValues = new { Controller = "WarehouseAreaExport", Action = "ItemPartial" };
+                                        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                        settings.Properties.DropDownWidth = 500;
+
+                                        settings.Properties.TextFormatString = "{0}";
+                                        settings.Properties.ValueField = "Key";
+                                        settings.Properties.TextField = "Value";
+                                        settings.Properties.ValueType = typeof(string);
+                                        settings.ControlStyle.CssClass = "textBoxStyle";
+
+                                        //settings.Properties.ClientSideEvents.Validation = "OnReasonValidation";
+                                        //settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithTooltip;
+                                        //settings.Properties.ValidationSettings.Display = Display.Dynamic;
+
+                                        settings.Properties.ClientSideEvents.BeginCallback = "function(s, e) { e.customArgs['CustomerPO'] = CustomerPO.GetValue(); ShowHideLoading('divLoad', true);}";
+                                        settings.Properties.ClientSideEvents.EndCallback = "function(s,e){ShowHideLoading('divLoad', false);} ";
+                                        settings.Properties.DropDownStyle = DropDownStyle.DropDownList;
+                                        settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+                                        settings.ReadOnly = false;
+                                        
+                                        settings.Properties.ClientSideEvents.Init = "SetCustomerNameOnSite";
+                                        settings.Properties.ClientSideEvents.EndCallback = "SetCustomerNameOnSite"; 
+                                        settings.CustomJSProperties = (s, e) => // Custom field returned
+                                        {
+                                            e.Properties["cpCustomesName"] = ViewData["CustomerName"].ToString();
+                                            e.Properties["cpCustomesCode"] = Session["CustoperCode"] == null?"":Session["CustoperCode"].ToString();
+                                       };
+                                    }
+                             ).BindList(Model).GetHtml()

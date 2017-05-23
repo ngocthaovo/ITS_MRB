@@ -1,0 +1,82 @@
+﻿@Html.DevExpress().PivotGrid(settings => {
+    settings.Name = "PivotGrid1" +  ViewBag.Type;
+    settings.CallbackRouteValues = new { Controller = "GA", Action = "PivotGrid1Partial",Type=ViewBag.Type, BeginDate = ViewBag.BeginDate, EndDate = ViewBag.EndDate };
+   
+    settings.OptionsView.ShowFilterHeaders = false;
+    settings.OptionsView.ShowContextMenus = false;
+    settings.OptionsView.ShowFilterSeparatorBar = false;
+        settings.Fields.Add(field =>
+        {
+            field.Area = PivotArea.RowArea;
+            field.AreaIndex = 0;
+            field.Caption = "TÊN VPP / VẬT TƯ 貨品名稱";
+            field.FieldName = "ItemDetailName";
+            field.SortMode = PivotSortMode.None;
+        });
+        settings.Fields.Add(field =>
+        {
+            field.Area = PivotArea.RowArea;
+            field.AreaIndex = 2;
+            field.Caption = "Đ.V TÍNH 單位";
+            field.FieldName = "UnitName";
+            field.SortMode = PivotSortMode.None;
+        });
+
+        settings.Fields.Add(field =>
+        {
+            field.Area = PivotArea.RowArea;
+            field.AreaIndex = 1;
+            field.Caption = "Đơn giá 單價(Max)";
+            field.FieldName = "EstimatePrice";
+            field.CellFormat.FormatString = "##,#";
+            field.CellFormat.FormatType = FormatType.Custom;
+        });
+    
+    
+        settings.Fields.Add(field =>
+        {
+            field.Area = PivotArea.ColumnArea;
+            field.AreaIndex = 0;
+            field.Caption = "Bộ phận 部門";
+            field.FieldName = "Dept";
+            field.SortMode = PivotSortMode.None;
+        });
+
+        settings.Fields.Add(field =>
+        {
+            field.Area = PivotArea.DataArea;
+            field.AreaIndex = 0;
+            field.Caption = "Số lượng 數量(Sum) ";
+            field.FieldName = "Quantity";
+            field.CellFormat.FormatString = "##,#";
+            field.CellFormat.FormatType = FormatType.Custom;
+        });
+
+        settings.Fields.Add(field =>
+        {
+            field.Area = PivotArea.DataArea;
+            field.AreaIndex = 1;
+            field.Caption = "Thành tiền  金額";
+            field.FieldName = "Amount";
+            field.CellFormat.FormatString = "##,#";
+            field.CellFormat.FormatType = FormatType.Custom;
+        });
+
+        //settings.Fields.Add(field =>
+        //{
+        //    field.Area = PivotArea.ColumnArea;
+        //    field.AreaIndex = 4;
+        //    field.Caption = "GHI CHÚ 備註";
+
+        //});
+        settings.FieldValueDisplayText = (sender, e) =>
+        {
+            if (e != null)
+            {
+                if (e.DisplayText == "Grand Total")
+                    e.DisplayText = "TỔNG 合計";
+            }
+        };
+    
+    
+	}).Bind(Model).GetHtml()

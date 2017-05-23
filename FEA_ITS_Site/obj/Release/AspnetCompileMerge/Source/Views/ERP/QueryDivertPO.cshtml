@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "QueryDivertPO";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@*@model List<FEA_BusinessLogic.sp_QueryPODivert_Result>*@
+@model Object
+@using FEA_ITS_Site.Helper;
+@using FEA_ITS_Site;
+@using (Html.BeginForm("QueryDivertPO", "ERP", FormMethod.Post))
+{
+<div class="panel-body">
+    <form id="frmMainForm">
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnQuery";
+                    settings.Width = 90;
+                    settings.Text = @Resources.Resource.Query;
+                    settings.UseSubmitBehavior = true;
+
+                }).GetHtml()
+            </div>
+        </div>
+           <br />
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="control-label">
+                        FEPO Code:
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    @Html.DevExpress().TextBox(settings =>
+                   {
+                       settings.Name = "txtFEPOCode";
+                       settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                       settings.Properties.NullText = "Enter FEPO Code...";
+                       settings.Text = ViewBag.FEPOCode != null || ViewBag.FEPOCode != "" ? ViewBag.FEPOCode : "";
+                       settings.ControlStyle.CssClass = "textBoxStyle";
+                   }
+            ).GetHtml()
+                </div>
+            </div>
+            </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.QueryDivertPO });}
+                </div>
+            </div>
+        </div>
+            
+
+</form>
+  
+</div>
+ }

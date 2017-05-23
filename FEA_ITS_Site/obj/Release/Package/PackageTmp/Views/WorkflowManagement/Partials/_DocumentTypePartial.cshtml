@@ -1,0 +1,43 @@
+﻿@model List<FEA_BusinessLogic.WFDocumentType>
+@using System.Web.UI.WebControls
+@{
+    var grid = Html.DevExpress().GridView(
+        settings =>
+        {
+            settings.Name = "gvEditing";
+            settings.KeyFieldName = "DocumentTypeID";
+            settings.CallbackRouteValues = new { Controller = "WorkflowManagement", Action = "EditModesPartial" };
+            settings.CustomActionRouteValues = new { Controller = "WorkflowManagement", Action = "ChangeEditModePartial" };
+            settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "WorkflowManagement", Action = "EditModesAddNewPartial" };
+            settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "WorkflowManagement", Action = "EditModesUpdatePartial" };
+            settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "WorkflowManagement", Action = "EditModesDeletePartial" };
+            settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+            settings.SettingsBehavior.ConfirmDelete = true;
+            settings.SettingsPopup.EditForm.Width = 600;
+            settings.Width = Unit.Percentage(100);
+            settings.CommandColumn.Visible = true;
+            settings.CommandColumn.Width = Unit.Percentage(20);
+            settings.CommandColumn.NewButton.Visible = true;
+            settings.CommandColumn.DeleteButton.Visible = true;
+            settings.CommandColumn.EditButton.Visible = true;
+
+            settings.Columns.Add("DocumentTypeName").Width = 300;
+            settings.Columns.Add("Description").Width = 400;
+
+            settings.SettingsDetail.ShowDetailRow = true;
+                
+            settings.SetDetailRowTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    "<span class='label label-info '>Node(s) of Document Type: " + DataBinder.Eval(c.DataItem, "DocumentTypeName") + "</span>"
+                );
+                Html.RenderAction("NodeListPartial", new { DocumentTypeID = DataBinder.Eval(c.DataItem, "DocumentTypeID") });
+            });
+        });
+
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

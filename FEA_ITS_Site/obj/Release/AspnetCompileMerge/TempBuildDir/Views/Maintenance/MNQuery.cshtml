@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "MNQuery";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <script>
+    $('document').ready(function () {
+        $("#btnQuery").click(function () {
+            $('#divLoadCommon').show();
+            var url = "@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/Maintenance/MNQueryClick";
+            var _dateFrom = dtBeginDate.GetDate();
+            var _dateTo = dtEndDate.GetDate();
+            var obj = new Object();
+            obj.DateTo = _dateTo.getDate() + "-" + (_dateTo.getMonth() + 1) + "-" + _dateTo.getFullYear();
+            obj.DateFrom = _dateFrom.getDate() + "-" + (_dateFrom.getMonth() + 1) + "-" + _dateFrom.getFullYear();
+            obj.DocumentType = '@ViewBag.DocumentType';
+            obj.OrderCode = txtOrderCode.GetText();
+            jQuery.ajax(
+                {
+                    url: url,
+                    data:obj,
+                }).done(function (data) {
+                    $("#gridDetail").html(data);
+                    $('#divLoadCommon').hide();
+                });
+        });
+
+    });
+
+</script>
+    <div class="panel-body">
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnQuery";
+                            settings.Width = 90;
+                            settings.Text = @Resources.Resource.Query;
+                          //  settings.UseSubmitBehavior = true;
+
+                        }).GetHtml()
+            </div>
+
+        </div>
+        <br />
+
+
+        <div class="row">
+            <div class="col-md-1">
+                <label class="control-label">
+                    @Resources.Resource.OrderCode:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtOrderCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = ViewBag.OrderCode;
+                            }
+                        ).GetHtml()
+            </div>
+
+            <div class="col-md-1">
+                <label class="control-label">
+                    @Resources.Resource.FromDate:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "dtBeginDate";
+                            settings.Date = ViewBag.DateFrom;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                        }
+                    ).GetHtml()
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">
+                    @Resources.Resource.ToDate:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "dtEndDate";
+                            settings.Date = ViewBag.DateTo;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                        }
+                    ).GetHtml()
+            </div>
+        </div>
+        <hr />
+        <div class="row" >
+            <div class="col-md-12" id="gridDetail">
+                <div class="form-group">
+                    @{Html.RenderAction("MNQueryClick", "Maintenance", new { OrderCode = ViewBag.OrderCode, BeginDate = ViewBag.DateFrom, EndDate = ViewBag.DateTo, Type = ViewBag.DocumentType });}
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

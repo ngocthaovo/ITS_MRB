@@ -1,0 +1,1023 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@model FEA_BusinessLogic.GAItem
+
+<script type="text/javascript">
+    var ItemID = "";
+    var itemDetailID = "";
+    var ItemDes = "";
+    var ItemCount = 0;
+    var IsDonateOK = false;
+    var IsDonateReject = false;
+    var btnClickName = "";
+    $(function () {
+        // DisplayItem('divBaseInfo', false);
+        $("#frmMainForm").submit(function () {
+            if (ItemCount == 0) {
+                alert('@Html.Raw(Resources.Resource.msgInputDHardReItem)');
+                cboItem.Focus();
+                return false;
+            }
+            else {
+                if (IsDonateReject == true) {
+                    $("#" + btnClickName).click();
+                }
+                else
+                {
+                    if (!IsDonateOK) {
+                        var objAjax = CheckForLimit();
+                        objAjax.success(function (savingStatus) {
+
+                            // alert(savingStatus);
+                            if (savingStatus == "") {
+                                IsDonateOK = true;
+                                $("#" + btnClickName).click();
+                            }
+                            else {
+                                alert(savingStatus);
+                                e.preventDefault();
+                                return false;
+                            }
+                            // return false;
+                        });
+                        return false;
+                    }
+                }
+            }
+
+            btnSaveDraff.SetVisible(false);
+            btnSign.SetVisible(false);
+            btnReject.SetVisible(false);
+            btnSaveAndSend.SetVisible(false);
+            btnUpdate.SetVisible(false);
+
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    // sent Item and Item detail to server
+    function AddItemToOrder() {
+        //alert(dtDevDate.GetText());
+        // alert(dtDevDate.GetDate() + "/" + dtDevDate.GetValue() + "/" + dtDevDate.GetText());
+
+        var url = "@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/GA/AddItemToOrder";
+        var obj = new Object();
+        obj.ItemID = ItemID;
+        obj.ItemDetail = itemDetailID;
+
+        ItemDes = txtItemDes.GetValue();
+        if (ItemDes == null)
+            obj.Description = "";
+        else
+            obj.Description = ItemDes;
+
+        var d = dtDevDate.GetDate();
+        if (d != null)
+            obj.DeliveryDate = dtDevDate.GetDate().toJSON();
+        else
+            obj.DeliveryDate = null;
+
+        obj.Quantity = spQuantity.GetValue();
+
+        var IsBroken = chkIsBroken.GetValue();
+        if (IsBroken == null || IsBroken == undefined)
+            obj.IsBroken = false;
+        else
+            obj.IsBroken = chkIsBroken.GetValue();
+
+        obj.Price = spPrice.GetValue();
+        
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: obj,
+            success: function (data) {
+                $("#gridDetail").html(data);
+
+                $("#btnSaveAndSend").hide();
+                btnSaveAndSend.SetEnabled(false);
+            }
+        });
+    }
+
+    function ItemChanged(s, e) {
+        ItemID = s.GetValue();
+        itemDetailID = "";
+    }
+
+    function ItemDetailChanged(s, e) {
+        itemDetailID = s.GetValue();
+        var obj = new Object();
+        obj.itemdetailID = itemDetailID;
+        
+        var url = "@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/GA/GetItemPriceByAdjust";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: obj,
+            success: function (data) {
+                spPrice.SetValue(data);
+            }
+        });
+    }
+
+    // Reset Total Amount value
+    function SetTotalAmount(value) {
+        EstimateAmount.SetValue(value);
+    }
+
+
+    // function SetRowCount
+    function SetRowCount(value)
+    {
+        ItemCount = value;
+    }
+
+
+    function ClearItemDetail()// Clear data
+    {
+        spPrice.SetValue(0);
+        spQuantity.SetValue(0);
+        dtDevDate.SetValue(null);
+        cboItemDetail.SetValue(null);
+        txtItemDes.SetValue('');
+        chkIsBroken.SetValue(false);
+    }
+
+    function OnEndGridCallback(s, e) //  this function to calculate total amount again
+    {
+        $("#btnSaveAndSend").hide();
+        btnSaveAndSend.SetEnabled(false);
+
+        SetRowCount(s.cpVisibleRowCount);
+    }
+
+    function OnSetTotalRow(s, e)
+    {
+        //alert(s.cpVisibleRowCount);
+        SetRowCount(s.cpVisibleRowCount);
+    }
+
+</script>
+
+<script type="text/javascript">
+    // Validation script
+    // <![CDATA[
+    function OnReasonValidation(s, e) {
+        if (e.value == null || e.value == "") {
+            e.isValid = false;
+            e.errorText = "@Html.Raw(string.Format(Resources.Resource.msgInputRequite, Resources.Resource.Reason))";
+        }
+    }
+
+    function OnCurrencyValidation(s, e) {
+        if (e.value == null || e.value == "") {
+            e.isValid = false;
+            e.errorText = "@Html.Raw(string.Format(Resources.Resource.msgInputRequite, Resources.Resource.CurrencyType))";
+        }
+    }
+
+
+    function CheckForLimit() {
+        var obj = new Object();
+        obj.Department = '@Html.Raw(Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.NEW 
+                                    ? FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.CostCenterCode.ToString() 
+                                    : Model.User.CostCenterCode.ToString())';
+        return $.ajax({
+            url: '@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/GA/CheckLimited',
+            type: "POST",
+            data: obj,
+            error: function (ab, c) {
+                alert(c);
+            },
+        });
+    }
+
+    function OnBtnClick(s, e) {
+        var objAjax = CheckForLimit();
+        objAjax.success(function (savingStatus) {
+            if (savingStatus == "") {
+                e.processOnServer =true;
+                btnClickName = 'btnSign';
+            }
+            else {
+                e.processOnServer = false;
+                alert(savingStatus);
+                e.preventDefault();
+            }
+        });
+    }
+    //Modify by tony (2016-10-19)
+    function OnBtnClickReject(s, e) {
+        IsDonateReject = true;
+        var objAjax = CheckForLimit();
+        objAjax.success(function (savingStatus) {
+           e.processOnServer =true;
+           btnClickName = 'btnReject';
+        });
+    }
+    //
+</script>
+<script type="text/javascript">
+    var rowIndex = 100;
+    function OnClickUpload(s, e) {
+        uc.Upload();
+    }
+    function OnFileUploadComplete(s, e) {
+        rowIndex++;
+        var OriginalUrl = e.callbackData;
+        var FileName = OriginalUrl.replace(/^.*(\\|\/|\:)/, '');
+        var GUID = OriginalUrl.split('/')[3];
+        if (e.callbackData !== "") {
+            $("#tblBody").append(" <tr id='row_" + rowIndex + "'><td> <a target='_blank' href='" + e.callbackData + "'>" + FileName + "</a></td><td><button type='button' class='btn btn-primary btn-squared btn-xs' onclick=\"DeleteUploadItem('" + GUID + "','" + FileName + "','" + rowIndex + "')\">@Resources.Resource.Delete</button></td></tr> ");
+        }
+
+
+
+        else {
+            alert("The selected file was not uploaded.");
+        }
+    }
+
+    function DeleteUploadItem(GUID, FileName, Index) {
+        var url = "@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/Base/DeleteUploadItem";
+        var obj = new Object();
+        obj.GUID = GUID;
+        obj.Filename = FileName;
+        obj.Index = Index;
+       // alert(Index);
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: obj,
+            success: function () {
+                //alert("Success");
+                $("#row_" + Index).remove();
+            }
+        });
+    }
+
+    function DoSubmitOrder(s, e) {
+        btnClickName = 'btnSaveAndSend';
+
+        e.processOnServer = true;
+
+
+    }
+</script>
+
+
+@{
+    Html.EnableClientValidation(false);
+    Html.EnableUnobtrusiveJavaScript(false);
+}
+<div class="panel-body">
+
+    @{
+
+        Html.BeginForm("SaveData", "GA", new { CreateNew = (Boolean)ViewBag.IsCreateNew }, FormMethod.Post, new { @id = "frmMainForm" });
+
+        var _User = (FEA_BusinessLogic.User)ViewBag.User;
+        bool IsCreateNew = (Boolean)ViewBag.IsCreateNew;
+
+
+        <!--button group devexpress-->
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @{
+                    bool _showSaveSendButton, _showSaveDraffButton, _showUpdateButton, _showSignButton, _readonlyControl;
+                    bool _defaultEnable = false;
+                    _showSaveSendButton = _showSaveDraffButton = _showUpdateButton = _showSignButton = _readonlyControl = false;
+
+                    if (Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.SENDING
+                        || Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.CHECKED
+                        || Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.DELETED)
+                    {
+                        _readonlyControl = true;
+                    }
+
+                    if (ViewBag.TypeUser.ToString() != "manager") // USer
+                    {
+                        if (IsCreateNew)
+                        {
+                            // _showSaveSendButton = true;
+                            _showSaveDraffButton = true;
+                            _showUpdateButton = false;
+
+                        }
+                        else// Update - View
+                        {
+                            if (
+                                    (Model.Status.Value == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.DRAFT
+                                        || Model.Status.Value == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.RETURNED)
+                                    && Model.CreatorID == FEA_ITS_Site.Helper.UserLoginInfo.UserId
+
+                                )
+                            {
+                                _showSaveDraffButton = false;
+                                _showUpdateButton = true;
+
+                                //if (ViewBag.EditStatus != null && ViewBag.EditStatus == (int)FEA_ITS_Site. Models.Helper.EditItemStatus.success) // Khi show ra thì khio6ng hiện, chi khi nào update thành công thì mới hiện
+                                { _showSaveSendButton = true; }
+                            }
+                            else if (Model.Status != null && Model.Status.Value == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.SENDING)
+                            {
+                                _showSaveDraffButton = _showSaveSendButton = _showUpdateButton = false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (ViewBag.EditStatus == null)
+                        {
+                            _showSignButton = true;
+                        }
+                    }
+                }
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnSaveDraff";
+                    settings.Width = 100;
+                    settings.Text = Resources.Resource.Save;
+                    settings.UseSubmitBehavior = true;
+                    settings.ClientVisible = _showSaveDraffButton;
+                    settings.ClientSideEvents.Click = "function(){btnClickName ='btnSaveDraff';}";
+                    
+
+                }).GetHtml()
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnUpdate";
+                    settings.Width = 100;
+                    settings.Text = Resources.Resource.Update;
+                    settings.UseSubmitBehavior = true;
+                    settings.ClientVisible = _showUpdateButton;
+                    settings.ClientSideEvents.Click = "function(){btnClickName ='btnUpdate';}";
+                }).GetHtml()
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnSaveAndSend";
+                    settings.Width = 100;
+                    settings.Text = Resources.Resource.Send;
+                    settings.UseSubmitBehavior = true;
+                    settings.ClientVisible = _showSaveSendButton;
+                    settings.ClientSideEvents.Click = "DoSubmitOrder";
+                }).GetHtml()
+
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnSign";
+                    settings.RouteValues = new { Action = "SignDocument", Controller = "GA", NodeID = ViewBag.NodeID, MainDetailID = ViewBag.MainDetailID, MainID = ViewBag.MainID, CheckUserID = ViewBag.CheckUserID, DelegateID = ViewBag.DelegateID, DelegateUserID = ViewBag.DelegateUserID };
+                    settings.Width = 100;
+                    settings.Text = Resources.Resource.Sign;
+                    settings.UseSubmitBehavior = true;
+                    settings.ClientSideEvents.Click = "OnBtnClick";
+                    settings.ClientVisible = _showSignButton;
+                }).GetHtml()
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnReject";
+                    settings.RouteValues = new { Action = "RejectDocument", Controller = "GA", NodeID = ViewBag.NodeID, MainDetailID = ViewBag.MainDetailID, MainID = ViewBag.MainID, CheckUserID = ViewBag.CheckUserID, DelegateID = ViewBag.DelegateID, DelegateUserID = ViewBag.DelegateUserID };
+                    settings.Width = 100;
+                    settings.Text = Resources.Resource.Reject;
+                    settings.UseSubmitBehavior = true;
+                    settings.ClientVisible = _showSignButton;
+                    settings.ClientSideEvents.Click = "OnBtnClickReject";
+                    settings.CausesValidation = false;
+                }).GetHtml()
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnRef";
+                    //settings.RouteValues = new { Action = "RejectDocument", Controller = "DeviceRegistration", NodeID = ViewBag.NodeID, MainDetailID = ViewBag.MainDetailID, MainID = ViewBag.MainID, CheckUserID = ViewBag.CheckUserID, DelegateID = ViewBag.DelegateID, DelegateUserID = ViewBag.DelegateUserID };
+                    settings.Width = 100;
+                    settings.Text = @Resources.Resource.Discussion;
+                    settings.UseSubmitBehavior = false;
+                    settings.ClientSideEvents.Click = "function(){$('#RefSetup').click();}";
+                    settings.ClientVisible = true;
+                    settings.CausesValidation = false;
+                    settings.ClientVisible = _showSignButton;
+                }).GetHtml()
+            </div>
+        </div>
+        <!--End button group-->
+        <div class="row">
+            <div class="col-lg-7 fLeft">
+                @Html.DevExpress().ValidationSummary(setting => { setting.Name = "validationSum"; }).GetHtml()
+            </div>
+        </div>
+        if (ViewBag.EditStatus != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+
+                    @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                            @Html.Raw(Resources.Resource.msgSuccess)
+                        </div>
+                    }
+                    else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                            @Html.Raw(Resources.Resource.msgInsertFail)
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+        <!-- line-->
+        <hr />
+        <!--Line-->
+        <!-- control group 3 column-->
+        <a href="javascript:ContentFunction.DisplayItem('divBaseInfo','iIcon',null);"> <h4 class=" group-title"><i class="icon-circle-arrow-down teal" id="iIcon"></i> @Resources.Resource.BaseInfomation</h4></a>
+        <div id="divBaseInfo">
+            <div class="row row-detail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.OrderCode:
+                        </label>
+
+                        @Html.HiddenFor(model => model.Status)
+                        @Html.Hidden("DocType", FEA_ITS_Site.Models.Helper.TagPrefixParameter.GENERALAFFAIR);
+                        @Html.DevExpress().TextBoxFor(model => model.ID,
+                            settings =>
+                            {
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ReadOnly = true;
+                                settings.ClientVisible = false;
+                            }
+                        ).GetHtml()
+
+                        @Html.DevExpress().TextBoxFor(model => model.OrderCode,
+                            settings =>
+                            {
+
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.Properties.NullText = "";
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ReadOnly = true;
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.UserCode:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtEmID";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                                settings.Text = _User.UserCodeID.ToString();
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.Phone:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtPhone";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                                settings.Text = _User.UserPhone.ToString();
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.UserName:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtEmName";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                                settings.Text = _User.UserName;
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row row-detail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.Department:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtDepartment";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                                settings.Text = _User.CostCenter.Remark;
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.CreateDate:
+                        </label>
+                        <div class="editorContainer">
+
+                            @Html.DevExpress().DateEditFor(model => model.CreateDate,
+                            settings =>
+                            {
+                                settings.Properties.UseMaskBehavior = true;
+                                settings.Properties.EditFormat = EditFormat.Custom;
+                                settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);// "dd-MM-yyyy hh:mm tt";
+                                settings.Properties.TimeSectionProperties.Visible = true;
+                                settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+                                settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "hh:mm tt";
+                                settings.Date = DateTime.Now;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ReadOnly = _readonlyControl;
+
+                            }
+                        ).GetHtml()
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.CurrencyType:
+                        </label>
+                        <div class="editorContainer">
+                            @Html.DevExpress().ComboBoxFor(model => model.CurrencyID, settings =>
+                        {
+                            settings.Properties.ClientSideEvents.Validation = "OnCurrencyValidation";
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.TextField = "Name";
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.ValueField = "ID";
+                            settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithTooltip;
+                            settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                            settings.ReadOnly = _readonlyControl;
+
+                            settings.Properties.CaptionSettings.RequiredMark = "(*)";
+                            settings.Properties.CaptionSettings.RequiredMarkDisplayMode = EditorRequiredMarkMode.Required;
+                            settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Right;
+                        }).BindList(new FEA_BusinessLogic.CurrencyManager().GetItems(1)).GetHtml()
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row row-detail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.EstiamtedAmount:
+                        </label>
+                        @Html.DevExpress().SpinEditFor(model => model.EstimateAmount,
+                        settings =>
+                        {
+                            settings.Properties.NumberType = SpinEditNumberType.Float;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.MinValue = 0;
+                            settings.Properties.MaxValue = decimal.MaxValue;
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.NullText = "0.00";
+                            settings.ReadOnly = true;
+                            settings.Properties.DisplayFormatString = FEA_Ultil.FEAStringClass.DisNumberFormatString();
+                        }
+                    ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.DeliveryDate:
+                        </label>
+                        <div class="editorContainer">
+
+                            @Html.DevExpress().DateEditFor(model => model.DeliveryDate,
+                            settings =>
+                            {
+                                settings.Properties.UseMaskBehavior = true;
+                                settings.Properties.EditFormat = EditFormat.Custom;
+                                settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false,false);// "dd-MM-yyyy hh:mm tt";
+                                settings.Properties.TimeSectionProperties.Visible = true;
+                                settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+                                settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "hh:mm tt";
+                                settings.Date = DateTime.Now;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ReadOnly = true;
+
+                            }
+                        ).GetHtml()
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.IsUrgent:
+                        </label>
+                        <div class="editorContainer">
+                            @Html.DevExpress().RadioButtonListFor(model => model.IsUrgent,
+                            settings =>
+                            {
+                                settings.Properties.ValueField = "Key";
+                                settings.Properties.TextField = "Value";
+                                settings.Properties.ValueType = typeof(int);
+                                settings.Properties.RepeatLayout = System.Web.UI.WebControls.RepeatLayout.OrderedList;
+                                settings.Properties.RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal;
+                                settings.Properties.RepeatColumns = 2;
+                                settings.ControlStyle.BorderStyle = System.Web.UI.WebControls.BorderStyle.None;
+                                settings.Style.Add("margin-bottom", "-15px;");
+
+                                settings.ReadOnly = _readonlyControl;
+
+                            }).BindList(
+                                         new Dictionary<int, string>() { { 1, Resources.Resource.Yes }, { 0, Resources.Resource.No } }
+                            ).GetHtml()
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row row-detail">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.Reason:
+                        </label>
+                        @Html.DevExpress().MemoFor(model => model.Reason,
+                        settings =>
+                        {
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.ClientSideEvents.Validation = "OnReasonValidation";
+                            settings.ShowModelErrors = true;
+                            settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithTooltip;
+                            settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                            settings.Properties.NullText = Resources.Resource.ReasonRemark;
+                            settings.ReadOnly = _readonlyControl;
+                            settings.Properties.Rows = 3;
+
+                            settings.Properties.CaptionSettings.RequiredMark = "(*)";
+                            settings.Properties.CaptionSettings.RequiredMarkDisplayMode = EditorRequiredMarkMode.Required;
+                            settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Right;
+                        }
+                    ).GetHtml()
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row row-detail">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.Description:
+                        </label>
+                        @Html.DevExpress().MemoFor(model => model.Description,
+                        settings =>
+                        {
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.Rows = 3;
+                            settings.Properties.NullText = Resources.Resource.DesRemark;
+                            settings.ReadOnly = _readonlyControl;
+                        }
+                        ).GetHtml()
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end control group-->
+        <a> <h4 class="group-title"><i class="icon-list teal "></i>@Resources.Resource.DetailInfomation</h4></a>
+
+        if (Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.NEW ||
+            Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.DRAFT ||
+            Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.RETURNED)
+        {
+            <div class="row row-detail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.ItemType:
+                        </label>
+                        @{Html.RenderAction("ItemPartial", "Item", new { sItemType = FEA_ITS_Site.Models.Helper.TagPrefixParameter.GENERALAFFAIR, sOrderType = "" });}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.Specs:
+                        </label>
+                        @{Html.RenderAction("ItemDetailPartial", "ItemDetail");}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.DeliveryDate:
+                        </label>
+                        @Html.DevExpress().DateEdit(
+                            settings =>
+                            {
+                                settings.Name = "dtDevDate";
+                                settings.Properties.UseMaskBehavior = true;
+                                settings.Properties.EditFormat = EditFormat.Custom;
+
+                                settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+                                settings.Properties.EditFormat = EditFormat.Custom;
+                                settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false);
+                                settings.Properties.DisplayFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false);// "dd-MM-yyyy hh:mm tt";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row row-detail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.Quantity:
+                        </label>
+                        @Html.DevExpress().SpinEdit(
+                        settings =>
+                        {
+                            settings.Name = "spQuantity";
+                            settings.Properties.NumberType = SpinEditNumberType.Integer;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.MinValue = 0;
+                            settings.Properties.MaxValue = decimal.MaxValue;
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.NullText = "0";
+                            settings.Number = 0;
+                            settings.Properties.AllowNull = false;
+                            settings.Properties.DisplayFormatString = FEA_Ultil.FEAStringClass.DisNumberFormatString(0);
+                        }
+                    ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.Price:
+                        </label>
+                        @Html.DevExpress().SpinEdit(
+                        settings =>
+                        {
+                            settings.Name = "spPrice";
+                            settings.Properties.NumberType = SpinEditNumberType.Float;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.MinValue = 0;
+                            settings.Properties.MaxValue = decimal.MaxValue;
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.NullText = "0";
+                            settings.Number = 0;
+                            settings.Properties.AllowNull = false;
+                            settings.Properties.DisplayFormatString = FEA_Ultil.FEAStringClass.DisNumberFormatString();
+                        }
+                    ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                           @Resources.Resource.IsBroken
+                        </label>                        
+                        @Html.DevExpress().CheckBox(
+                        settings =>
+                        {
+                            settings.Name = "chkIsBroken";
+                            settings.Properties.ValueType = typeof(bool);
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.DisplayFormatString = FEA_Ultil.FEAStringClass.DisNumberFormatString();
+                        }
+                    ).GetHtml()
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row row-detail">
+                <div class="col-md-11">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.Description:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                    settings =>
+                    {
+                        settings.Name = "txtItemDes";
+                        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                        settings.ControlStyle.CssClass = "textBoxStyle";
+                        settings.ReadOnly = _readonlyControl;
+                        settings.Properties.MaxLength = 250;
+                    }
+                ).GetHtml()
+                    </div>
+                </div>
+
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <label class="control-label" style="opacity:0">
+                            Action
+                        </label>
+                        <button type="button" class="btn btn-primary btn-xs" style="display:block" onclick="AddItemToOrder();" @string.Format("{0}", _readonlyControl == true ? "disabled" : "")>
+                            <i class="glyphicon glyphicon-upload"></i>
+                            <span>@Resources.Resource.Add</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        <div class="row row-detail">
+            <div class="col-md-12" id="gridDetail">
+
+                @{
+                    var showcommand = IsCreateNew;
+                    if (Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.DRAFT
+                        || Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.NEW
+                        || Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.RETURNED)
+                    {
+                        showcommand = true;
+                    }
+                    Html.RenderAction("GetListItemDetailPartial", "GA", new { ShowCommand = showcommand });
+                }
+            </div>
+        </div>
+
+    // --- Attachment control
+    <h4 class="group-title "><i class="icon-file-alt teal"></i> @Resources.Resource.Attachment</h4>
+        <div class="row row-detail">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @{Html.RenderAction("LoadUploadControl", "Base", new { ItemUploadGuid = ViewBag.ItemUploadGuid, IsEnable = Model.Status });}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+
+                    <table id="tblFiles" class="table table-striped table-bordered table-hover table-full-width">
+                        <thead>
+                            <tr>
+                                <th>@Resources.Resource.FileName</th>
+                                <th class="hidden-xs">@Resources.Resource.Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblBody">
+                            <tr>
+                                @{
+                                    FEA_ITS_Site.Models.ItemUpload ItemUpload = Session["ItemUpload"] as FEA_ITS_Site.Models.ItemUpload;
+                                    int rowIndex = 0;
+                                    if (ItemUpload != null)
+                                    {
+                                        if (ItemUpload.ListAddress != null)
+                                        {
+                                            if (ItemUpload.ListAddress.Length > 0)
+                                            {
+                                                foreach (string item in ItemUpload.ListAddress)
+                                                {
+                                                    rowIndex++;
+                                                    string[] GUIDCollection = item.Split('\\');
+                                                    string GUID = GUIDCollection[GUIDCollection.Length - 2];
+                                                    @Html.Raw("<tr id='row_" + rowIndex + "'><td> <a target='_blank' href='" + FEA_ITS_Site.Helper.Ultilities.Root + FEA_ITS_Site.Helper.Ultilities.UploadFolder + GUID + "/" + Path.GetFileName(item.ToString()) + "'>" + Path.GetFileName(item.ToString()) + "</a></td><td><button type='button' class='btn btn-primary btn-squared btn-xs' onclick=\"DeleteUploadItem('" + GUID + "','" + Path.GetFileName(item.ToString()) + "','" + rowIndex + "')\">" + @Resources.Resource.Delete + "</button></td></tr> ")
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div align="left">
+            @Html.DevExpress().Button(
+                                settings =>
+                                {
+                                    settings.Name = "btnUploadFile";
+                                    settings.Text = @Resources.Resource.Upload;
+                                    settings.ClientSideEvents.Click = "OnClickUpload";
+                                    settings.UseSubmitBehavior = false;
+                                    settings.CausesValidation = false;
+                                }).GetHtml()
+        </div>
+        <div align="left">
+            Allowed types: JPG, PDF<br />
+            Maximum file size: 3MB
+        </div>
+
+
+    //-------------
+
+    <h4 class="group-title "><i class="icon-thumbs-up teal"></i> @Resources.Resource.Sequence</h4>
+
+        if ((int)FEA_GABusinessLogic.GAItemManager.OrderStatus.NEW != Model.Status)
+        {
+            <div class="row row-detail">
+                <!--Next Approver-->
+                @{Html.RenderAction("GetApproverPartial", "DeviceRegistration", new
+                {
+                    DocTypeName = FEA_ITS_Site.Models.Helper.TagPrefixParameter.GENERALAFFAIR,
+                    CodeCenterCode = _User.CostCenterCode,
+                    NodeID = ViewBag.NodeID.ToString(),
+                    TypeUser = ViewBag.TypeUser,
+                    OrderCode = Model.OrderCode
+                });}
+            </div>
+        }
+        if (Model.Status != (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.DRAFT && Model.Status != (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.NEW)
+        {
+            <div class="row row-detail">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.Comment:
+                        </label>
+                        @Html.DevExpress().Memo(settings =>
+                        {
+                            settings.Name = "txtComment";
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.Rows = 3;
+                            settings.Properties.NullText = "";
+                        }
+                        ).GetHtml()
+                        <br />
+                        @{Html.RenderAction("GetGridViewForWF", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.WFHistory, OrderCode = Model.OrderCode });}
+                    </div>
+                </div>
+            </div>
+            <h4 class="group-title "><i class=" clip-bubbles-2 "></i> @Resources.Resource.Conversation</h4>
+        <!-- grid-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @{Html.RenderAction("GetListCommentBySesionPartial", "References", new { OrderCode = Model.OrderCode });}
+                    </div>
+                </div>
+            </div>
+        }
+        Html.EndForm();
+
+    }
+</div>
+@*Modify by Tony (2016-09-29)*@
+@*<a href="#responsive" data-toggle="modal" onclick="SetModalStyle('50%', null, '@FEA_ITS_Site.Helper.Ultilities.Root/References/Index?OrderCode=@Model.OrderCode&WFMainDetailID=@ViewBag.MainDetailID', 'Discussion', 'true')" id="RefSetup"></a>*@
+@*@Html.Partial("ModalPartial/_IframeModal")*@

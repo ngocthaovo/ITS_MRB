@@ -1,0 +1,35 @@
+D:\Works\ITS_Source\FEA_SABusinessLogic\bin\Release\FEA_SABusinessLogic.dll
+D:\Works\ITS_Source\FEA_SABusinessLogic\bin\Release\FEA_SABusinessLogic.pdb
+D:\Works\ITS_Source\FEA_SABusinessLogic\bin\Release\EntityFramework.dll
+D:\Works\ITS_Source\FEA_SABusinessLogic\bin\Release\FEA_BusinessLogic.dll
+D:\Works\ITS_Source\FEA_SABusinessLogic\bin\Release\FEA_Ultil.dll
+D:\Works\ITS_Source\FEA_SABusinessLogic\bin\Release\EntityFramework.xml
+D:\Works\ITS_Source\FEA_SABusinessLogic\bin\Release\FEA_BusinessLogic.pdb
+D:\Works\ITS_Source\FEA_SABusinessLogic\bin\Release\FEA_Ultil.pdb
+D:\Works\ITS_Source\FEA_SABusinessLogic\obj\Release\FEA_SABusinessLogic.csprojResolveAssemblyReference.cache
+D:\Works\ITS_Source\FEA_SABusinessLogic\obj\Release\FEA_SABusinessLogic.dll
+D:\Works\ITS_Source\FEA_SABusinessLogic\obj\Release\FEA_SABusinessLogic.pdb
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\bin\Release\FEA_SABusinessLogic.dll
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\bin\Release\FEA_SABusinessLogic.pdb
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\bin\Release\EntityFramework.dll
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\bin\Release\FEA_BusinessLogic.dll
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\bin\Release\FEA_Ultil.dll
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\bin\Release\EntityFramework.xml
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\bin\Release\FEA_BusinessLogic.pdb
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\bin\Release\FEA_Ultil.pdb
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\obj\Release\FEA_SABusinessLogic.csprojResolveAssemblyReference.cache
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\obj\Release\FEA_SABusinessLogic.dll
+D:\SourceCode\ITS_Source_Code\FEA_SABusinessLogic\obj\Release\FEA_SABusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\bin\Release\FEA_SABusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\bin\Release\FEA_SABusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\bin\Release\EntityFramework.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\bin\Release\FEA_BusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\bin\Release\FEA_Ultil.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\bin\Release\FEA_GABusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\bin\Release\EntityFramework.xml
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\bin\Release\FEA_BusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\bin\Release\FEA_Ultil.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\bin\Release\FEA_GABusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\obj\Release\FEA_SABusinessLogic.csprojResolveAssemblyReference.cache
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\obj\Release\FEA_SABusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_SABusinessLogic\obj\Release\FEA_SABusinessLogic.pdb

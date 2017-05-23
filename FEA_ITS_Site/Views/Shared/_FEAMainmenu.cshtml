@@ -1,0 +1,172 @@
+﻿@using FEA_BusinessLogic
+
+<div class="main-navigation navbar-collapse collapse">
+    <!-- start: MAIN MENU TOGGLER BUTTON -->
+    <div class="navigation-toggler">
+        <i class="clip-chevron-left"></i>
+        <i class="clip-chevron-right"></i>
+    </div>
+    <!-- end: MAIN MENU TOGGLER BUTTON -->
+    <!-- start: MAIN NAVIGATION MENU -->
+    @{
+    
+        //List<FEA_BusinessLogic.SiteFunction> lst = new FEA_BusinessLogic.SiteFunctionManager().GetItems((int)FEA_ITS_Site.Models.Helper.Status.enabled);
+        List<FEA_BusinessLogic.SiteFunction> lst = new FEA_BusinessLogic.SiteFunctionManager().GetItemsPermission(FEA_ITS_Site.Helper.UserLoginInfo.UserGroup);
+        string smenu =  "<ul class= 'main-navigation-menu'>";
+        smenu += FEA_ITS_Site.Helper.Ultilities.loadmenu(0, 0, lst);
+        smenu += "</ul>";
+        
+    }
+
+    @Html.Raw(smenu)
+    <!--
+    <ul class="main-navigation-menu">
+        <li class="active open">
+            <a href="index" onclick="return false;">
+                <i class="clip-home-3"></i>
+                <span class="title">Dashboard </span><span class="selected"></span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)"><i class="clip-cog-2"></i>
+                <span class="title">UI Lab </span><i class="icon-arrow"></i>
+                <span class="selected"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="ui_elements.html">
+                        <span class="title">Elements </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ui_buttons.html">
+                        <span class="title">Buttons &amp; icons </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ui_modals.html">
+                        <span class="title">Extended Modals </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="active">
+                <i class="clip-folder"></i>
+                <span class="title">3 Level Menu </span>
+                <i class="icon-arrow"></i>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#">Item 1 <i class="icon-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#">Sample Link 1
+											</a>
+                        </li>
+                        <li>
+                            <a href="#">Sample Link 2
+											</a>
+                        </li>
+                        <li>
+                            <a href="#">Sample Link 3
+											</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">Item 1 <i class="icon-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#">Sample Link 1
+											</a>
+                        </li>
+                        <li>
+                            <a href="#">Sample Link 1
+											</a>
+                        </li>
+                        <li>
+                            <a href="#">Sample Link 1
+											</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Item 3
+									</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="clip-folder-open"></i>
+                <span class="title">4 Level Menu </span><i class="icon-arrow"></i>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="javascript:;">Item 1 <i class="icon-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="javascript:;">Sample Link 1 <i class="icon-arrow"></i>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="#"><i class="icon-remove"></i>
+                                        Sample Link 1</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon-pencil"></i>
+                                        Sample Link 1</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon-edit"></i>
+                                        Sample Link 1</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Sample Link 1
+											</a>
+                        </li>
+                        <li>
+                            <a href="#">Sample Link 2
+											</a>
+                        </li>
+                        <li>
+                            <a href="#">Sample Link 3
+											</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">Item 2 <i class="icon-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#">Sample Link 1
+											</a>
+                        </li>
+                        <li>
+                            <a href="#">Sample Link 1
+											</a>
+                        </li>
+                        <li>
+                            <a href="#">Sample Link 1
+											</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Item 3
+									</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+        -->
+    <!-- end: MAIN NAVIGATION MENU -->
+</div>

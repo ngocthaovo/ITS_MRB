@@ -1,0 +1,32 @@
+﻿@model FEA_BusinessLogic.MNStockEquipment
+
+@Html.DevExpress().ComboBoxFor(model => model.DeliveryFor,
+    settings =>
+    {
+
+        settings.Name = "cboUserList";
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+        settings.Properties.DropDownWidth = 500;
+
+        settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "UserListPartial" };
+        settings.Properties.CallbackPageSize = 30;
+        settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+        settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+        settings.Properties.TextFormatString = "{0}";
+        settings.Properties.ValueField = "UserID";
+        settings.Properties.TextField = "UserName";
+        settings.Properties.ValueType = typeof(Int32);
+        settings.ControlStyle.CssClass = "textBoxStyle";
+        //settings.ReadOnly = _readonlyControl;
+
+        settings.Properties.ClientSideEvents.Validation = "OnDeliveryForValidation";
+        settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithTooltip;
+        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+
+
+        settings.Properties.Columns.Add("UserName", "UserName", System.Web.UI.WebControls.Unit.Percentage(40));
+        settings.Properties.Columns.Add("UserCodeID", "EmID", System.Web.UI.WebControls.Unit.Percentage(10));
+        settings.Properties.Columns.Add("CostCenter.Remark", "Department", System.Web.UI.WebControls.Unit.Percentage(40));
+        settings.Properties.Columns.Add("UserPhone", "UserPhone", System.Web.UI.WebControls.Unit.Percentage(10));
+    }
+    ).BindList(new FEA_BusinessLogic.UserManager().GetItems("", "", 1)).GetHtml()

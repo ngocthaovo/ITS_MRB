@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "DocumentType";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@model List<FEA_BusinessLogic.WFDocumentType>
+<div class="panel-body">
+    <form id="frmMainForm">
+        <h4><i class="icon-edit-sign teal"></i>Document Management</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.DOC_TYPE_PARTIAL });
+                      
+                      }
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+@Html.Partial("ModalPartial/_IframeModal")

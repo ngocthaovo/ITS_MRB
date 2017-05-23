@@ -1,0 +1,149 @@
+﻿@{
+    int _penddingToSign = new FEA_BusinessLogic.WaitingArea.WaitingArea().CountSignDocument(FEA_ITS_Site.Helper.UserLoginInfo.UserId);
+    int _adminToApprove = 0;
+    int _saToApprove = 0;
+    int _gaToApprove = 0;
+    int _referencesToCheck = 0;
+
+    int _ITdept = (FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.FactoryID == 7910) ? 79101075 : 79201075;
+    int _SADept = (FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.FactoryID == 7910) ? 79101085 : 79201085;
+    int _GADept = (FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.FactoryID == 7910) ? 79101160 : 79201160;
+    
+
+    if (FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.UserGroup.isAdmin == 1 && FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.CostCenterCode == _ITdept) // only Users in group admin and workat IT dept can see
+    {
+        _adminToApprove = new FEA_BusinessLogic.DeviceRegistrationManager().CountItems("", FEA_BusinessLogic.DeviceRegistrationManager.OrderStatus.CHECKED);
+    }
+
+    if (FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.CostCenterCode == 79101085 ) // Bào vệ
+    {
+        _saToApprove = new FEA_SABusinessLogic.ExportItemManager().CountItems();
+    }
+
+
+    if (FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.CostCenterCode == 79101160 ) // GA
+    {
+       // _gaToApprove = new FEA_GABusinessLogic.GAItemManager().CountItems(FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.UserID);
+    }
+
+    _referencesToCheck = new FEA_BusinessLogic.WaitingArea.WaitingArea().CountReferrenceDocumentList(FEA_ITS_Site.Helper.UserLoginInfo.UserId);
+
+    int _totalPending = _penddingToSign + _adminToApprove + _saToApprove + _referencesToCheck + _gaToApprove;
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <!-- start: TOP NAVIGATION CONTAINER -->
+    <div class="container">
+        <div class="navbar-header">
+            <!-- start: RESPONSIVE MENU TOGGLER -->
+            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                <span class="clip-list-2"></span>
+            </button>
+            <!-- end: RESPONSIVE MENU TOGGLER -->
+            <!-- start: LOGO -->
+            <!-- end: LOGO -->
+        </div>
+        <div class="navbar-tools">
+            <!-- start: TOP NAVIGATION MENU -->
+            <ul class="nav navbar-right">
+                <!-- start: TO-DO DROPDOWN -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="clip-list-5"></i>
+                        @if (_totalPending > 0)
+                        {
+                            <span class="badge"> @_totalPending.ToString()</span>
+                        }
+                    </a>
+                    <ul class="dropdown-menu todo">
+                        <li>
+                            <span class="dropdown-menu-title"> You have @_totalPending pending tasks</span>
+                        </li>
+                        <li>
+                            <div class="drop-down-wrapper" style="height:auto">
+                                <ul>
+                                    @if (_penddingToSign > 0)
+                                    {
+                                        <li>
+                                            <a class="todo-actions" href="@string.Format("{0}/WaitingArea/MainPage", FEA_ITS_Site.Helper.Ultilities.Root)" onclick="createnewtab('Document(s) to sign','@string.Format("{0}/WaitingArea/MainPage", FEA_ITS_Site.Helper.Ultilities.Root)','docsign');">
+                                                <span><strong style="margin-left: -25px; float: left;">@_penddingToSign</strong></span>
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Document(s) to sign</span>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (_adminToApprove > 0)
+                                    {
+                                        <li>
+                                            <a class="todo-actions" href="@string.Format("{0}/DeviceRegistration/ApproveManager", FEA_ITS_Site.Helper.Ultilities.Root)" onclick="createnewtab('IT Document(s) to approve','@string.Format("{0}/DeviceRegistration/ApproveManager", FEA_ITS_Site.Helper.Ultilities.Root)','docapprove');">
+                                                <span><strong style="margin-left: -25px; float: left;">@_adminToApprove</strong></span>
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">IT Document(s) to approve</span>
+
+                                            </a>
+                                        </li>
+                                    }
+
+                                    @if (_saToApprove > 0)
+                                    {
+                                        <li>
+                                            <a class="todo-actions" href="@string.Format("{0}/SA/SAMainpage", FEA_ITS_Site.Helper.Ultilities.Root)" onclick="createnewtab('SA Document(s) need to be processed','@string.Format("{0}/SA/SAMainpage", FEA_ITS_Site.Helper.Ultilities.Root)','SAApprove');">
+                                                <span><strong style="margin-left: -25px; float: left;">@_saToApprove</strong></span>
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">SA Document(s) need to be processed</span>
+                                            </a>
+                                        </li> 
+                                    }
+                                    
+                                    @if (_gaToApprove > 0)
+                                    {
+                                        <li>
+                                            <a class="todo-actions" href="@string.Format("{0}/GA/GACheckingManagerment", FEA_ITS_Site.Helper.Ultilities.Root)" onclick="createnewtab('GA Document(s) need to be processed','@string.Format("{0}/GA/GACheckingManagerment", FEA_ITS_Site.Helper.Ultilities.Root)','GAApprove');">
+                                                <span><strong style="margin-left: -25px; float: left;">@_gaToApprove</strong></span>
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">GA Document(s) need to be processed</span>
+                                            </a>
+                                        </li>
+                                    }
+                                    
+                                    @if (_referencesToCheck > 0)
+                                    {
+                                        <li>
+                                            <a class="todo-actions" href="@string.Format("{0}/WaitingArea/MainPage", FEA_ITS_Site.Helper.Ultilities.Root)" onclick="loadContentByLink('@string.Format("{0}/WaitingArea/MainPage", FEA_ITS_Site.Helper.Ultilities.Root)');">
+                                                <span><strong style="margin-left: -25px; float: left;">@_referencesToCheck</strong></span>
+                                                <span class="desc" style="opacity: 1; text-decoration: none;">Document(s) need to be discussed</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- end: TO-DO DROPDOWN-->
+                <!-- start: USER DROPDOWN -->
+                <li class="dropdown current-user">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <img src="@FEA_ITS_Site.Helper.Ultilities.GetUserAvatar(FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.UserSex)" class="circle-img" alt="">
+                        <span class="username">@Resources.Resource.Hello : @FEA_ITS_Site.Helper.UserLoginInfo.UserName</span>
+                        <i class="clip-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="~/Account/AccountInfo" id="btnAccountInfo">
+                                <i class="clip-user-2"></i>
+                                &nbsp;@Resources.Resource.MyInfo
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="~/User/Logout">
+                                <i class="clip-exit"></i>
+                                &nbsp;@Resources.Resource.Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- end: USER DROPDOWN -->
+            </ul>
+            <!-- end: TOP NAVIGATION MENU -->
+        </div>
+    </div>
+    <!-- end: TOP NAVIGATION CONTAINER -->
+</div>

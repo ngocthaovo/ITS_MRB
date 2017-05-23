@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "ApproveForm";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@model FEA_BusinessLogic.sp_GetMaintenanceDetailsQuantity_Result
+
+<div class="panel-body">
+    
+    <div class="row">
+        <div class="col-md-12">
+            @{Html.RenderAction("ApproveDetailList", "Maintenance", new { ID = ViewBag.ID });}
+        </div>
+        
+    </div>
+    <hr />
+    <div class="row buttonbar">
+        <div class="col-md-12" align="right">
+            @Html.DevExpress().Button(
+                          settings =>
+                          {
+                              settings.Name = "btnSign";
+                              settings.Text = @Resources.Resource.Sign;
+                              settings.Width = 100;
+                              settings.UseSubmitBehavior = true;
+                              settings.ClientSideEvents.Click = "CallToAction";
+                          }
+        ).GetHtml()
+            @Html.DevExpress().Button(
+                          settings =>
+                          {
+                              settings.Name = "btnReject";
+                              settings.Text = @Resources.Resource.Reject;
+                              settings.Width = 100;
+                              settings.UseSubmitBehavior = true;
+                              settings.ClientSideEvents.Click = string.Format("function(s, e) {{ DoReject('{0}'); }}", ViewBag.ID);
+                          }
+        ).GetHtml()
+        </div>
+    </div>
+</div>

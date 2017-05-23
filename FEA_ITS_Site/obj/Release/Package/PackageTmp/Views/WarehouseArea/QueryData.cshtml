@@ -1,0 +1,195 @@
+﻿@{
+    ViewBag.Title = "QueryData";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@using (Html.BeginForm("QueryData", "WarehouseArea", FormMethod.Post, new { id = "frmMainForm" }))
+{
+<div class="panel-body">
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnQuery";
+                    settings.Width = 90;
+                    settings.Text = Resources.Resource.Query;
+                    settings.UseSubmitBehavior = true;
+                }).GetHtml()
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnExportExcel";
+                    settings.Width = 90;
+                    settings.Text = "Export Excel";
+                    settings.UseSubmitBehavior = true;
+                    settings.Enabled = (ViewBag.IsPostBack != null && ViewBag.IsPostBack == "1") ? true : false;
+                }).GetHtml()
+            </div>
+        </div>
+
+        <!-- line-->
+        <hr />
+        <!--Line-->
+
+        <!-- control group 3 column-->
+        <a href="javascript:ContentFunction.DisplayItem('divBaseInfo','iIcon',null);"> <h4 class="group-title"><i class="icon-circle-arrow-down teal" id="iIcon"></i> Query Customer PO</h4></a>
+        <div id="divBaseInfo">
+            <div class="row row-detail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            PO Number:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtPONumber";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.Properties.NullText = "";
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = ViewBag.PONumber;
+                                
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.CustomerPO:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtCusPoNum";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = ViewBag.CusPO;
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.TypeQuery:
+                        </label>
+                       @Html.DevExpress().ComboBox(
+                       settings => {
+                           settings.Name = "cbTypeQuery";
+                           settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                           settings.SelectedIndex = ViewData["TypeQuery"] == null ? 0 : (ViewData["TypeQuery"].ToString() == "Normal" ? 0 : 1);
+                           settings.Properties.Items.Add("Normal");
+                           settings.Properties.Items.Add("Dynamic");
+                        }).GetHtml()
+                    </div>
+                </div>
+            </div>
+            <div class="row row-detail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                         @Resources.Resource.FromDate:
+                        </label>
+                        @Html.DevExpress().DateEdit(
+                            settings =>
+                            {
+                                settings.Name = "dtFrom";
+                                settings.Properties.UseMaskBehavior = true;
+                                settings.Properties.EditFormat = EditFormat.Custom;
+                                settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                                settings.Properties.DisplayFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                                settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Date;
+                                settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "hh:mm tt";
+                                settings.Date = ViewBag.DateFrom;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                            }
+                        ).GetHtml()
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.ToDate:
+                        </label>
+                        @Html.DevExpress().DateEdit(
+                            settings =>
+                            {
+                                settings.Name = "dtTo";
+                                settings.Properties.UseMaskBehavior = true;
+                                settings.Properties.EditFormat = EditFormat.Custom;
+                                settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                                settings.Properties.DisplayFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                                
+                                settings.Date = DateTime.Now;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+
+                                settings.Date = ViewBag.DateTo;
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.OrderState
+                        </label>
+                        @Html.DevExpress().ComboBox(
+                       settings =>
+                       {
+                           settings.Name = "cbOrderState";
+                           settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                           settings.SelectedIndex = ViewBag.State == null ? 0 : (ViewBag.State == "Close" ? 0 : 1);
+                           settings.Properties.Items.Add("Close"); // value = 0 (Closed)
+                           settings.Properties.Items.Add("Open"); // value = 1 (Open)
+                           settings.SelectedIndex = 1;
+                       }).GetHtml()
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- end control group-->
+    <a><h4 class="group-title"><i class="icon-list teal "></i> Detail data</h4></a>
+    @{
+        if (ViewBag.IsPostBack != null && ViewBag.IsPostBack == "1")
+        {
+            if (DevExpress.Web.Mvc.EditorExtension.GetValue<string>("cbTypeQuery") == "Normal")
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="vertComponentContainer">
+                                @{Html.RenderAction("LoadPackingManifestDetailDetailOnQuery", "WarehouseArea", new { PoNumber = ViewBag.PONumber, CustomerPO = ViewBag.CusPO, dtFrom = ViewBag.DateFrom, dtTo = ViewBag.DateTo, TypeQuery = "Normal", OrderState = DevExpress.Web.Mvc.EditorExtension.GetValue<string>("cbOrderState") });}
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            }
+            else if (DevExpress.Web.Mvc.EditorExtension.GetValue<string>("cbTypeQuery") == "Dynamic")
+            {
+                    <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="vertComponentContainer">
+                                @{Html.RenderAction("GetDynamicQueryPackingManifest", "WarehouseArea", new { PoNumber = ViewBag.PONumber, CustomerPO = ViewBag.CusPO, dtFrom = ViewBag.DateFrom, dtTo = ViewBag.DateTo, TypeQuery = "Dynamic", OrderState = DevExpress.Web.Mvc.EditorExtension.GetValue<string>("cbOrderState") });}
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            }
+       
+        }
+    }
+       
+
+</div>
+}

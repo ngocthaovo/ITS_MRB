@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "MNInventory";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+<div class="panel-body">
+    <h4><i class="icon-edit-sign teal"></i>Maintenance Inventory</h4>
+    <div class="row">
+        <div class="col-md-12">
+            @{Html.RenderAction("GetMNInventory", "Maintenance");}
+        </div>
+    </div>
+</div>

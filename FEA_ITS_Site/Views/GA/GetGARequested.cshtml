@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "GetGARequested";
+  Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView},
+    new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.GridView},
+    new Script{ExtensionSuite = ExtensionSuite.HtmlEditor})
+
+@using (Html.BeginForm())
+{
+    <div class="panel-body">
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnQuery";
+                            settings.Width = 90;
+                            settings.Text = @Resources.Resource.Query;
+                            settings.UseSubmitBehavior = true;
+
+                        }).GetHtml()
+            </div>
+
+        </div>
+        <br />
+
+
+        <div class="row">
+            <div class="col-md-1">
+                <label class="control-label">
+                    @Resources.Resource.OrderCode:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtOrderCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = ViewBag.OrderCode;
+                            }
+                        ).GetHtml()
+            </div>
+
+            <div class="col-md-1">
+                <label class="control-label">
+                    @Resources.Resource.FromDate:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "dtBeginDate";
+                            settings.Date = ViewBag.BeginDate;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                        }
+                    ).GetHtml()
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">
+                    @Resources.Resource.ToDate:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "dtEndDate";
+                            settings.Date = ViewBag.EndDate;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                        }
+                    ).GetHtml()
+            </div>
+        </div>
+        <hr />
+        @*<h4 class="group-title"><i class="icon-edit-sign teal"></i> @Resources.Resource.PendingList</h4>*@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @{Html.RenderAction("DocumentGARequestedPartial", "GA", new { OrderCode = ViewBag.OrderCode, BeginDate = ViewBag.BeginDate, EndDate = ViewBag.EndDate });}
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

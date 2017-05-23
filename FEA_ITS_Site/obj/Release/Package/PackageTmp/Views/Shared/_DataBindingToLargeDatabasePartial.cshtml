@@ -1,0 +1,22 @@
+﻿@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gvDataBindingToLinq";
+        settings.CallbackRouteValues = new { Controller = "Account", Action = "DataBindingToLargeDatabasePartial" };
+        settings.KeyFieldName = "UserID";
+        settings.Width = 100;
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFooter = true;
+
+        settings.Columns.Add("UserName").Width = 200;
+        settings.Columns.Add("UserEmail");
+
+        settings.Columns.Add("UserPhone").Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+
+    }).BindToLINQ(string.Empty, string.Empty, (s, e) =>
+    {
+        var dataContext = new FEA_BusinessLogic.FEA_ITSEntities();
+        e.KeyExpression = "UserID";
+        e.QueryableSource = dataContext.Users;
+    }).GetHtml()

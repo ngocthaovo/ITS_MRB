@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "MainPage";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    function ActiveTabChanged(s, e) {
+        var tabName = e.tab.name;
+        var item, url;
+
+        if (tabName == "StockIn")
+        {
+            item = $("#ifmStockIn");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/ITInventory/SockIn?ID=";
+            $(item).attr("src", url);
+            @*url = $(item).attr("src");
+
+            if (url.length == 0 || url == "")
+            {
+                url = "@FEA_ITS_Site.Helper.Ultilities.Root/ITInventory/SockIn?ID=";
+                $(item).attr("src", url);
+            }*@
+        }
+        else if (tabName == "Management") {
+            item = $("#ifmManagement");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/StockInEquipment/StockInManagement";
+            $(item).attr("src", url);
+            @*url = $(item).attr("src");
+
+            if (url.length == 0 || url == "") {
+                url = "@FEA_ITS_Site.Helper.Ultilities.Root/StockInEquipment/StockInManagement";
+                $(item).attr("src", url);
+            }*@
+        }
+    }
+
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.NavigationAndLayout})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.NavigationAndLayout})
+
+@Html.DevExpress().PageControl(
+            settings =>
+            {
+                settings.Name = "pcFeatures";
+                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                settings.ControlStyle.CssClass = "dxTab";
+                settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+                
+                settings.TabPages.Add(@Resources.Resource.StockIn, "StockIn").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                            "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/ITInventory/SockIn?ID=\" id=\"ifmStockIn\" style=\"height: 760px;\"></iframe>"
+                        );
+                });
+                settings.TabPages.Add(@Resources.Resource.Management, "Management").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                            "<iframe src='' id=\"ifmManagement\" style=\"height: 760px;\"></iframe>"
+                        );
+                });
+            }).GetHtml()

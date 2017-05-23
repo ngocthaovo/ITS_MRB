@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "QueryOpenOrder";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+
+<script>
+    $('document').ready(function () {
+        $("#btnQuery").click(function () {
+            var valueED =dtEndDate.GetDate().toUTCString();
+            var valueBD =dtBeginDate.GetDate().toUTCString();
+            var  valueFEPO = FEPOCode.GetValue();
+            var url = "@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/ERP/OpenOrderGird";
+            var obj = new Object();
+            obj.FEPOCode = valueFEPO;
+            obj.FromDate = valueBD;
+            obj.ToDate = valueED;
+            $('#divLoadCommon').show();
+            $('#btnQuery').hide();
+            $('#btnExport').hide();
+            jQuery.ajax(
+                {
+                    url: url,
+                    data:obj,
+
+                }).done(function (d) {
+                $('#divLoadCommon').hide();
+                $('#btnExport').show();
+                $('#btnQuery').show();
+                $("#gridDetail").html(d);
+            });
+        });
+      
+    });
+ 
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+@using (Html.BeginForm())
+{
+
+    <div class="loading" style="display:none" id="divLoadCommon"></div>
+        <div class="panel-body">
+            <div class="row buttonbar">
+                <div class="col-lg-7">
+                    @Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.Name = "btnQuery";
+                        settings.Width = 90;
+                        settings.Text = @Resources.Resource.Query;
+
+                    }
+                ).GetHtml()
+                    @Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.Name = "btnExport";
+                        settings.Width = 90;
+                        settings.Text = @Resources.Resource.Export;
+                        settings.UseSubmitBehavior = true;
+                        settings.RouteValues = new { Action = "ExportToExcel", Controller = "ERP" };
+                    }).GetHtml()
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.FEPO:
+                        </label>
+                        @Html.DevExpress().TextBox(
+               settings =>
+               {
+                   settings.Name = "FEPOCode";
+                   settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                   settings.Properties.NullText = "";
+                   settings.ControlStyle.CssClass = "textBoxStyle";
+               }).GetHtml()
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.FromDate:
+                        </label>
+                        @Html.DevExpress().DateEdit(
+                    settings =>
+                    {
+                        settings.Name = "dtBeginDate";
+                        settings.Date = ViewBag.FromDate;
+                        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                        settings.Properties.EditFormat = EditFormat.Date;
+                        settings.ControlStyle.CssClass = "textBoxStyle";
+                        settings.Properties.EditFormatString = "yyyy-MM-dd";
+                        settings.Properties.DisplayFormatString = "yyyy-MM-dd";
+                        settings.Properties.UseMaskBehavior = true;
+                    }
+                    ).GetHtml()
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.ToDate:
+                        </label>
+                        @Html.DevExpress().DateEdit(
+                    settings =>
+                    {
+                        settings.Name = "dtEndDate";
+                        settings.Date = ViewBag.ToDate;
+                        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                        settings.Properties.EditFormat = EditFormat.Date;
+                        settings.ControlStyle.CssClass = "textBoxStyle";
+                        settings.Properties.EditFormatString = "yyyy-MM-dd";
+                        settings.Properties.DisplayFormatString = "yyyy-MM-dd";
+                        settings.Properties.UseMaskBehavior = true;
+                    }
+                    ).GetHtml()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12" id="gridDetail">
+                <div class="form-group">
+                    @{Html.RenderAction("OpenOrderGird", "ERP", new { FEPOCode = ViewBag.FEPO, FromDate = ViewBag.FromDate, ToDate = ViewBag.ToDate });}
+                </div>
+            </div>
+        </div>
+    
+}

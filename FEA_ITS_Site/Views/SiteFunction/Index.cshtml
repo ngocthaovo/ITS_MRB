@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    function message_alert()
+    {
+        // alert('');
+
+    }
+
+    function showIconList()
+    {
+        // $(".demo").click();
+        SetModalStyle('', '', '@string.Format("{0}", FEA_ITS_Site.Helper.Ultilities.Root + "/SiteFunction/IconList")', 'Icon List');
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.TreeList})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.TreeList})
+
+<div class="panel-body">
+    <form id="frmMainForm">
+        <!--button group devexpress-->
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnImageAndText";
+                    settings.Width = 90;
+                    settings.Text = "Refresh";
+                    settings.ClientSideEvents.Click = "function(){parent.reloadContent();}";
+                }).GetHtml()
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnViewIcon";
+                    settings.Width = 90;
+                    settings.Text = "Icon List";
+                    settings.ClientSideEvents.Click = "function(){showIconList();}";
+                    settings.Attributes.Add("data-toggle", "modal");
+                    settings.Attributes.Add("data-target", ".bs-example-modal-lg");
+                }).GetHtml()
+            </div>
+        </div>
+        <!--End button group-->
+
+        <!-- line-->
+        <hr />
+        <!--Line-->
+
+        <!-- grid-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.DevExpress().RoundPanel(
+                            settings =>
+                            {
+                                settings.Name = "rpFeatures";
+                                settings.HeaderText = "List of Menu";
+                                settings.ShowHeader = true;
+                                settings.View = View.GroupBox;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.SetContent(() =>
+                                {
+                                    Html.RenderAction("DataBindingPartial", "SiteFunction", null);
+                                });
+                            }).GetHtml()
+                    
+                </div>
+            </div>
+        </div>
+        <!-- end grid-->
+    </form>
+</div>
+
+<!-- Popup Model-->
+@Html.Partial("ModalPartial/_IframeModal")
+

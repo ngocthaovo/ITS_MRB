@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "ScanBarcode";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<div class="panel-body">
+    <form id="frmMainForm">
+        <!-- line-->
+        <hr />
+        <!--Line-->
+        <!-- control group 3 column-->
+        <a href="javascript:ContentFunction.DisplayItem('divBaseInfo','iIcon',null);"> <h4 class="group-title"><i class="icon-circle-arrow-down teal" id="iIcon"></i> Main infomation</h4></a>
+        <div id="divBaseInfo">
+            <div class="row row-detail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Customer PO:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtPoNum";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Operation Status:
+                        </label>
+                        <div class="editorContainer">
+                            @Html.DevExpress().RadioButtonList(
+                            settings =>
+                            {
+                                settings.Name = "radOperation";
+                                settings.Properties.ValueField = "Key";
+                                settings.Properties.TextField = "Value";
+                                settings.Properties.RepeatLayout = System.Web.UI.WebControls.RepeatLayout.OrderedList;
+                                settings.Properties.RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal;
+                                settings.Properties.RepeatColumns = 2;
+                                settings.ControlStyle.BorderStyle = System.Web.UI.WebControls.BorderStyle.None;
+                                settings.Style.Add("margin-bottom", "-15px;");
+
+                            }).BindList(
+                                         new Dictionary<int, string>() { { 1, "CONFIRM" }, { 0, "STOCKIN" } }
+                            ).GetHtml()
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end control group-->
+        <a><h4 class="group-title"><i class="icon-list teal "></i> Container List</h4></a>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="vertComponentContainer">
+                        @{Html.RenderAction("GetListItemDetailPartial", "HardwareRequirement", new { ShowCommand = true }); }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.DevExpress().PageControl(
+                                settings =>
+                                {
+                                    settings.Name = "pcFeatures";
+                                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                    settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                                   // settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+                                    settings.TabPages.Add("Already confirmed", "Request").SetContent(() =>
+                                    {
+                                       Html.RenderAction("GetGridView", "Base", new { GridName = "warehouse_detail_data" }); 
+                                        //ViewContext.Writer.Write(
+                                        //    ""
+                                        //);
+
+                                    });
+
+                                    settings.TabPages.Add("Already stocked in", "Management").SetContent(() =>
+                                    {
+
+                                        ViewContext.Writer.Write(
+                                                ""
+                                            );
+                                    });
+
+                                    settings.TabPages.Add("Still not stock in", "dfdf").SetContent(() =>
+                                    {
+
+                                        ViewContext.Writer.Write(
+                                                ""
+                                            );
+                                    });
+                                }).GetHtml()
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

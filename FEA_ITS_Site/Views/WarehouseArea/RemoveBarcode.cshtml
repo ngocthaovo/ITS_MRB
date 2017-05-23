@@ -1,0 +1,165 @@
+﻿@{
+    ViewBag.Title = "RemoveBarcode";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+
+    function DoCancelConform(s, e) {
+        var x = confirm('@Html.Raw(Resources.Resource.msgConfirmMessage)');
+        if (x) SkipValidate = true;
+        e.processOnServer = x;
+    }
+
+
+    function OnGridViewSelectionChanged(s, e) {
+        s.GetSelectedFieldValues("ID;PackingManifest.OrderCode", GetSelectedFieldValuesCallback);
+    }
+    function GetSelectedFieldValuesCallback(selectedValues) {
+
+        try {
+            selObj = new Array();
+            var sData = "";
+            if (selectedValues.length != 0) {
+                for (i = 0; i < selectedValues.length; i++) {
+                    var obj = new Object();
+
+                    obj.Key = selectedValues[i][0];
+                    obj.Value = selectedValues[i][1];
+                    selObj[selObj.length] = obj;
+
+                    if (sData.length == 0)
+                        sData += "\"" + selectedValues[i][0] + "\"" + ":" + "\"" + selectedValues[i][1] + "\"";
+                    else
+                        sData += "," + "\"" + selectedValues[i][0] + "\"" + ":" + "\"" + selectedValues[i][1] + "\"";
+                }
+
+                sData = "{" + sData + "}";
+            }
+            $("#mydata").val(sData);
+        } finally {
+        }
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+@using (Html.BeginForm("RemoveBarcode", "WarehouseArea", FormMethod.Post, new { id = "frmMainForm", CustomperPO = ViewBag.CusPO }))
+{
+    @Html.Hidden("mydata");
+    
+
+        
+    <div class="panel-body">
+        @if (ViewBag.EditStatus != null)
+        {
+        <div class="row">
+            <div class="col-md-12">
+
+                @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                {
+                    <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                        @Html.Raw(ViewBag.EditInfo)
+                    </div>
+                }
+                else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                {
+                    <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                        @Html.Raw(ViewBag.EditInfo)
+                    </div>
+                }
+            </div>
+        </div>
+        }
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnQuery";
+                    settings.Width = 90;
+                    settings.Text = Resources.Resource.Query;
+                    settings.UseSubmitBehavior = true;
+                }).GetHtml()
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnExportExcel";
+                    settings.Width = 90;
+                    settings.Text = "Export Excel";
+                    settings.UseSubmitBehavior = true;
+                  //  settings.RouteValues = new { Controller = "WarehouseArea", Action = "ExportToExcel", PoNumber = "", CustomerPO = ViewBag.CusPO, dtFrom = ViewBag.DateFrom, dtTo = ViewBag.DateTo};
+                    settings.Enabled = (ViewBag.IsPostBack != null && ViewBag.IsPostBack == "1") ? true : false;
+                }).GetHtml()
+            </div>
+        </div>
+
+        <!-- line-->
+        <hr />
+        <!--Line-->
+        <!-- control group 3 column-->
+        <a href="javascript:ContentFunction.DisplayItem('divBaseInfo','iIcon',null);"> <h4 class="group-title"><i class="icon-circle-arrow-down teal" id="iIcon"></i> Query Customer PO</h4></a>
+        <div id="divBaseInfo">
+            <div class="row row-detail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.CustomerPO:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtCusPoNum";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = ViewBag.CusPO;
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end control group-->
+        <a><h4 class="group-title"><i class="icon-list teal "></i> Query detail</h4></a>
+        @{
+    if (ViewBag.IsPostBack != null && ViewBag.IsPostBack == "1")
+    {
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnRemoveBarcode";
+                    settings.Width = 90;
+                    settings.Text = "Remove Barcode";
+                    settings.UseSubmitBehavior = true;
+                    settings.ClientSideEvents.Click = "function(s, e){DoCancelConform(s, e);}";
+
+                }).GetHtml()
+            </div>
+            
+        </div>
+         <br />  
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="vertComponentContainer">
+                        @{Html.RenderAction("LoadPackingManifestDetailDetailOnRemoveBarcode", "WarehouseArea", new {CustomerPO = ViewBag.CusPO});}
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+        }
+
+
+    </div>
+}

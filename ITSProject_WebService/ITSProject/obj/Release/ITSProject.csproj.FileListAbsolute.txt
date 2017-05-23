@@ -1,0 +1,13 @@
+D:\C# Project\ITSProject\ITSProject\bin\ITSProject.dll.config
+D:\C# Project\ITSProject\ITSProject\bin\ITSProject.dll
+D:\C# Project\ITSProject\ITSProject\bin\ITSProject.pdb
+D:\C# Project\ITSProject\ITSProject\bin\EntityFramework.dll
+D:\C# Project\ITSProject\ITSProject\bin\JsonServices.dll
+D:\C# Project\ITSProject\ITSProject\bin\JsonServices.Web.dll
+D:\C# Project\ITSProject\ITSProject\bin\Newtonsoft.Json.dll
+D:\C# Project\ITSProject\ITSProject\bin\FEA_Ultil.dll
+D:\C# Project\ITSProject\ITSProject\bin\EntityFramework.xml
+D:\C# Project\ITSProject\ITSProject\bin\FEA_BusinessLogic.pdb
+D:\C# Project\ITSProject\ITSProject\bin\FEA_Ultil.pdb
+D:\C# Project\ITSProject\ITSProject\obj\Release\ITSProject.dll
+D:\C# Project\ITSProject\ITSProject\obj\Release\ITSProject.pdb

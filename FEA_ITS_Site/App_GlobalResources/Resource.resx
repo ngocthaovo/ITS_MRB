@@ -1,0 +1,1695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
+  <data name="CreateAccount" xml:space="preserve">
+    <value>Tạo tài khoản</value>
+  </data>
+  <data name="DonotHaveAccount" xml:space="preserve">
+    <value>Nếu chưa có tài khoản?</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Nữ</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="LoginWelcomeTitle" xml:space="preserve">
+    <value>Vui lòng nhập ID và mật khẩu đăng nhập.</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Nam</value>
+  </data>
+  <data name="msgInputError" xml:space="preserve">
+    <value>Một vài thông tin nhập vào chưa hợp lệ. Vui lòng kiểm tra lại</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="SelectDepartment" xml:space="preserve">
+    <value>--Chọn phòng ban--</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="SignupSlogan" xml:space="preserve">
+    <value>Nhập vào thông tin cá nhân của bạn:</value>
+  </data>
+  <data name="UserCode" xml:space="preserve">
+    <value>Mã nhân viên</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Tên nhân viên</value>
+  </data>
+  <data name="UserName_EN" xml:space="preserve">
+    <value>Tên tiếng Anh</value>
+  </data>
+  <data name="WelcomeSlogan" xml:space="preserve">
+    <value>Chào mừng đến Far Eastern Apparel!</value>
+  </data>
+  <data name="emailResSuccessBody" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td style="padding:20px"&gt;
+                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td style="padding:0"&gt;
+                                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                    &lt;tbody&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="background: rgb(59, 89, 152); height: 69px; padding: 10px 30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="height:30px"&gt;
+                                                                &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                    Account Infomation
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                            &lt;td align="right"&gt;
+                                                                &lt;a href="{2}" style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="padding:30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Hello &lt;strong&gt;{3}&lt;/strong&gt;,
+                                                                &lt;/p&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    FEA ITS sent you email about &lt;b&gt;Account Information&lt;/b&gt; with the following contents:
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                &lt;table width="100%"&gt;
+                                                                    &lt;tbody&gt;
+                                                                        &lt;tr&gt;
+                                                                            &lt;td&gt;
+                                                                                &lt;span style="color:#666;"&gt;
+                                                                                    Employee: &lt;strong&gt;{0}&lt;/strong&gt;&lt;br&gt;
+                                                                                    Password: &lt;strong&gt;{1}&lt;/strong&gt; &lt;br&gt;
+                                                                                    &lt;strong style="color:#f7941d"&gt;Please login to Far Eastern Apparel Website to check your document.&lt;/strong&gt;
+                                                                                &lt;/span&gt;
+                                                                            &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                    &lt;/tbody&gt;
+                                                                &lt;/table&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+
+                                                        &lt;tr&gt;
+                                                            &lt;td align="center"&gt;
+                                                                &lt;div&gt;
+                                                                    &lt;a href="{2}" style="font-size: 35px; text-decoration: underline; color: #fff; padding: 15px 30px; color: #f7941d; display: inline-block; font-family: 'Segoe UI',sans-serif; " target="_blank"&gt; Click Here &amp;gt;&amp;gt;&lt;/a&gt;
+                                                                &lt;/div&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                2014 © Far Eastern Apparel.
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</value>
+  </data>
+  <data name="emailResSuccessTitle" xml:space="preserve">
+    <value>Đăng ký tài khoản thành công</value>
+  </data>
+  <data name="msgLoginWrong" xml:space="preserve">
+    <value>Sai mã Nhân Viên hoặc Mật khẩu</value>
+  </data>
+  <data name="msgResSuccess" xml:space="preserve">
+    <value>Đăng ký tài khoản thành công. Một Email bao gồm thông tin đăng nhập đã được gửi đến tài khoản của bạn.</value>
+  </data>
+  <data name="msgUserExist" xml:space="preserve">
+    <value>Mã nhân viên này đã được sử dụng</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Trở lại</value>
+  </data>
+  <data name="ChangePassSlogan" xml:space="preserve">
+    <value>Nhập thông tin để thay đổi mật khẩu</value>
+  </data>
+  <data name="ChangePassTitle" xml:space="preserve">
+    <value>Thay đổi mật khẩu đăng nhập</value>
+  </data>
+  <data name="InputAccDetail" xml:space="preserve">
+    <value>Thông tin chi tiết tài khoản:</value>
+  </data>
+  <data name="ChangePass" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
+  <data name="ConfirmPass" xml:space="preserve">
+    <value>Nhập lại mật khẩu</value>
+  </data>
+  <data name="CurrentPass" xml:space="preserve">
+    <value>Mật khẩu hiện tại</value>
+  </data>
+  <data name="msgChangePassSuccess" xml:space="preserve">
+    <value>Thay đổi mật khẩu thành công</value>
+  </data>
+  <data name="msgUserCodeUsed" xml:space="preserve">
+    <value>Mã nhân viên đã được sử dụng</value>
+  </data>
+  <data name="NewPass" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="Delagate" xml:space="preserve">
+    <value>Ủy quyền</value>
+  </data>
+  <data name="hintDelegate" xml:space="preserve">
+    <value>Nhập Email của người bạn muốn ủy quyền nếu chưa có Email</value>
+  </data>
+  <data name="hintNote" xml:space="preserve">
+    <value>Lưu ý!</value>
+  </data>
+  <data name="SelectPosition" xml:space="preserve">
+    <value>--Chọn chức vụ--</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Xin chào</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
+  <data name="MyInfo" xml:space="preserve">
+    <value>Thông tin cá nhân</value>
+  </data>
+  <data name="QueryPODivert" xml:space="preserve">
+    <value>Truy vấn PO divert</value>
+  </data>
+  <data name="Query" xml:space="preserve">
+    <value>Tra</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Xuất file</value>
+  </data>
+  <data name="msgInsertFail" xml:space="preserve">
+    <value>Không thể thêm dữ liệu vào hệ thống</value>
+  </data>
+  <data name="msgDeleteFail" xml:space="preserve">
+    <value>Không thể xóa</value>
+  </data>
+  <data name="msgUpdateSuccess" xml:space="preserve">
+    <value>Thao tác thành công!</value>
+  </data>
+  <data name="msgUpdateFailed" xml:space="preserve">
+    <value>Không thể cập nhật</value>
+  </data>
+  <data name="msgDeleteRealatedNeeded" xml:space="preserve">
+    <value>Vui lòng xóa dữ liệu liên quan trước khi thao tác!</value>
+  </data>
+  <data name="msgDuplicateUser" xml:space="preserve">
+    <value>User này đã tồn tại</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Tải lại</value>
+  </data>
+  <data name="ResetPass" xml:space="preserve">
+    <value>Tạo lại mật khẩu</value>
+  </data>
+  <data name="msgChangePassAccountInfo" xml:space="preserve">
+    <value>Mật khẩu mới của Tài khoản "{0}" là: {1}</value>
+  </data>
+  <data name="msgDataduplicate" xml:space="preserve">
+    <value>Dữ liệu này đã tồn tại, vui lòng chọn lại</value>
+  </data>
+  <data name="NextApprover" xml:space="preserve">
+    <value>Người ký duyệt</value>
+  </data>
+  <data name="msgSuccess" xml:space="preserve">
+    <value>Thông tin đã được lưu thành công!</value>
+  </data>
+  <data name="msgInputRequite" xml:space="preserve">
+    <value>Vui lòng nhập thông tin: {0}!</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="SaveAndSend" xml:space="preserve">
+    <value>Lưu và gửi</value>
+  </data>
+  <data name="SaveDraff" xml:space="preserve">
+    <value>Lưu tạm</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Cập nhật</value>
+  </data>
+  <data name="Approver" xml:space="preserve">
+    <value>Người ký duyệt</value>
+  </data>
+  <data name="CreateDate" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="Creator" xml:space="preserve">
+    <value>Người làm</value>
+  </data>
+  <data name="DocumentTypeName" xml:space="preserve">
+    <value>Tên chứng từ</value>
+  </data>
+  <data name="OrderCode" xml:space="preserve">
+    <value>Mã chứng từ</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Chọn</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>Người gửi</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="msgDeleteDeviceRegFailed" xml:space="preserve">
+    <value>Đơn này có thể đang gửi đi hoặc đã ký duyệt nên không thể xóa.</value>
+  </data>
+  <data name="STATUS_CHECKED" xml:space="preserve">
+    <value>Chấp thuận</value>
+  </data>
+  <data name="STATUS_DELETED" xml:space="preserve">
+    <value>Đã xóa</value>
+  </data>
+  <data name="STATUS_DRAFT" xml:space="preserve">
+    <value>Soạn thảo</value>
+  </data>
+  <data name="STATUS_FINSHED" xml:space="preserve">
+    <value>Hoàn thành</value>
+  </data>
+  <data name="STATUS_RETURNED" xml:space="preserve">
+    <value>Trả về</value>
+  </data>
+  <data name="STATUS_SENDING" xml:space="preserve">
+    <value>Đang gửi</value>
+  </data>
+  <data name="STATUS_UNKNOW" xml:space="preserve">
+    <value>Không biết</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Thêm</value>
+  </data>
+  <data name="BaseInfomation" xml:space="preserve">
+    <value>Thông tin cơ bản</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Nhận xét</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>Bộ phận</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="DetailInfomation" xml:space="preserve">
+    <value>Thông tin chi tiết</value>
+  </data>
+  <data name="EndApprove" xml:space="preserve">
+    <value>Kết thúc ký duyệt</value>
+  </data>
+  <data name="ItemType" xml:space="preserve">
+    <value>Loại yêu cầu</value>
+  </data>
+  <data name="LastUpdateDate" xml:space="preserve">
+    <value>Ngày cập nhật</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>Quản lý</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Lý do</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Yêu cầu</value>
+  </data>
+  <data name="Sequence" xml:space="preserve">
+    <value>Lưu trình</value>
+  </data>
+  <data name="Using" xml:space="preserve">
+    <value>Chi tiết yêu cầu</value>
+  </data>
+  <data name="CheckDate" xml:space="preserve">
+    <value>Ngày duyệt</value>
+  </data>
+  <data name="DocType" xml:space="preserve">
+    <value>Loại chứng từ</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Hoàn thành</value>
+  </data>
+  <data name="AccountInfo" xml:space="preserve">
+    <value>Thông tin tài khoản</value>
+  </data>
+  <data name="AdditionalInfo" xml:space="preserve">
+    <value>Thông tin thêm</value>
+  </data>
+  <data name="ContactInfo" xml:space="preserve">
+    <value>Thông tin liên hệ</value>
+  </data>
+  <data name="EditAccount" xml:space="preserve">
+    <value>Cập nhật tài khoản</value>
+  </data>
+  <data name="ExpiredPasswordDate" xml:space="preserve">
+    <value>Ngày mật khẩu hết hạn</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Giới tính</value>
+  </data>
+  <data name="GeneralInfo" xml:space="preserve">
+    <value>Thông tin chung</value>
+  </data>
+  <data name="msgEmailExtInvalid" xml:space="preserve">
+    <value>Email phải kết thúc bằng: @{0}</value>
+  </data>
+  <data name="msgSameOldPassword" xml:space="preserve">
+    <value>Mật khẩu mới phải khác với mật khẩu cũ</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Tổng quan</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Điện thoại</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Chức vụ</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Từ chối</value>
+  </data>
+  <data name="Sign" xml:space="preserve">
+    <value>Duyệt</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Ngày bắt đầu làm việc</value>
+  </data>
+  <data name="CompleteDate" xml:space="preserve">
+    <value>Ngày hoàn thành</value>
+  </data>
+  <data name="CostCenterCode" xml:space="preserve">
+    <value>Bộ phận</value>
+  </data>
+  <data name="ItemName" xml:space="preserve">
+    <value>Tên mục</value>
+  </data>
+  <data name="ItemNameDetail" xml:space="preserve">
+    <value>Chi tiết mục</value>
+  </data>
+  <data name="msgSelectItem" xml:space="preserve">
+    <value>Vui lòng chọn danh sách cần thao tác</value>
+  </data>
+  <data name="HistoryApprove" xml:space="preserve">
+    <value>Lịch sử ký duyệt</value>
+  </data>
+  <data name="PendingList" xml:space="preserve">
+    <value>Danh sách chờ ký duyệt</value>
+  </data>
+  <data name="CurrencyType" xml:space="preserve">
+    <value>Loại tiền</value>
+  </data>
+  <data name="EstiamtedAmount" xml:space="preserve">
+    <value>Chi phí dự đoán</value>
+  </data>
+  <data name="IsUrgent" xml:space="preserve">
+    <value>Cần gấp</value>
+  </data>
+  <data name="Specs" xml:space="preserve">
+    <value>Chi tiết - Quy cách</value>
+  </data>
+  <data name="DeliveryDate" xml:space="preserve">
+    <value>Ngày giao</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Giá</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Số lượng</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Đơn vị tính</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Thành tiền</value>
+  </data>
+  <data name="msgInvalidItemInList" xml:space="preserve">
+    <value>Chỉ có một loại Item tồn tại trong hóa đơn</value>
+  </data>
+  <data name="WaitingArea" xml:space="preserve">
+    <value>Đợi ký duyệt</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="msgPasswordExpired" xml:space="preserve">
+    <value>Mật khẩu hiện tại đã hết hạn, vui lòng thay đổi mật khẩu mới</value>
+  </data>
+  <data name="TechnicianID" xml:space="preserve">
+    <value>Mã NV xử lý</value>
+  </data>
+  <data name="TechnicianName" xml:space="preserve">
+    <value>Tên NV xử lý</value>
+  </data>
+  <data name="QuanInStock" xml:space="preserve">
+    <value>SL tồn</value>
+  </data>
+  <data name="QuantityInStock" xml:space="preserve">
+    <value>SL tồn</value>
+  </data>
+  <data name="QuantityNeeded" xml:space="preserve">
+    <value>SL cần mua</value>
+  </data>
+  <data name="EstimatedPrice" xml:space="preserve">
+    <value>Đơn giá dự tính</value>
+  </data>
+  <data name="DeviceRegistration" xml:space="preserve">
+    <value>Đơn đăng ký sử dụng thiết bị CNTT liên lạc</value>
+  </data>
+  <data name="HardwareRequirement" xml:space="preserve">
+    <value>Đơn đăng ký mua phần cứng &amp; phần mềm</value>
+  </data>
+  <data name="HardwareRequirementDetail" xml:space="preserve">
+    <value>Chi tiết thống kê đăng ký mua phần cứng phần mềm</value>
+  </data>
+  <data name="Inventory" xml:space="preserve">
+    <value>Hàng tồn kho</value>
+  </data>
+  <data name="StockIn" xml:space="preserve">
+    <value>Nhập Kho</value>
+  </data>
+  <data name="StockOut" xml:space="preserve">
+    <value>Xuất Kho</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="msgDeleteStockInFailed" xml:space="preserve">
+    <value>Phiếu nhập này không thể xóa vì đã kết thúc hoặc không phải do bạn tạo</value>
+  </data>
+  <data name="DeloveryFor" xml:space="preserve">
+    <value>Giao cho</value>
+  </data>
+  <data name="BeginQuantity" xml:space="preserve">
+    <value>SL đầu kỳ</value>
+  </data>
+  <data name="DifferentQuantity" xml:space="preserve">
+    <value>SL chênh lệch</value>
+  </data>
+  <data name="EndQuantity" xml:space="preserve">
+    <value>SLcuối kỳ</value>
+  </data>
+  <data name="InventoryQuantity" xml:space="preserve">
+    <value>SL trong kho</value>
+  </data>
+  <data name="StockinQuantity" xml:space="preserve">
+    <value>SL NK trong kỳ</value>
+  </data>
+  <data name="StockoutQuantity" xml:space="preserve">
+    <value>SL XK trong kỳ</value>
+  </data>
+  <data name="msgSelectProductItem" xml:space="preserve">
+    <value>Chọn danh sách hàng cần xuất</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>In</value>
+  </data>
+  <data name="emailApproveDocBody" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td style="padding:20px"&gt;
+                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td style="padding:0"&gt;
+                                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                    &lt;tbody&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="background: rgb(59, 89, 152); height: 69px; padding: 10px 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="height:30px"&gt;
+                                                                &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                    Document(s) to sign
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                            &lt;td align="right"&gt;
+                                                                &lt;a href="{4}" style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="padding:30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Hello &lt;strong&gt;{5}&lt;/strong&gt;,
+                                                                &lt;/p&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    FEA ITS sent you email about &lt;b&gt;Document To Sign&lt;/b&gt; with the following contents:
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;table width="100%"&gt;
+                                                                    &lt;tbody&gt;
+                                                                        &lt;tr&gt;
+                                                                            &lt;td&gt;
+                                                                                &lt;span style="color:#666;"&gt;
+                                                                                    Employee: &lt;strong&gt;{0}({1}) - {2}&lt;/strong&gt;&lt;br&gt;
+                                                                                    Reason: &lt;strong&gt;{3}&lt;/strong&gt; &lt;br&gt;
+                                                                                    Comment: &lt;strong&gt;{6}&lt;/strong&gt; &lt;br&gt;
+                                                                                    &lt;strong style="color:#f7941d"&gt;Please login to Far Eastern Apparel Website to check your document.&lt;/strong&gt;
+                                                                                &lt;/span&gt;
+                                                                            &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                    &lt;/tbody&gt;
+                                                                &lt;/table&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+
+                                                        &lt;tr&gt;
+                                                            &lt;td align="center"&gt;
+                                                                &lt;div&gt;
+                                                                    &lt;a href="{4}" style="font-size: 35px; text-decoration: underline; color: #fff; padding: 15px 30px; color: #f7941d; display: inline-block; font-family: 'Segoe UI',sans-serif;" target="_blank"&gt; Click Here &amp;gt;&amp;gt;&lt;/a&gt;
+                                                                &lt;/div&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                2014 © Far Eastern Apparel.
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</value>
+  </data>
+  <data name="emailApproveDocTitle" xml:space="preserve">
+    <value>ITS System {0} - You have a document to sign</value>
+  </data>
+  <data name="CancelConfirm" xml:space="preserve">
+    <value>Hủy XN</value>
+  </data>
+  <data name="NotEnough" xml:space="preserve">
+    <value>Bạn không thể hủy xác nhận nhập kho vì tồn kho hiện tại không đủ. Vui lòng kiểm tra thông tin bên dưới </value>
+  </data>
+  <data name="msgInputDDeviceReqItem" xml:space="preserve">
+    <value>Vui lòng nhập thông tin danh sách cần yêu cầu</value>
+  </data>
+  <data name="msgInputDHardReItem" xml:space="preserve">
+    <value>Vui lòng nhập thông tin danh sách các thiết bị cần yêu cầu</value>
+  </data>
+  <data name="InventoryCalculate" xml:space="preserve">
+    <value>Tính tồn kho</value>
+  </data>
+  <data name="InventoryQuery" xml:space="preserve">
+    <value>Tra tồn kho</value>
+  </data>
+  <data name="QueryDynamicInventory" xml:space="preserve">
+    <value>Truy vấn động</value>
+  </data>
+  <data name="msgConfirmMessage" xml:space="preserve">
+    <value>Bạn có chắc muốn thực hiện thao tác này?</value>
+  </data>
+  <data name="Attachment" xml:space="preserve">
+    <value>Đính kèm tài liệu</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Tên tài liệu</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Tải lên</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="AddNew" xml:space="preserve">
+    <value>Thêm mới</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Cho phép s.dụng</value>
+  </data>
+  <data name="CompleteBy" xml:space="preserve">
+    <value>H.thành bởi</value>
+  </data>
+  <data name="ReceivedByDept" xml:space="preserve">
+    <value>Tổng nhận(Dept)</value>
+  </data>
+  <data name="SignType" xml:space="preserve">
+    <value>Loại duyệt</value>
+  </data>
+  <data name="DelegateFor" xml:space="preserve">
+    <value>Ủy quyền cho</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>Ngày bắt đầu</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>Ngày kết thúc</value>
+  </data>
+  <data name="UserGuide" xml:space="preserve">
+    <value>Bạn là người mới? Vui lòng chọn ngôn ngữ và đọc hướng dẫn sử dụng.</value>
+  </data>
+  <data name="Condition" xml:space="preserve">
+    <value>Điều kiện truy vấn</value>
+  </data>
+  <data name="RequestDetail" xml:space="preserve">
+    <value>Chi tiết yêu cầu</value>
+  </data>
+  <data name="RequestType" xml:space="preserve">
+    <value>Loại yêu cầu</value>
+  </data>
+  <data name="SQLSatement" xml:space="preserve">
+    <value>Câu lệnh SQL</value>
+  </data>
+  <data name="Parameter" xml:space="preserve">
+    <value>Tham số</value>
+  </data>
+  <data name="CustomerPO" xml:space="preserve">
+    <value>PO Khách hàng</value>
+  </data>
+  <data name="msgInputFile" xml:space="preserve">
+    <value>Vui lòng chọn file cần upload</value>
+  </data>
+  <data name="msgInvalidExcelFile" xml:space="preserve">
+    <value>Vui lòng chọn file Excel với định dạng .xls hoặc .xlsx</value>
+  </data>
+  <data name="msgInvalidPONumber" xml:space="preserve">
+    <value>PO Number nhập chưa đúng.</value>
+  </data>
+  <data name="InputData" xml:space="preserve">
+    <value>Nhập liệu</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
+  <data name="msgDeleteWHImportFailed" xml:space="preserve">
+    <value>Đơn này đã xác nhận hoặc đã có thùng nhập kho nên không thể xóa.</value>
+  </data>
+  <data name="msgInvalidCusNumber" xml:space="preserve">
+    <value>Po Number nhập vào chưa đúng</value>
+  </data>
+  <data name="msgWHSerialDuplicate" xml:space="preserve">
+    <value>Dữ liệu Serial No bị trùng tai: </value>
+  </data>
+  <data name="STATUS_CANCEL_CONFIRM" xml:space="preserve">
+    <value>Đã hủy xác nhận</value>
+  </data>
+  <data name="STATUS_CONFIRMED" xml:space="preserve">
+    <value>Đã xác nhận</value>
+  </data>
+  <data name="STATUS_SAVED" xml:space="preserve">
+    <value>Đã lưu</value>
+  </data>
+  <data name="msgCancelConfirmWHImportFailed" xml:space="preserve">
+    <value>Đơn này đã xác nhận hoặc đã có thùng nhập kho nên không thể hủy.</value>
+  </data>
+  <data name="ContainerCount" xml:space="preserve">
+    <value>Tổng thùng</value>
+  </data>
+  <data name="ContainerDifferences" xml:space="preserve">
+    <value>Tổng thùng chênh lệch</value>
+  </data>
+  <data name="EndTotalContainer" xml:space="preserve">
+    <value>Tổng thùng còn lại</value>
+  </data>
+  <data name="EndTotalQuantity" xml:space="preserve">
+    <value>Tổng SL còn lại</value>
+  </data>
+  <data name="QuantityDifferences" xml:space="preserve">
+    <value>Tổng SL chênh lệch</value>
+  </data>
+  <data name="TotalContainerConfirmed" xml:space="preserve">
+    <value>Tổng thùng (đã xác nhận)</value>
+  </data>
+  <data name="TotalContainerImported" xml:space="preserve">
+    <value>Tổng thùng (đã nhập kho)</value>
+  </data>
+  <data name="TotalContainerNotConfirmed" xml:space="preserve">
+    <value>Tổng thùng (chưa xác nhận)</value>
+  </data>
+  <data name="TotalQuantityConfirmed" xml:space="preserve">
+    <value>Tổng SL (đã xác nhận)</value>
+  </data>
+  <data name="TotalQuantityNotConfirmed" xml:space="preserve">
+    <value>Tống SL (chưa xác nhận)</value>
+  </data>
+  <data name="TotaQuantityImported" xml:space="preserve">
+    <value>Tổng SL (đã nhập kho)</value>
+  </data>
+  <data name="TypeQuery" xml:space="preserve">
+    <value>Loại truy vấn</value>
+  </data>
+  <data name="OperationType" xml:space="preserve">
+    <value>Thao tác</value>
+  </data>
+  <data name="CONFIRM_IN" xml:space="preserve">
+    <value>{0} xác nhận</value>
+  </data>
+  <data name="CONFIRM_OUT" xml:space="preserve">
+    <value>{0} hủy xác nhận</value>
+  </data>
+  <data name="STOCKIN_IN" xml:space="preserve">
+    <value>{0} xác nhận nhập kho</value>
+  </data>
+  <data name="STOCKIN_OUT" xml:space="preserve">
+    <value>{0} hủy nhập kho</value>
+  </data>
+  <data name="DesRemark" xml:space="preserve">
+    <value>Vui lòng nhập vào thông tin MSNV, Họ Tên, Bộ phận người yêu cầu được hỗ trợ hoặc được cấp thiết bị.</value>
+  </data>
+  <data name="ReasonRemark" xml:space="preserve">
+    <value>Vui lòng ghi rõ lý do với nội dung tiếng Việt và tiếng Anh (hoặc tiếng Hoa)</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Tiếng anh</value>
+  </data>
+  <data name="VietNam" xml:space="preserve">
+    <value>Tiếng việt</value>
+  </data>
+  <data name="TotalStockedInContainerFromERP" xml:space="preserve">
+    <value>Tổng thùng đã NK (ERP)</value>
+  </data>
+  <data name="TotalStockedInQuantityFromERP" xml:space="preserve">
+    <value>Tổng SL đã NK (ERP)</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="ContainerDifferencesBetweenWarehouseAndPacking" xml:space="preserve">
+    <value>Tổng thùng chênh lệch (PK vs WH)</value>
+  </data>
+  <data name="QuantityDifferencesBetweenWarehouseAndPacking" xml:space="preserve">
+    <value>Tổng SL chênh lệch (PK vs WH)</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Mở</value>
+  </data>
+  <data name="OrderState" xml:space="preserve">
+    <value>Trạng thái DH:</value>
+  </data>
+  <data name="TotalReturnContainer" xml:space="preserve">
+    <value>Tổng thùng cho mượn</value>
+  </data>
+  <data name="TotalReturnQuantity" xml:space="preserve">
+    <value>Tổng SL cho mượn</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="IsCoordinate" xml:space="preserve">
+    <value>Là hàng phối</value>
+  </data>
+  <data name="AdjustApplication" xml:space="preserve">
+    <value>Phiếu điều chỉnh</value>
+  </data>
+  <data name="Grant" xml:space="preserve">
+    <value>Tên công ty nhận</value>
+  </data>
+  <data name="MaterialName" xml:space="preserve">
+    <value>Tên vật phẩm</value>
+  </data>
+  <data name="PersonName" xml:space="preserve">
+    <value>Tên cá nhân (Nếu có)</value>
+  </data>
+  <data name="ReturnedDate" xml:space="preserve">
+    <value>Ngày trả</value>
+  </data>
+  <data name="STATUS_NEW" xml:space="preserve">
+    <value>Tạo mới</value>
+  </data>
+  <data name="SA_AdjustApplication" xml:space="preserve">
+    <value>Phiếu điều chỉnh số lượng</value>
+  </data>
+  <data name="SA_BorrowApplication" xml:space="preserve">
+    <value>Phiếu mượn vào</value>
+  </data>
+  <data name="SA_DonativeApplication" xml:space="preserve">
+    <value>Phiếu tặng cho hàng thành phẩm</value>
+  </data>
+  <data name="SA_LendApplication" xml:space="preserve">
+    <value>Phiếu cho mượn</value>
+  </data>
+  <data name="SA_NomalApplication" xml:space="preserve">
+    <value>Phiếu xuất vật phẩm thông thường</value>
+  </data>
+  <data name="IsConstraint" xml:space="preserve">
+    <value>Ràng buộc</value>
+  </data>
+  <data name="CompanyCode" xml:space="preserve">
+    <value>Mã công ty</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Tên công ty</value>
+  </data>
+  <data name="STATUS_SPENDING" xml:space="preserve">
+    <value>Đang chờ hoàn thành</value>
+  </data>
+  <data name="CountApplicationBaseOnDepartment" xml:space="preserve">
+    <value>Thống kê đơn yêu cầu theo bộ phận</value>
+  </data>
+  <data name="DynamicStatistic" xml:space="preserve">
+    <value>Thống kê động</value>
+  </data>
+  <data name="AdjustedQuantity" xml:space="preserve">
+    <value>Tổng SL điều chỉnh</value>
+  </data>
+  <data name="ReceivedQuantity" xml:space="preserve">
+    <value>Tổng SL nhận hàng trả</value>
+  </data>
+  <data name="RemainingQuantity" xml:space="preserve">
+    <value>Tổng SL còn lại</value>
+  </data>
+  <data name="ReturnedQuantity" xml:space="preserve">
+    <value>Tổng SL trả hàng mượn</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Tháng</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Năm</value>
+  </data>
+  <data name="msgInvalidQuantityAdjust" xml:space="preserve">
+    <value>Số lượng muốn điều chỉnh không hợp lệ</value>
+  </data>
+  <data name="CheckedList" xml:space="preserve">
+    <value>Danh sách đã ký duyệt </value>
+  </data>
+  <data name="Input" xml:space="preserve">
+    <value>Nhập</value>
+  </data>
+  <data name="msgInvalidDonateQuantity" xml:space="preserve">
+    <value>Số lượng bạn buốn tặng không đủ, số lượng hiện tại còn: </value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Xuất</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Nhập</value>
+  </data>
+  <data name="SAExport" xml:space="preserve">
+    <value>Xuất</value>
+  </data>
+  <data name="SAImport" xml:space="preserve">
+    <value>Nhập</value>
+  </data>
+  <data name="ProcessPerson" xml:space="preserve">
+    <value>Người xử lý</value>
+  </data>
+  <data name="TotalExportQuantity" xml:space="preserve">
+    <value>Tổng SL xuất</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Hoàn thành</value>
+  </data>
+  <data name="PONumber" xml:space="preserve">
+    <value>PO Number</value>
+  </data>
+  <data name="InvoiceNum" xml:space="preserve">
+    <value>Mã số Invoice</value>
+  </data>
+  <data name="ShipmentDate" xml:space="preserve">
+    <value>Ngày xuất hàng</value>
+  </data>
+  <data name="msgInvaliExportDate" xml:space="preserve">
+    <value>Ngày xuất hàng phải lớn hơn bằng </value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Thao tác</value>
+  </data>
+  <data name="BarcodeHistory" xml:space="preserve">
+    <value>Lịch sử Barcode</value>
+  </data>
+  <data name="ColorName" xml:space="preserve">
+    <value>Tên màu</value>
+  </data>
+  <data name="SerialNo" xml:space="preserve">
+    <value>Số serial</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Kích thước</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>Kiểu dáng</value>
+  </data>
+  <data name="msgInvalid" xml:space="preserve">
+    <value>{0} không hợp lệ</value>
+  </data>
+  <data name="msgBarcodeRequite" xml:space="preserve">
+    <value>Vui lòng cung cấp danh sách các Barcode cần xuất trong đơn</value>
+  </data>
+  <data name="msgRemoveBarcodeCount" xml:space="preserve">
+    <value>Có {0} Barcode được gỡ.</value>
+  </data>
+  <data name="ExportFromStock" xml:space="preserve">
+    <value>{0} xuất hàng ra kho</value>
+  </data>
+  <data name="ImportToStock" xml:space="preserve">
+    <value>{0} trả hàng xuất</value>
+  </data>
+  <data name="TotalExportItem" xml:space="preserve">
+    <value>Tổng thùng xuất kho</value>
+  </data>
+  <data name="TotalExportItemFromERP" xml:space="preserve">
+    <value>Tổng thùng xuất trên ERP</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>Thảo luận</value>
+  </data>
+  <data name="Discussion" xml:space="preserve">
+    <value>Thảo luận</value>
+  </data>
+  <data name="References" xml:space="preserve">
+    <value>Người tham khảo</value>
+  </data>
+  <data name="emailReferences" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td style="padding:20px"&gt;
+                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td style="padding:0"&gt;
+                                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                    &lt;tbody&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="background: rgb(59, 89, 152); height: 69px; padding: 10px 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="height:30px"&gt;
+                                                                &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                    Document(s) to sign
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                            &lt;td align="right"&gt;
+                                                                &lt;a href="{2}" style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="padding:30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Hello &lt;strong&gt;{0}&lt;/strong&gt;,
+                                                                &lt;/p&gt;
+                                                                &lt;p style="margin:0"&gt;{1} have a document, that need be signed  and {1} want to discuss with you about that.&lt;/p&gt;
+                                                               Comment: &lt;strong&gt;{3}&lt;/strong&gt; &lt;br&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;table width="100%"&gt;
+                                                                    &lt;tbody&gt;
+                                                                        &lt;tr&gt;
+                                                                            &lt;td&gt;
+                                                                                &lt;span style="color:#666;"&gt;  
+                                                                                    &lt;strong style="color:#f7941d"&gt;Please login to Far Eastern Apparel Website to check your document.&lt;/strong&gt;
+                                                                                &lt;/span&gt;
+                                                                            &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                    &lt;/tbody&gt;
+                                                                &lt;/table&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+
+                                                        &lt;tr&gt;
+                                                            &lt;td align="center"&gt;
+                                                                &lt;div&gt;
+                                                                    &lt;a href="{2}" style="font-size: 35px; text-decoration: underline; color: #fff; padding: 15px 30px; color: #f7941d; display: inline-block; font-family: 'Segoe UI',sans-serif;" target="_blank"&gt; Click Here &amp;gt;&amp;gt;&lt;/a&gt;
+                                                                &lt;/div&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                2014 © Far Eastern Apparel.
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="CurrentUser" xml:space="preserve">
+    <value>Người hiện tại:</value>
+  </data>
+  <data name="Conversation" xml:space="preserve">
+    <value>Cuộc đối thoại</value>
+  </data>
+  <data name="SelectUser" xml:space="preserve">
+    <value>Chọn người cần tham khảo:</value>
+  </data>
+  <data name="CustomerCode" xml:space="preserve">
+    <value>Mã KH</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Tên KH</value>
+  </data>
+  <data name="msgGetSerialByMainline" xml:space="preserve">
+    <value>Nếu không chọn Item, hệ thống sẽ lấy tất cả các Barcode theo Customer PO</value>
+  </data>
+  <data name="ColorCode" xml:space="preserve">
+    <value>Mã màu</value>
+  </data>
+  <data name="ProcessingPerson" xml:space="preserve">
+    <value>Đang xlý bởi</value>
+  </data>
+  <data name="DoProcessDocument" xml:space="preserve">
+    <value>B.Đầu xử lý</value>
+  </data>
+  <data name="Hardware" xml:space="preserve">
+    <value>Phần cứng</value>
+  </data>
+  <data name="msgDeviceResOnlyOneDoc" xml:space="preserve">
+    <value>Trong đơn yêu cầu chỉ được có một Loại Chứng Từ, vui lòng chọn loại.</value>
+  </data>
+  <data name="Software" xml:space="preserve">
+    <value>Phần mềm</value>
+  </data>
+  <data name="ShelfName" xml:space="preserve">
+    <value>Tên kệ</value>
+  </data>
+  <data name="IsShelf" xml:space="preserve">
+    <value>Đã lên kệ</value>
+  </data>
+  <data name="SetShelf" xml:space="preserve">
+    <value>X.N đưa thùng vào Kệ</value>
+  </data>
+  <data name="ShelfMasterName" xml:space="preserve">
+    <value>Nhóm Kệ</value>
+  </data>
+  <data name="CompletedEstimateDate" xml:space="preserve">
+    <value>Ngày dự kiến h.thành</value>
+  </data>
+  <data name="DeliveryRoom" xml:space="preserve">
+    <value>Phòng phát hàng</value>
+  </data>
+  <data name="MaterialType" xml:space="preserve">
+    <value>Loại vật phẩm</value>
+  </data>
+  <data name="msgDataduplicateCostCenterCode" xml:space="preserve">
+    <value>Chỉ được chọn 1 phòng phát hàng</value>
+  </data>
+  <data name="Deliverydept" xml:space="preserve">
+    <value>Phòng phát hàng</value>
+  </data>
+  <data name="ItemGroup" xml:space="preserve">
+    <value>Nhóm hạng mục</value>
+  </data>
+  <data name="TotalLendQuantity" xml:space="preserve">
+    <value>Tổng SL mượn vào</value>
+  </data>
+  <data name="000002" xml:space="preserve">
+    <value>Far Eastern Apparel (VietNam) LTD.</value>
+  </data>
+  <data name="010207" xml:space="preserve">
+    <value>Số tiền</value>
+  </data>
+  <data name="010294" xml:space="preserve">
+    <value>Đơn giá</value>
+  </data>
+  <data name="010394" xml:space="preserve">
+    <value>DH</value>
+  </data>
+  <data name="010789" xml:space="preserve">
+    <value>Tổng giá thành</value>
+  </data>
+  <data name="010862" xml:space="preserve">
+    <value>Nhân công trực tiếp</value>
+  </data>
+  <data name="010863" xml:space="preserve">
+    <value>Chi phí SX</value>
+  </data>
+  <data name="010864" xml:space="preserve">
+    <value>Chi phí gia công in thêu</value>
+  </data>
+  <data name="010865" xml:space="preserve">
+    <value>Phí gia công c.đoạn</value>
+  </data>
+  <data name="010963" xml:space="preserve">
+    <value>Hao hụt tồn kho</value>
+  </data>
+  <data name="011074" xml:space="preserve">
+    <value>Số tiền giá thành</value>
+  </data>
+  <data name="011427" xml:space="preserve">
+    <value>Vải</value>
+  </data>
+  <data name="011687" xml:space="preserve">
+    <value>SL DH</value>
+  </data>
+  <data name="011822" xml:space="preserve">
+    <value>Phụ liệu</value>
+  </data>
+  <data name="013610" xml:space="preserve">
+    <value>So sánh giá thành tạm tính và thực tế</value>
+  </data>
+  <data name="013611" xml:space="preserve">
+    <value>Xưởng may</value>
+  </data>
+  <data name="013612" xml:space="preserve">
+    <value>Tên thành phẩm</value>
+  </data>
+  <data name="013613" xml:space="preserve">
+    <value>Tạm tính/Thực tế</value>
+  </data>
+  <data name="StockinAmount" xml:space="preserve">
+    <value>Số tiền nhập kho</value>
+  </data>
+  <data name="AccountType" xml:space="preserve">
+    <value>Loại hình</value>
+  </data>
+  <data name="DiscountAmount" xml:space="preserve">
+    <value>Tiền khấu trừ</value>
+  </data>
+  <data name="011071" xml:space="preserve">
+    <value>SL bán hàng</value>
+  </data>
+  <data name="011072" xml:space="preserve">
+    <value>Số tiền bán hàng</value>
+  </data>
+  <data name="011081" xml:space="preserve">
+    <value>Mức lãi gộp (%)</value>
+  </data>
+  <data name="013614" xml:space="preserve">
+    <value>Lợi nhuận ròng</value>
+  </data>
+  <data name="013615" xml:space="preserve">
+    <value>Chênh lệch</value>
+  </data>
+  <data name="SubmitAll" xml:space="preserve">
+    <value>Duyệt hàng loạt</value>
+  </data>
+  <data name="DocRef" xml:space="preserve">
+    <value>Mã đơn tham khảo:</value>
+  </data>
+  <data name="AllowedTypes" xml:space="preserve">
+    <value>Các loại tập tin được tải lên</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Dò tìm...</value>
+  </data>
+  <data name="ListWaitingConfirmation" xml:space="preserve">
+    <value>Danh sách đang chờ xác nhận</value>
+  </data>
+  <data name="ListWaitingProcession" xml:space="preserve">
+    <value>Danh sách đang chờ xử lý</value>
+  </data>
+  <data name="MaximumFileSize" xml:space="preserve">
+    <value>Dung lượng tối đa tải lên</value>
+  </data>
+  <data name="Nodata" xml:space="preserve">
+    <value>Không có dữ liệu</value>
+  </data>
+  <data name="ExportCompany" xml:space="preserve">
+    <value>Tên công ty phát hàng</value>
+  </data>
+  <data name="ServerName" xml:space="preserve">
+    <value>Tên server</value>
+  </data>
+  <data name="AdjustQuantity" xml:space="preserve">
+    <value>Số lượng điều chỉnh</value>
+  </data>
+  <data name="Damged" xml:space="preserve">
+    <value>Hư đổi</value>
+  </data>
+  <data name="IsBroken" xml:space="preserve">
+    <value>Hư đổi</value>
+  </data>
+  <data name="AdjustAmount" xml:space="preserve">
+    <value>Giá tiền</value>
+  </data>
+  <data name="LastUpdateDateMonth" xml:space="preserve">
+    <value>Tháng</value>
+  </data>
+  <data name="msgIsNotBroken" xml:space="preserve">
+    <value>Vật tư bạn chọn không thuộc dạng hư đổi</value>
+  </data>
+  <data name="msgErrorNotBroken" xml:space="preserve">
+    <value>{0} không đủ số lượng biên chế, số lượng vượt quá biên chế: {1}</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="msgCopyMessage" xml:space="preserve">
+    <value>Sao chép sẽ xóa đi dữ liệu đang tồn tại của tháng bạn muốn sao chép tới, bạn có chắc chắn muốn sao chép không?</value>
+  </data>
+  <data name="msgMoveTo" xml:space="preserve">
+    <value>Tháng truy vấn:</value>
+  </data>
+  <data name="msgCopyTo" xml:space="preserve">
+    <value>Sao chép tới tháng:</value>
+  </data>
+  <data name="msgNotice" xml:space="preserve">
+    <value>Sao chép sẽ xóa đi dữ liệu đang tồn tại của tháng bạn muốn sao chép tới</value>
+  </data>
+  <data name="msgErrorOpenSalesOrder" xml:space="preserve">
+    <value>Bạn đang chọn hạng mục "Mở đơn hàng", vui lòng nhập đầy đủ 11 ký tự của FEPO. 1 lần chỉ nhập 1 FEPO.</value>
+  </data>
+  <data name="CheckFEPO" xml:space="preserve">
+    <value>FEPO này không tồn tại. Vui lòng kiểm tra lại.</value>
+  </data>
+  <data name="013616" xml:space="preserve">
+    <value>Tên Kiểu</value>
+  </data>
+  <data name="CheckingManagerment" xml:space="preserve">
+    <value>Chứng từ cần duyệt</value>
+  </data>
+  <data name="Push" xml:space="preserve">
+    <value>Push To Eland</value>
+  </data>
+  <data name="DatePush" xml:space="preserve">
+    <value>Ngày Push</value>
+  </data>
+  <data name="PushPerson" xml:space="preserve">
+    <value>Người push</value>
+  </data>
+  <data name="PushStatus" xml:space="preserve">
+    <value> Lấy các đơn yêu cầu từ ngày 23 tháng trước đến ngày 22 của tháng được chọn</value>
+  </data>
+  <data name="QueryStatus" xml:space="preserve">
+    <value>Truy vấn các đơn đã Push từ 23 tháng trước đến ngày 22 của tháng được chọn</value>
+  </data>
+  <data name="Pushed" xml:space="preserve">
+    <value>Đã Push</value>
+  </data>
+  <data name="PushMonth" xml:space="preserve">
+    <value>Chọn tháng</value>
+  </data>
+  <data name="PRCode" xml:space="preserve">
+    <value>Mã PR</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Phiên bản</value>
+  </data>
+  <data name="DeclarationCode" xml:space="preserve">
+    <value>Mã khai báo HQ</value>
+  </data>
+  <data name="DeclarationDate" xml:space="preserve">
+    <value>Ngày khai báo HQ</value>
+  </data>
+  <data name="FEPO" xml:space="preserve">
+    <value>FEPO</value>
+  </data>
+  <data name="MinimumType" xml:space="preserve">
+    <value>Loại minimum</value>
+  </data>
+  <data name="Specifications" xml:space="preserve">
+    <value>Quy cách</value>
+  </data>
+  <data name="StorePosition" xml:space="preserve">
+    <value>Chi tiết lưu kho</value>
+  </data>
+  <data name="InvoiceCode" xml:space="preserve">
+    <value>Mã hóa đơn</value>
+  </data>
+  <data name="WarehouseName" xml:space="preserve">
+    <value>Tên kho</value>
+  </data>
+  <data name="MaterialCode" xml:space="preserve">
+    <value>Mã vật phẩm</value>
+  </data>
+  <data name="erpMailBody" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td style="padding:20px"&gt;
+                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td style="padding:0"&gt;
+                                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                    &lt;tbody&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="background: rgb(59, 89, 152); height: 69px; padding: 10px 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="height:30px"&gt;
+                                                                &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                    Document(s) to check
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                            &lt;td align="right"&gt;
+                                                                &lt;a href="{4}" style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="padding:30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Hello &lt;strong&gt;{5}&lt;/strong&gt;,
+                                                                &lt;/p&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    FEA ITS sent you email about &lt;b&gt;Document To Check&lt;/b&gt; with the following contents:
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;table width="100%"&gt;
+                                                                    &lt;tbody&gt;
+                                                                        &lt;tr&gt;
+                                                                            &lt;td&gt;
+                                                                                &lt;span style="color:#666;"&gt;
+                                                                                    Employee: &lt;strong&gt;{0}({1}) - {2}&lt;/strong&gt;&lt;br&gt;
+                                                                                    Reason: &lt;strong&gt;{3}&lt;/strong&gt; &lt;br&gt;
+                                                                                    Comment: &lt;strong&gt;{6}&lt;/strong&gt; &lt;br&gt;
+                                                                                    &lt;strong style="color:#f7941d"&gt;Please login to ERP Application to check your document.&lt;/strong&gt;
+                                                                                &lt;/span&gt;
+                                                                            &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                    &lt;/tbody&gt;
+                                                                &lt;/table&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+
+                                                        &lt;tr&gt;
+                                                            &lt;td align="center"&gt;
+                                                                &lt;div&gt;
+                                                                    &lt;a href="{4}" style="font-size: 35px; text-decoration: underline; color: #fff; padding: 15px 30px; color: #f7941d; display: inline-block; font-family: 'Segoe UI',sans-serif;" target="_blank"&gt;&lt;/a&gt;
+                                                                &lt;/div&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                2014 © Far Eastern Apparel.
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</value>
+  </data>
+  <data name="ERPDoc" xml:space="preserve">
+    <value>Chứng từ ERP</value>
+  </data>
+  <data name="Cause" xml:space="preserve">
+    <value>Nguyên nhân</value>
+  </data>
+  <data name="013617" xml:space="preserve">
+    <value>Mua trong nước</value>
+  </data>
+  <data name="013618" xml:space="preserve">
+    <value>Được c.cấp NPL gia công</value>
+  </data>
+  <data name="013619" xml:space="preserve">
+    <value>Tự nhập NPL gia công</value>
+  </data>
+  <data name="013620" xml:space="preserve">
+    <value>Mậu dịch thông thường</value>
+  </data>
+  <data name="013621" xml:space="preserve">
+    <value>loại hình mậu dịch-Xuất khẩu</value>
+  </data>
+  <data name="013622" xml:space="preserve">
+    <value>loại hình mậu dịch-trong nước</value>
+  </data>
+  <data name="TradeType" xml:space="preserve">
+    <value>Phương thức giao dịch</value>
+  </data>
+  <data name="SignDepartment" xml:space="preserve">
+    <value>Ký chứng từ của bộ phận</value>
+  </data>
+  <data name="ACCESSORYDEVELOPOUT" xml:space="preserve">
+    <value>Phiếu lãnh PL cho hàng mẫu</value>
+  </data>
+  <data name="ACCESSORYMOVEOUT" xml:space="preserve">
+    <value>Phiếu chuyển PL</value>
+  </data>
+  <data name="ACCESSORYMOVEOUTMULTI" xml:space="preserve">
+    <value>Phiếu chuyển PL (Multi PO)</value>
+  </data>
+  <data name="ACCESSORYOUT" xml:space="preserve">
+    <value>Phiếu lãnh PL(SX)</value>
+  </data>
+  <data name="DEVELOPPRODUCT" xml:space="preserve">
+    <value>Phiếu lãnh hàng mẫu</value>
+  </data>
+  <data name="FABRICDEVELOPOUT" xml:space="preserve">
+    <value>Phiếu lãnh vải cho hàng mẫu</value>
+  </data>
+  <data name="FABRICMOVEOUT" xml:space="preserve">
+    <value>Phiếu chuyển vải</value>
+  </data>
+  <data name="FABRICMOVEOUTMULTI" xml:space="preserve">
+    <value>Phiếu chuyển vải(Multi PO)</value>
+  </data>
+  <data name="FABRICOUT" xml:space="preserve">
+    <value>Phiếu lãnh vải(SX)</value>
+  </data>
+  <data name="msgDiffQuantity" xml:space="preserve">
+    <value>Số lượng bị chênh lệch. Vui lòng kiểm tra số lượng</value>
+  </data>
+  <data name="erpQuantity" xml:space="preserve">
+    <value>Số lượng ERP</value>
+  </data>
+  <data name="itsQuantity" xml:space="preserve">
+    <value>Số lượng ITS</value>
+  </data>
+  <data name="purQuantity" xml:space="preserve">
+    <value>Số lượng mua</value>
+  </data>
+  <data name="requestQuantity" xml:space="preserve">
+    <value>Số lượng yêu cầu</value>
+  </data>
+  <data name="erpInventory" xml:space="preserve">
+    <value>Tồn kho ERP</value>
+  </data>
+  <data name="itsInventory" xml:space="preserve">
+    <value>Tồn kho ITS</value>
+  </data>
+  <data name="purEstimateAmount" xml:space="preserve">
+    <value>Tổng tiền mua dự tính</value>
+  </data>
+  <data name="receiveFrom" xml:space="preserve">
+    <value>Nhận từ</value>
+  </data>
+  <data name="requestCode" xml:space="preserve">
+    <value>Mã yêu cầu</value>
+  </data>
+  <data name="receiveDate" xml:space="preserve">
+    <value>Ngày nhận</value>
+  </data>
+  <data name="msgErrorMaintenanceConfirm" xml:space="preserve">
+    <value>Số lượng nhập vào không đúng. Số lượng tối đa có thể nhập:</value>
+  </data>
+  <data name="msgErrorInputQuantity" xml:space="preserve">
+    <value>Số lượng nhập vào không phù hợp.Vui lòng kiểm tra số lượng</value>
+  </data>
+</root>

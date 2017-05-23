@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "SAConfigure";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+<div class="panel-body">
+    <h3>Reason Configure</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @{Html.RenderAction("GetAllReason", "SAConfigure");}
+            </div>
+        </div>
+    </div>
+    <br />
+    <h3>Destination Configure <h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @{Html.RenderAction("GetAllDestination", "SAConfigure");}
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("ModalPartial/_IframeModal")
+                                                           

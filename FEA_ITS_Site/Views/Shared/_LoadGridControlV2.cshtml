@@ -1,0 +1,1272 @@
+﻿@using System.Web.UI.WebControls
+@using FEA_ITS_Site.Helper;
+@using FEA_ITS_Site;
+@using DevExpress.Web.Mvc;
+@using DevExpress.XtraPivotGrid;
+@using FEA_BusinessLogic.ComponentSettings;
+
+@model Object
+@{
+     string GridName = string.Empty;
+     string DocType = string.Empty;
+    var grid = Html.DevExpress().GridView(settings => { settings.Name = "partial"; });
+    GridName = (ViewBag.GridName != "" || ViewBag.GridName != null) ? ViewBag.GridName : "";
+    DocType = (ViewBag.DocType != "" || ViewBag.DocType != null) ? ViewBag.DocType : "";
+    switch (GridName)
+    {
+        case "ERPItemListGrid":
+            List<FEA_BusinessLogic.ComponentDesign> component = new ComponentSettings().getComponent(DocType);
+            grid = Html.DevExpress().GridView(
+               settings =>
+               {
+                   settings.Name = "ERPDetailPushData";
+                   settings.KeyFieldName = "ItemID";
+                   settings.CallbackRouteValues = new { Controller = "ERPDocument", Action = "GETERPListItemDetailPartial", id = ViewBag.ID, docType = ViewBag.DocType };
+                   settings.SettingsBehavior.AllowSort = false;
+                   settings.SettingsPager.AlwaysShowPager = false;
+                   settings.Width = Unit.Percentage(100);
+                   settings.CommandColumn.Visible = false;
+                   settings.SettingsBehavior.AllowFocusedRow = true;
+                   settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("FEPO",component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "FEPO", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("FEPO", component);
+                       c.Index = ComponentSettings.GetCDIndex("FEPO", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("FEPO", component));
+                       c.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                       
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("AimFEPO", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "AimFEPO", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("AimFEPO", component);
+                       c.Index = ComponentSettings.GetCDIndex("AimFEPO", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("AimFEPO", component));
+                   });
+
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("MaterialCode", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "MaterialCode", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("MaterialCode", component);
+                       c.Index = ComponentSettings.GetCDIndex("MaterialCode", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("MaterialCode", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("MaterialName", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "MaterialName", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("MaterialName", component);
+                       c.Index = ComponentSettings.GetCDIndex("MaterialName", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("MaterialName", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("Spec", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "Spec", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("Spec", component);
+                       c.Index = ComponentSettings.GetCDIndex("Spec", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("Spec", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("ColorCode", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "ColorCode", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("ColorCode", component);
+                       c.Index = ComponentSettings.GetCDIndex("ColorCode", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("ColorCode", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("ColorName", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "ColorName", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("ColorName", component);
+                       c.Index = ComponentSettings.GetCDIndex("ColorName", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("ColorName", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("StockPosition", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "StockPosition", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("StockPosition", component);
+                       c.Index = ComponentSettings.GetCDIndex("StockPosition", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("StockPosition", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("Quantity", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "Quantity", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("Quantity", component);
+                       c.Index = ComponentSettings.GetCDIndex("Quantity", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("Quantity", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("Unit", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "Unit", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("Unit", component);
+                       c.Index = ComponentSettings.GetCDIndex("Unit", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("Unit", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("Remark", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "Remark", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("Remark", component);
+                       c.Index = ComponentSettings.GetCDIndex("Remark", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("Remark", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("DeclarationDate", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "DeclarationDate", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("DeclarationDate", component);
+                       c.Index = ComponentSettings.GetCDIndex("DeclarationDate", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("DeclarationDate", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("DeclarationCode", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "DeclarationCode", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("DeclarationCode", component);
+                       c.Index = ComponentSettings.GetCDIndex("DeclarationCode", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("DeclarationCode", component));
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = ComponentSettings.GetCDFiledName("MinimumType", component);
+                       c.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "MinimumType", component);
+                       c.Visible = ComponentSettings.GetCDisVisiable("MinimumType", component);
+                       c.Index = ComponentSettings.GetCDIndex("MinimumType", component);
+                       c.Width = Unit.Percentage(ComponentSettings.GetCDWidth("MinimumType", component));
+                   });                  
+               });
+            grid.Bind(Model).GetHtml();
+            break;
+            
+            case "MaintanceItemListGrid":
+            List<FEA_BusinessLogic.ComponentDesign> MaintanceComponent = new ComponentSettings().getComponent(DocType);
+            grid = Html.DevExpress().GridView(
+                        settings =>
+                        {
+                            settings.Name = "gvItemDetails";
+                            settings.KeyFieldName = "ID";
+                            settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "GetItemDetailList", ShowCommand = Convert.ToBoolean(ViewData["ShowCommand"])};
+                            settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                            switch (DocType)
+                            {
+                                case "MAINTENANCE":
+                                    settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Maintenance", Action = "DeleteItemDetail", strDocType = DocType };
+                                    break;
+                                    
+                                case "MAINTENANCESTOCK":
+                                    settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Maintenance", Action = "DeleteStockItemDetail", strDocType = DocType};
+                                    if (ViewBag.OrderType == 1)
+                                    {
+                                        settings.Columns.Add(column =>
+                                          {
+                                              column.FieldName = ComponentSettings.GetCDFiledName("ReceivedUserName", MaintanceComponent);
+                                              column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "ReceivedUserName", MaintanceComponent);
+                                              column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("ReceivedUserName", MaintanceComponent));
+                                              column.Index = ComponentSettings.GetCDIndex("ReceivedUserName", MaintanceComponent);
+                                              column.Visible = ComponentSettings.GetCDisVisiable("ReceivedUserName", MaintanceComponent);
+                                              column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                                          });
+                                    }
+                                    break;
+                                    
+                                default:
+                                    break;
+                            }
+                           
+                            settings.SettingsBehavior.ConfirmDelete = false;
+                            settings.Width = Unit.Percentage(200);
+                            settings.CommandColumn.Visible = ViewData["ShowCommand"] == null ? false : Convert.ToBoolean(ViewData["ShowCommand"]);
+                            settings.CommandColumn.Width = Unit.Percentage(5);
+                            settings.CommandColumn.ShowDeleteButton = true;
+                            settings.SettingsCommandButton.DeleteButton.Text = Resources.Resource.Delete;
+                            settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
+                            settings.ClientSideEvents.Init = "OnSetTotalRow";
+                            settings.ClientSideEvents.EndCallback = "OnEndGridCallback";
+                             
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = ComponentSettings.GetCDFiledName("ItemName",MaintanceComponent);
+                                column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "ItemName", MaintanceComponent);
+                                column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("ItemName", MaintanceComponent));
+                                column.Visible = ComponentSettings.GetCDisVisiable("ItemName", MaintanceComponent);
+                                column.Index = ComponentSettings.GetCDIndex("ItemName", MaintanceComponent);
+                                column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                            });
+
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = ComponentSettings.GetCDFiledName("ItemDetailName", MaintanceComponent);
+                                column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "ItemDetailName", MaintanceComponent);
+                                column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("ItemDetailName", MaintanceComponent));
+                                column.Visible = ComponentSettings.GetCDisVisiable("ItemDetailName", MaintanceComponent);
+                                column.Index = ComponentSettings.GetCDIndex("ItemDetailName", MaintanceComponent);
+                                column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                            });
+                            
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = ComponentSettings.GetCDFiledName("UnitName", MaintanceComponent);
+                                column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "UnitName", MaintanceComponent);
+                                column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("UnitName", MaintanceComponent));
+                                column.Index = ComponentSettings.GetCDIndex("UnitName", MaintanceComponent);
+                                column.Visible = ComponentSettings.GetCDisVisiable("UnitName", MaintanceComponent);
+                                column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                            });
+                            
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = ComponentSettings.GetCDFiledName("IsBroken", MaintanceComponent);
+                                column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "IsBroken", MaintanceComponent);
+                                column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("IsBroken", MaintanceComponent));
+                                column.Index = ComponentSettings.GetCDIndex("IsBroken", MaintanceComponent);
+                                column.Visible = ComponentSettings.GetCDisVisiable("IsBroken", MaintanceComponent);
+                                column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                                column.ColumnType = MVCxGridViewColumnType.CheckBox;
+                            });
+                            
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = ComponentSettings.GetCDFiledName("Quantity", MaintanceComponent);
+                                column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "Quantity", MaintanceComponent);
+                                column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("Quantity", MaintanceComponent));
+                                column.Index = ComponentSettings.GetCDIndex("Quantity", MaintanceComponent);
+                                column.Visible = ComponentSettings.GetCDisVisiable("Quantity", MaintanceComponent);
+                                column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                                column.SetDataItemTemplateContent(c =>
+                                {
+                                    ViewContext.Writer.Write(
+                                        string.Format(FEA_Ultil.FEAStringClass.formatNumber(DataBinder.Eval(c.DataItem, "Quantity")))
+                                    );
+                                });
+                            });
+                            
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = ComponentSettings.GetCDFiledName("Price", MaintanceComponent);
+                                column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "Price", MaintanceComponent);
+                                column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("Price", MaintanceComponent));
+                                column.Index = ComponentSettings.GetCDIndex("Price", MaintanceComponent);
+                                column.Visible = ComponentSettings.GetCDisVisiable("Price", MaintanceComponent);
+                                column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                                column.SetDataItemTemplateContent(c =>
+                                {
+                                    ViewContext.Writer.Write(
+                                        string.Format(FEA_Ultil.FEAStringClass.formatNumber(DataBinder.Eval(c.DataItem, "Price")))
+                                    );
+                                });
+                            });
+
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = ComponentSettings.GetCDFiledName("Amount", MaintanceComponent);
+                                column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "Amount", MaintanceComponent);
+                                column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("Amount", MaintanceComponent));
+                                column.Index = ComponentSettings.GetCDIndex("Amount", MaintanceComponent);
+                                column.Visible = ComponentSettings.GetCDisVisiable("Amount", MaintanceComponent);
+                                column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                                column.SetDataItemTemplateContent(c =>
+                                {
+                                    ViewContext.Writer.Write(
+                                        string.Format(FEA_Ultil.FEAStringClass.formatNumber(DataBinder.Eval(c.DataItem, "Amount")))
+                                    );
+                                });
+                            });
+                            
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = ComponentSettings.GetCDFiledName("DeliveryDate", MaintanceComponent);
+                                column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "DeliveryDate", MaintanceComponent);
+                                column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("DeliveryDate", MaintanceComponent));
+                                column.Index = ComponentSettings.GetCDIndex("DeliveryDate", MaintanceComponent);
+                                column.Visible = ComponentSettings.GetCDisVisiable("DeliveryDate", MaintanceComponent);
+                                column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                                column.SetDataItemTemplateContent(c =>
+                                {
+                                    ViewContext.Writer.Write(
+                                        string.Format(FEA_Ultil.FEAStringClass.FormatDateString(FEA_ITS_Site.Helper.SessionManager.CurrentLang, DataBinder.Eval(c.DataItem, "DeliveryDate")))
+                                    );
+                                });
+
+                            });
+
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = ComponentSettings.GetCDFiledName("Description", MaintanceComponent);
+                                column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "Description", MaintanceComponent);
+                                column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("Description", MaintanceComponent));
+                                column.Index = ComponentSettings.GetCDIndex("Description", MaintanceComponent);
+                                column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                                column.Visible = ComponentSettings.GetCDisVisiable("Description", MaintanceComponent);
+                            });
+ 
+                            settings.CustomJSProperties = (s, e) => 
+                            {
+                                if (ViewData["TotalAmount"] != null)
+                                {
+                                    e.Properties["cpTotalAmount"] = ViewData["TotalAmount"].ToString();
+                                }
+                                
+                                MVCxGridView Current = (MVCxGridView)s;
+                                e.Properties["cpVisibleRowCount"] = Current.VisibleRowCount;
+                            };
+                            settings.Settings.ShowFooter = false;
+
+                        });
+            grid.Bind((List<FEA_ITS_Site.Models.ItemInfo>)Model).GetHtml(); 
+             
+            if (ViewData["EditError"] != null)
+            {
+                grid.SetEditErrorText((string)ViewData["EditError"]);
+                <div id="paginator-content-1" class="alert-small alert-danger" style="margin-top:10px;">
+                    @Html.Raw((string)ViewData["EditError"])
+                </div>
+            }
+            else
+            {
+                <script type="text/javascript">ClearItemDetail();</script>
+            }
+            if (ViewData["TotalAmount"] != null)
+            {
+                <script type="text/javascript">SetTotalAmount(@ViewData["TotalAmount"].ToString())</script>
+            }
+
+            break;
+            case "MN_Request_List":
+            List<FEA_BusinessLogic.ComponentDesign> MNRequestList = new ComponentSettings().getComponent(DocType);
+            grid = Html.DevExpress().GridView(
+                settings =>
+                {
+                    settings.Name = "gvRequestList";
+                    settings.KeyFieldName = "ID";
+                    settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "MNRequestList", strDocType = DocType };
+                    settings.Width = Unit.Percentage(100);
+                    settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
+                    settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                    settings.Columns.Add(column =>
+                        {
+                            column.FieldName = ComponentSettings.GetCDFiledName("OrderCode", MNRequestList);
+                            column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang,"OrderCode", MNRequestList);
+                            column.Visible = ComponentSettings.GetCDisVisiable("OrderCode", MNRequestList);
+                            column.Index = ComponentSettings.GetCDIndex("OrderCode", MNRequestList);
+                            column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("OrderCode", MNRequestList));
+                            column.CellStyle.CssClass = "tCenter";
+                            column.EditFormSettings.Visible = DefaultBoolean.False;
+                            column.SetDataItemTemplateContent(c =>
+                            {
+                                ViewContext.Writer.Write(
+                                    "<a title='" + @Resources.Resource.Select + "' href='#responsive' data-toggle='modal' data-target='.bs-example-modal-lg' onclick=\"parent.SetModalStyle('','','" + FEA_ITS_Site.Helper.Ultilities.Root + "/Maintenance/Index?ID=" + DataBinder.Eval(c.DataItem, "ID") +"&strDocType="+DocType+ "&TypeUser=user','" + Resources.Resource.OrderCode + ": " + DataBinder.Eval(c.DataItem, "OrderCode") + "')\">" + DataBinder.Eval(c.DataItem, "OrderCode") + "</a>"
+                                );
+                            });
+                        });
+                    
+                    settings.Columns.Add(column =>
+                        {
+                            column.FieldName = ComponentSettings.GetCDFiledName("Reason", MNRequestList);
+                            column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "Reason", MNRequestList);
+                            column.Visible = ComponentSettings.GetCDisVisiable("Reason", MNRequestList);
+                            column.Index = ComponentSettings.GetCDIndex("Reason", MNRequestList);
+                            column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("Reason", MNRequestList));
+                        });
+                    
+                    settings.Columns.Add(column =>
+                        {
+                            column.FieldName = ComponentSettings.GetCDFiledName("CreateDate", MNRequestList);
+                            column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "CreateDate", MNRequestList);
+                            column.Visible = ComponentSettings.GetCDisVisiable("CreateDate", MNRequestList);
+                            column.Index = ComponentSettings.GetCDIndex("CreateDate", MNRequestList);
+                            column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("CreateDate", MNRequestList));
+                        });
+                    
+                    settings.Columns.Add(column =>
+                    {
+                        column.FieldName = ComponentSettings.GetCDFiledName("CurrencyID", MNRequestList);
+                        column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "CurrencyID", MNRequestList);
+                        column.Visible = ComponentSettings.GetCDisVisiable("CurrencyID", MNRequestList);
+                        column.Index = ComponentSettings.GetCDIndex("CurrencyID", MNRequestList);
+                        column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("CurrencyID", MNRequestList));
+                        column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                        
+                        var comboBox = column.PropertiesEdit as ComboBoxProperties;
+                        comboBox.DataSource = new FEA_BusinessLogic.CurrencyManager().GetItems(1);
+                        comboBox.TextField = "NAME";
+                        comboBox.ValueField = "ID";
+                        comboBox.ValueType = typeof(string);
+                   });
+
+                    settings.Columns.Add(column =>
+                    {
+                        column.FieldName = ComponentSettings.GetCDFiledName("EstimatedAmount", MNRequestList);
+                        column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "EstimatedAmount", MNRequestList);
+                        column.Visible = ComponentSettings.GetCDisVisiable("EstimatedAmount", MNRequestList);
+                        column.Index = ComponentSettings.GetCDIndex("EstimatedAmount", MNRequestList);
+                        column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("EstimatedAmount", MNRequestList));
+
+                        column.SetDataItemTemplateContent(c =>
+                        {
+                         ViewContext.Writer.Write(
+                             string.Format(FEA_Ultil.FEAStringClass.formatNumber(DataBinder.Eval(c.DataItem, "EstimatedAmount")))
+                            );
+                        });
+                    });
+
+                    settings.Columns.Add(column =>
+                        {
+                            column.FieldName = ComponentSettings.GetCDFiledName("Status", MNRequestList);
+                            column.Caption = ComponentSettings.GetCDCaption(SessionManager.CurrentLang, "Status", MNRequestList);
+                            column.Visible = ComponentSettings.GetCDisVisiable("Status", MNRequestList);
+                            column.Index = ComponentSettings.GetCDIndex("Status", MNRequestList);
+                            column.Width = Unit.Percentage(ComponentSettings.GetCDWidth("Status", MNRequestList));
+                            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+                            var comboBox = column.PropertiesEdit as ComboBoxProperties;
+                            comboBox.DataSource = FEA_ITS_Site.Controllers.HelperController.GetStatusList();
+                            comboBox.TextField = "Value";
+                            comboBox.ValueField = "Key";
+                            comboBox.ValueType = typeof(int);
+                        });
+                    
+                 settings.CommandColumn.Visible = true;
+                 settings.CommandColumn.Width = Unit.Percentage(5);
+                 settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Maintenance", Action = "DeleteRequestList", strDocType=DocType };
+                 settings.CommandColumn.ShowDeleteButton = true;
+                 settings.SettingsCommandButton.DeleteButton.Text = Resources.Resource.Delete;
+                 settings.SettingsBehavior.ConfirmDelete = true;
+                 settings.Settings.ShowFilterRowMenu = true;
+                 settings.Settings.ShowFilterRow = true;
+                 settings.Settings.ShowGroupPanel = true;
+                 settings.Settings.ShowFooter = true;
+             });
+
+            if (ViewData["EditError"] != null)
+            {
+                grid.SetEditErrorText((string)ViewData["EditError"]);
+            }
+            grid.Bind(Model).GetHtml();
+
+            if (ViewData["DeleteError"] != null)
+            {
+                <div id="paginator-content-1" class="alert-small alert-danger" style="margin-top:10px;">
+                    @Html.Raw((string)ViewData["DeleteError"])
+                </div>
+            }
+            break;
+            
+            case "MN_Stock_List":
+            grid = Html.DevExpress().GridView(
+                settings =>
+                {
+                    settings.Name = "gvStockList";
+                    settings.KeyFieldName = "ID";
+                    settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "GetStockList", iOrderType = ViewBag.OrderType, strType = ViewBag.Type };
+
+                    settings.Width = Unit.Percentage(100);
+                    settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
+                    settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                    settings.Columns.Add(column =>
+                        {
+                            column.FieldName = "OrderCode";
+                            column.Caption = Resources.Resource.OrderCode;
+                            column.Width = Unit.Percentage(10);
+                            column.CellStyle.CssClass = "tCenter";
+                            column.EditFormSettings.Visible = DefaultBoolean.False;
+                            column.SetDataItemTemplateContent(c =>
+                                {
+                                    ViewContext.Writer.Write(
+                                        "<a title='" + @Resources.Resource.Select + "' href='#responsive' data-toggle='modal' data-target='.bs-example-modal-lg' onclick=\"parent.SetModalStyle('','','" + FEA_ITS_Site.Helper.Ultilities.Root + "/Maintenance/StockRequest?ID=" + DataBinder.Eval(c.DataItem, "ID") + "&OrderType="+ViewBag.OrderType+"&Type="+ViewBag.Type + "','" + Resources.Resource.OrderCode + ": " + DataBinder.Eval(c.DataItem, "OrderCode") + "')\">" + DataBinder.Eval(c.DataItem, "OrderCode") + "</a>"
+                                     );
+                                });
+                        });
+                    settings.Columns.Add(column =>
+                    {
+                        column.FieldName = "User.UserName";
+                        column.Caption = Resources.Resource.Creator;
+                        column.Width = Unit.Percentage(15);
+                        column.SetDataItemTemplateContent(c =>
+                        {
+                            ViewContext.Writer.Write(
+                                string.Format("{0}({1})", DataBinder.Eval(c.DataItem, "User.UserName"), DataBinder.Eval(c.DataItem, "User.UserCodeID"))
+                            );
+                        });
+
+                    });
+                    settings.Columns.Add(column =>
+                    {
+                        column.FieldName = "Description";
+                        column.Caption = Resources.Resource.Description;
+                        column.Width = Unit.Percentage(20);
+                    });
+                    settings.Columns.Add(column =>
+                    {
+                        column.FieldName = "User1.UserName";
+                        column.Caption = Resources.Resource.DeloveryFor;
+                        column.Width = Unit.Percentage(15);
+                        column.Visible = (ViewBag.OrderType == 1) ? false : true;
+                        column.SetDataItemTemplateContent(c =>
+                        {
+                            ViewContext.Writer.Write(
+                                string.Format("{0}({1})", DataBinder.Eval(c.DataItem, "User1.UserName"), DataBinder.Eval(c.DataItem, "User1.UserCodeID"))
+                            );
+                        });
+                    });
+                    settings.Columns.Add(column =>
+                    {
+                        column.FieldName = "CreateDate";
+                        column.Caption = Resources.Resource.CreateDate;
+                        column.Width = Unit.Percentage(15);
+                        column.ColumnType = MVCxGridViewColumnType.DateEdit;
+
+                        DateEditProperties dateEdit = column.PropertiesEdit as DateEditProperties;
+                        dateEdit.DisplayFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+                        dateEdit.DisplayFormatInEditMode = true;
+                        dateEdit.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+
+                    });
+
+                    settings.Columns.Add(column =>
+                 {
+                     column.FieldName = "LastUpdateDate";
+                     column.Caption = Resources.Resource.CompleteDate;
+                     column.Width = Unit.Percentage(15);
+                     column.ColumnType = MVCxGridViewColumnType.DateEdit;
+
+                     DateEditProperties dateEdit = column.PropertiesEdit as DateEditProperties;
+                     dateEdit.DisplayFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+                     dateEdit.DisplayFormatInEditMode = true;
+                     dateEdit.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+                 });
+
+                    settings.Columns.Add(column =>
+                    {
+                        column.FieldName = "Status";
+                        column.Caption = Resources.Resource.Status;
+                        column.Width = Unit.Percentage(10);
+                        column.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+                        var comboBox = column.PropertiesEdit as ComboBoxProperties;
+                        comboBox.DataSource = FEA_ITS_Site.Controllers.HelperController.GetStatusList();
+                        comboBox.TextField = "Value";
+                        comboBox.ValueField = "Key";
+                        comboBox.ValueType = typeof(int);
+                    });
+
+                    settings.CommandColumn.Visible = true;
+                    settings.CommandColumn.Width = Unit.Percentage(5);
+
+                    settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Maintenance", Action = "DeleteStockRequestPartial", strType = ViewBag.Type, iOrderType = ViewBag.OrderType };
+                    settings.CommandColumn.ShowDeleteButton = true;
+                    settings.SettingsCommandButton.DeleteButton.Text = Resources.Resource.Delete;
+                    settings.SettingsBehavior.ConfirmDelete = true;
+                    settings.Settings.ShowFilterRowMenu = true;
+                    settings.Settings.ShowFilterRow = true;
+                    settings.Settings.ShowGroupPanel = true;
+                    settings.Settings.ShowFooter = true;
+                });
+                
+                 if (ViewData["EditError"] != null)
+                {
+                    grid.SetEditErrorText((string)ViewData["EditError"]);
+                }
+                grid.Bind(Model).GetHtml();
+
+                if (ViewData["DeleteError"] != null)
+                {
+                    <div id="paginator-content-1" class="alert-small alert-danger" style="margin-top:10px;">
+                        @Html.Raw((string)ViewData["DeleteError"])
+                    </div>
+                }
+            break;
+
+            case "MaintenanceInventory":
+            grid = Html.DevExpress().GridView(
+                settings =>
+                {
+                    settings.Name = "gvMNInventory";
+                    settings.KeyFieldName = "ID";
+                    settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "GetMNInventory" };
+
+                    settings.Width = Unit.Percentage(70);
+
+                    settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+                    settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                    settings.Columns.Add(column =>
+                        {
+                            column.FieldName = "ID";
+                            column.Caption = Resources.Resource.ItemNameDetail;
+                            column.Width = Unit.Percentage(50);
+                            column.ColumnType = MVCxGridViewColumnType.ComboBox;
+                            var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
+                            comboBoxProperties.DataSource = new FEA_BusinessLogic.Maintenance.MNInventoryManager().GetInventory();
+                            comboBoxProperties.TextField = "ItemDetailName";
+                            comboBoxProperties.ValueField = "ID";
+                            comboBoxProperties.ValueType = typeof(string);
+
+                            comboBoxProperties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+                            comboBoxProperties.DropDownStyle = DropDownStyle.DropDown;
+                            column.Width = Unit.Percentage(25);
+                        });
+
+                    settings.Columns.Add(column =>
+                        {
+                            column.FieldName = "Unit";
+                            column.Caption = Resources.Resource.Unit;
+                            column.Width = Unit.Percentage(15);
+                        });
+
+                    settings.Columns.Add(column =>
+                   {
+                       column.FieldName = "ITSInventory";
+                       column.Caption = @Resources.Resource.itsInventory;
+                       column.Width = Unit.Percentage(15);
+                       column.PropertiesEdit.DisplayFormatString = "N2";
+                   });
+
+                    settings.Columns.Add(column =>
+                   {
+                       column.FieldName = "ERPInventory";
+                       column.Caption = @Resources.Resource.erpInventory;
+                       column.Width = Unit.Percentage(15);
+                       column.PropertiesEdit.DisplayFormatString = "N2";
+                   });
+
+                    settings.Settings.ShowFooter = true;
+                    settings.Settings.ShowFilterRowMenu = true;
+                    settings.Settings.ShowFilterRow = true;
+
+                    settings.SettingsBehavior.AllowFocusedRow = true;
+                });
+            grid.Bind(Model).GetHtml();
+            break;
+
+            case "MaintenanceApproveDocList":
+            grid = Html.DevExpress().GridView(
+                settings =>
+                {
+                    settings.Name = "gvApproveList";
+                    settings.KeyFieldName = "ID";
+                    settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "GetApproveDoc" ,strType=DocType};
+                    settings.Width = Unit.Percentage(100);
+                    settings.SettingsDetail.ShowDetailRow = true;
+                    settings.Settings.ShowFilterRow = true;
+                    settings.Settings.ShowFilterRowMenu = true;
+                    
+                    settings.Columns.Add(
+                        column =>
+                        {
+                            column.FieldName = "ID";
+                            column.Visible = false;
+                        });
+
+                    settings.Columns.Add(
+                        column =>
+                        {
+                            column.FieldName = "OrderCode";
+                            column.Caption = @Resources.Resource.OrderCode;
+                            column.Width = Unit.Percentage(10);
+                            column.CellStyle.CssClass = "tCenter";
+                            column.EditFormSettings.Visible = DefaultBoolean.False;
+                            column.SetDataItemTemplateContent(c =>
+                            {
+                                ViewContext.Writer.Write(
+                                    "<a title='" + @Resources.Resource.Select + "' href='#responsive' data-toggle='modal' data-target='.bs-example-modal-lg' onclick=\"parent.SetModalStyle('','','" + FEA_ITS_Site.Helper.Ultilities.Root + "/Maintenance/Index?ID=" + DataBinder.Eval(c.DataItem, "ID") +"&strDocType="+DocType+ "&TypeUser=user','" + Resources.Resource.OrderCode + ": " + DataBinder.Eval(c.DataItem, "OrderCode") + "')\">" + DataBinder.Eval(c.DataItem, "OrderCode") + "</a>"
+                                );
+                            });
+
+                        });
+
+                    settings.Columns.Add(column =>
+                    {
+                            column.FieldName = "Creator";
+                            column.Caption = @Resources.Resource.Creator;
+                            column.Width = Unit.Percentage(15);
+                            column.Visible = true;
+                    });
+
+                    settings.Columns.Add(column =>
+                    {
+                        column.FieldName = "Department";
+                        column.Caption = @Resources.Resource.Department;
+                        column.Width = Unit.Percentage(20);
+                        column.Visible = true;
+                    });
+
+                    settings.Columns.Add(column =>
+                    {
+                        column.FieldName = "CreateDate";
+                        column.Caption = @Resources.Resource.CreateDate;
+                        column.Width = Unit.Percentage(8);
+                        column.Visible = true;
+                        column.ColumnType = MVCxGridViewColumnType.DateEdit;
+
+                        DateEditProperties dateEdit = column.PropertiesEdit as DateEditProperties;
+                        dateEdit.DisplayFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+                        dateEdit.DisplayFormatInEditMode = true;
+                        dateEdit.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+                    });
+
+                    settings.Columns.Add(column =>
+                        {
+                            column.FieldName = "Reason";
+                            column.Caption = @Resources.Resource.Reason;
+                            column.Width = Unit.Percentage(15);
+                            column.Visible = true;
+                        });
+
+                    settings.SettingsBehavior.AllowSelectByRowClick = true;
+                    settings.SetDetailRowTemplateContent(c =>
+                    {   
+                        Html.RenderAction("ApproveForm", "Maintenance", new { ID = DataBinder.Eval(c.DataItem, "ID") });
+                    });
+                    settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
+                });
+                 grid.Bind(Model).GetHtml();
+
+                 break;
+
+            case "MaintenanceApproveDetailList":
+
+                 grid = Html.DevExpress().GridView(
+                     settings =>
+                     {
+                         settings.Name = "gvDetailList";
+                         settings.KeyFieldName = "ItemDetailID";
+                         settings.Width = Unit.Percentage(100);
+                         settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "ApproveDetailList", ID = ViewBag.ID, strType=DocType };
+                         settings.SettingsEditing.BatchUpdateRouteValues = new { Controller = "Maintenance", Action = "GetUpdateQuantity", ID = ViewBag.ID,strType=DocType };
+
+                         settings.SettingsEditing.Mode = GridViewEditingMode.Batch;
+                         settings.SettingsEditing.BatchEditSettings.EditMode = GridViewBatchEditMode.Cell;
+                         settings.SettingsEditing.BatchEditSettings.StartEditAction = GridViewBatchStartEditAction.DblClick;
+                         settings.ClientSideEvents.BatchEditRowValidating = "OnBatchEditRowValidating";
+                         settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                         settings.CellEditorInitialize = (s, e) =>
+                         {
+                             ASPxEdit editor = (ASPxEdit)e.Editor;
+                             editor.ValidationSettings.Display = Display.None;
+                         };
+
+                         settings.HtmlDataCellPrepared = (sender, e) =>
+                         {
+                             e.Cell.Attributes.Add(
+                                 "ondblclick",
+                                 string.Format("OnCellClick('{0}', '{1}');", e.VisibleIndex, e.DataColumn.FieldName)
+                             );
+                         };
+                         settings.Columns.Add(column =>
+                             {
+                                 column.FieldName = "ItemDetailID";
+                                 column.Visible = false;
+                             });
+                         settings.Columns.Add(column =>
+                             {
+                                 column.FieldName = "ItemDetailName";
+                                 column.Caption = @Resources.Resource.Specs;
+                                 column.Visible = true;
+                                 column.Width = Unit.Percentage(20);
+                                 column.ReadOnly = true;
+                                 column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                 column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                             });
+                         settings.Columns.Add(column =>
+                         {
+                             column.FieldName = "NAME";
+                             column.Caption = @Resources.Resource.Unit;
+                             column.Visible = true;
+                             column.Width = Unit.Percentage(10);
+                             column.ReadOnly = true;
+                             column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                             column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                         });
+
+                         settings.Columns.Add(column =>
+                             {
+                                 column.FieldName = "RequestQuantity";
+                                 column.Caption = @Resources.Resource.requestQuantity;
+                                 column.Visible = true;
+                                 column.Width = Unit.Percentage(10);
+                                 column.ReadOnly = true;
+                                 column.PropertiesEdit.DisplayFormatString = "N2";
+                                 column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                 column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                             });
+
+                         settings.Columns.Add(column =>
+                             {
+                                 column.FieldName = "ITSInventory";
+                                 column.Caption = @Resources.Resource.itsQuantity;
+                                 column.Visible = true;
+                                 column.Width = Unit.Percentage(10);
+                                 column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                 column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                 column.ColumnType = MVCxGridViewColumnType.SpinEdit;
+
+                                 var spinEditProperties = column.PropertiesEdit as SpinEditProperties;
+                                 spinEditProperties.DisplayFormatInEditMode = true;
+                                 spinEditProperties.NumberType = SpinEditNumberType.Float;
+                                 spinEditProperties.DisplayFormatString = "N2";
+                                 spinEditProperties.ClientSideEvents.ValueChanged = "SetITSValue";
+
+                             });
+                         settings.Columns.Add(column =>
+                             {
+                                 column.FieldName = "ERPInventory";
+                                 column.Caption = @Resources.Resource.erpQuantity;
+                                 column.Visible = true;
+                                 column.Width = Unit.Percentage(10);
+                                 column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                 column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+
+                                 column.ColumnType = MVCxGridViewColumnType.SpinEdit;
+
+                                 var spinEditProperties = column.PropertiesEdit as SpinEditProperties;
+                                 spinEditProperties.DisplayFormatInEditMode = true;
+                                 spinEditProperties.DisplayFormatString = "N2";
+                                 spinEditProperties.NumberType = SpinEditNumberType.Float;
+                                 spinEditProperties.ClientSideEvents.ValueChanged = "SetERPValue";
+
+                             });
+
+                         settings.Columns.Add(column =>
+                         {
+                             column.FieldName = "PurchaseQuantity";
+                             column.Caption = @Resources.Resource.purQuantity;
+                             column.Visible = true;
+                             column.Width = Unit.Percentage(10);
+                             column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                             column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+
+                             column.ColumnType = MVCxGridViewColumnType.SpinEdit;
+
+                             var spinEditProperties = column.PropertiesEdit as SpinEditProperties;
+                             spinEditProperties.DisplayFormatInEditMode = true;
+                             spinEditProperties.NumberType = SpinEditNumberType.Float;
+                             spinEditProperties.DisplayFormatString = "N2";
+                             spinEditProperties.ClientSideEvents.ValueChanged = "SetPURValue";
+
+                         });
+                         settings.Settings.ShowStatusBar = GridViewStatusBarMode.Hidden;
+                         settings.CustomActionRouteValues = new { Controller = "Maintenance", Action = "GetAllQuantity", ID = ViewBag.ID,strType=DocType };
+
+                     });
+                 grid.Bind(Model).GetHtml();
+                 if (ViewData["EditError"] != null)
+                 {
+                     grid.SetEditErrorText((string)ViewData["EditError"]);
+                        <div id="paginator-content-1" class="alert-small alert-danger" style="margin-top:10px;">
+                        @Html.Raw((string)ViewData["EditError"])
+                        </div>
+                     }
+                    break;
+                    case "MNConfirmedGrid":
+                    grid = Html.DevExpress().GridView(settings =>
+                        {
+                            settings.Name = "gvMNConfirmedRequest";
+                            settings.KeyFieldName = "ID";
+                            settings.Width = Unit.Percentage(100);
+                            settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "GetConfirmedDoc", strType = DocType };
+                            settings.Width = Unit.Percentage(100);
+                            settings.CommandColumn.Visible = false;
+                            settings.SettingsBehavior.AllowFocusedRow = true;
+                            settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+                            settings.Settings.ShowGroupPanel = true;
+                            settings.SettingsBehavior.AllowSelectByRowClick = true;
+                            settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                            settings.Settings.ShowFilterRow = true;
+                            settings.Settings.ShowFilterRowMenu = true;
+                            settings.SettingsDetail.ShowDetailRow = true;
+                            settings.Settings.ShowFooter = true;
+                            settings.SettingsBehavior.AutoExpandAllGroups = false;
+                            settings.Columns.Add(
+                                column =>
+                                {
+                                    column.FieldName = "ID";
+                                    column.Visible = false;
+                                });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "OrderCode";
+                                column.Caption = @Resources.Resource.OrderCode;
+                                column.CellStyle.CssClass = "tCenter";
+                                column.EditFormSettings.Visible = DefaultBoolean.False;
+                                column.SetDataItemTemplateContent(c =>
+                                {
+                                    ViewContext.Writer.Write(
+                                        "<a title='" + @Resources.Resource.Select + "' href='#responsive' data-toggle='modal' data-target='.bs-example-modal-lg' onclick=\"parent.SetModalStyle('','','" + FEA_ITS_Site.Helper.Ultilities.Root + "/Maintenance/Index?ID=" + DataBinder.Eval(c.DataItem, "ID") + "&strDocType=" + DocType + "&TypeUser=user','" + Resources.Resource.OrderCode + ": " + DataBinder.Eval(c.DataItem, "OrderCode") + "')\">" + DataBinder.Eval(c.DataItem, "OrderCode") + "</a>"
+                                    );
+                                });
+                            });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "Reason";
+                                    column.Caption = @Resources.Resource.Reason;
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "Description";
+                                    column.Caption = @Resources.Resource.Description;
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "User.UserName";
+                                    column.Caption = @Resources.Resource.UserName;
+                                    column.Visible = true;
+                                });
+
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "User.CostCenter.Remark";
+                                    column.Caption = @Resources.Resource.Department;
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "CreateDate";
+                                    column.Caption = @Resources.Resource.CreateDate;
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column=>
+                                {
+                                    column.FieldName="User1.UserName";
+                                    column.Caption=@Resources.Resource.CompleteBy;
+                                    column.Visible=true;
+                                });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "ConfirmDate";
+                                    column.Caption = @Resources.Resource.CompleteDate;
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "Status";
+                                    column.Caption = @Resources.Resource.Status;
+                                    column.Visible = true;
+                                    column.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+                                    var comboBox = column.PropertiesEdit as ComboBoxProperties;
+                                    comboBox.DataSource = FEA_ITS_Site.Controllers.HelperController.GetStatusList();
+                                    comboBox.TextField = "Value";
+                                    comboBox.ValueField = "Key";
+                                    comboBox.ValueType = typeof(int);
+                                });
+
+                            settings.SettingsBehavior.AllowSelectByRowClick = true;
+                            settings.SetDetailRowTemplateContent(c =>
+                            {
+                                Html.RenderAction("GetConfirmedDocDetails", "Maintenance", new { ID = DataBinder.Eval(c.DataItem, "ID"),strType=DocType });
+                            });
+                            settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
+                        });
+                        grid.Bind(Model).GetHtml();
+                    break;
+
+
+                    case "Maintenance_Item_Detail":
+                    grid = Html.DevExpress().GridView(settings =>
+                        {
+                            settings.Name = "gvItemDetails" +ViewBag.ID;
+                            settings.KeyFieldName = "DetailID";
+                            settings.Width = Unit.Percentage(100);
+                            settings.CallbackRouteValues = new { Controller = "GetConfirmedDocDetails", Action = "Maintenance", ID = ViewBag.ID };
+                            settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "ItemDetail.ItemDetailName";
+                                    column.Caption = @Resources.Resource.Specs;
+                                    column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                    column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "Unit.NAME";
+                                    column.Caption = @Resources.Resource.Unit;
+                                    column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                    column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column => {
+                                column.FieldName = "Quantity";
+                                column.Caption = @Resources.Resource.Quantity;
+                                column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                column.Visible = true;
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "EstimatePrice";
+                                column.Caption = @Resources.Resource.EstimatedPrice;
+                                column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                column.Visible = true;
+                            });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "EstimateAmount";
+                                    column.Caption = @Resources.Resource.EstiamtedAmount;
+                                    column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                    column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "PurchaseQuantity";
+                                    column.Caption = @Resources.Resource.purQuantity;
+                                    column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                    column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "PurchaseEstimateAmount";
+                                    column.Caption = @Resources.Resource.purEstimateAmount;
+                                    column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                    column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "ITSQuantity";
+                                    column.Caption = @Resources.Resource.itsQuantity;
+                                    column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                    column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                    column.Visible = true;
+                                });
+                            settings.Columns.Add(column =>
+                                {
+                                    column.FieldName = "ERPQuantity";
+                                    column.Caption = @Resources.Resource.erpQuantity;
+                                    column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                    column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                    column.Visible = true;
+                                });
+
+                            settings.Columns.Add(column =>
+                                {
+                                    column.Name = "Description";
+                                    column.Caption = @Resources.Resource.Description;
+                                    column.HeaderStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#20b2aa");
+                                    column.HeaderStyle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+                                    column.Visible = true;
+                                });
+                        });
+                    grid.Bind(Model).GetHtml();
+                    break;
+
+                    break;
+                case "QueryMNDynamicInventory":
+                 //   Object[] Result5 = (Object[])Model;
+            grid = Html.DevExpress().GridView(settings =>
+               {
+                   settings.Name = "QueryMNDynamicInventory";
+                   settings.KeyFieldName = "ItemDetailID";
+                   settings.Width = Unit.Percentage(100);
+                   settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "CallbackMNDynamicInventory", DateTo = ViewBag.DateTo, DateFrom = ViewBag.DateFrom, Type = ViewBag.DocumentType, lst = Model };
+                   settings.CommandColumn.Visible = false;
+                   settings.SettingsBehavior.AllowFocusedRow = true;
+                   settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+                   settings.Settings.VerticalScrollableHeight = 450;
+                   settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+                   settings.SettingsBehavior.AllowSelectByRowClick = true;
+                   settings.Settings.ShowFilterRow = true;
+                   settings.Settings.ShowFilterRowMenu = true;
+                   settings.Settings.ShowFooter = true;
+                   settings.SettingsBehavior.AllowFocusedRow = true;
+                   settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+                   settings.Settings.ShowFilterRow = true;
+                   settings.Settings.ShowFilterRowMenu = true;
+                   settings.Settings.ShowFilterRowMenuLikeItem = true;
+                   settings.Settings.ShowGroupPanel = true;
+                   settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = "ItemDetailID";
+                       c.Caption = "ItemDetailID";
+                       c.Visible = false;
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = "ItemDetailName";
+                       c.Caption = @Resources.Resource.ItemNameDetail;
+                       c.Visible = true;
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = "BeginQuantity";
+                       c.Caption = @Resources.Resource.BeginQuantity;
+                       c.Visible = true;
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = "StockinQuantity";
+                       c.Caption = @Resources.Resource.StockinQuantity;
+                       c.Visible = true;
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = "StockOutQuantity";
+                       c.Caption = @Resources.Resource.StockoutQuantity;
+                       c.Visible = true;
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = "EndQuantity";
+                       c.Caption = @Resources.Resource.EndQuantity;
+                       c.Visible = true;
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = "InventoryQuantity";
+                       c.Caption = @Resources.Resource.InventoryQuantity;
+                       c.Visible = true;
+                   });
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = "DifferentQuantity";
+                       c.Caption = @Resources.Resource.DifferentQuantity;
+                       c.Visible = true;
+                   });
+               });
+            if (Model != null)
+            {
+                grid.Bind(Model).GetHtml();
+            }
+            else
+            {
+                grid.GetHtml();
+            }
+            break;
+                case "MNQueryRequestList":
+            grid = Html.DevExpress().GridView(
+                        settings =>
+                        {
+                            settings.Name = "gvMNQueryRequestList";
+                            settings.KeyFieldName = "ID";
+                            settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "MNQueryClick", OrderCode = ViewBag.OrderCode, DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo, DocumentType = ViewBag.DocumentType };
+                            settings.Width = Unit.Percentage(100);
+                            settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                            settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "ID";
+                                column.SetColVisible(false);
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "OrderCode";
+                                column.Caption = Resources.Resource.OrderCode;
+                                column.Width = Unit.Percentage(10);
+                                column.CellStyle.CssClass = "tCenter";
+                                column.EditFormSettings.Visible = DefaultBoolean.False;
+                                column.SetDataItemTemplateContent(c =>
+                                {
+                                    string url = "";
+                                    url = FEA_ITS_Site.Helper.Ultilities.Root + "/Maintenance/Index?Type=Maintenance&ID=" + DataBinder.Eval(c.DataItem, "ID") + "&TypeUser=admin','" + Resources.Resource.OrderCode + ": " + DataBinder.Eval(c.DataItem, "OrderCode");
+
+                                    ViewContext.Writer.Write(
+                                        "<a title='" + @Resources.Resource.Select + "' href='#responsive' data-toggle='modal' data-target='.bs-example-modal-lg' onclick=\"SetModalStyle('','','" + url + "')\">" + DataBinder.Eval(c.DataItem, "OrderCode") + "</a>"
+                                    );
+                                });
+                            });
+
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "Creator";
+                                column.Caption = Resources.Resource.Creator;
+                                column.Width = Unit.Percentage(10);
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "Department";
+                                column.Caption = Resources.Resource.Department;
+                                column.Width = Unit.Percentage(15);
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "Reason";
+                                column.Caption = Resources.Resource.Reason;
+                                column.Width = Unit.Percentage(20);
+                            });
+
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "CreateDate";
+                                column.Caption = Resources.Resource.CreateDate;
+                                column.Width = Unit.Percentage(10);
+                                column.ColumnType = MVCxGridViewColumnType.DateEdit;
+
+                                DateEditProperties dateEdit = column.PropertiesEdit as DateEditProperties;
+                                dateEdit.DisplayFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+                                dateEdit.DisplayFormatInEditMode = true;
+                                dateEdit.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+                            });
+
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "ProcessPerson";
+                                column.Caption = Resources.Resource.ProcessPerson;
+                                column.Width = Unit.Percentage(10);
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "ConfirmDate";
+                                column.Caption = Resources.Resource.Confirm;
+                                column.Width = Unit.Percentage(10);
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "Status";
+                                column.Caption = Resources.Resource.Status;
+                                column.Width = Unit.Percentage(10);
+                                column.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+                                var comboBox = column.PropertiesEdit as ComboBoxProperties;
+                                comboBox.DataSource = FEA_ITS_Site.Controllers.HelperController.GetStatusList();
+                                comboBox.TextField = "Value";
+                                comboBox.ValueField = "Key";
+                                comboBox.ValueType = typeof(int);
+                                comboBox.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+                                comboBox.DropDownStyle = DropDownStyle.DropDown;
+                            });
+
+                            settings.Settings.ShowFilterRowMenu = true;
+                            settings.Settings.ShowFilterRow = true;
+                            settings.Settings.ShowFooter = true;
+                            settings.Settings.ShowGroupPanel = true;
+
+                            settings.PreRender = (sender, e) =>
+                            {
+                                ((MVCxGridView)sender).CollapseAll();
+                            };
+                        });
+
+            if (ViewData["EditError"] != null)
+            {
+                grid.SetEditErrorText((string)ViewData["EditError"]);
+            }
+            grid.Bind(Model).GetHtml();
+
+            if (ViewData["EditSuccess"] != null)
+            {
+                <div id="paginator-content-1" class="alert-small alert-success" style="margin-top:10px;">
+                    @Html.Raw((string)ViewData["EditSuccess"])
+                </div>
+            }
+            break;    
+            
+        default:
+            break;
+    
+}
+}

@@ -1,0 +1,1582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="CreateAccount" xml:space="preserve">
+    <value>Create account</value>
+  </data>
+  <data name="DonotHaveAccount" xml:space="preserve">
+    <value>Don't have an account yet?</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginWelcomeTitle" xml:space="preserve">
+    <value>Please enter your id and password to log in.</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="msgInputError" xml:space="preserve">
+    <value>You have some form errors. Please check below.</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="SelectDepartment" xml:space="preserve">
+    <value>--Select a Department--</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="SignupSlogan" xml:space="preserve">
+    <value>Enter your personal details below:</value>
+  </data>
+  <data name="UserCode" xml:space="preserve">
+    <value>Employee ID</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Employee Name</value>
+  </data>
+  <data name="UserName_EN" xml:space="preserve">
+    <value>English Name</value>
+  </data>
+  <data name="WelcomeSlogan" xml:space="preserve">
+    <value>Welcome to Far Eastern Apparel!</value>
+  </data>
+  <data name="emailResSuccessBody" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td style="padding:20px"&gt;
+                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td style="padding:0"&gt;
+                                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                    &lt;tbody&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="background: rgb(59, 89, 152); height: 69px; padding: 10px 30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="height:30px"&gt;
+                                                                &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                    Account Infomation
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                            &lt;td align="right"&gt;
+                                                                &lt;a href="{2}" style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="padding:30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Hello &lt;strong&gt;{3}&lt;/strong&gt;,
+                                                                &lt;/p&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    FEA ITS sent you email about &lt;b&gt;Account Information&lt;/b&gt; with the following contents:
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                &lt;table width="100%"&gt;
+                                                                    &lt;tbody&gt;
+                                                                        &lt;tr&gt;
+                                                                            &lt;td&gt;
+                                                                                &lt;span style="color:#666;"&gt;
+                                                                                    Employee: &lt;strong&gt;{0}&lt;/strong&gt;&lt;br&gt;
+                                                                                    Password: &lt;strong&gt;{1}&lt;/strong&gt; &lt;br&gt;
+                                                                                    &lt;strong style="color:#f7941d"&gt;Please login to Far Eastern Apparel Website to check your document.&lt;/strong&gt;
+                                                                                &lt;/span&gt;
+                                                                            &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                    &lt;/tbody&gt;
+                                                                &lt;/table&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+
+                                                        &lt;tr&gt;
+                                                            &lt;td align="center"&gt;
+                                                                &lt;div&gt;
+                                                                    &lt;a href="{2}" style="font-size: 35px; text-decoration: underline; color: #fff; padding: 15px 30px; color: #f7941d; display: inline-block; font-family: 'Segoe UI',sans-serif; " target="_blank"&gt; Click Here &amp;gt;&amp;gt;&lt;/a&gt;
+                                                                &lt;/div&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                2014 © Far Eastern Apparel(VietNam). LTD.
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</value>
+  </data>
+  <data name="emailResSuccessTitle" xml:space="preserve">
+    <value>Registration successful</value>
+  </data>
+  <data name="msgLoginWrong" xml:space="preserve">
+    <value>Wrong Employee ID or Password</value>
+  </data>
+  <data name="msgResSuccess" xml:space="preserve">
+    <value>Registration was successfully, the Email have been sent to your Email, please check.</value>
+  </data>
+  <data name="msgUserExist" xml:space="preserve">
+    <value>Employee ID were used.</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="ChangePassSlogan" xml:space="preserve">
+    <value>Enter information below to change your password.</value>
+  </data>
+  <data name="ChangePassTitle" xml:space="preserve">
+    <value>Change Password?</value>
+  </data>
+  <data name="InputAccDetail" xml:space="preserve">
+    <value>Enter your account details below:</value>
+  </data>
+  <data name="ChangePass" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ConfirmPass" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="CurrentPass" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
+  <data name="msgChangePassSuccess" xml:space="preserve">
+    <value>Your password have been changed.</value>
+  </data>
+  <data name="msgUserCodeUsed" xml:space="preserve">
+    <value>Employee ID has been used</value>
+  </data>
+  <data name="NewPass" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="Delagate" xml:space="preserve">
+    <value>Delagate</value>
+  </data>
+  <data name="hintDelegate" xml:space="preserve">
+    <value>Select this option &amp; enter delegated email address if u don't have email</value>
+  </data>
+  <data name="hintNote" xml:space="preserve">
+    <value>NOTE!</value>
+  </data>
+  <data name="SelectPosition" xml:space="preserve">
+    <value>--Select a Position--</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="MyInfo" xml:space="preserve">
+    <value>My Infomation</value>
+  </data>
+  <data name="QueryPODivert" xml:space="preserve">
+    <value>Query PO divert</value>
+  </data>
+  <data name="Query" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="msgInsertFail" xml:space="preserve">
+    <value>Can't insert data to system</value>
+  </data>
+  <data name="msgDeleteFail" xml:space="preserve">
+    <value>Can't delete</value>
+  </data>
+  <data name="msgUpdateSuccess" xml:space="preserve">
+    <value>Operation completed!</value>
+  </data>
+  <data name="msgUpdateFailed" xml:space="preserve">
+    <value>Can't update</value>
+  </data>
+  <data name="msgDeleteRealatedNeeded" xml:space="preserve">
+    <value>Please delete realated data!</value>
+  </data>
+  <data name="msgDuplicateUser" xml:space="preserve">
+    <value>Duplicate User</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ResetPass" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="msgChangePassAccountInfo" xml:space="preserve">
+    <value>New password of "{0}" was: {1}</value>
+  </data>
+  <data name="msgDataduplicate" xml:space="preserve">
+    <value>The data was existing, please choose it again!</value>
+  </data>
+  <data name="NextApprover" xml:space="preserve">
+    <value>Next Approver</value>
+  </data>
+  <data name="msgSuccess" xml:space="preserve">
+    <value>Your Information saved successfully!</value>
+  </data>
+  <data name="msgInputRequite" xml:space="preserve">
+    <value>{0} is required!</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveAndSend" xml:space="preserve">
+    <value>Save And Send</value>
+  </data>
+  <data name="SaveDraff" xml:space="preserve">
+    <value>Save Draft</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Approver" xml:space="preserve">
+    <value>Approver</value>
+  </data>
+  <data name="CreateDate" xml:space="preserve">
+    <value>Create date</value>
+  </data>
+  <data name="Creator" xml:space="preserve">
+    <value>Creator</value>
+  </data>
+  <data name="DocumentTypeName" xml:space="preserve">
+    <value>Document Name</value>
+  </data>
+  <data name="OrderCode" xml:space="preserve">
+    <value>Document Code</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>Sender</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="msgDeleteDeviceRegFailed" xml:space="preserve">
+    <value>This document may be sending or signed. So you can not delete.</value>
+  </data>
+  <data name="STATUS_CHECKED" xml:space="preserve">
+    <value>Checked</value>
+  </data>
+  <data name="STATUS_DELETED" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="STATUS_DRAFT" xml:space="preserve">
+    <value>Draft</value>
+  </data>
+  <data name="STATUS_FINSHED" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="STATUS_RETURNED" xml:space="preserve">
+    <value>Returned</value>
+  </data>
+  <data name="STATUS_SENDING" xml:space="preserve">
+    <value>Sending</value>
+  </data>
+  <data name="STATUS_UNKNOW" xml:space="preserve">
+    <value>Unknow</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="BaseInfomation" xml:space="preserve">
+    <value>Base information</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DetailInfomation" xml:space="preserve">
+    <value>Detail infomation</value>
+  </data>
+  <data name="EndApprove" xml:space="preserve">
+    <value>End Workflow</value>
+  </data>
+  <data name="ItemType" xml:space="preserve">
+    <value>Request type</value>
+  </data>
+  <data name="LastUpdateDate" xml:space="preserve">
+    <value>Last Update Date</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>Management</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Request</value>
+  </data>
+  <data name="Sequence" xml:space="preserve">
+    <value>Sequence</value>
+  </data>
+  <data name="Using" xml:space="preserve">
+    <value>Request detail</value>
+  </data>
+  <data name="CheckDate" xml:space="preserve">
+    <value>Check date</value>
+  </data>
+  <data name="DocType" xml:space="preserve">
+    <value>Document Type </value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="AccountInfo" xml:space="preserve">
+    <value>Account Information</value>
+  </data>
+  <data name="AdditionalInfo" xml:space="preserve">
+    <value>Additional information</value>
+  </data>
+  <data name="ContactInfo" xml:space="preserve">
+    <value>Contact Infomation</value>
+  </data>
+  <data name="EditAccount" xml:space="preserve">
+    <value>Edit Account</value>
+  </data>
+  <data name="ExpiredPasswordDate" xml:space="preserve">
+    <value>Expired Password Date</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="GeneralInfo" xml:space="preserve">
+    <value>General information</value>
+  </data>
+  <data name="msgEmailExtInvalid" xml:space="preserve">
+    <value>Email must be end with: @{0}</value>
+  </data>
+  <data name="msgSameOldPassword" xml:space="preserve">
+    <value>The new password must be different from the old password</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="Sign" xml:space="preserve">
+    <value>Sign</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="CompleteDate" xml:space="preserve">
+    <value>Complete Date</value>
+  </data>
+  <data name="CostCenterCode" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="ItemName" xml:space="preserve">
+    <value>Item Name</value>
+  </data>
+  <data name="ItemNameDetail" xml:space="preserve">
+    <value>Item Detail</value>
+  </data>
+  <data name="msgSelectItem" xml:space="preserve">
+    <value>Select item(s) to to operate</value>
+  </data>
+  <data name="HistoryApprove" xml:space="preserve">
+    <value>History for approval</value>
+  </data>
+  <data name="PendingList" xml:space="preserve">
+    <value>Pending List</value>
+  </data>
+  <data name="CurrencyType" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="EstiamtedAmount" xml:space="preserve">
+    <value>Estimated Amount</value>
+  </data>
+  <data name="IsUrgent" xml:space="preserve">
+    <value>Urgent</value>
+  </data>
+  <data name="Specs" xml:space="preserve">
+    <value>Detail - Specification</value>
+  </data>
+  <data name="DeliveryDate" xml:space="preserve">
+    <value>Delivery Date</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="msgInvalidItemInList" xml:space="preserve">
+    <value>Chỉ có một loại Item tồn tại trong hóa đơn</value>
+  </data>
+  <data name="WaitingArea" xml:space="preserve">
+    <value>Waiting Area</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="msgPasswordExpired" xml:space="preserve">
+    <value>Current password has expired, please change your new password</value>
+  </data>
+  <data name="QuantityInStock" xml:space="preserve">
+    <value>In Stock</value>
+  </data>
+  <data name="TechnicianID" xml:space="preserve">
+    <value>Technician ID</value>
+  </data>
+  <data name="TechnicianName" xml:space="preserve">
+    <value>TechnicianName</value>
+  </data>
+  <data name="QuanInStock" xml:space="preserve">
+    <value>Quan In Stock</value>
+  </data>
+  <data name="QuantityNeeded" xml:space="preserve">
+    <value>Q.Needed</value>
+  </data>
+  <data name="DeviceRegistration" xml:space="preserve">
+    <value>Device Registration</value>
+  </data>
+  <data name="EstimatedPrice" xml:space="preserve">
+    <value>Estimated Price</value>
+  </data>
+  <data name="HardwareRequirement" xml:space="preserve">
+    <value>Software &amp; Hardware Requirement</value>
+  </data>
+  <data name="HardwareRequirementDetail" xml:space="preserve">
+    <value>Detail of software &amp; hardware requirement</value>
+  </data>
+  <data name="Inventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="StockIn" xml:space="preserve">
+    <value>Stock In</value>
+  </data>
+  <data name="StockOut" xml:space="preserve">
+    <value>Stock Out</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="msgDeleteStockInFailed" xml:space="preserve">
+    <value>This document may be closed or not belong of you. So you can not delete.</value>
+  </data>
+  <data name="DeloveryFor" xml:space="preserve">
+    <value>Delovery For</value>
+  </data>
+  <data name="BeginQuantity" xml:space="preserve">
+    <value>First Quantity</value>
+  </data>
+  <data name="DifferentQuantity" xml:space="preserve">
+    <value>Quantity differences</value>
+  </data>
+  <data name="EndQuantity" xml:space="preserve">
+    <value>End Quantity</value>
+  </data>
+  <data name="InventoryQuantity" xml:space="preserve">
+    <value>Inventory Quantity</value>
+  </data>
+  <data name="StockinQuantity" xml:space="preserve">
+    <value>Stock in Quantity</value>
+  </data>
+  <data name="StockoutQuantity" xml:space="preserve">
+    <value>Stock out Quantity</value>
+  </data>
+  <data name="msgSelectProductItem" xml:space="preserve">
+    <value>Please select the products </value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="emailApproveDocBody" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td style="padding:20px"&gt;
+                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td style="padding:0"&gt;
+                                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                    &lt;tbody&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="background: rgb(59, 89, 152); height: 69px; padding: 10px 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="height:30px"&gt;
+                                                                &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                    Document(s) need to be signed
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                            &lt;td align="right"&gt;
+                                                                &lt;a href="{4}" style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="padding:30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Hello &lt;strong&gt;{5}&lt;/strong&gt;,
+                                                                &lt;/p&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    FEA ITS sent you email about &lt;b&gt;Document To Sign&lt;/b&gt; with the following contents:
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;table width="100%"&gt;
+                                                                    &lt;tbody&gt;
+                                                                        &lt;tr&gt;
+                                                                            &lt;td&gt;
+                                                                                &lt;span style="color:#666;"&gt;
+                                                                                    Employee: &lt;strong&gt;{0}({1}) - {2}&lt;/strong&gt;&lt;br&gt;
+                                                                                    Reason: &lt;strong&gt;{3}&lt;/strong&gt; &lt;br&gt;
+                                                                                    Comment: &lt;strong&gt;{6}&lt;/strong&gt; &lt;br&gt;
+                                                                                    &lt;strong style="color:#f7941d"&gt;Please login to Far Eastern Apparel Website to check your document.&lt;/strong&gt;
+                                                                                &lt;/span&gt;
+                                                                            &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                    &lt;/tbody&gt;
+                                                                &lt;/table&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+
+                                                        &lt;tr&gt;
+                                                            &lt;td align="center"&gt;
+                                                                &lt;div&gt;
+                                                                    &lt;a href="{4}" style="font-size: 35px; text-decoration: underline; color: #fff; padding: 15px 30px; color: #f7941d; display: inline-block; font-family: 'Segoe UI',sans-serif;" target="_blank"&gt; Click Here &amp;gt;&amp;gt;&lt;/a&gt;
+                                                                &lt;/div&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                2014 © Far Eastern Apparel(VietNam). LTD
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</value>
+  </data>
+  <data name="emailApproveDocTitle" xml:space="preserve">
+    <value>ITS System {0} - You have a document to sign</value>
+  </data>
+  <data name="CancelConfirm" xml:space="preserve">
+    <value>Cancel confirm</value>
+  </data>
+  <data name="NotEnough" xml:space="preserve">
+    <value>You can't cancel confirm because IT inventory is not enough. Please check the below information:</value>
+  </data>
+  <data name="msgInputDDeviceReqItem" xml:space="preserve">
+    <value>Please provide  list of requirement</value>
+  </data>
+  <data name="msgInputDHardReItem" xml:space="preserve">
+    <value>Please provide a list of materials to be purchased</value>
+  </data>
+  <data name="InventoryCalculate" xml:space="preserve">
+    <value>Inventory Cal</value>
+  </data>
+  <data name="InventoryQuery" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="QueryDynamicInventory" xml:space="preserve">
+    <value>Query Dynamic Inventory</value>
+  </data>
+  <data name="msgConfirmMessage" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="Attachment" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Document Name</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="AddNew" xml:space="preserve">
+    <value>Add new</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="CompleteBy" xml:space="preserve">
+    <value>Completed by</value>
+  </data>
+  <data name="ReceivedByDept" xml:space="preserve">
+    <value>Received by Dept</value>
+  </data>
+  <data name="SignType" xml:space="preserve">
+    <value>Sign Type</value>
+  </data>
+  <data name="DelegateFor" xml:space="preserve">
+    <value>Delegate for</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>From Date</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>To Date</value>
+  </data>
+  <data name="UserGuide" xml:space="preserve">
+    <value>Are you a newcomer? Please read user guide. Choose language:</value>
+  </data>
+  <data name="Condition" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="RequestDetail" xml:space="preserve">
+    <value>Request Detail</value>
+  </data>
+  <data name="RequestType" xml:space="preserve">
+    <value>Request Type</value>
+  </data>
+  <data name="SQLSatement" xml:space="preserve">
+    <value>SQL Stament</value>
+  </data>
+  <data name="Parameter" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="CustomerPO" xml:space="preserve">
+    <value>Customer PO</value>
+  </data>
+  <data name="msgInputFile" xml:space="preserve">
+    <value>Please enter file to upload</value>
+  </data>
+  <data name="msgInvalidExcelFile" xml:space="preserve">
+    <value>Please select the Excel file with format .xls or .xlsx</value>
+  </data>
+  <data name="msgInvalidPONumber" xml:space="preserve">
+    <value>Invalid PO number</value>
+  </data>
+  <data name="InputData" xml:space="preserve">
+    <value>Input data</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="msgDeleteWHImportFailed" xml:space="preserve">
+    <value>This document have been confirmed or stocked in. So you can't delete it</value>
+  </data>
+  <data name="msgInvalidCusNumber" xml:space="preserve">
+    <value>PONumber is invalid</value>
+  </data>
+  <data name="msgWHSerialDuplicate" xml:space="preserve">
+    <value>Serial duplicated at: </value>
+  </data>
+  <data name="STATUS_CANCEL_CONFIRM" xml:space="preserve">
+    <value>Cancel confirm</value>
+  </data>
+  <data name="STATUS_CONFIRMED" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="STATUS_SAVED" xml:space="preserve">
+    <value>Saved</value>
+  </data>
+  <data name="msgCancelConfirmWHImportFailed" xml:space="preserve">
+    <value>This document have been confirmed or stocked in. So you can't cancel it</value>
+  </data>
+  <data name="ContainerCount" xml:space="preserve">
+    <value>Total Container</value>
+  </data>
+  <data name="ContainerDifferences" xml:space="preserve">
+    <value>Container Differences</value>
+  </data>
+  <data name="EndTotalContainer" xml:space="preserve">
+    <value>End Total Container</value>
+  </data>
+  <data name="EndTotalQuantity" xml:space="preserve">
+    <value>End Total Quantity</value>
+  </data>
+  <data name="QuantityDifferences" xml:space="preserve">
+    <value>Quantity Differences</value>
+  </data>
+  <data name="TotalContainerConfirmed" xml:space="preserve">
+    <value>Total Container (Confirmed)</value>
+  </data>
+  <data name="TotalContainerImported" xml:space="preserve">
+    <value>Total Container (Imported)</value>
+  </data>
+  <data name="TotalContainerNotConfirmed" xml:space="preserve">
+    <value>Total Container (Not confirmed)</value>
+  </data>
+  <data name="TotalQuantityConfirmed" xml:space="preserve">
+    <value>Total Quantity Confirmed)</value>
+  </data>
+  <data name="TotalQuantityNotConfirmed" xml:space="preserve">
+    <value>Total Quantity (Not confirmed)</value>
+  </data>
+  <data name="TotaQuantityImported" xml:space="preserve">
+    <value>Total Quantity (Imported)</value>
+  </data>
+  <data name="TypeQuery" xml:space="preserve">
+    <value>Type Query</value>
+  </data>
+  <data name="OperationType" xml:space="preserve">
+    <value>Operation Type</value>
+  </data>
+  <data name="CONFIRM_IN" xml:space="preserve">
+    <value>{0} confirmed</value>
+  </data>
+  <data name="CONFIRM_OUT" xml:space="preserve">
+    <value>{0} canceled confirm</value>
+  </data>
+  <data name="STOCKIN_IN" xml:space="preserve">
+    <value>{0} stock in</value>
+  </data>
+  <data name="STOCKIN_OUT" xml:space="preserve">
+    <value>{0} canceled stock in</value>
+  </data>
+  <data name="DesRemark" xml:space="preserve">
+    <value>Please enter User Code, Full Name, Department of equipment.</value>
+  </data>
+  <data name="ReasonRemark" xml:space="preserve">
+    <value>Please specify the reason for the content in Vietnamese and English (or Chinese)</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="VietNam" xml:space="preserve">
+    <value>Vietnamese</value>
+  </data>
+  <data name="TotalStockedInContainerFromERP" xml:space="preserve">
+    <value>Total Container From ERP</value>
+  </data>
+  <data name="TotalStockedInQuantityFromERP" xml:space="preserve">
+    <value>Total Quantity From ERP</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="ContainerDifferencesBetweenWarehouseAndPacking" xml:space="preserve">
+    <value>Container Differences (PK vs WH)</value>
+  </data>
+  <data name="QuantityDifferencesBetweenWarehouseAndPacking" xml:space="preserve">
+    <value>Quantity Differences (PK vs WH)</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="OrderState" xml:space="preserve">
+    <value>Order State:</value>
+  </data>
+  <data name="TotalReturnContainer" xml:space="preserve">
+    <value>Total Lend Container</value>
+  </data>
+  <data name="TotalReturnQuantity" xml:space="preserve">
+    <value>Total Lend Quantity</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="IsCoordinate" xml:space="preserve">
+    <value>Coordinate</value>
+  </data>
+  <data name="AdjustApplication" xml:space="preserve">
+    <value>Adjust</value>
+  </data>
+  <data name="Grant" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="MaterialName" xml:space="preserve">
+    <value>Material Name</value>
+  </data>
+  <data name="PersonName" xml:space="preserve">
+    <value>Person Name</value>
+  </data>
+  <data name="ReturnedDate" xml:space="preserve">
+    <value>Returned date</value>
+  </data>
+  <data name="STATUS_NEW" xml:space="preserve">
+    <value>Create new</value>
+  </data>
+  <data name="SA_AdjustApplication" xml:space="preserve">
+    <value>Adjust Application</value>
+  </data>
+  <data name="SA_BorrowApplication" xml:space="preserve">
+    <value>Borrow Application</value>
+  </data>
+  <data name="SA_DonativeApplication" xml:space="preserve">
+    <value>Donative Application</value>
+  </data>
+  <data name="SA_LendApplication" xml:space="preserve">
+    <value>Lend Application</value>
+  </data>
+  <data name="SA_NomalApplication" xml:space="preserve">
+    <value>Export Normal Material Applicaiton</value>
+  </data>
+  <data name="IsConstraint" xml:space="preserve">
+    <value>Is Constraint</value>
+  </data>
+  <data name="CompanyCode" xml:space="preserve">
+    <value>Company code</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company name</value>
+  </data>
+  <data name="STATUS_SPENDING" xml:space="preserve">
+    <value>PENDING</value>
+  </data>
+  <data name="CountApplicationBaseOnDepartment" xml:space="preserve">
+    <value>Count application base on department</value>
+  </data>
+  <data name="DynamicStatistic" xml:space="preserve">
+    <value>Dynamic Statistic</value>
+  </data>
+  <data name="AdjustedQuantity" xml:space="preserve">
+    <value>Total Adjusted Quantity</value>
+  </data>
+  <data name="ReceivedQuantity" xml:space="preserve">
+    <value>Total Received Quantity</value>
+  </data>
+  <data name="RemainingQuantity" xml:space="preserve">
+    <value>Total Remaining Quantity</value>
+  </data>
+  <data name="ReturnedQuantity" xml:space="preserve">
+    <value>Total Returned Quantity</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="msgInvalidQuantityAdjust" xml:space="preserve">
+    <value>The quantity, what you want to adjust invalid</value>
+  </data>
+  <data name="CheckedList" xml:space="preserve">
+    <value>Checked list</value>
+  </data>
+  <data name="Input" xml:space="preserve">
+    <value>Input</value>
+  </data>
+  <data name="msgInvalidDonateQuantity" xml:space="preserve">
+    <value>The quantity, what you want donate not enough, quantity remaining: </value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="SAExport" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="SAImport" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="ProcessPerson" xml:space="preserve">
+    <value>Process Person</value>
+  </data>
+  <data name="TotalExportQuantity" xml:space="preserve">
+    <value>Total Exported Quantity</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Complete</value>
+  </data>
+  <data name="PONumber" xml:space="preserve">
+    <value>PO Number</value>
+  </data>
+  <data name="InvoiceNum" xml:space="preserve">
+    <value>Invoice Number</value>
+  </data>
+  <data name="ShipmentDate" xml:space="preserve">
+    <value>Shipment Date</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="BarcodeHistory" xml:space="preserve">
+    <value>Barcode History</value>
+  </data>
+  <data name="ColorName" xml:space="preserve">
+    <value>Color Name</value>
+  </data>
+  <data name="SerialNo" xml:space="preserve">
+    <value>Serial No</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="msgInvalid" xml:space="preserve">
+    <value>{0} invalid</value>
+  </data>
+  <data name="msgBarcodeRequite" xml:space="preserve">
+    <value>Vui lòng cung cấp danh sách các Barcode cần xuất trong đơn</value>
+  </data>
+  <data name="msgRemoveBarcodeCount" xml:space="preserve">
+    <value>There have {0} Barcode removed.</value>
+  </data>
+  <data name="ExportFromStock" xml:space="preserve">
+    <value>{0} export finished goods</value>
+  </data>
+  <data name="ImportToStock" xml:space="preserve">
+    <value>{0} import finished goods</value>
+  </data>
+  <data name="TotalExportItem" xml:space="preserve">
+    <value>Total export item</value>
+  </data>
+  <data name="TotalExportItemFromERP" xml:space="preserve">
+    <value>Total export item from ERP</value>
+  </data>
+  <data name="Discussion" xml:space="preserve">
+    <value>Discuss</value>
+  </data>
+  <data name="References" xml:space="preserve">
+    <value>References</value>
+  </data>
+  <data name="emailReferences" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td style="padding:20px"&gt;
+                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td style="padding:0"&gt;
+                                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                    &lt;tbody&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="background: rgb(59, 89, 152); height: 69px; padding: 10px 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="height:30px"&gt;
+                                                                &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                    Document(s) to sign
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                            &lt;td align="right"&gt;
+                                                                &lt;a href="{2}" style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="padding:30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Hello &lt;strong&gt;{0}&lt;/strong&gt;,
+                                                                &lt;/p&gt;
+                                                                &lt;p style="margin:0"&gt;{1} have a document, that need be signed  and {1} want to discuss with you about that.&lt;/p&gt;
+                                                               Comment: &lt;strong&gt;{3}&lt;/strong&gt; &lt;br&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;table width="100%"&gt;
+                                                                    &lt;tbody&gt;
+                                                                        &lt;tr&gt;
+                                                                            &lt;td&gt;
+                                                                                &lt;span style="color:#666;"&gt;  
+                                                                                    &lt;strong style="color:#f7941d"&gt;Please login to Far Eastern Apparel Website to check your document.&lt;/strong&gt;
+                                                                                &lt;/span&gt;
+                                                                            &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                    &lt;/tbody&gt;
+                                                                &lt;/table&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+
+                                                        &lt;tr&gt;
+                                                            &lt;td align="center"&gt;
+                                                                &lt;div&gt;
+                                                                    &lt;a href="{2}" style="font-size: 35px; text-decoration: underline; color: #fff; padding: 15px 30px; color: #f7941d; display: inline-block; font-family: 'Segoe UI',sans-serif;" target="_blank"&gt; Click Here &amp;gt;&amp;gt;&lt;/a&gt;
+                                                                &lt;/div&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                2014 © Far Eastern Apparel.
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="CurrentUser" xml:space="preserve">
+    <value>Current user:</value>
+  </data>
+  <data name="Conversation" xml:space="preserve">
+    <value>Conversation</value>
+  </data>
+  <data name="SelectUser" xml:space="preserve">
+    <value>Select user to refer:</value>
+  </data>
+  <data name="CustomerCode" xml:space="preserve">
+    <value>CustomerCode</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Customer Name</value>
+  </data>
+  <data name="msgGetSerialByMainline" xml:space="preserve">
+    <value>If Item value is blank, the Serials will be get by Customer PO</value>
+  </data>
+  <data name="ColorCode" xml:space="preserve">
+    <value>Color Code</value>
+  </data>
+  <data name="ProcessingPerson" xml:space="preserve">
+    <value>Processing person</value>
+  </data>
+  <data name="DoProcessDocument" xml:space="preserve">
+    <value>Begin process</value>
+  </data>
+  <data name="Hardware" xml:space="preserve">
+    <value>Hardware</value>
+  </data>
+  <data name="msgDeviceResOnlyOneDoc" xml:space="preserve">
+    <value>In the application for only one type of Document Type, please select again.</value>
+  </data>
+  <data name="Software" xml:space="preserve">
+    <value>Software</value>
+  </data>
+  <data name="ShelfName" xml:space="preserve">
+    <value>Shelf Name</value>
+  </data>
+  <data name="IsShelf" xml:space="preserve">
+    <value>Is Shelf</value>
+  </data>
+  <data name="SetShelf" xml:space="preserve">
+    <value>Set Shelf</value>
+  </data>
+  <data name="ShelfMasterName" xml:space="preserve">
+    <value>Self group</value>
+  </data>
+  <data name="CompletedEstimateDate" xml:space="preserve">
+    <value>Complete estimate date</value>
+  </data>
+  <data name="DeliveryRoom" xml:space="preserve">
+    <value>Delivery Room</value>
+  </data>
+  <data name="MaterialType" xml:space="preserve">
+    <value>Material Type</value>
+  </data>
+  <data name="msgDataduplicateCostCenterCode" xml:space="preserve">
+    <value>You can only chose 1 delivery room. Please try again</value>
+  </data>
+  <data name="Deliverydept" xml:space="preserve">
+    <value>Delivery Department</value>
+  </data>
+  <data name="ItemGroup" xml:space="preserve">
+    <value>Item Group</value>
+  </data>
+  <data name="TotalLendQuantity" xml:space="preserve">
+    <value>Total Lend Quantity</value>
+  </data>
+  <data name="000002" xml:space="preserve">
+    <value>Far Eastern Apparel (VietNam) LTD.</value>
+  </data>
+  <data name="010207" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="010294" xml:space="preserve">
+    <value>Unit price</value>
+  </data>
+  <data name="010394" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="010789" xml:space="preserve">
+    <value>Total cost</value>
+  </data>
+  <data name="010862" xml:space="preserve">
+    <value>Direct manpower</value>
+  </data>
+  <data name="010863" xml:space="preserve">
+    <value>Production expenses</value>
+  </data>
+  <data name="010864" xml:space="preserve">
+    <value>Processing charge for 2nd processing</value>
+  </data>
+  <data name="010865" xml:space="preserve">
+    <value>Processing charge of sewing step</value>
+  </data>
+  <data name="010963" xml:space="preserve">
+    <value>Wastage of stock</value>
+  </data>
+  <data name="011074" xml:space="preserve">
+    <value>Cost amount</value>
+  </data>
+  <data name="011427" xml:space="preserve">
+    <value>Fabric</value>
+  </data>
+  <data name="011687" xml:space="preserve">
+    <value>Order Quantity</value>
+  </data>
+  <data name="011822" xml:space="preserve">
+    <value>Accessory</value>
+  </data>
+  <data name="013610" xml:space="preserve">
+    <value>Compare prices and actual provisional table</value>
+  </data>
+  <data name="013611" xml:space="preserve">
+    <value>Factory Name</value>
+  </data>
+  <data name="013612" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
+  <data name="013613" xml:space="preserve">
+    <value>Estimated / Actual</value>
+  </data>
+  <data name="StockinAmount" xml:space="preserve">
+    <value>Stockin Amount</value>
+  </data>
+  <data name="AccountType" xml:space="preserve">
+    <value>Account Type</value>
+  </data>
+  <data name="DiscountAmount" xml:space="preserve">
+    <value>Discount Amount</value>
+  </data>
+  <data name="011071" xml:space="preserve">
+    <value>Sales quantity</value>
+  </data>
+  <data name="011072" xml:space="preserve">
+    <value>Sales amount</value>
+  </data>
+  <data name="011081" xml:space="preserve">
+    <value>Gross profit rate (%)</value>
+  </data>
+  <data name="013614" xml:space="preserve">
+    <value>Profit</value>
+  </data>
+  <data name="013615" xml:space="preserve">
+    <value>Difference</value>
+  </data>
+  <data name="SubmitAll" xml:space="preserve">
+    <value>Bulk Approval</value>
+  </data>
+  <data name="DocRef" xml:space="preserve">
+    <value>Doc. Reference:</value>
+  </data>
+  <data name="AllowedTypes" xml:space="preserve">
+    <value>Allowed types</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+  <data name="ListWaitingConfirmation" xml:space="preserve">
+    <value>List awaiting confirmation</value>
+  </data>
+  <data name="ListWaitingProcession" xml:space="preserve">
+    <value>Pending list</value>
+  </data>
+  <data name="MaximumFileSize" xml:space="preserve">
+    <value>Maximum file size</value>
+  </data>
+  <data name="Nodata" xml:space="preserve">
+    <value>No data to display</value>
+  </data>
+  <data name="ExportCompany" xml:space="preserve">
+    <value>Export Company name</value>
+  </data>
+  <data name="ServerName" xml:space="preserve">
+    <value>Server Name</value>
+  </data>
+  <data name="AdjustQuantity" xml:space="preserve">
+    <value>Adjust Quantity</value>
+  </data>
+  <data name="Damged" xml:space="preserve">
+    <value>Damged</value>
+  </data>
+  <data name="IsBroken" xml:space="preserve">
+    <value>Retunred</value>
+  </data>
+  <data name="AdjustAmount" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="LastUpdateDateMonth" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="msgIsNotBroken" xml:space="preserve">
+    <value>This item is not available for Damged</value>
+  </data>
+  <data name="msgErrorNotBroken" xml:space="preserve">
+    <value>{0} không đủ số lượng biên chế, số lượng vượt quá biên chế: {1}</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="msgCopyMessage" xml:space="preserve">
+    <value>This action will delete the existed data of the month you want to copy to, are you sure?</value>
+  </data>
+  <data name="msgMoveTo" xml:space="preserve">
+    <value>Month Query:</value>
+  </data>
+  <data name="msgCopyTo" xml:space="preserve">
+    <value>Copy to month:</value>
+  </data>
+  <data name="msgNotice" xml:space="preserve">
+    <value>This action will delete the existed data of the month you want to copy to</value>
+  </data>
+  <data name="msgErrorOpenSalesOrder" xml:space="preserve">
+    <value>You're choosing the "Open Sales Order" requirement, so please type in FEPO code with 11 characters. 1 FEPO / 1 time</value>
+  </data>
+  <data name="CheckFEPO" xml:space="preserve">
+    <value>FEPO isn't available. Please check again.</value>
+  </data>
+  <data name="013616" xml:space="preserve">
+    <value>Style Name</value>
+  </data>
+  <data name="CheckingManagerment" xml:space="preserve">
+    <value>GA Approval</value>
+  </data>
+  <data name="Push" xml:space="preserve">
+    <value>Push To Eland</value>
+  </data>
+  <data name="DatePush" xml:space="preserve">
+    <value>Date Push</value>
+  </data>
+  <data name="PRCode" xml:space="preserve">
+    <value>PR Code</value>
+  </data>
+  <data name="Pushed" xml:space="preserve">
+    <value>Pushed</value>
+  </data>
+  <data name="PushMonth" xml:space="preserve">
+    <value>Select a month</value>
+  </data>
+  <data name="PushPerson" xml:space="preserve">
+    <value>Push Person</value>
+  </data>
+  <data name="PushStatus" xml:space="preserve">
+    <value>Collect user’s request from 23th last month to 22th this month</value>
+  </data>
+  <data name="QueryStatus" xml:space="preserve">
+    <value>Query a month push data</value>
+  </data>
+  <data name="DeclarationCode" xml:space="preserve">
+    <value>Declaration Code</value>
+  </data>
+  <data name="DeclarationDate" xml:space="preserve">
+    <value>Declaration Date</value>
+  </data>
+  <data name="InvoiceCode" xml:space="preserve">
+    <value>Invoice Code</value>
+  </data>
+  <data name="MinimumType" xml:space="preserve">
+    <value>Minimum Type</value>
+  </data>
+  <data name="Specifications" xml:space="preserve">
+    <value>Spec</value>
+  </data>
+  <data name="StorePosition" xml:space="preserve">
+    <value>Store Position</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="WarehouseName" xml:space="preserve">
+    <value>Warehouse Name</value>
+  </data>
+  <data name="MaterialCode" xml:space="preserve">
+    <value>Material Code</value>
+  </data>
+  <data name="ERPDoc" xml:space="preserve">
+    <value>ERP Documents</value>
+  </data>
+  <data name="Cause" xml:space="preserve">
+    <value>Cause</value>
+  </data>
+  <data name="013617" xml:space="preserve">
+    <value>Domestic purchasing</value>
+  </data>
+  <data name="013618" xml:space="preserve">
+    <value>Be supplied materials for processing</value>
+  </data>
+  <data name="013619" xml:space="preserve">
+    <value>Selt import materials for processing</value>
+  </data>
+  <data name="013620" xml:space="preserve">
+    <value>Normal trade</value>
+  </data>
+  <data name="013621" xml:space="preserve">
+    <value>Business type - export</value>
+  </data>
+  <data name="013622" xml:space="preserve">
+    <value>Business type_Domestic</value>
+  </data>
+  <data name="TradeType" xml:space="preserve">
+    <value>Trade type</value>
+  </data>
+  <data name="SignDepartment" xml:space="preserve">
+    <value>Sign for department</value>
+  </data>
+  <data name="ACCESSORYDEVELOPOUT" xml:space="preserve">
+    <value>Stock out accessory for sample</value>
+  </data>
+  <data name="ACCESSORYMOVEOUT" xml:space="preserve">
+    <value>Convert accessory</value>
+  </data>
+  <data name="ACCESSORYMOVEOUTMULTI" xml:space="preserve">
+    <value>Convert Accessory (Multi PO)</value>
+  </data>
+  <data name="ACCESSORYOUT" xml:space="preserve">
+    <value>Stock out accessory for production</value>
+  </data>
+  <data name="DEVELOPPRODUCT" xml:space="preserve">
+    <value>Stock out product for sample</value>
+  </data>
+  <data name="FABRICDEVELOPOUT" xml:space="preserve">
+    <value>Stock out fabric for sample</value>
+  </data>
+  <data name="FABRICMOVEOUT" xml:space="preserve">
+    <value>Convert fabric</value>
+  </data>
+  <data name="FABRICMOVEOUTMULTI" xml:space="preserve">
+    <value>Convert fabric (Multi PO)</value>
+  </data>
+  <data name="FABRICOUT" xml:space="preserve">
+    <value>Stock out fabricfor production</value>
+  </data>
+  <data name="erpQuantity" xml:space="preserve">
+    <value>ERP Quantity</value>
+  </data>
+  <data name="itsQuantity" xml:space="preserve">
+    <value>ITS Quantity</value>
+  </data>
+  <data name="purQuantity" xml:space="preserve">
+    <value>Purchase Quantity</value>
+  </data>
+  <data name="requestQuantity" xml:space="preserve">
+    <value>Request Quantity</value>
+  </data>
+  <data name="erpInventory" xml:space="preserve">
+    <value>ERP Inventory</value>
+  </data>
+  <data name="itsInventory" xml:space="preserve">
+    <value>ITS Inventory</value>
+  </data>
+  <data name="purEstimateAmount" xml:space="preserve">
+    <value>Purchase Estimate Amount</value>
+  </data>
+  <data name="receiveFrom" xml:space="preserve">
+    <value>Receive From</value>
+  </data>
+  <data name="requestCode" xml:space="preserve">
+    <value>Request Code</value>
+  </data>
+</root>

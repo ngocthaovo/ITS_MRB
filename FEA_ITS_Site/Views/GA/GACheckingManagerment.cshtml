@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "GACheckingManagerment";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@model Dictionary<string, string>
+           
+<script type="text/javascript">
+    function getItem() {
+        //var asds = gvApprovedOrder.GetSelectedKeysOnPage();
+        //alert(asds);
+    }
+
+    //var selObj = new Array();
+
+    function SelectionChanged(s, e) {
+        s.GetSelectedFieldValues("OrderCode;DocumentTypeName", GetSelectedFieldValuesCallback);
+    }
+    function GetSelectedFieldValuesCallback(selectedValues) {
+
+        try {
+            //selObj = new Array();
+            var sData = "";
+            if (selectedValues.length != 0) {
+                for (i = 0; i < selectedValues.length; i++) {
+                    var obj = new Object();
+
+                    //obj.Key = selectedValues[i][0];
+                    //obj.Value = selectedValues[i][1];
+                    //selObj[selObj.length] = obj;
+
+                    if (sData.length == 0)
+                        sData += "\"" + selectedValues[i][0] + "\"" + ":" + "\"" + selectedValues[i][1] + "\"";
+                    else
+                        sData += "," + "\"" + selectedValues[i][0] + "\"" + ":" + "\"" + selectedValues[i][1] + "\"";
+                }
+
+                sData = "{" + sData + "}";
+            }
+
+            $("#mydata").val(sData);
+        } finally {
+        }
+    }
+
+
+
+    function DoReject(s, e) {
+
+        var flag = false;
+
+        var comment = prompt("Nhập lí do", "");
+        if (comment != null) {
+
+            if (comment.length > 0) {
+                //alert("ok, hủy với lí do: "+ comment);
+                $("#GA_comment").val(comment);
+                flag = true;
+            }
+            else
+                alert("Vui lòng nhập lí do.");
+
+        }
+
+        e.processOnServer = flag;
+    }
+
+    function DoBeginProcess() {
+        var data = $("#mydata").val();
+        if (data.length == 0) {
+            alert("@Resources.Resource.msgSelectItem");
+            return;
+        }
+        // alert(data);
+        //SetModalStyle('50%', '100', '/ItemDetail/ItemDetailManage?ItemID=07d688b7-effe-45c0-997d-21ff27adcc9f', 'Detail: Máy photocopy');
+        SetModalStyle('50%', '68%', '@FEA_ITS_Site.Helper.Ultilities.Root/GA/GADoProcessRequestOrder?data=' + data, 'Cài đặt xử lý đơn', 'true', '-25%', '-25%');
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+<div class="panel-body"
+    @using (Html.BeginForm("GACheckingManagerment", "GA", new { }, FormMethod.Post, new { id = "frmMainForm", }))
+    {
+        @Html.Hidden("mydata");
+        @Html.Hidden("GA_comment");
+
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @*@Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.Name = "btnProcess";
+                        settings.Width = 90;
+                        settings.Text = Resources.Resource.DoProcessDocument;
+                        settings.UseSubmitBehavior = false;
+                        settings.ClientSideEvents.Click = "function(s, e){$('#aBeginProcess').click();}";
+                    }).GetHtml()*@
+
+                @Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.Name = "btnApprove";
+                        settings.Width = 90;
+                        settings.Text = Resources.Resource.Complete;
+                        settings.UseSubmitBehavior = true;
+                        settings.ClientSideEvents.Click = "function(){getItem();}";
+
+                    }).GetHtml()
+
+
+                @Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.Name = "btnReject";
+                        settings.Width = 90;
+                        settings.Text = Resources.Resource.Reject;
+                        settings.UseSubmitBehavior = true;
+                        settings.ClientSideEvents.Click = "function(s, e){DoReject(s, e);}";
+
+                    }).GetHtml()
+            </div>
+        </div>
+
+        <hr />
+
+        if (ViewBag.EditStatus != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+
+                    @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                            @Html.Raw(ViewBag.EditInfo)
+                        </div>
+                    }
+                    else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                            @Html.Raw(ViewBag.EditInfo)
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        <h4 class="group-title"><i class="icon-edit-sign teal"></i> @Resources.Resource.PendingList</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @{Html.RenderAction("ApprovePartial", "GA");}
+                </div>
+            </div>
+        </div>
+        <h4 class="group-title"><i class="icon-edit-sign teal"></i> @Resources.Resource.HistoryApprove</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @*@{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.FinishedForManager });}*@
+
+                    @{Html.RenderAction("FinishedManagementForAdmin", "GA");}
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<a id="aBeginProcess" href="#beginprocesspo" data-toggle="modal" data-target=".bs-example-modal-lg" onclick="DoBeginProcess(); return false;" style="display:none">Detail</a>
+))

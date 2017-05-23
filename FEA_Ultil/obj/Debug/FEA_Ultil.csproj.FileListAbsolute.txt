@@ -1,0 +1,40 @@
+C:\Users\LinhTran\Desktop\FEAVN_website\source_code\FEASite_Solution\FEA_Ultil\bin\Debug\FEA_Ultil.dll
+C:\Users\LinhTran\Desktop\FEAVN_website\source_code\FEASite_Solution\FEA_Ultil\bin\Debug\FEA_Ultil.pdb
+C:\Users\LinhTran\Desktop\FEAVN_website\source_code\FEASite_Solution\FEA_Ultil\obj\Debug\FEA_Ultil.dll
+C:\Users\LinhTran\Desktop\FEAVN_website\source_code\FEASite_Solution\FEA_Ultil\obj\Debug\FEA_Ultil.pdb
+F:\ITS Project\FEA_Ultil\bin\Debug\FEA_Ultil.dll
+F:\ITS Project\FEA_Ultil\bin\Debug\FEA_Ultil.pdb
+F:\ITS Project\FEA_Ultil\obj\Debug\FEA_Ultil.dll
+F:\ITS Project\FEA_Ultil\obj\Debug\FEA_Ultil.pdb
+E:\New folder\FEA_Ultil\bin\Debug\FEA_Ultil.dll
+E:\New folder\FEA_Ultil\bin\Debug\FEA_Ultil.pdb
+E:\New folder\FEA_Ultil\obj\Debug\FEA_Ultil.dll
+E:\New folder\FEA_Ultil\obj\Debug\FEA_Ultil.pdb
+D:\Works\ITS_Source\FEA_Ultil\bin\Debug\FEA_Ultil.dll
+D:\Works\ITS_Source\FEA_Ultil\bin\Debug\FEA_Ultil.pdb
+D:\Works\ITS_Source\FEA_Ultil\obj\Debug\FEA_Ultil.dll
+D:\Works\ITS_Source\FEA_Ultil\obj\Debug\FEA_Ultil.pdb
+D:\Works\ITS_Source\FEA_Ultil\obj\Debug\FEA_Ultil.csprojResolveAssemblyReference.cache
+D:\SourceCode\ITS_Source_Code\FEA_Ultil\bin\Debug\FEA_Ultil.dll
+D:\SourceCode\ITS_Source_Code\FEA_Ultil\bin\Debug\FEA_Ultil.pdb
+D:\SourceCode\ITS_Source_Code\FEA_Ultil\obj\Debug\FEA_Ultil.dll
+D:\SourceCode\ITS_Source_Code\FEA_Ultil\obj\Debug\FEA_Ultil.pdb
+D:\Source Code\ITS.Website\FEA_Ultil\bin\Debug\FEA_Ultil.dll
+D:\Source Code\ITS.Website\FEA_Ultil\bin\Debug\FEA_Ultil.pdb
+D:\Source Code\ITS.Website\FEA_Ultil\obj\Debug\FEA_Ultil.dll
+D:\Source Code\ITS.Website\FEA_Ultil\obj\Debug\FEA_Ultil.pdb
+D:\Source Code\ITS.Website\FEA_Ultil\obj\Debug\FEA_Ultil.csprojResolveAssemblyReference.cache
+C:\ITS.Website\FEA_Ultil\bin\Debug\FEA_Ultil.dll
+C:\ITS.Website\FEA_Ultil\bin\Debug\FEA_Ultil.pdb
+C:\ITS.Website\FEA_Ultil\obj\Debug\FEA_Ultil.dll
+C:\ITS.Website\FEA_Ultil\obj\Debug\FEA_Ultil.pdb
+C:\ITS.Website\FEA_Ultil\obj\Debug\FEA_Ultil.csprojResolveAssemblyReference.cache
+D:\Source Code\ITS.Website.16.1.4\FEA_Ultil\bin\Debug\FEA_Ultil.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_Ultil\bin\Debug\FEA_Ultil.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_Ultil\obj\Debug\FEA_Ultil.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_Ultil\obj\Debug\FEA_Ultil.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_Ultil\obj\Debug\FEA_Ultil.csprojResolveAssemblyReference.cache
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_Ultil\bin\Debug\FEA_Ultil.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_Ultil\bin\Debug\FEA_Ultil.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_Ultil\obj\Debug\FEA_Ultil.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_Ultil\obj\Debug\FEA_Ultil.pdb

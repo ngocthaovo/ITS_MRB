@@ -1,0 +1,27 @@
+﻿@model FEA_BusinessLogic.MNStockEquipment
+
+@Html.DevExpress().ComboBoxFor(model=>model.MNRequestMain.OrderCode,
+settings =>
+{
+    settings.Name = "cboRequestList";
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.Properties.DropDownWidth = 500;
+
+    settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "RequestListPartial" };
+    settings.Properties.CallbackPageSize = 30;
+    settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+    settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+    settings.Properties.TextFormatString = "{0}";
+    settings.Properties.ValueField = "ID";
+    settings.Properties.TextField = "OrderCode";
+    settings.Properties.ValueType = typeof(string);
+    settings.ControlStyle.CssClass = "textBoxStyle";
+
+    //settings.Properties.ClientSideEvents.Validation = "OnRequestForValidation";
+    settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithTooltip;
+    settings.Properties.ValidationSettings.Display = Display.Dynamic;
+    settings.Properties.ClientSideEvents.SelectedIndexChanged = "function (s,e) {cboItem.PerformCallback(); RequestChanged(s,e);}";
+    settings.Properties.Columns.Add("OrderCode", "OrderCode", System.Web.UI.WebControls.Unit.Percentage(40));
+    
+
+}).BindList(new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetRequestForStockIn()).GetHtml()

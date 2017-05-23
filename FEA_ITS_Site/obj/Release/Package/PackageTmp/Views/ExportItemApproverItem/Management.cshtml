@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Management";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<div class="panel-body">
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @{Html.RenderAction("EditModesPartial", "ExportItemApproverItem");}
+            </div>
+        </div>
+    </div>
+
+</div>

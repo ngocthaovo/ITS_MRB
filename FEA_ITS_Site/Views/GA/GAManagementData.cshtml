@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "GAManagementData";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    var ApplicationType=@Html.Raw(Request.QueryString["Type"]);
+    function ActiveTabChanged(s, e) {
+        var tabName = e.tab.name;
+        var item, url;
+        if(tabName =="CheckingManagerment")
+        {
+            item = $("#ifmCheckingManagerment");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/GA/GAcheckingManagerment";
+            $(item).attr("src", url);
+        }
+        if(tabName =="GAPushData")
+        {
+            item = $("#ifmGAPushData");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/GA/GAPushData";
+            $(item).attr("src", url);
+        }
+        if (tabName == "GAPushDataQuery")
+        {
+            item = $("#ifmGAPushDataQuery");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/GA/GAPushData?Type="+ApplicationType;
+            $(item).attr("src", url);
+        }
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.NavigationAndLayout})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.NavigationAndLayout})
+
+@Html.DevExpress().PageControl(
+            settings =>
+            {
+                settings.Name = "pcFeatures";
+                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                settings.ControlStyle.CssClass = "dxTab";
+                settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+                settings.TabPages.Add(Resources.Resource.CheckingManagerment,"CheckingManagerment").SetContent(() =>
+                {
+                    ViewContext.Writer.Write(
+                         "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/GA/GACheckingManagerment?ID=\" id=\"ifmCheckingManagerment\" style=\"height: 800px;\"></iframe>"
+                   );
+                });
+                settings.TabPages.Add(Resources.Resource.Push, "GAPushData").SetContent(() =>
+                {
+                    ViewContext.Writer.Write(
+                            "<iframe src='' id=\"ifmGAPushData\" style=\"height: 760px;\"></iframe>"
+                        );              
+                });
+                settings.TabPages.Add(Resources.Resource.Query, "GAPushDataQuery").SetContent(() =>
+                {
+                    ViewContext.Writer.Write(
+                            "<iframe src='' id= \"ifmGAPushDataQuery\" style=\"height: 760px;\"></iframe>"
+                        );
+                });
+            }).GetHtml()

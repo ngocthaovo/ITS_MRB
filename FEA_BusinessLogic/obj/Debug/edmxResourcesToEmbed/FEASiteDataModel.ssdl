@@ -1,0 +1,3629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FEA_ITSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ComponentDesign">
+    <Key>
+      <PropertyRef Name="CD_ID" />
+    </Key>
+    <Property Name="CD_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CD_DocType" Type="nvarchar" MaxLength="100" />
+    <Property Name="CD_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="CD_isEnable" Type="int" />
+    <Property Name="CD_isVisiable" Type="int" />
+    <Property Name="CD_FiledName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CD_Caption" Type="nvarchar" MaxLength="50" />
+    <Property Name="CD_CaptionEN" Type="nvarchar(max)" />
+    <Property Name="CD_CaptionCN" Type="nvarchar(max)" />
+    <Property Name="CD_Index" Type="int" />
+    <Property Name="CD_Width" Type="int" />
+  </EntityType>
+  <EntityType Name="CostCenter">
+    <Key>
+      <PropertyRef Name="CostCenterCode" />
+    </Key>
+    <Property Name="CostCenterCode" Type="int" Nullable="false" />
+    <Property Name="CompanyCode" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+    <Property Name="Enabled" Type="smallint" />
+    <Property Name="ManagerID" Type="int" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="DeviceRegistration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Reason" Type="nvarchar(max)" />
+    <Property Name="IsUrgent" Type="int" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+    <Property Name="TechnicianID" Type="int" />
+    <Property Name="CompleteDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="AttachmentLink" Type="nvarchar(max)" />
+    <Property Name="ProcessedBy" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DocumentType" Type="nvarchar" MaxLength="20" />
+    <Property Name="CompleteEstimateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DeviceRegistrationDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DeviceRegistrationID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="ReasonItemDetailID" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ERPDocument">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StockOutOrderID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="OrderType" Type="nvarchar" MaxLength="50" />
+    <Property Name="LevelName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="19" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Version" Type="int" Nullable="false" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="WarehouseName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="InvoiceCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsUnexpected" Type="bit" />
+    <Property Name="ReasonName" Type="nvarchar" MaxLength="500" />
+    <Property Name="TradeType" Type="int" />
+  </EntityType>
+  <EntityType Name="ERPDocumentDetail">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ERPDocumentsID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FEPO" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="MaterialName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Spec" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ColorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StockPosition" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+    <Property Name="DeclarationDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="DeclarationCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="MinimumType" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaterialCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AimFEPO" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ExportItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrderType" Type="int" />
+    <Property Name="Destination" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonalName" Type="nvarchar" MaxLength="255" />
+    <Property Name="ReasonID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReasonName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="ExportItemAdjustID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="UserProcessID" Type="int" />
+    <Property Name="ConfirmDate" Type="datetime" />
+    <Property Name="AttachmentLink" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ExportItemApproverItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="ApproverID" Type="int" />
+    <Property Name="CostCenterCode" Type="int" Nullable="false" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="15" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="ExportItemChecking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ExportItemDetailID" Type="nvarchar" MaxLength="50" />
+    <Property Name="OperationType" Type="nvarchar" MaxLength="6" />
+    <Property Name="Note" Type="nvarchar" MaxLength="255" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ExportItemDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ExportItemID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CostCenterCode" Type="int" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Specification" Type="nvarchar" MaxLength="255" />
+    <Property Name="Note" Type="nvarchar" MaxLength="255" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="1" />
+    <Property Name="ReturnDate" Type="datetime" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="UnitID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="Factory">
+    <Key>
+      <PropertyRef Name="FactoryID" />
+    </Key>
+    <Property Name="FactoryID" Type="int" Nullable="false" />
+    <Property Name="FactoryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="GAAdjustment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CostCenterCode" Type="int" />
+    <Property Name="ItemDetail" Type="nvarchar" MaxLength="100" />
+    <Property Name="AdjustQuantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AdjustAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Month" Type="datetime" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="UpdateUserID" Type="int" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+    <Property Name="Damged" Type="int" />
+  </EntityType>
+  <EntityType Name="GAItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsUrgent" Type="int" />
+    <Property Name="EstimateAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" />
+    <Property Name="TechnicianID" Type="int" />
+    <Property Name="ConfirmDate" Type="datetime" />
+    <Property Name="AttachmentLink" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="OrderType" Type="int" />
+    <Property Name="DeliveryDate" Type="date" />
+    <Property Name="PRCode" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="GAItemDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="GAItemID" Type="nvarchar" MaxLength="255" />
+    <Property Name="ItemNO" Type="nvarchar" MaxLength="10" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UnitID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="EstimatePrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EstimateAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsBroken" Type="bit" />
+  </EntityType>
+  <EntityType Name="HardwareRequirement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsUrgent" Type="int" />
+    <Property Name="EstimatedAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Reason" Type="nvarchar(max)" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="TechnicianID" Type="int" />
+    <Property Name="ConfirmDate" Type="datetime" />
+    <Property Name="AttachmentLink" Type="nvarchar(max)" />
+    <Property Name="ProcessedBy" Type="nvarchar" MaxLength="1000" />
+    <Property Name="CompleteEstimateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="HardwareRequirementDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="HardwareRequirementID" Type="nvarchar" MaxLength="255" />
+    <Property Name="ItemNo" Type="nvarchar" MaxLength="5" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="UnitID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="EstimatedPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EstimatedAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp1" Type="int" />
+    <Property Name="Temp2" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="HistoryScan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="PackingManifestDetailID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ObjectScan" Type="nvarchar" MaxLength="20" />
+    <Property Name="OperationType" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="PackingManifestID" Type="nvarchar" MaxLength="36" />
+    <Property Name="SerialNo" Type="bigint" />
+    <Property Name="TEMP3" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ItemType" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ItemDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ItemDetailName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="ITInventory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="UnitID" Type="nvarchar" MaxLength="36" />
+    <Property Name="Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="ITSAssetDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Division" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Section" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RecID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RecCode" Type="nvarchar" MaxLength="15" />
+    <Property Name="RecName" Type="nvarchar" MaxLength="100" />
+    <Property Name="AssetName" Type="nvarchar" MaxLength="100" />
+    <Property Name="AssetType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AssetID" Type="nvarchar" MaxLength="25" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="100" />
+    <Property Name="FactoryCode" Type="ntext" />
+    <Property Name="DivisionCode" Type="ntext" />
+    <Property Name="DepartmentCode" Type="ntext" />
+    <Property Name="EquipDate" Type="datetime" />
+    <Property Name="JobPosition" Type="ntext" />
+    <Property Name="Group" Type="ntext" />
+    <Property Name="Model" Type="ntext" />
+    <Property Name="Configuration" Type="ntext" />
+    <Property Name="EmailCoding" Type="ntext" />
+    <Property Name="EmailAddress" Type="ntext" />
+    <Property Name="FJ_B/W" Type="ntext" />
+    <Property Name="FJ_Color" Type="ntext" />
+    <Property Name="ExtNo" Type="ntext" />
+    <Property Name="Code" Type="ntext" />
+    <Property Name="PassCode" Type="ntext" />
+    <Property Name="DirectLine" Type="ntext" />
+    <Property Name="JobTitle" Type="ntext" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Temp1" Type="ntext" />
+    <Property Name="Temp2" Type="ntext" />
+    <Property Name="Temp3" Type="ntext" />
+    <Property Name="Temp4" Type="ntext" />
+    <Property Name="Temp5" Type="ntext" />
+    <Property Name="UploadDate" Type="datetime" Nullable="false" />
+    <Property Name="UploadBy" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreatedByHand" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ITSAssetFTY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Type" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="ParentID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ITSAssetRecData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="LogChangePass">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="LogCreatePassDate" Type="datetime" />
+    <Property Name="LogExpiredPassDate" Type="datetime" />
+    <Property Name="ChangePassLog" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MNInventory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="DocType" Type="nvarchar" MaxLength="36" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UnitID" Type="nvarchar" MaxLength="36" />
+  </EntityType>
+  <EntityType Name="MNRequestMain">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="36" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsUrgent" Type="int" />
+    <Property Name="EstimatedAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyID" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="ConfirmID" Type="int" />
+    <Property Name="ConfirmDate" Type="datetime" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="DocType" Type="nvarchar" MaxLength="36" />
+    <Property Name="AttachmentLink" Type="nvarchar" MaxLength="255" />
+    <Property Name="DeliveryDate" Type="date" />
+  </EntityType>
+  <EntityType Name="MNRequestMainDetail">
+    <Key>
+      <PropertyRef Name="DetailID" />
+    </Key>
+    <Property Name="DetailID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="RequestMainID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ItemNo" Type="int" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UnitID" Type="nvarchar" MaxLength="36" />
+    <Property Name="EstimatePrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EstimateAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="PurchaseQuantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PurchaseEstimateAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ITSQuantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ERPQuantity" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="MNStockEquipment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrderType" Type="int" />
+    <Property Name="DocType" Type="nvarchar" MaxLength="36" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+    <Property Name="RequestMainID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DeliveryFor" Type="int" />
+  </EntityType>
+  <EntityType Name="MNStockEquipmentDetail">
+    <Key>
+      <PropertyRef Name="DetailID" />
+    </Key>
+    <Property Name="DetailID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="StockInEquipmentID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UnitID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="ReceiveUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="PackingManifest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="CustomerPO" Type="nvarchar" MaxLength="50" />
+    <Property Name="PONo" Type="nvarchar" MaxLength="50" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatorID" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+    <Property Name="isConfirm" Type="int" />
+    <Property Name="STATUS" Type="int" />
+    <Property Name="AttachmentLink" Type="nvarchar" MaxLength="100" />
+    <Property Name="TEMP1" Type="nvarchar" MaxLength="100" />
+    <Property Name="TEMP2" Type="nvarchar" MaxLength="100" />
+    <Property Name="TEMP3" Type="nvarchar" MaxLength="100" />
+    <Property Name="isCoordinate" Type="int" />
+    <Property Name="CustomerCode" Type="nvarchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="PackingManifestDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="PackingManifestID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="RANGE" Type="nvarchar" MaxLength="50" />
+    <Property Name="SerialNo" Type="bigint" Nullable="false" />
+    <Property Name="PackCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Line#" Type="nvarchar" MaxLength="50" />
+    <Property Name="PO#" Type="nvarchar" MaxLength="30" />
+    <Property Name="BuyerItem#" Type="nvarchar" MaxLength="30" />
+    <Property Name="SKU#" Type="nvarchar" MaxLength="30" />
+    <Property Name="MainLine#" Type="nvarchar" MaxLength="30" />
+    <Property Name="ColorName" Type="nvarchar" MaxLength="30" />
+    <Property Name="Size" Type="nvarchar" MaxLength="30" />
+    <Property Name="ShortDescription" Type="nvarchar" MaxLength="60" />
+    <Property Name="ShipmentMethod" Type="nvarchar" MaxLength="30" />
+    <Property Name="ItemQuantity" Type="int" />
+    <Property Name="ItemQtyPerCtnPack" Type="int" />
+    <Property Name="InnetPkgCount" Type="int" />
+    <Property Name="R" Type="nvarchar" MaxLength="30" />
+    <Property Name="CtnCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="NETNET" Type="nvarchar" MaxLength="10" />
+    <Property Name="NET" Type="nvarchar" MaxLength="10" />
+    <Property Name="GROSS" Type="nvarchar" MaxLength="10" />
+    <Property Name="UNIT" Type="nvarchar" MaxLength="20" />
+    <Property Name="L" Type="nvarchar" MaxLength="10" />
+    <Property Name="W" Type="nvarchar" MaxLength="10" />
+    <Property Name="H" Type="nvarchar" MaxLength="10" />
+    <Property Name="UNIT2" Type="nvarchar" MaxLength="10" />
+    <Property Name="isCOnfirm" Type="int" />
+    <Property Name="isStockin" Type="int" />
+    <Property Name="STATUS" Type="int" />
+    <Property Name="TEMP1" Type="nvarchar" MaxLength="50" />
+    <Property Name="TEMP2" Type="nvarchar" MaxLength="50" />
+    <Property Name="TEMP3" Type="nvarchar" MaxLength="50" />
+    <Property Name="isReturns" Type="int" />
+    <Property Name="MaterialStyle" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerCrossReferenceNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="UPC_EAN" Type="nvarchar" MaxLength="100" />
+    <Property Name="EstShipDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PackingManifestDetailCoordination">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="PackingManifestDetailID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="RANGE" Type="nvarchar" MaxLength="50" />
+    <Property Name="SerialNo" Type="bigint" Nullable="false" />
+    <Property Name="PackCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Line#" Type="nvarchar" MaxLength="50" />
+    <Property Name="PO#" Type="nvarchar" MaxLength="30" />
+    <Property Name="BuyerItem#" Type="nvarchar" MaxLength="30" />
+    <Property Name="SKU#" Type="nvarchar" MaxLength="30" />
+    <Property Name="MainLine#" Type="nvarchar" MaxLength="30" />
+    <Property Name="ColorName" Type="nvarchar" MaxLength="30" />
+    <Property Name="Size" Type="nvarchar" MaxLength="30" />
+    <Property Name="ShortDescription" Type="nvarchar" MaxLength="60" />
+    <Property Name="ShipmentMethod" Type="nvarchar" MaxLength="30" />
+    <Property Name="ItemQuantity" Type="int" />
+    <Property Name="ItemQtyPerCtnPack" Type="int" />
+    <Property Name="InnetPkgCount" Type="int" />
+    <Property Name="R" Type="nvarchar" MaxLength="30" />
+    <Property Name="CtnCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="NETNET" Type="nvarchar" MaxLength="10" />
+    <Property Name="NET" Type="nvarchar" MaxLength="10" />
+    <Property Name="GROSS" Type="nvarchar" MaxLength="10" />
+    <Property Name="UNIT" Type="nvarchar" MaxLength="20" />
+    <Property Name="L" Type="nvarchar" MaxLength="10" />
+    <Property Name="W" Type="nvarchar" MaxLength="10" />
+    <Property Name="H" Type="nvarchar" MaxLength="10" />
+    <Property Name="UNIT2" Type="nvarchar" MaxLength="20" />
+    <Property Name="MaterialStyle" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerCrossReferenceNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="UPC_EAN" Type="nvarchar" MaxLength="100" />
+    <Property Name="EstShipDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PackingManifestReturnedItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ItemDes" Type="ntext" />
+    <Property Name="Type" Type="int" />
+    <Property Name="Order" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProductStockFromERP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="CustomerPO" Type="nvarchar" MaxLength="50" />
+    <Property Name="POItem" Type="nvarchar" MaxLength="10" />
+    <Property Name="SizeName" Type="nvarchar" MaxLength="10" />
+    <Property Name="ColorName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CombName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TotalContainerStockIn" Type="int" />
+    <Property Name="TotalQuantityStockIn" Type="int" />
+    <Property Name="TotalContainerStockOut" Type="int" />
+    <Property Name="TotalQuantityStockOur" Type="int" />
+    <Property Name="OrderState" Type="int" />
+    <Property Name="CompleteState" Type="int" />
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SAAuditStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="SAConfigure">
+    <Key>
+      <PropertyRef Name="ReasonID" />
+      <PropertyRef Name="PositionID" />
+    </Key>
+    <Property Name="ReasonID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PositionID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SADestination">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompanyCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SAReason">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+    <Property Name="isConstraint" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ShelfInformation">
+    <Key>
+      <PropertyRef Name="ComputerID" />
+    </Key>
+    <Property Name="ComputerID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Factory" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShelfID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SiteFunction">
+    <Key>
+      <PropertyRef Name="SiteFunctionID" />
+    </Key>
+    <Property Name="SiteFunctionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteFunctionName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="SiteFunctionNameEN" Type="nvarchar" MaxLength="500" />
+    <Property Name="SiteFunctionNameCN" Type="nvarchar" MaxLength="500" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="URL" Type="nvarchar(max)" />
+    <Property Name="Order" Type="int" />
+    <Property Name="Enabled" Type="smallint" />
+    <Property Name="IconCssClass" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="SiteFunction_UserGroup">
+    <Key>
+      <PropertyRef Name="GroupFunctionID" />
+    </Key>
+    <Property Name="GroupFunctionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserGroup" Type="int" Nullable="false" />
+    <Property Name="SiteFunctionID" Type="int" Nullable="false" />
+    <Property Name="Enabled" Type="smallint" />
+  </EntityType>
+  <EntityType Name="StockInEquipment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="datetime" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="StockInEquipmentDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StockInEquipmentID" Type="nvarchar" MaxLength="255" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="UnitID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="StockOutEquipment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CofirmDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="DeliveryFor" Type="int" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="StockOutEquipmentDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StockOutEquipmentID" Type="nvarchar" MaxLength="255" />
+    <Property Name="ItemID" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="UnitID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TagPrefix">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DocumentTypeName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Prefix" Type="nvarchar" MaxLength="10" />
+    <Property Name="Temp1" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TransferLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ErrorNumber" Type="nvarchar(max)" />
+    <Property Name="ErrorSeverity" Type="nvarchar(max)" />
+    <Property Name="ErrorState" Type="nvarchar(max)" />
+    <Property Name="ErrorProcedure" Type="nvarchar(max)" />
+    <Property Name="ErrorLine" Type="nvarchar(max)" />
+    <Property Name="ErrorMessage" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserCodeID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="UserPass" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="UserNameEN" Type="nvarchar" MaxLength="500" />
+    <Property Name="CostCenterCode" Type="int" Nullable="false" />
+    <Property Name="UserAddress" Type="nvarchar(max)" />
+    <Property Name="UserSex" Type="nvarchar" MaxLength="10" />
+    <Property Name="UserPosstion" Type="uniqueidentifier" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserPhone" Type="nvarchar" MaxLength="20" />
+    <Property Name="UserStartDate" Type="datetime" />
+    <Property Name="UserLastLogin" Type="datetime" />
+    <Property Name="UserExpired" Type="datetime" />
+    <Property Name="UserGroupID" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp4" Type="nvarchar" MaxLength="255" />
+    <Property Name="Enabled" Type="smallint" />
+    <Property Name="FactoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="user_account">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="user_pss" Type="nvarchar" MaxLength="100" />
+    <Property Name="userName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_sex" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_position" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_group" Type="nvarchar" MaxLength="100" />
+    <Property Name="departmentID" Type="int" />
+    <Property Name="user_mail" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_phone" Type="int" />
+    <Property Name="user_create_pss_date" Type="datetime" />
+    <Property Name="user_expired_pss_date" Type="datetime" />
+    <Property Name="user_start_date" Type="datetime" />
+    <Property Name="user_status" Type="int" />
+    <Property Name="typeID" Type="int" />
+  </EntityType>
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="UserGroupID" />
+    </Key>
+    <Property Name="UserGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserGroupName" Type="varchar" MaxLength="255" />
+    <Property Name="Enabled" Type="smallint" />
+    <Property Name="isAdmin" Type="int" />
+  </EntityType>
+  <EntityType Name="UserPosition">
+    <Key>
+      <PropertyRef Name="PositionID" />
+    </Key>
+    <Property Name="PositionID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PositionName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Enabled" Type="smallint" />
+  </EntityType>
+  <EntityType Name="WFDelegate">
+    <Key>
+      <PropertyRef Name="DelegateID" />
+    </Key>
+    <Property Name="DelegateID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="MainUserID" Type="int" />
+    <Property Name="DelegateUserID" Type="int" />
+    <Property Name="From" Type="datetime" />
+    <Property Name="To" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="int" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WFDocumentType">
+    <Key>
+      <PropertyRef Name="DocumentTypeID" />
+    </Key>
+    <Property Name="DocumentTypeID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DocumentTypeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Parameter" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp1" Type="nvarchar(max)" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WFMain">
+    <Key>
+      <PropertyRef Name="MainID" />
+    </Key>
+    <Property Name="MainID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="DocumentTypeID" Type="nvarchar" MaxLength="255" />
+    <Property Name="isFinished" Type="int" />
+    <Property Name="CreateUserID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WFMainDetail">
+    <Key>
+      <PropertyRef Name="MainDetailID" />
+    </Key>
+    <Property Name="MainDetailID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="MainID" Type="nvarchar" MaxLength="255" />
+    <Property Name="NodeID" Type="nvarchar" MaxLength="255" />
+    <Property Name="DelegateID" Type="nvarchar" MaxLength="255" />
+    <Property Name="PostUserID" Type="int" />
+    <Property Name="CheckUserID" Type="int" />
+    <Property Name="CheckDate" Type="datetime" />
+    <Property Name="isFinished" Type="int" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WFNode">
+    <Key>
+      <PropertyRef Name="NodeID" />
+    </Key>
+    <Property Name="NodeID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DocumentTypeID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WFNodeDetail">
+    <Key>
+      <PropertyRef Name="NodeDetailID" />
+    </Key>
+    <Property Name="NodeDetailID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NodeID" Type="nvarchar" MaxLength="255" />
+    <Property Name="CostCenterCode" Type="int" />
+    <Property Name="ApproverID" Type="int" />
+    <Property Name="DelegateID" Type="nvarchar" MaxLength="255" />
+    <Property Name="isDelegate" Type="int" />
+    <Property Name="Condition" Type="nvarchar(max)" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="WFRefference">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="MainDetailID" Type="nvarchar" MaxLength="255" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="SenderID" Type="int" />
+    <Property Name="SenderName" Type="nvarchar" MaxLength="255" />
+    <Property Name="RefferenceList" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WFRefferenceDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="WFRefferenceID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="RefUserID" Type="int" />
+    <Property Name="RefUserName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WHExportOrder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="CustomerPO" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="12" />
+    <Property Name="ShipmentDate" Type="datetime" />
+    <Property Name="Note" Type="text" />
+    <Property Name="Status" Type="int" />
+    <Property Name="isConfirm" Type="int" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WHExportOrderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ExportOrderID" Type="nvarchar" MaxLength="50" />
+    <Property Name="PackingManifestDetailID" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsExported" Type="int" />
+    <Property Name="IsReturned" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WHImportOrder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerPO" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerCode" Type="nvarchar" MaxLength="5" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatorID" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="WHImportOrderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="WHImportOrderID" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="PackingManifestDetailID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Temp1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Temp3" Type="nvarchar" MaxLength="255" />
+    <Property Name="ShelfID" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ITS_TEST.dbo.vw_GetOrderFromERP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_GetOrderFromERP">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="OrderType" />
+      <PropertyRef Name="FEPOCode" />
+      <PropertyRef Name="MachineType" />
+      <PropertyRef Name="OrderDate" />
+      <PropertyRef Name="CompleteDate" />
+      <PropertyRef Name="CompanyStyleCode" />
+      <PropertyRef Name="OriginalStyle" />
+      <PropertyRef Name="StyleName" />
+      <PropertyRef Name="CustomerStyleCode" />
+      <PropertyRef Name="StyleSeasonID" />
+      <PropertyRef Name="MachineYear" />
+      <PropertyRef Name="MachineRequire" />
+      <PropertyRef Name="DealPerson" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="CreateUserID" />
+      <PropertyRef Name="CreateDate" />
+      <PropertyRef Name="LastUpdateUserID" />
+      <PropertyRef Name="LastUpdateDate" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="StandardSizeName" />
+      <PropertyRef Name="SizeTableType" />
+      <PropertyRef Name="OrderCustomerPO" />
+      <PropertyRef Name="FinalCustomerPO" />
+      <PropertyRef Name="FEStyleCode" />
+      <PropertyRef Name="TPOrderCode" />
+      <PropertyRef Name="QuoteOrderCode" />
+      <PropertyRef Name="HistoryOrderCode" />
+      <PropertyRef Name="OrderStatus" />
+      <PropertyRef Name="TradeType" />
+      <PropertyRef Name="HandbookCode" />
+      <PropertyRef Name="IsSuit" />
+      <PropertyRef Name="IsSend" />
+    </Key>
+    <Property Name="OrderID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="SampleTypeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="OrderType" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="FEPOCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="MachineType" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CompleteDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CompanyStyleCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="OriginalStyle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StyleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerStyleCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CustomerID" Type="nvarchar" MaxLength="36" />
+    <Property Name="FactoryID" Type="nvarchar" MaxLength="36" />
+    <Property Name="StyleSeasonID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="MachineYear" Type="int" Nullable="false" />
+    <Property Name="MachineRequire" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DealPerson" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ColorGroupID" Type="nvarchar" MaxLength="36" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+    <Property Name="CurrencyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ExchangeRate" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+    <Property Name="Remark2" Type="nvarchar" MaxLength="255" />
+    <Property Name="Remark3" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="19" Nullable="false" />
+    <Property Name="LastUpdateUserID" Type="nvarchar" MaxLength="36" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="nvarchar" MaxLength="19" Nullable="false" />
+    <Property Name="PointOn" Type="nvarchar" MaxLength="30" />
+    <Property Name="Status" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="StandardSizeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SizeTableType" Type="int" Nullable="false" />
+    <Property Name="StyleTypeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DeliveryCountryID" Type="nvarchar" MaxLength="36" />
+    <Property Name="CompanyID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ProfitCenterCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="OrderCustomerPO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FinalCustomerPO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderCustomerID" Type="nvarchar" MaxLength="36" />
+    <Property Name="InvoiceCustomerID" Type="nvarchar" MaxLength="36" />
+    <Property Name="PayCustomerID" Type="nvarchar" MaxLength="36" />
+    <Property Name="DeliveryCustomerID" Type="nvarchar" MaxLength="36" />
+    <Property Name="FEStyleCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderTypeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="TPOrderCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="QuoteOrderCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="HistoryOrderCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SalesApproved" Type="bit" />
+    <Property Name="SalesOrderApproved" Type="bit" />
+    <Property Name="OrderStatus" Type="int" Nullable="false" />
+    <Property Name="QuotaTypeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="Distination" Type="nvarchar" MaxLength="255" />
+    <Property Name="QuotaQuantity" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="TransportTypeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="YDMax" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="YDMin" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="TradeType" Type="int" Nullable="false" />
+    <Property Name="PaymentTermCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="AgreementContent" Type="nvarchar" MaxLength="2000" />
+    <Property Name="BusinessGroupID" Type="nvarchar" MaxLength="36" />
+    <Property Name="HandbookCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="IsSuit" Type="bit" Nullable="false" />
+    <Property Name="IsSend" Type="bit" Nullable="false" />
+    <Property Name="TaxID" Type="nvarchar" MaxLength="36" />
+    <Property Name="TradeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="OrderState" Type="int" />
+    <Property Name="CloseDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="StyleYear" Type="int" />
+    <Property Name="CloseUserID" Type="nvarchar" MaxLength="36" />
+    <Property Name="IsInventory" Type="int" />
+    <Property Name="OperateUserID" Type="nvarchar" MaxLength="36" />
+    <Property Name="SexTypeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="LengthTypeID" Type="nvarchar" MaxLength="36" />
+    <Property Name="StyleType_tID" Type="nvarchar" MaxLength="36" />
+    <Property Name="completeState" Type="int" />
+    <Property Name="CompleteDateTime" Type="varchar" MaxLength="19" />
+    <Property Name="CompleteUserID" Type="varchar" MaxLength="36" />
+    <Property Name="AccessoryPurchaseState" Type="int" />
+    <Property Name="FabricPurchaseState" Type="int" />
+    <Property Name="ConvertRate" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="SizeGroupID" Type="nvarchar" MaxLength="36" />
+    <Property Name="IntendingOrderID" Type="nvarchar" MaxLength="36" />
+    <Property Name="ParentOrderID" Type="nvarchar" MaxLength="36" />
+    <Property Name="isNote" Type="nvarchar" MaxLength="10" />
+    <Property Name="ReceivablesDesi" Type="nvarchar" MaxLength="50" />
+    <Property Name="BuyMsg" Type="nvarchar" MaxLength="50" />
+    <Property Name="InvoiceCustomerIDForTP" Type="nvarchar" MaxLength="36" />
+    <Property Name="GarmentContractNum" Type="nvarchar" MaxLength="20" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BillingState" Type="int" />
+    <Property Name="BillingCloseDate" Type="nvarchar" MaxLength="20" />
+    <Property Name="StrategyType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="500" />
+    <Property Name="CommissionRate" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="IsPP" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsQRS" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsKeyStyle" Type="nvarchar" MaxLength="50" />
+    <Property Name="AGPOrderType" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusAllowClosedByMR" Type="smallint" />
+    <Property Name="StatusAllowClosedByMRDate" Type="nvarchar" MaxLength="10" />
+    <Property Name="StatusAllowClosedByPRO" Type="smallint" />
+    <Property Name="StatusAllowClosedByPRODate" Type="nvarchar" MaxLength="10" />
+    <Property Name="isAllowCancelClose" Type="int" />
+    <Property Name="RequestCodeCancelClose" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <Association Name="FK__DeviceReg__Devic__37703C52">
+    <End Role="DeviceRegistration" Type="Self.DeviceRegistration" Multiplicity="1" />
+    <End Role="DeviceRegistrationDetail" Type="Self.DeviceRegistrationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceRegistration">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DeviceRegistrationDetail">
+        <PropertyRef Name="DeviceRegistrationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeviceReg__Devic__48CFD27E">
+    <End Role="DeviceRegistration" Type="Self.DeviceRegistration" Multiplicity="1" />
+    <End Role="DeviceRegistrationDetail" Type="Self.DeviceRegistrationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceRegistration">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DeviceRegistrationDetail">
+        <PropertyRef Name="DeviceRegistrationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeviceReg__ItemD__3864608B">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="1" />
+    <End Role="DeviceRegistrationDetail" Type="Self.DeviceRegistrationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DeviceRegistrationDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeviceReg__ItemD__4AB81AF0">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="1" />
+    <End Role="DeviceRegistrationDetail" Type="Self.DeviceRegistrationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DeviceRegistrationDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeviceReg__ItemI__395884C4">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="DeviceRegistrationDetail" Type="Self.DeviceRegistrationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DeviceRegistrationDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeviceReg__ItemI__49C3F6B7">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="DeviceRegistrationDetail" Type="Self.DeviceRegistrationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DeviceRegistrationDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeviceReg__Techn__367C1819">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="DeviceRegistration" Type="Self.DeviceRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="DeviceRegistration">
+        <PropertyRef Name="TechnicianID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ExportIte__Creat__1DDC1E2F">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ExportItem" Type="Self.ExportItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ExportItem">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ExportIte__Creat__2D1E61BF">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ExportItemChecking" Type="Self.ExportItemChecking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ExportItemChecking">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ExportIte__Expor__1261E090">
+    <End Role="ExportItemDetail" Type="Self.ExportItemDetail" Multiplicity="0..1" />
+    <End Role="ExportItemChecking" Type="Self.ExportItemChecking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExportItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExportItemChecking">
+        <PropertyRef Name="ExportItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ExportIte__Expor__2574B504">
+    <End Role="ExportItemDetail" Type="Self.ExportItemDetail" Multiplicity="0..1" />
+    <End Role="ExportItemChecking" Type="Self.ExportItemChecking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExportItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExportItemChecking">
+        <PropertyRef Name="ExportItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ExportIte__Expor__2859ACA2">
+    <End Role="ExportItem" Type="Self.ExportItem" Multiplicity="0..1" />
+    <End Role="ExportItemDetail" Type="Self.ExportItemDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExportItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExportItemDetail">
+        <PropertyRef Name="ExportItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ExportIte__UnitI__0D9D2B73">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="ExportItemDetail" Type="Self.ExportItemDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExportItemDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ExportIte__UnitI__238C6C92">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="ExportItemDetail" Type="Self.ExportItemDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExportItemDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ExportIte__UserP__743AEA1E">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ExportItem" Type="Self.ExportItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ExportItem">
+        <PropertyRef Name="UserProcessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__Hardw__3B40CD36">
+    <End Role="HardwareRequirement" Type="Self.HardwareRequirement" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HardwareRequirement">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="HardwareRequirementID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__Hardw__41EDCAC5">
+    <End Role="HardwareRequirement" Type="Self.HardwareRequirement" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HardwareRequirement">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="HardwareRequirementID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__Hardw__5FB337D6">
+    <End Role="HardwareRequirement" Type="Self.HardwareRequirement" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HardwareRequirement">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="HardwareRequirementID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__ItemD__3C34F16F">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__ItemD__42E1EEFE">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__ItemD__619B8048">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__ItemI__3D2915A8">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__ItemI__43D61337">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__ItemI__60A75C0F">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__Techn__2180FB33">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="HardwareRequirement" Type="Self.HardwareRequirement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="HardwareRequirement">
+        <PropertyRef Name="TechnicianID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__UnitI__3E1D39E1">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__UnitI__44CA3770">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HardwareR__UnitI__628FA481">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="HardwareRequirementDetail" Type="Self.HardwareRequirementDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HardwareRequirementDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HistorySc__Creat__6EC0713C">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="HistoryScan" Type="Self.HistoryScan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="HistoryScan">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItemDetai__ItemI__398D8EEE">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ItemDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ITInvento__ItemD__7F2BE32F">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="ITInventory" Type="Self.ITInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ITInventory">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ITInvento__UnitI__00200768">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="ITInventory" Type="Self.ITInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ITInventory">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PackingMa__Creat__69FBBC1F">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="PackingManifest" Type="Self.PackingManifest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="PackingManifest">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PackingMa__Packi__658CD814">
+    <End Role="PackingManifestDetail" Type="Self.PackingManifestDetail" Multiplicity="1" />
+    <End Role="PackingManifestDetailCoordination" Type="Self.PackingManifestDetailCoordination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackingManifestDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PackingManifestDetailCoordination">
+        <PropertyRef Name="PackingManifestDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__ItemD__47A6A41B">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__ItemD__4F47C5E3">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__ItemD__797309D9">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__ItemI__489AC854">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__ItemI__503BEA1C">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__ItemI__787EE5A0">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__Stock__498EEC8D">
+    <End Role="StockInEquipment" Type="Self.StockInEquipment" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StockInEquipment">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="StockInEquipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__Stock__51300E55">
+    <End Role="StockInEquipment" Type="Self.StockInEquipment" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StockInEquipment">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="StockInEquipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__Stock__778AC167">
+    <End Role="StockInEquipment" Type="Self.StockInEquipment" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StockInEquipment">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="StockInEquipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__UnitI__4A8310C6">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__UnitI__5224328E">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockInEq__UnitI__7A672E12">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="StockInEquipmentDetail" Type="Self.StockInEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockInEquipmentDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockOutE__ItemD__0C85DE4D">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="StockOutEquipmentDetail" Type="Self.StockOutEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockOutEquipmentDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockOutE__ItemI__0B91BA14">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="StockOutEquipmentDetail" Type="Self.StockOutEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockOutEquipmentDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockOutE__Stock__0A9D95DB">
+    <End Role="StockOutEquipment" Type="Self.StockOutEquipment" Multiplicity="0..1" />
+    <End Role="StockOutEquipmentDetail" Type="Self.StockOutEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StockOutEquipment">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockOutEquipmentDetail">
+        <PropertyRef Name="StockOutEquipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StockOutE__UnitI__0D7A0286">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="StockOutEquipmentDetail" Type="Self.StockOutEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StockOutEquipmentDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFDelegat__Deleg__02084FDA">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="WFDelegate" Type="Self.WFDelegate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WFDelegate">
+        <PropertyRef Name="DelegateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFDelegat__MainU__01142BA1">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="WFDelegate" Type="Self.WFDelegate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WFDelegate">
+        <PropertyRef Name="MainUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFMain__CreateUs__07C12930">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="WFMain" Type="Self.WFMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WFMain">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFMain__Document__06CD04F7">
+    <End Role="WFDocumentType" Type="Self.WFDocumentType" Multiplicity="0..1" />
+    <End Role="WFMain" Type="Self.WFMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WFDocumentType">
+        <PropertyRef Name="DocumentTypeID" />
+      </Principal>
+      <Dependent Role="WFMain">
+        <PropertyRef Name="DocumentTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFMainDet__Check__10566F31">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="WFMainDetail" Type="Self.WFMainDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WFMainDetail">
+        <PropertyRef Name="CheckUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFMainDet__MainI__0C85DE4D">
+    <End Role="WFMain" Type="Self.WFMain" Multiplicity="0..1" />
+    <End Role="WFMainDetail" Type="Self.WFMainDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WFMain">
+        <PropertyRef Name="MainID" />
+      </Principal>
+      <Dependent Role="WFMainDetail">
+        <PropertyRef Name="MainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFMainDet__PostU__0F624AF8">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="WFMainDetail" Type="Self.WFMainDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WFMainDetail">
+        <PropertyRef Name="PostUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFNodeDet__Appro__151B244E">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="WFNodeDetail" Type="Self.WFNodeDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WFNodeDetail">
+        <PropertyRef Name="ApproverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFNodeDet__CostC__14270015">
+    <End Role="CostCenter" Type="Self.CostCenter" Multiplicity="0..1" />
+    <End Role="WFNodeDetail" Type="Self.WFNodeDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CostCenter">
+        <PropertyRef Name="CostCenterCode" />
+      </Principal>
+      <Dependent Role="WFNodeDetail">
+        <PropertyRef Name="CostCenterCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFNodeDet__NodeI__1332DBDC">
+    <End Role="WFNode" Type="Self.WFNode" Multiplicity="0..1" />
+    <End Role="WFNodeDetail" Type="Self.WFNodeDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WFNode">
+        <PropertyRef Name="NodeID" />
+      </Principal>
+      <Dependent Role="WFNodeDetail">
+        <PropertyRef Name="NodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFReffere__MainD__580034D1">
+    <End Role="WFMainDetail" Type="Self.WFMainDetail" Multiplicity="0..1" />
+    <End Role="WFRefference" Type="Self.WFRefference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WFMainDetail">
+        <PropertyRef Name="MainDetailID" />
+      </Principal>
+      <Dependent Role="WFRefference">
+        <PropertyRef Name="MainDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFReffere__RefUs__5CC4E9EE">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="WFRefferenceDetail" Type="Self.WFRefferenceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WFRefferenceDetail">
+        <PropertyRef Name="RefUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFReffere__Sende__58F4590A">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="WFRefference" Type="Self.WFRefference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WFRefference">
+        <PropertyRef Name="SenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WFReffere__WFRef__5BD0C5B5">
+    <End Role="WFRefference" Type="Self.WFRefference" Multiplicity="1" />
+    <End Role="WFRefferenceDetail" Type="Self.WFRefferenceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WFRefference">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WFRefferenceDetail">
+        <PropertyRef Name="WFRefferenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WHImportO__Shelf__749C737F">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="WHImportOrderDetail" Type="Self.WHImportOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WHImportOrderDetail">
+        <PropertyRef Name="ShelfID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConfirmID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="MNRequestMain" Type="Self.MNRequestMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="MNRequestMain">
+        <PropertyRef Name="ConfirmID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Costcenter">
+    <End Role="CostCenter" Type="Self.CostCenter" Multiplicity="0..1" />
+    <End Role="WFDelegate" Type="Self.WFDelegate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CostCenter">
+        <PropertyRef Name="CostCenterCode" />
+      </Principal>
+      <Dependent Role="WFDelegate">
+        <PropertyRef Name="Temp2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CostCenter_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="CostCenter" Type="Self.CostCenter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CostCenter">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Creator2">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="StockInEquipment" Type="Self.StockInEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="StockInEquipment">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CreatorID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="StockOutEquipment" Type="Self.StockOutEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="StockOutEquipment">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CreatorID1">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="MNRequestMain" Type="Self.MNRequestMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="MNRequestMain">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CreatorID2">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="HardwareRequirement" Type="Self.HardwareRequirement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="HardwareRequirement">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CreatorID3">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="MNStockEquipment" Type="Self.MNStockEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="MNStockEquipment">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CreatorID4">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="DeviceRegistration" Type="Self.DeviceRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="DeviceRegistration">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CurrencyID">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+    <End Role="MNRequestMain" Type="Self.MNRequestMain" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNRequestMain">
+        <PropertyRef Name="CurrencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DeliveryFor">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="StockOutEquipment" Type="Self.StockOutEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="StockOutEquipment">
+        <PropertyRef Name="DeliveryFor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryForID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="MNStockEquipment" Type="Self.MNStockEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="MNStockEquipment">
+        <PropertyRef Name="DeliveryFor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Destination">
+    <End Role="SADestination" Type="Self.SADestination" Multiplicity="0..1" />
+    <End Role="ExportItem" Type="Self.ExportItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SADestination">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExportItem">
+        <PropertyRef Name="Destination" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DocumentType">
+    <End Role="WFDocumentType" Type="Self.WFDocumentType" Multiplicity="0..1" />
+    <End Role="WFDelegate" Type="Self.WFDelegate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WFDocumentType">
+        <PropertyRef Name="DocumentTypeID" />
+      </Principal>
+      <Dependent Role="WFDelegate">
+        <PropertyRef Name="Temp1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExportItemApproverCostCenter_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="ExportItemApproverItem" Type="Self.ExportItemApproverItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExportItemApproverItem">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExportItemApproverCostCenter_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ExportItemApproverItem" Type="Self.ExportItemApproverItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ExportItemApproverItem">
+        <PropertyRef Name="ApproverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExportItemApproverItem_CostCenter">
+    <End Role="CostCenter" Type="Self.CostCenter" Multiplicity="1" />
+    <End Role="ExportItemApproverItem" Type="Self.ExportItemApproverItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CostCenter">
+        <PropertyRef Name="CostCenterCode" />
+      </Principal>
+      <Dependent Role="ExportItemApproverItem">
+        <PropertyRef Name="CostCenterCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExportItemDetail_ItemDetail">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="ExportItemDetail" Type="Self.ExportItemDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExportItemDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAAdjustment_Reference_CostCenter">
+    <End Role="CostCenter" Type="Self.CostCenter" Multiplicity="0..1" />
+    <End Role="GAAdjustment" Type="Self.GAAdjustment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CostCenter">
+        <PropertyRef Name="CostCenterCode" />
+      </Principal>
+      <Dependent Role="GAAdjustment">
+        <PropertyRef Name="CostCenterCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAITEM_REFERENCE_CURRENCY">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+    <End Role="GAItem" Type="Self.GAItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAItem">
+        <PropertyRef Name="CurrencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAITEM_REFERENCE_USER">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="GAItem" Type="Self.GAItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="GAItem">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAITEMDE_REFERENCE_GAITEM">
+    <End Role="GAItem" Type="Self.GAItem" Multiplicity="0..1" />
+    <End Role="GAItemDetail" Type="Self.GAItemDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAItemDetail">
+        <PropertyRef Name="GAItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAITEMDE_REFERENCE_ITEM">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="GAItemDetail" Type="Self.GAItemDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAItemDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAITEMDE_REFERENCE_ITEMDETA">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="GAItemDetail" Type="Self.GAItemDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAItemDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAITEMDE_REFERENCE_UNIT">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="GAItemDetail" Type="Self.GAItemDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAItemDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ID_ERPDocumentsID">
+    <End Role="ERPDocument" Type="Self.ERPDocument" Multiplicity="1" />
+    <End Role="ERPDocumentDetail" Type="Self.ERPDocumentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ERPDocument">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ERPDocumentDetail">
+        <PropertyRef Name="ERPDocumentsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_ShelfID">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="ShelfInformation" Type="Self.ShelfInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ShelfInformation">
+        <PropertyRef Name="ShelfID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemDetailID">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="MNInventory" Type="Self.MNInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNInventory">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemDetailID2">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="MNRequestMainDetail" Type="Self.MNRequestMainDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNRequestMainDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemDetailID3">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="MNStockEquipmentDetail" Type="Self.MNStockEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNStockEquipmentDetail">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemID">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="MNRequestMainDetail" Type="Self.MNRequestMainDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNRequestMainDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemID3">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="MNStockEquipmentDetail" Type="Self.MNStockEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNStockEquipmentDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITSAssetDetail_ITSAssetFTY">
+    <End Role="ITSAssetFTY" Type="Self.ITSAssetFTY" Multiplicity="1" />
+    <End Role="ITSAssetDetail" Type="Self.ITSAssetDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITSAssetFTY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ITSAssetDetail">
+        <PropertyRef Name="Division" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITSAssetDetail_ITSAssetFTY1">
+    <End Role="ITSAssetFTY" Type="Self.ITSAssetFTY" Multiplicity="1" />
+    <End Role="ITSAssetDetail" Type="Self.ITSAssetDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITSAssetFTY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ITSAssetDetail">
+        <PropertyRef Name="Department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITSAssetDetail_ITSAssetFTY2">
+    <End Role="ITSAssetFTY" Type="Self.ITSAssetFTY" Multiplicity="1" />
+    <End Role="ITSAssetDetail" Type="Self.ITSAssetDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITSAssetFTY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ITSAssetDetail">
+        <PropertyRef Name="Section" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITSAssetDetail_ITSAssetRecData">
+    <End Role="ITSAssetRecData" Type="Self.ITSAssetRecData" Multiplicity="1" />
+    <End Role="ITSAssetDetail" Type="Self.ITSAssetDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ITSAssetRecData">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ITSAssetDetail">
+        <PropertyRef Name="RecID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGCHANG_RELATIONS_USER">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="LogChangePass" Type="Self.LogChangePass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="LogChangePass">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MNREQUES_REFERENCE_MNREQUES">
+    <End Role="MNRequestMain" Type="Self.MNRequestMain" Multiplicity="0..1" />
+    <End Role="MNRequestMainDetail" Type="Self.MNRequestMainDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MNRequestMain">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNRequestMainDetail">
+        <PropertyRef Name="RequestMainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MNSTOCKE_REFERENCE_MNSTOCKE">
+    <End Role="MNStockEquipment" Type="Self.MNStockEquipment" Multiplicity="0..1" />
+    <End Role="MNStockEquipmentDetail" Type="Self.MNStockEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MNStockEquipment">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNStockEquipmentDetail">
+        <PropertyRef Name="StockInEquipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PACKINGM_REFERENCE_PACKINGM">
+    <End Role="PackingManifest" Type="Self.PackingManifest" Multiplicity="1" />
+    <End Role="PackingManifestDetail" Type="Self.PackingManifestDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackingManifest">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PackingManifestDetail">
+        <PropertyRef Name="PackingManifestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PositionIDX">
+    <End Role="UserPosition" Type="Self.UserPosition" Multiplicity="1" />
+    <End Role="SAConfigure" Type="Self.SAConfigure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserPosition">
+        <PropertyRef Name="PositionID" />
+      </Principal>
+      <Dependent Role="SAConfigure">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ReasonID">
+    <End Role="SAReason" Type="Self.SAReason" Multiplicity="1" />
+    <End Role="SAConfigure" Type="Self.SAConfigure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SAReason">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SAConfigure">
+        <PropertyRef Name="ReasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ReasonItemDetailID">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="0..1" />
+    <End Role="DeviceRegistrationDetail" Type="Self.DeviceRegistrationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DeviceRegistrationDetail">
+        <PropertyRef Name="ReasonItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiveUserID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="MNStockEquipmentDetail" Type="Self.MNStockEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="MNStockEquipmentDetail">
+        <PropertyRef Name="ReceiveUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ReferID">
+    <End Role="ExportItem" Type="Self.ExportItem" Multiplicity="0..1" />
+    <End Role="ExportItem1" Type="Self.ExportItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExportItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ExportItem1">
+        <PropertyRef Name="ExportItemAdjustID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestMainID">
+    <End Role="MNRequestMain" Type="Self.MNRequestMain" Multiplicity="0..1" />
+    <End Role="MNStockEquipment" Type="Self.MNStockEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MNRequestMain">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNStockEquipment">
+        <PropertyRef Name="RequestMainID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SITEFUNC_RELATIONS_SITEFUNC">
+    <End Role="SiteFunction" Type="Self.SiteFunction" Multiplicity="1" />
+    <End Role="SiteFunction_UserGroup" Type="Self.SiteFunction_UserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SiteFunction">
+        <PropertyRef Name="SiteFunctionID" />
+      </Principal>
+      <Dependent Role="SiteFunction_UserGroup">
+        <PropertyRef Name="SiteFunctionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SITEFUNC_RELATIONS_USERGROU">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="1" />
+    <End Role="SiteFunction_UserGroup" Type="Self.SiteFunction_UserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="UserGroupID" />
+      </Principal>
+      <Dependent Role="SiteFunction_UserGroup">
+        <PropertyRef Name="UserGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UnitID">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="MNInventory" Type="Self.MNInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNInventory">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UnitID2">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="MNRequestMainDetail" Type="Self.MNRequestMainDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNRequestMainDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UnitID3">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="MNStockEquipmentDetail" Type="Self.MNStockEquipmentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MNStockEquipmentDetail">
+        <PropertyRef Name="UnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_RELATIONS_COSTCENT">
+    <End Role="CostCenter" Type="Self.CostCenter" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CostCenter">
+        <PropertyRef Name="CostCenterCode" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="CostCenterCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserGroup">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="UserGroupID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserPosition">
+    <End Role="UserPosition" Type="Self.UserPosition" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserPosition">
+        <PropertyRef Name="PositionID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserPosstion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserID_ERPID">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ERPDocument" Type="Self.ERPDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ERPDocument">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WFNode_WFDocumentType">
+    <End Role="WFDocumentType" Type="Self.WFDocumentType" Multiplicity="1" />
+    <End Role="WFNode" Type="Self.WFNode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WFDocumentType">
+        <PropertyRef Name="DocumentTypeID" />
+      </Principal>
+      <Dependent Role="WFNode">
+        <PropertyRef Name="DocumentTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHEXPORT_REFERENCE_PACKINGM">
+    <End Role="PackingManifestDetail" Type="Self.PackingManifestDetail" Multiplicity="0..1" />
+    <End Role="WHExportOrderDetail" Type="Self.WHExportOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackingManifestDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WHExportOrderDetail">
+        <PropertyRef Name="PackingManifestDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHEXPORT_REFERENCE_WHEXPORT">
+    <End Role="WHExportOrder" Type="Self.WHExportOrder" Multiplicity="0..1" />
+    <End Role="WHExportOrderDetail" Type="Self.WHExportOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WHExportOrder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WHExportOrderDetail">
+        <PropertyRef Name="ExportOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHExportOrder_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="WHExportOrder" Type="Self.WHExportOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WHExportOrder">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHIMPORT_REFERENCE_PACKINGM">
+    <End Role="PackingManifestDetail" Type="Self.PackingManifestDetail" Multiplicity="0..1" />
+    <End Role="WHImportOrderDetail" Type="Self.WHImportOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackingManifestDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WHImportOrderDetail">
+        <PropertyRef Name="PackingManifestDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHIMPORT_REFERENCE_WHIMPORT">
+    <End Role="WHImportOrder" Type="Self.WHImportOrder" Multiplicity="1" />
+    <End Role="WHImportOrderDetail" Type="Self.WHImportOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WHImportOrder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WHImportOrderDetail">
+        <PropertyRef Name="WHImportOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_WHImportOrder_CreatorID">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="WHImportOrder" Type="Self.WHImportOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WHImportOrder">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fc_GetDocumentTypeName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Char" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CheckCancelConfirmMNStockIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CheckCancelConfirmStockin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CheckItemQuantityForSecurity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExportItemID" Type="nvarchar" Mode="In" />
+    <Parameter Name="OperationType" Type="nvarchar" Mode="In" />
+    <Parameter Name="ItemDetailID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Quantity" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_CheckLimitForDonative" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ReasonID" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="Quantity" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CheckMaintenanceInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CopyGAAdjustment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ToMonth" Type="datetime" Mode="In" />
+    <Parameter Name="CreateTime" Type="datetime" Mode="In" />
+    <Parameter Name="FromMonth" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_DeviceRegistrationReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ERPUpdateStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="CommentNew" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="Result" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_ERPUpdateStatusFPO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FEPOCode" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="MaterialType" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ERRUpdateOrderPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Order" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="NewPrice" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_GAAdjustmentChecking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Quantity" Type="decimal" Mode="In" />
+    <Parameter Name="CostCenterCode" Type="int" Mode="In" />
+    <Parameter Name="ItemDetailID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GenerateStockOutEquipment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="DocumentTypeName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechnicianID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetApproveDocumentForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetApproveDocumentForGADepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetApproveDocumentForSADepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetApprover" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentTypeName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CostCenterCode" Type="int" Mode="In" />
+    <Parameter Name="NodeID" Type="nvarchar" Mode="In" />
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetDataForDashBoard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ShelfID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetDataForMultiSign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetDataForSAPivotGrid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetDataForSAPivotGridUseForChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetDetailDynamicInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="ItemDetailID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetDetailSADynamicReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="Type" Type="int" Mode="In" />
+    <Parameter Name="ItemDetailID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetDocumentApprove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetDocumentSigned" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetDynamicInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetDynamicQueryPackingManifest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerPO" Type="nvarchar" Mode="In" />
+    <Parameter Name="PONumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTo" Type="datetime" Mode="In" />
+    <Parameter Name="OrderState" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetEquipmentInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ItemDetailID" Type="nvarchar" Mode="In" />
+    <Parameter Name="UnitID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetERPHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="FEPOCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetFirstApprover" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentTypeName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CostCenterCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetGAPushDataList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="BeginDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+    <Parameter Name="isStatus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetGARequestList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="BeginDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_GetGASummaryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BeginDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_GetItemData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerPO" Type="nvarchar" Mode="In" />
+    <Parameter Name="ItemNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetItemDetailName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RequestMain" Type="nvarchar" Mode="In" />
+    <Parameter Name="ItemID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetMaintenanceApproveDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetMaintenanceDetailsQuantity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetMNDynamicInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="DocumentType" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetMNRequestList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="BeginDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="EndDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="DocumentType" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetMNSummaryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BeginDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="EndDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="DocumentType" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetNextApprover" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentTypeName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CostCenterCode" Type="int" Mode="In" />
+    <Parameter Name="NodeID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetOpenOrderDoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FEPO" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetOrderRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="BeginDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_GetPurchaseOrderFromITS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechnicianID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetReferencePersonList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetReferrenceDocumentList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetSADynamicReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetSARequestList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="BeginDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_GetTotalShelfDataReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerPO" Type="nvarchar" Mode="In" />
+    <Parameter Name="SerialNo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetWFHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetWHExportOrderByMainLine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_HardwareRequirementReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_HardwareRequirementTotalReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_InventoryCalculate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_PushGADataToEland" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCodeList" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="MonthCondition" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="sp_PushMNOrderAndGenerateStockOut" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MNID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Technician" Type="int" Mode="In" />
+    <Parameter Name="ErrorMsg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="sp_QueryPODivert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FEPO" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_QueryPODivertDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FEPO" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_QueryPurchaseReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_QuerySignFlowEland" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_SAAudit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="isStatus" Type="int" Mode="In" />
+    <Parameter Name="Msg" Type="nvarchar(max)" Mode="InOut" />
+  </Function>
+  <Function Name="sp_UpdateERPAllowCancel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="FEA_ITSModelStoreContainer">
+    <EntitySet Name="ComponentDesign" EntityType="Self.ComponentDesign" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CostCenter" EntityType="Self.CostCenter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeviceRegistration" EntityType="Self.DeviceRegistration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeviceRegistrationDetail" EntityType="Self.DeviceRegistrationDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ERPDocument" EntityType="Self.ERPDocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ERPDocumentDetail" EntityType="Self.ERPDocumentDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExportItem" EntityType="Self.ExportItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExportItemApproverItem" EntityType="Self.ExportItemApproverItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExportItemChecking" EntityType="Self.ExportItemChecking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExportItemDetail" EntityType="Self.ExportItemDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Factory" EntityType="Self.Factory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GAAdjustment" EntityType="Self.GAAdjustment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GAItem" EntityType="Self.GAItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GAItemDetail" EntityType="Self.GAItemDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HardwareRequirement" EntityType="Self.HardwareRequirement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HardwareRequirementDetail" EntityType="Self.HardwareRequirementDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistoryScan" EntityType="Self.HistoryScan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemDetail" EntityType="Self.ItemDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITInventory" EntityType="Self.ITInventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITSAssetDetail" EntityType="Self.ITSAssetDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITSAssetFTY" EntityType="Self.ITSAssetFTY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITSAssetRecData" EntityType="Self.ITSAssetRecData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogChangePass" EntityType="Self.LogChangePass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MNInventory" EntityType="Self.MNInventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MNRequestMain" EntityType="Self.MNRequestMain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MNRequestMainDetail" EntityType="Self.MNRequestMainDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MNStockEquipment" EntityType="Self.MNStockEquipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MNStockEquipmentDetail" EntityType="Self.MNStockEquipmentDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PackingManifest" EntityType="Self.PackingManifest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PackingManifestDetail" EntityType="Self.PackingManifestDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PackingManifestDetailCoordination" EntityType="Self.PackingManifestDetailCoordination" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PackingManifestReturnedItem" EntityType="Self.PackingManifestReturnedItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductStockFromERP" EntityType="Self.ProductStockFromERP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SAAuditStatus" EntityType="Self.SAAuditStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SAConfigure" EntityType="Self.SAConfigure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SADestination" EntityType="Self.SADestination" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SAReason" EntityType="Self.SAReason" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShelfInformation" EntityType="Self.ShelfInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SiteFunction" EntityType="Self.SiteFunction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SiteFunction_UserGroup" EntityType="Self.SiteFunction_UserGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StockInEquipment" EntityType="Self.StockInEquipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StockInEquipmentDetail" EntityType="Self.StockInEquipmentDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StockOutEquipment" EntityType="Self.StockOutEquipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StockOutEquipmentDetail" EntityType="Self.StockOutEquipmentDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagPrefix" EntityType="Self.TagPrefix" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransferLog" EntityType="Self.TransferLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_account" EntityType="Self.user_account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserGroup" EntityType="Self.UserGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserPosition" EntityType="Self.UserPosition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WFDelegate" EntityType="Self.WFDelegate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WFDocumentType" EntityType="Self.WFDocumentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WFMain" EntityType="Self.WFMain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WFMainDetail" EntityType="Self.WFMainDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WFNode" EntityType="Self.WFNode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WFNodeDetail" EntityType="Self.WFNodeDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WFRefference" EntityType="Self.WFRefference" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WFRefferenceDetail" EntityType="Self.WFRefferenceDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WHExportOrder" EntityType="Self.WHExportOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WHExportOrderDetail" EntityType="Self.WHExportOrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WHImportOrder" EntityType="Self.WHImportOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WHImportOrderDetail" EntityType="Self.WHImportOrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_GetOrderFromERP" EntityType="Self.vw_GetOrderFromERP" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_GetOrderFromERP].[OrderID] AS [OrderID], 
+[vw_GetOrderFromERP].[SampleTypeID] AS [SampleTypeID], 
+[vw_GetOrderFromERP].[OrderType] AS [OrderType], 
+[vw_GetOrderFromERP].[FEPOCode] AS [FEPOCode], 
+[vw_GetOrderFromERP].[MachineType] AS [MachineType], 
+[vw_GetOrderFromERP].[OrderDate] AS [OrderDate], 
+[vw_GetOrderFromERP].[CompleteDate] AS [CompleteDate], 
+[vw_GetOrderFromERP].[CompanyStyleCode] AS [CompanyStyleCode], 
+[vw_GetOrderFromERP].[OriginalStyle] AS [OriginalStyle], 
+[vw_GetOrderFromERP].[StyleName] AS [StyleName], 
+[vw_GetOrderFromERP].[CustomerStyleCode] AS [CustomerStyleCode], 
+[vw_GetOrderFromERP].[CustomerID] AS [CustomerID], 
+[vw_GetOrderFromERP].[FactoryID] AS [FactoryID], 
+[vw_GetOrderFromERP].[StyleSeasonID] AS [StyleSeasonID], 
+[vw_GetOrderFromERP].[MachineYear] AS [MachineYear], 
+[vw_GetOrderFromERP].[MachineRequire] AS [MachineRequire], 
+[vw_GetOrderFromERP].[DealPerson] AS [DealPerson], 
+[vw_GetOrderFromERP].[ColorGroupID] AS [ColorGroupID], 
+[vw_GetOrderFromERP].[Price] AS [Price], 
+[vw_GetOrderFromERP].[Amount] AS [Amount], 
+[vw_GetOrderFromERP].[CurrencyID] AS [CurrencyID], 
+[vw_GetOrderFromERP].[ExchangeRate] AS [ExchangeRate], 
+[vw_GetOrderFromERP].[Remark] AS [Remark], 
+[vw_GetOrderFromERP].[Remark2] AS [Remark2], 
+[vw_GetOrderFromERP].[Remark3] AS [Remark3], 
+[vw_GetOrderFromERP].[CreateUserID] AS [CreateUserID], 
+[vw_GetOrderFromERP].[CreateDate] AS [CreateDate], 
+[vw_GetOrderFromERP].[LastUpdateUserID] AS [LastUpdateUserID], 
+[vw_GetOrderFromERP].[LastUpdateDate] AS [LastUpdateDate], 
+[vw_GetOrderFromERP].[PointOn] AS [PointOn], 
+[vw_GetOrderFromERP].[Status] AS [Status], 
+[vw_GetOrderFromERP].[StandardSizeName] AS [StandardSizeName], 
+[vw_GetOrderFromERP].[SizeTableType] AS [SizeTableType], 
+[vw_GetOrderFromERP].[StyleTypeID] AS [StyleTypeID], 
+[vw_GetOrderFromERP].[DeliveryCountryID] AS [DeliveryCountryID], 
+[vw_GetOrderFromERP].[CompanyID] AS [CompanyID], 
+[vw_GetOrderFromERP].[ProfitCenterCode] AS [ProfitCenterCode], 
+[vw_GetOrderFromERP].[OrderCustomerPO] AS [OrderCustomerPO], 
+[vw_GetOrderFromERP].[FinalCustomerPO] AS [FinalCustomerPO], 
+[vw_GetOrderFromERP].[OrderCustomerID] AS [OrderCustomerID], 
+[vw_GetOrderFromERP].[InvoiceCustomerID] AS [InvoiceCustomerID], 
+[vw_GetOrderFromERP].[PayCustomerID] AS [PayCustomerID], 
+[vw_GetOrderFromERP].[DeliveryCustomerID] AS [DeliveryCustomerID], 
+[vw_GetOrderFromERP].[FEStyleCode] AS [FEStyleCode], 
+[vw_GetOrderFromERP].[OrderTypeID] AS [OrderTypeID], 
+[vw_GetOrderFromERP].[TPOrderCode] AS [TPOrderCode], 
+[vw_GetOrderFromERP].[QuoteOrderCode] AS [QuoteOrderCode], 
+[vw_GetOrderFromERP].[HistoryOrderCode] AS [HistoryOrderCode], 
+[vw_GetOrderFromERP].[SalesApproved] AS [SalesApproved], 
+[vw_GetOrderFromERP].[SalesOrderApproved] AS [SalesOrderApproved], 
+[vw_GetOrderFromERP].[OrderStatus] AS [OrderStatus], 
+[vw_GetOrderFromERP].[QuotaTypeID] AS [QuotaTypeID], 
+[vw_GetOrderFromERP].[Distination] AS [Distination], 
+[vw_GetOrderFromERP].[QuotaQuantity] AS [QuotaQuantity], 
+[vw_GetOrderFromERP].[TransportTypeID] AS [TransportTypeID], 
+[vw_GetOrderFromERP].[YDMax] AS [YDMax], 
+[vw_GetOrderFromERP].[YDMin] AS [YDMin], 
+[vw_GetOrderFromERP].[TradeType] AS [TradeType], 
+[vw_GetOrderFromERP].[PaymentTermCode] AS [PaymentTermCode], 
+[vw_GetOrderFromERP].[AgreementContent] AS [AgreementContent], 
+[vw_GetOrderFromERP].[BusinessGroupID] AS [BusinessGroupID], 
+[vw_GetOrderFromERP].[HandbookCode] AS [HandbookCode], 
+[vw_GetOrderFromERP].[IsSuit] AS [IsSuit], 
+[vw_GetOrderFromERP].[IsSend] AS [IsSend], 
+[vw_GetOrderFromERP].[TaxID] AS [TaxID], 
+[vw_GetOrderFromERP].[TradeID] AS [TradeID], 
+[vw_GetOrderFromERP].[OrderState] AS [OrderState], 
+[vw_GetOrderFromERP].[CloseDate] AS [CloseDate], 
+[vw_GetOrderFromERP].[StyleYear] AS [StyleYear], 
+[vw_GetOrderFromERP].[CloseUserID] AS [CloseUserID], 
+[vw_GetOrderFromERP].[IsInventory] AS [IsInventory], 
+[vw_GetOrderFromERP].[OperateUserID] AS [OperateUserID], 
+[vw_GetOrderFromERP].[SexTypeID] AS [SexTypeID], 
+[vw_GetOrderFromERP].[LengthTypeID] AS [LengthTypeID], 
+[vw_GetOrderFromERP].[StyleType_tID] AS [StyleType_tID], 
+[vw_GetOrderFromERP].[completeState] AS [completeState], 
+[vw_GetOrderFromERP].[CompleteDateTime] AS [CompleteDateTime], 
+[vw_GetOrderFromERP].[CompleteUserID] AS [CompleteUserID], 
+[vw_GetOrderFromERP].[AccessoryPurchaseState] AS [AccessoryPurchaseState], 
+[vw_GetOrderFromERP].[FabricPurchaseState] AS [FabricPurchaseState], 
+[vw_GetOrderFromERP].[ConvertRate] AS [ConvertRate], 
+[vw_GetOrderFromERP].[SizeGroupID] AS [SizeGroupID], 
+[vw_GetOrderFromERP].[IntendingOrderID] AS [IntendingOrderID], 
+[vw_GetOrderFromERP].[ParentOrderID] AS [ParentOrderID], 
+[vw_GetOrderFromERP].[isNote] AS [isNote], 
+[vw_GetOrderFromERP].[ReceivablesDesi] AS [ReceivablesDesi], 
+[vw_GetOrderFromERP].[BuyMsg] AS [BuyMsg], 
+[vw_GetOrderFromERP].[InvoiceCustomerIDForTP] AS [InvoiceCustomerIDForTP], 
+[vw_GetOrderFromERP].[GarmentContractNum] AS [GarmentContractNum], 
+[vw_GetOrderFromERP].[CategoryName] AS [CategoryName], 
+[vw_GetOrderFromERP].[BillingState] AS [BillingState], 
+[vw_GetOrderFromERP].[BillingCloseDate] AS [BillingCloseDate], 
+[vw_GetOrderFromERP].[StrategyType] AS [StrategyType], 
+[vw_GetOrderFromERP].[Picture] AS [Picture], 
+[vw_GetOrderFromERP].[CommissionRate] AS [CommissionRate], 
+[vw_GetOrderFromERP].[IsPP] AS [IsPP], 
+[vw_GetOrderFromERP].[IsQRS] AS [IsQRS], 
+[vw_GetOrderFromERP].[IsKeyStyle] AS [IsKeyStyle], 
+[vw_GetOrderFromERP].[AGPOrderType] AS [AGPOrderType], 
+[vw_GetOrderFromERP].[StatusAllowClosedByMR] AS [StatusAllowClosedByMR], 
+[vw_GetOrderFromERP].[StatusAllowClosedByMRDate] AS [StatusAllowClosedByMRDate], 
+[vw_GetOrderFromERP].[StatusAllowClosedByPRO] AS [StatusAllowClosedByPRO], 
+[vw_GetOrderFromERP].[StatusAllowClosedByPRODate] AS [StatusAllowClosedByPRODate], 
+[vw_GetOrderFromERP].[isAllowCancelClose] AS [isAllowCancelClose], 
+[vw_GetOrderFromERP].[RequestCodeCancelClose] AS [RequestCodeCancelClose]
+FROM [dbo].[vw_GetOrderFromERP] AS [vw_GetOrderFromERP]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__DeviceReg__Devic__37703C52" Association="Self.FK__DeviceReg__Devic__37703C52">
+      <End Role="DeviceRegistration" EntitySet="DeviceRegistration" />
+      <End Role="DeviceRegistrationDetail" EntitySet="DeviceRegistrationDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeviceReg__Devic__48CFD27E" Association="Self.FK__DeviceReg__Devic__48CFD27E">
+      <End Role="DeviceRegistration" EntitySet="DeviceRegistration" />
+      <End Role="DeviceRegistrationDetail" EntitySet="DeviceRegistrationDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeviceReg__ItemD__3864608B" Association="Self.FK__DeviceReg__ItemD__3864608B">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="DeviceRegistrationDetail" EntitySet="DeviceRegistrationDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeviceReg__ItemD__4AB81AF0" Association="Self.FK__DeviceReg__ItemD__4AB81AF0">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="DeviceRegistrationDetail" EntitySet="DeviceRegistrationDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeviceReg__ItemI__395884C4" Association="Self.FK__DeviceReg__ItemI__395884C4">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="DeviceRegistrationDetail" EntitySet="DeviceRegistrationDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeviceReg__ItemI__49C3F6B7" Association="Self.FK__DeviceReg__ItemI__49C3F6B7">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="DeviceRegistrationDetail" EntitySet="DeviceRegistrationDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeviceReg__Techn__367C1819" Association="Self.FK__DeviceReg__Techn__367C1819">
+      <End Role="User" EntitySet="User" />
+      <End Role="DeviceRegistration" EntitySet="DeviceRegistration" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ExportIte__Creat__1DDC1E2F" Association="Self.FK__ExportIte__Creat__1DDC1E2F">
+      <End Role="User" EntitySet="User" />
+      <End Role="ExportItem" EntitySet="ExportItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ExportIte__Creat__2D1E61BF" Association="Self.FK__ExportIte__Creat__2D1E61BF">
+      <End Role="User" EntitySet="User" />
+      <End Role="ExportItemChecking" EntitySet="ExportItemChecking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ExportIte__Expor__1261E090" Association="Self.FK__ExportIte__Expor__1261E090">
+      <End Role="ExportItemDetail" EntitySet="ExportItemDetail" />
+      <End Role="ExportItemChecking" EntitySet="ExportItemChecking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ExportIte__Expor__2574B504" Association="Self.FK__ExportIte__Expor__2574B504">
+      <End Role="ExportItemDetail" EntitySet="ExportItemDetail" />
+      <End Role="ExportItemChecking" EntitySet="ExportItemChecking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ExportIte__Expor__2859ACA2" Association="Self.FK__ExportIte__Expor__2859ACA2">
+      <End Role="ExportItem" EntitySet="ExportItem" />
+      <End Role="ExportItemDetail" EntitySet="ExportItemDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ExportIte__UnitI__0D9D2B73" Association="Self.FK__ExportIte__UnitI__0D9D2B73">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="ExportItemDetail" EntitySet="ExportItemDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ExportIte__UnitI__238C6C92" Association="Self.FK__ExportIte__UnitI__238C6C92">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="ExportItemDetail" EntitySet="ExportItemDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ExportIte__UserP__743AEA1E" Association="Self.FK__ExportIte__UserP__743AEA1E">
+      <End Role="User" EntitySet="User" />
+      <End Role="ExportItem" EntitySet="ExportItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__Hardw__3B40CD36" Association="Self.FK__HardwareR__Hardw__3B40CD36">
+      <End Role="HardwareRequirement" EntitySet="HardwareRequirement" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__Hardw__41EDCAC5" Association="Self.FK__HardwareR__Hardw__41EDCAC5">
+      <End Role="HardwareRequirement" EntitySet="HardwareRequirement" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__Hardw__5FB337D6" Association="Self.FK__HardwareR__Hardw__5FB337D6">
+      <End Role="HardwareRequirement" EntitySet="HardwareRequirement" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__ItemD__3C34F16F" Association="Self.FK__HardwareR__ItemD__3C34F16F">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__ItemD__42E1EEFE" Association="Self.FK__HardwareR__ItemD__42E1EEFE">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__ItemD__619B8048" Association="Self.FK__HardwareR__ItemD__619B8048">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__ItemI__3D2915A8" Association="Self.FK__HardwareR__ItemI__3D2915A8">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__ItemI__43D61337" Association="Self.FK__HardwareR__ItemI__43D61337">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__ItemI__60A75C0F" Association="Self.FK__HardwareR__ItemI__60A75C0F">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__Techn__2180FB33" Association="Self.FK__HardwareR__Techn__2180FB33">
+      <End Role="User" EntitySet="User" />
+      <End Role="HardwareRequirement" EntitySet="HardwareRequirement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__UnitI__3E1D39E1" Association="Self.FK__HardwareR__UnitI__3E1D39E1">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__UnitI__44CA3770" Association="Self.FK__HardwareR__UnitI__44CA3770">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HardwareR__UnitI__628FA481" Association="Self.FK__HardwareR__UnitI__628FA481">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="HardwareRequirementDetail" EntitySet="HardwareRequirementDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HistorySc__Creat__6EC0713C" Association="Self.FK__HistorySc__Creat__6EC0713C">
+      <End Role="User" EntitySet="User" />
+      <End Role="HistoryScan" EntitySet="HistoryScan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItemDetai__ItemI__398D8EEE" Association="Self.FK__ItemDetai__ItemI__398D8EEE">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ITInvento__ItemD__7F2BE32F" Association="Self.FK__ITInvento__ItemD__7F2BE32F">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="ITInventory" EntitySet="ITInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ITInvento__UnitI__00200768" Association="Self.FK__ITInvento__UnitI__00200768">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="ITInventory" EntitySet="ITInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PackingMa__Creat__69FBBC1F" Association="Self.FK__PackingMa__Creat__69FBBC1F">
+      <End Role="User" EntitySet="User" />
+      <End Role="PackingManifest" EntitySet="PackingManifest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PackingMa__Packi__658CD814" Association="Self.FK__PackingMa__Packi__658CD814">
+      <End Role="PackingManifestDetail" EntitySet="PackingManifestDetail" />
+      <End Role="PackingManifestDetailCoordination" EntitySet="PackingManifestDetailCoordination" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__ItemD__47A6A41B" Association="Self.FK__StockInEq__ItemD__47A6A41B">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__ItemD__4F47C5E3" Association="Self.FK__StockInEq__ItemD__4F47C5E3">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__ItemD__797309D9" Association="Self.FK__StockInEq__ItemD__797309D9">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__ItemI__489AC854" Association="Self.FK__StockInEq__ItemI__489AC854">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__ItemI__503BEA1C" Association="Self.FK__StockInEq__ItemI__503BEA1C">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__ItemI__787EE5A0" Association="Self.FK__StockInEq__ItemI__787EE5A0">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__Stock__498EEC8D" Association="Self.FK__StockInEq__Stock__498EEC8D">
+      <End Role="StockInEquipment" EntitySet="StockInEquipment" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__Stock__51300E55" Association="Self.FK__StockInEq__Stock__51300E55">
+      <End Role="StockInEquipment" EntitySet="StockInEquipment" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__Stock__778AC167" Association="Self.FK__StockInEq__Stock__778AC167">
+      <End Role="StockInEquipment" EntitySet="StockInEquipment" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__UnitI__4A8310C6" Association="Self.FK__StockInEq__UnitI__4A8310C6">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__UnitI__5224328E" Association="Self.FK__StockInEq__UnitI__5224328E">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockInEq__UnitI__7A672E12" Association="Self.FK__StockInEq__UnitI__7A672E12">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="StockInEquipmentDetail" EntitySet="StockInEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockOutE__ItemD__0C85DE4D" Association="Self.FK__StockOutE__ItemD__0C85DE4D">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="StockOutEquipmentDetail" EntitySet="StockOutEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockOutE__ItemI__0B91BA14" Association="Self.FK__StockOutE__ItemI__0B91BA14">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="StockOutEquipmentDetail" EntitySet="StockOutEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockOutE__Stock__0A9D95DB" Association="Self.FK__StockOutE__Stock__0A9D95DB">
+      <End Role="StockOutEquipment" EntitySet="StockOutEquipment" />
+      <End Role="StockOutEquipmentDetail" EntitySet="StockOutEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StockOutE__UnitI__0D7A0286" Association="Self.FK__StockOutE__UnitI__0D7A0286">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="StockOutEquipmentDetail" EntitySet="StockOutEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFDelegat__Deleg__02084FDA" Association="Self.FK__WFDelegat__Deleg__02084FDA">
+      <End Role="User" EntitySet="User" />
+      <End Role="WFDelegate" EntitySet="WFDelegate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFDelegat__MainU__01142BA1" Association="Self.FK__WFDelegat__MainU__01142BA1">
+      <End Role="User" EntitySet="User" />
+      <End Role="WFDelegate" EntitySet="WFDelegate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFMain__CreateUs__07C12930" Association="Self.FK__WFMain__CreateUs__07C12930">
+      <End Role="User" EntitySet="User" />
+      <End Role="WFMain" EntitySet="WFMain" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFMain__Document__06CD04F7" Association="Self.FK__WFMain__Document__06CD04F7">
+      <End Role="WFDocumentType" EntitySet="WFDocumentType" />
+      <End Role="WFMain" EntitySet="WFMain" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFMainDet__Check__10566F31" Association="Self.FK__WFMainDet__Check__10566F31">
+      <End Role="User" EntitySet="User" />
+      <End Role="WFMainDetail" EntitySet="WFMainDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFMainDet__MainI__0C85DE4D" Association="Self.FK__WFMainDet__MainI__0C85DE4D">
+      <End Role="WFMain" EntitySet="WFMain" />
+      <End Role="WFMainDetail" EntitySet="WFMainDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFMainDet__PostU__0F624AF8" Association="Self.FK__WFMainDet__PostU__0F624AF8">
+      <End Role="User" EntitySet="User" />
+      <End Role="WFMainDetail" EntitySet="WFMainDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFNodeDet__Appro__151B244E" Association="Self.FK__WFNodeDet__Appro__151B244E">
+      <End Role="User" EntitySet="User" />
+      <End Role="WFNodeDetail" EntitySet="WFNodeDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFNodeDet__CostC__14270015" Association="Self.FK__WFNodeDet__CostC__14270015">
+      <End Role="CostCenter" EntitySet="CostCenter" />
+      <End Role="WFNodeDetail" EntitySet="WFNodeDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFNodeDet__NodeI__1332DBDC" Association="Self.FK__WFNodeDet__NodeI__1332DBDC">
+      <End Role="WFNode" EntitySet="WFNode" />
+      <End Role="WFNodeDetail" EntitySet="WFNodeDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFReffere__MainD__580034D1" Association="Self.FK__WFReffere__MainD__580034D1">
+      <End Role="WFMainDetail" EntitySet="WFMainDetail" />
+      <End Role="WFRefference" EntitySet="WFRefference" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFReffere__RefUs__5CC4E9EE" Association="Self.FK__WFReffere__RefUs__5CC4E9EE">
+      <End Role="User" EntitySet="User" />
+      <End Role="WFRefferenceDetail" EntitySet="WFRefferenceDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFReffere__Sende__58F4590A" Association="Self.FK__WFReffere__Sende__58F4590A">
+      <End Role="User" EntitySet="User" />
+      <End Role="WFRefference" EntitySet="WFRefference" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WFReffere__WFRef__5BD0C5B5" Association="Self.FK__WFReffere__WFRef__5BD0C5B5">
+      <End Role="WFRefference" EntitySet="WFRefference" />
+      <End Role="WFRefferenceDetail" EntitySet="WFRefferenceDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WHImportO__Shelf__749C737F" Association="Self.FK__WHImportO__Shelf__749C737F">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="WHImportOrderDetail" EntitySet="WHImportOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConfirmID" Association="Self.FK_ConfirmID">
+      <End Role="User" EntitySet="User" />
+      <End Role="MNRequestMain" EntitySet="MNRequestMain" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Costcenter" Association="Self.fk_Costcenter">
+      <End Role="CostCenter" EntitySet="CostCenter" />
+      <End Role="WFDelegate" EntitySet="WFDelegate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CostCenter_User" Association="Self.FK_CostCenter_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="CostCenter" EntitySet="CostCenter" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Creator2" Association="Self.fk_Creator2">
+      <End Role="User" EntitySet="User" />
+      <End Role="StockInEquipment" EntitySet="StockInEquipment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CreatorID" Association="Self.fk_CreatorID">
+      <End Role="User" EntitySet="User" />
+      <End Role="StockOutEquipment" EntitySet="StockOutEquipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CreatorID1" Association="Self.FK_CreatorID1">
+      <End Role="User" EntitySet="User" />
+      <End Role="MNRequestMain" EntitySet="MNRequestMain" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CreatorID2" Association="Self.fk_CreatorID2">
+      <End Role="User" EntitySet="User" />
+      <End Role="HardwareRequirement" EntitySet="HardwareRequirement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CreatorID3" Association="Self.FK_CreatorID3">
+      <End Role="User" EntitySet="User" />
+      <End Role="MNStockEquipment" EntitySet="MNStockEquipment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CreatorID4" Association="Self.fk_CreatorID4">
+      <End Role="User" EntitySet="User" />
+      <End Role="DeviceRegistration" EntitySet="DeviceRegistration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CurrencyID" Association="Self.FK_CurrencyID">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="MNRequestMain" EntitySet="MNRequestMain" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DeliveryFor" Association="Self.fk_DeliveryFor">
+      <End Role="User" EntitySet="User" />
+      <End Role="StockOutEquipment" EntitySet="StockOutEquipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryForID" Association="Self.FK_DeliveryForID">
+      <End Role="User" EntitySet="User" />
+      <End Role="MNStockEquipment" EntitySet="MNStockEquipment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Destination" Association="Self.fk_Destination">
+      <End Role="SADestination" EntitySet="SADestination" />
+      <End Role="ExportItem" EntitySet="ExportItem" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DocumentType" Association="Self.fk_DocumentType">
+      <End Role="WFDocumentType" EntitySet="WFDocumentType" />
+      <End Role="WFDelegate" EntitySet="WFDelegate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExportItemApproverCostCenter_Item" Association="Self.FK_ExportItemApproverCostCenter_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ExportItemApproverItem" EntitySet="ExportItemApproverItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExportItemApproverCostCenter_User" Association="Self.FK_ExportItemApproverCostCenter_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ExportItemApproverItem" EntitySet="ExportItemApproverItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExportItemApproverItem_CostCenter" Association="Self.FK_ExportItemApproverItem_CostCenter">
+      <End Role="CostCenter" EntitySet="CostCenter" />
+      <End Role="ExportItemApproverItem" EntitySet="ExportItemApproverItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExportItemDetail_ItemDetail" Association="Self.FK_ExportItemDetail_ItemDetail">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="ExportItemDetail" EntitySet="ExportItemDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAAdjustment_Reference_CostCenter" Association="Self.FK_GAAdjustment_Reference_CostCenter">
+      <End Role="CostCenter" EntitySet="CostCenter" />
+      <End Role="GAAdjustment" EntitySet="GAAdjustment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAITEM_REFERENCE_CURRENCY" Association="Self.FK_GAITEM_REFERENCE_CURRENCY">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="GAItem" EntitySet="GAItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAITEM_REFERENCE_USER" Association="Self.FK_GAITEM_REFERENCE_USER">
+      <End Role="User" EntitySet="User" />
+      <End Role="GAItem" EntitySet="GAItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAITEMDE_REFERENCE_GAITEM" Association="Self.FK_GAITEMDE_REFERENCE_GAITEM">
+      <End Role="GAItem" EntitySet="GAItem" />
+      <End Role="GAItemDetail" EntitySet="GAItemDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAITEMDE_REFERENCE_ITEM" Association="Self.FK_GAITEMDE_REFERENCE_ITEM">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="GAItemDetail" EntitySet="GAItemDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAITEMDE_REFERENCE_ITEMDETA" Association="Self.FK_GAITEMDE_REFERENCE_ITEMDETA">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="GAItemDetail" EntitySet="GAItemDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAITEMDE_REFERENCE_UNIT" Association="Self.FK_GAITEMDE_REFERENCE_UNIT">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="GAItemDetail" EntitySet="GAItemDetail" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ID_ERPDocumentsID" Association="Self.fk_ID_ERPDocumentsID">
+      <End Role="ERPDocument" EntitySet="ERPDocument" />
+      <End Role="ERPDocumentDetail" EntitySet="ERPDocumentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_ShelfID" Association="Self.FK_Item_ShelfID">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ShelfInformation" EntitySet="ShelfInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemDetailID" Association="Self.FK_ItemDetailID">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="MNInventory" EntitySet="MNInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemDetailID2" Association="Self.FK_ItemDetailID2">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="MNRequestMainDetail" EntitySet="MNRequestMainDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemDetailID3" Association="Self.FK_ItemDetailID3">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="MNStockEquipmentDetail" EntitySet="MNStockEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemID" Association="Self.FK_ItemID">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="MNRequestMainDetail" EntitySet="MNRequestMainDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemID3" Association="Self.FK_ItemID3">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="MNStockEquipmentDetail" EntitySet="MNStockEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITSAssetDetail_ITSAssetFTY" Association="Self.FK_ITSAssetDetail_ITSAssetFTY">
+      <End Role="ITSAssetFTY" EntitySet="ITSAssetFTY" />
+      <End Role="ITSAssetDetail" EntitySet="ITSAssetDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITSAssetDetail_ITSAssetFTY1" Association="Self.FK_ITSAssetDetail_ITSAssetFTY1">
+      <End Role="ITSAssetFTY" EntitySet="ITSAssetFTY" />
+      <End Role="ITSAssetDetail" EntitySet="ITSAssetDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITSAssetDetail_ITSAssetFTY2" Association="Self.FK_ITSAssetDetail_ITSAssetFTY2">
+      <End Role="ITSAssetFTY" EntitySet="ITSAssetFTY" />
+      <End Role="ITSAssetDetail" EntitySet="ITSAssetDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITSAssetDetail_ITSAssetRecData" Association="Self.FK_ITSAssetDetail_ITSAssetRecData">
+      <End Role="ITSAssetRecData" EntitySet="ITSAssetRecData" />
+      <End Role="ITSAssetDetail" EntitySet="ITSAssetDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGCHANG_RELATIONS_USER" Association="Self.FK_LOGCHANG_RELATIONS_USER">
+      <End Role="User" EntitySet="User" />
+      <End Role="LogChangePass" EntitySet="LogChangePass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MNREQUES_REFERENCE_MNREQUES" Association="Self.FK_MNREQUES_REFERENCE_MNREQUES">
+      <End Role="MNRequestMain" EntitySet="MNRequestMain" />
+      <End Role="MNRequestMainDetail" EntitySet="MNRequestMainDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MNSTOCKE_REFERENCE_MNSTOCKE" Association="Self.FK_MNSTOCKE_REFERENCE_MNSTOCKE">
+      <End Role="MNStockEquipment" EntitySet="MNStockEquipment" />
+      <End Role="MNStockEquipmentDetail" EntitySet="MNStockEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PACKINGM_REFERENCE_PACKINGM" Association="Self.FK_PACKINGM_REFERENCE_PACKINGM">
+      <End Role="PackingManifest" EntitySet="PackingManifest" />
+      <End Role="PackingManifestDetail" EntitySet="PackingManifestDetail" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PositionIDX" Association="Self.fk_PositionIDX">
+      <End Role="UserPosition" EntitySet="UserPosition" />
+      <End Role="SAConfigure" EntitySet="SAConfigure" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ReasonID" Association="Self.fk_ReasonID">
+      <End Role="SAReason" EntitySet="SAReason" />
+      <End Role="SAConfigure" EntitySet="SAConfigure" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ReasonItemDetailID" Association="Self.fk_ReasonItemDetailID">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="DeviceRegistrationDetail" EntitySet="DeviceRegistrationDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiveUserID" Association="Self.FK_ReceiveUserID">
+      <End Role="User" EntitySet="User" />
+      <End Role="MNStockEquipmentDetail" EntitySet="MNStockEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ReferID" Association="Self.fk_ReferID">
+      <End Role="ExportItem" EntitySet="ExportItem" />
+      <End Role="ExportItem1" EntitySet="ExportItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestMainID" Association="Self.FK_RequestMainID">
+      <End Role="MNRequestMain" EntitySet="MNRequestMain" />
+      <End Role="MNStockEquipment" EntitySet="MNStockEquipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SITEFUNC_RELATIONS_SITEFUNC" Association="Self.FK_SITEFUNC_RELATIONS_SITEFUNC">
+      <End Role="SiteFunction" EntitySet="SiteFunction" />
+      <End Role="SiteFunction_UserGroup" EntitySet="SiteFunction_UserGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SITEFUNC_RELATIONS_USERGROU" Association="Self.FK_SITEFUNC_RELATIONS_USERGROU">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="SiteFunction_UserGroup" EntitySet="SiteFunction_UserGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UnitID" Association="Self.FK_UnitID">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="MNInventory" EntitySet="MNInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UnitID2" Association="Self.FK_UnitID2">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="MNRequestMainDetail" EntitySet="MNRequestMainDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UnitID3" Association="Self.FK_UnitID3">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="MNStockEquipmentDetail" EntitySet="MNStockEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_RELATIONS_COSTCENT" Association="Self.FK_USER_RELATIONS_COSTCENT">
+      <End Role="CostCenter" EntitySet="CostCenter" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserGroup" Association="Self.FK_User_UserGroup">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserPosition" Association="Self.FK_User_UserPosition">
+      <End Role="UserPosition" EntitySet="UserPosition" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserID_ERPID" Association="Self.fk_UserID_ERPID">
+      <End Role="User" EntitySet="User" />
+      <End Role="ERPDocument" EntitySet="ERPDocument" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WFNode_WFDocumentType" Association="Self.FK_WFNode_WFDocumentType">
+      <End Role="WFDocumentType" EntitySet="WFDocumentType" />
+      <End Role="WFNode" EntitySet="WFNode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHEXPORT_REFERENCE_PACKINGM" Association="Self.FK_WHEXPORT_REFERENCE_PACKINGM">
+      <End Role="PackingManifestDetail" EntitySet="PackingManifestDetail" />
+      <End Role="WHExportOrderDetail" EntitySet="WHExportOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHEXPORT_REFERENCE_WHEXPORT" Association="Self.FK_WHEXPORT_REFERENCE_WHEXPORT">
+      <End Role="WHExportOrder" EntitySet="WHExportOrder" />
+      <End Role="WHExportOrderDetail" EntitySet="WHExportOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHExportOrder_User" Association="Self.FK_WHExportOrder_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="WHExportOrder" EntitySet="WHExportOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHIMPORT_REFERENCE_PACKINGM" Association="Self.FK_WHIMPORT_REFERENCE_PACKINGM">
+      <End Role="PackingManifestDetail" EntitySet="PackingManifestDetail" />
+      <End Role="WHImportOrderDetail" EntitySet="WHImportOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHIMPORT_REFERENCE_WHIMPORT" Association="Self.FK_WHIMPORT_REFERENCE_WHIMPORT">
+      <End Role="WHImportOrder" EntitySet="WHImportOrder" />
+      <End Role="WHImportOrderDetail" EntitySet="WHImportOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="fk_WHImportOrder_CreatorID" Association="Self.fk_WHImportOrder_CreatorID">
+      <End Role="User" EntitySet="User" />
+      <End Role="WHImportOrder" EntitySet="WHImportOrder" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

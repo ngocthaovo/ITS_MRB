@@ -1,0 +1,118 @@
+C:\Users\LinhTran\Desktop\FEAVN_website\source_code\FEASite_Solution\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+C:\Users\LinhTran\Desktop\FEAVN_website\source_code\FEASite_Solution\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+C:\Users\LinhTran\Desktop\FEAVN_website\source_code\FEASite_Solution\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.dll
+C:\Users\LinhTran\Desktop\FEAVN_website\source_code\FEASite_Solution\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.pdb
+F:\ITS Project\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.csprojResolveAssemblyReference.cache
+F:\ITS Project\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.dll
+F:\ITS Project\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.pdb
+F:\ITS Project\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll.config
+F:\ITS Project\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+F:\ITS Project\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+F:\ITS Project\FEA_BusinessLogic\bin\Debug\EntityFramework.dll
+F:\ITS Project\FEA_BusinessLogic\bin\Debug\FEA_Ultil.dll
+F:\ITS Project\FEA_BusinessLogic\bin\Debug\FEA_Ultil.pdb
+F:\ITS Project\FEA_BusinessLogic\bin\Debug\EntityFramework.xml
+D:\ITSCode\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll.config
+D:\ITSCode\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+D:\ITSCode\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+D:\ITSCode\FEA_BusinessLogic\bin\Debug\EntityFramework.dll
+D:\ITSCode\FEA_BusinessLogic\bin\Debug\FEA_Ultil.dll
+D:\ITSCode\FEA_BusinessLogic\bin\Debug\FEA_Ultil.pdb
+D:\ITSCode\FEA_BusinessLogic\bin\Debug\EntityFramework.xml
+D:\ITSCode\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.csprojResolveAssemblyReference.cache
+D:\ITSCode\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.dll
+D:\ITSCode\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.pdb
+E:\New folder\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll.config
+E:\New folder\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+E:\New folder\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+E:\New folder\FEA_BusinessLogic\bin\Debug\EntityFramework.dll
+E:\New folder\FEA_BusinessLogic\bin\Debug\FEA_Ultil.dll
+E:\New folder\FEA_BusinessLogic\bin\Debug\FEA_Ultil.pdb
+E:\New folder\FEA_BusinessLogic\bin\Debug\EntityFramework.xml
+E:\New folder\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.csprojResolveAssemblyReference.cache
+E:\New folder\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.dll
+E:\New folder\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.pdb
+D:\Works\ITS_Source\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.csprojResolveAssemblyReference.cache
+D:\Works\ITS_Source\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.dll
+D:\Works\ITS_Source\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.pdb
+D:\Works\ITS_Source\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll.config
+D:\Works\ITS_Source\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+D:\Works\ITS_Source\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+D:\Works\ITS_Source\FEA_BusinessLogic\bin\Debug\EntityFramework.dll
+D:\Works\ITS_Source\FEA_BusinessLogic\bin\Debug\FEA_Ultil.dll
+D:\Works\ITS_Source\FEA_BusinessLogic\bin\Debug\FEA_Ultil.pdb
+D:\Works\ITS_Source\FEA_BusinessLogic\bin\Debug\EntityFramework.xml
+D:\Works\ITS_Source\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+D:\Works\ITS_Source\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll.config
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\bin\Debug\EntityFramework.dll
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\bin\Debug\FEA_Ultil.dll
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\bin\Debug\FEA_Ultil.pdb
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\bin\Debug\EntityFramework.xml
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.csprojResolveAssemblyReference.cache
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.dll
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.pdb
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+D:\SourceCode\ITS_Source_Code\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll.config
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\EntityFramework.dll
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_Ultil.dll
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\System.Web.dll
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_Ultil.pdb
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\EntityFramework.xml
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb
+D:\Source Code\ITS.Website\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.csprojResolveAssemblyReference.cache
+D:\Source Code\ITS.Website\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.dll
+D:\Source Code\ITS.Website\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.pdb
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_GABusinessLogic.dll
+D:\Source Code\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_GABusinessLogic.pdb
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll.config
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\EntityFramework.dll
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_GABusinessLogic.dll
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_Ultil.dll
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\System.Web.dll
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_Ultil.pdb
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\EntityFramework.xml
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_GABusinessLogic.pdb
+C:\ITS.Website\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb
+C:\ITS.Website\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.csprojResolveAssemblyReference.cache
+C:\ITS.Website\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.dll
+C:\ITS.Website\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.csprojResolveAssemblyReference.cache
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll.config
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\EntityFramework.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\FEA_Ultil.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\System.Web.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\FEA_Ultil.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\EntityFramework.xml
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\FEA_GABusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\FEA_GABusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.csprojResolveAssemblyReference.cache
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\obj\Debug\FEA_BusinessLogic.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll.config
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\EntityFramework.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\FEA_GABusinessLogic.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\FEA_Ultil.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\System.Web.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\FEA_Ultil.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\EntityFramework.xml
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\FEA_GABusinessLogic.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_BusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb

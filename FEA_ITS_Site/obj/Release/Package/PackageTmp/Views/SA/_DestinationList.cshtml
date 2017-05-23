@@ -1,0 +1,41 @@
+﻿@model FEA_BusinessLogic.ExportItem
+@{
+    bool _readonlyControl = false;
+    if (Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.SENDING
+        || Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.CHECKED
+        || Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.DELETED
+        || Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.SPENDING)
+    {
+        _readonlyControl = true;
+    }
+}
+
+@Html.DevExpress().ComboBoxFor(model=>model.Destination,
+    settings =>
+    {
+
+        settings.Name = "cboDestinationList";
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+        settings.Properties.DropDownWidth = 500;
+        settings.CallbackRouteValues = new { Controller = "SA", Action = "DestinationListPartial"};
+        settings.Properties.CallbackPageSize = 30;
+        settings.Properties.TextFormatString = "{0}";
+        settings.Properties.ValueField = "ID";
+        settings.Properties.TextField = "CompanyName";
+        settings.Properties.ValueType = typeof(string);
+
+        settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+        settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+       
+        
+        //settings.Properties.ClientSideEvents.Validation = "OnDeliveryForValidation";
+        //settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithTooltip;
+        //settings.Properties.ValidationSettings.Display = Display.Dynamic;
+
+        settings.Properties.Columns.Add("CompanyName", "CompanyName", System.Web.UI.WebControls.Unit.Percentage(60));
+        settings.Properties.Columns.Add("CompanyCode", "CompanyCode", System.Web.UI.WebControls.Unit.Percentage(40));
+
+        settings.ReadOnly = _readonlyControl;
+
+    }
+    ).BindList(new FEA_SABusinessLogic.SADestinationManager().GetItems("", "", 1)).GetHtml()

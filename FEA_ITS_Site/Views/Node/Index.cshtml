@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@model List<FEA_BusinessLogic.WFNode>
+
+
+<script type="text/javascript">
+
+    function ViewNodeDetail(a, b, c) { // Function called from _NodePartical.cshtml
+        //alert(a + '/' + b + '/' + c);
+        $(".demo").click();
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+<div class="panel-body">
+    <h4><i class="icon-edit-sign teal"></i>Node Management</h4>
+    <form id="frmMainForm">
+        <div class="well well-sm">
+            <div class="row">
+                @{FEA_BusinessLogic.WFDocumentType dt = (FEA_BusinessLogic.WFDocumentType)ViewBag.DocType;}
+                <div class="col-md-2">
+                    <label class="control-label">
+                        Doc type name:
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    @Html.DevExpress().TextBox(
+                                                    settings =>
+                                                    {
+                                                        settings.Name = "txtDoctypeName";
+                                                        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                                        settings.Text = dt.DocumentTypeName;
+                                                        settings.ReadOnly = true;
+                                                        settings.ControlStyle.CssClass = "textBoxStyle";
+                                                    }
+                                                ).GetHtml()
+                </div>
+                <div class="col-md-1">
+                    <label class="control-label">
+                        Description:
+                    </label>
+                </div>
+                <div class="col-md-5">
+                    @Html.DevExpress().TextBox(
+                                                    settings =>
+                                                    {
+                                                        settings.Name = "txtDesc";
+                                                        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                                        settings.Text = dt.Description;
+                                                        settings.ReadOnly = true;
+                                                        settings.ControlStyle.CssClass = "textBoxStyle";
+                                                    }
+                                                ).GetHtml()
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.NODE_LIST_GRID });}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("ModalPartial/_IframeModal")

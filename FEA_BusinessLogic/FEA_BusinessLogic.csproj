@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B08C91F5-2DDC-4B1F-B149-7AE11186BC46}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FEA_BusinessLogic</RootNamespace>
+    <AssemblyName>FEA_BusinessLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FEA_GABusinessLogic">
+      <HintPath>..\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.dll</HintPath>
+    </Reference>
+    <Reference Include="FEA_SABusinessLogic">
+      <HintPath>..\FEA_SABusinessLogic\obj\Debug\FEA_SABusinessLogic.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseJsonResult.cs" />
+    <Compile Include="Base\Connection.cs" />
+    <Compile Include="CodeCenter\CodeCenterManager.cs" />
+    <Compile Include="ComponentDesign.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComponentSettings\ComponentSettings.cs" />
+    <Compile Include="CostCenter.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Currency.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Currency\CurrencyManager.cs" />
+    <Compile Include="DeviceRegistration.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceRegistrationDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceRegistration\DeviceRegistrationManager.cs" />
+    <Compile Include="DocumentType\DocumentTypeManager.cs" />
+    <Compile Include="ELand\PurchaseReport.cs" />
+    <Compile Include="ELand\SignFlow.cs" />
+    <Compile Include="ERPDocument.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERPDocumentDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERP\Order.cs" />
+    <Compile Include="ERP\QueryPODivert.cs" />
+    <Compile Include="ExportItem.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExportItemApproverItem.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExportItemChecking.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExportItemDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Factory.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FEASiteDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FEASiteDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FEASiteDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FEASiteDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FEASiteDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="GAAdjustment.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GAItem.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GAItemDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateCode\GenerateCode.cs" />
+    <Compile Include="HardwareRequirement.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HardwareRequirementDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HardwareRequirement\HardwareRequirementManager.cs" />
+    <Compile Include="HistoryScan.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemDetail\ItemDetailManager.cs" />
+    <Compile Include="Item\ItemManager.cs" />
+    <Compile Include="ITInventory.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITInventory\ITInventoryManager.cs" />
+    <Compile Include="ITSAssetDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITSAssetDetail1.cs" />
+    <Compile Include="ITSAssetFTY.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITSAssetFTY1.cs" />
+    <Compile Include="ITSAssetRecData.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITSAssetRecData1.cs" />
+    <Compile Include="ITSAsset\ITAssetDetailManager.cs" />
+    <Compile Include="ITSAsset\ITSAssetFTYManager.cs" />
+    <Compile Include="ITSAsset\ITSAssetRecDataManager.cs" />
+    <Compile Include="LogChangePass.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Maintenance\MaintenanceManager.cs" />
+    <Compile Include="Maintenance\MNInventoryManager.cs" />
+    <Compile Include="Maintenance\StockManager.cs" />
+    <Compile Include="MNInventory.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MNRequestMain.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MNRequestMainDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MNStockEquipment.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MNStockEquipmentDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NodeDetail\NodeDetailManager.cs" />
+    <Compile Include="Node\NodeManager.cs" />
+    <Compile Include="PackingManifest.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PackingManifestDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PackingManifestDetailCoordination.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PackingManifestReturnedItem.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductStockFromERP.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SAAuditExportItem.cs" />
+    <Compile Include="SAAuditStatu.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAConfigure.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SADestination.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAReason.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShelfInformation.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SiteFunction.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SiteFunction\SiteFunctionManager.cs" />
+    <Compile Include="SiteFunction_UserGroup.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SiteFunction_UserGroup\SiteFunction_UserGroupManager.cs" />
+    <Compile Include="sp_CheckCancelConfirmMNStockIn_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_CheckCancelConfirmStockin_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_CheckItemQuantityForSecurity_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_CheckLimitForDonative_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_CheckMaintenanceInventory_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_DeviceRegistrationReport_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GAAdjustmentChecking_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetApproveDocumentForAdmin_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetApproveDocumentForGADepartment_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetApproveDocumentForSADepartment_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetApprover_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetDataForDashBoard_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetDataForMultiSign_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetDataForSAPivotGridUseForChart_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetDataForSAPivotGrid_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetDetailDynamicInventory_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetDetailSADynamicReport_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetDocumentApprove_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetDocumentSigned_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetDynamicInventory_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetDynamicQueryPackingManifest_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetEquipmentInventory_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetERPHistory_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetFirstApprover_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetGAPushDataList_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetGARequestList_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetGASummaryReport_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetItemData_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetItemDetailName_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetMaintenanceApproveDocument_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetMaintenanceDetailsQuantity_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetMNDynamicInventory_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetMNRequestList_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetMNSummaryReport_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetNextApprover_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetOpenOrderDoc_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetOrderRequest_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetReferrenceDocumentList_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetSADynamicReport_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetSARequestList_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetTotalShelfDataReport_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetWFHistory_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetWHExportOrderByMainLine_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_HardwareRequirementReport_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_HardwareRequirementTotalReport_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_QueryPODivertDetail_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_QueryPODivert_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_QueryPurchaseReport_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_QuerySignFlowEland_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Statistic\Report.cs" />
+    <Compile Include="StockInEquipment.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockInEquipmentDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockInEquipment\StockInEquipmentManager.cs" />
+    <Compile Include="StockOutEquipment.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockOutEquipmentDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockOutEquipment\StockOutEquipmentManager.cs" />
+    <Compile Include="TagPrefix.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferLog.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Unit.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Unit\UnitManager.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroup.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroup\UserGroupManager.cs" />
+    <Compile Include="UserPosition.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserPosition\UserPositionManager.cs" />
+    <Compile Include="User\UserManager.cs" />
+    <Compile Include="user_account.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_GetOrderFromERP.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaitingArea\WaitingArea.cs" />
+    <Compile Include="WarehouseArea\HistoryScanManager.cs" />
+    <Compile Include="WarehouseArea\PackingManifestDetailCoordinationManager.cs" />
+    <Compile Include="WarehouseArea\PackingManifestDetailManager.cs" />
+    <Compile Include="WarehouseArea\PackingManifestManager.cs" />
+    <Compile Include="WarehouseArea\PackingManifestReturnedItemManager.cs" />
+    <Compile Include="WarehouseArea\WHExportOrderDetailManager.cs" />
+    <Compile Include="WarehouseArea\WHExportOrderManager.cs" />
+    <Compile Include="WarehouseArea\WHImportOrderDetailManager.cs" />
+    <Compile Include="WarehouseArea\WHImportOrderManager.cs" />
+    <Compile Include="WFDelegate.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WFDelegate\WFDelegateManager.cs" />
+    <Compile Include="WFDocumentType.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WFDocumentType\WFDocumentTypeManager.cs" />
+    <Compile Include="WFMain.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WFMainDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WFMainDetail\WFMainDetailManager.cs" />
+    <Compile Include="WFMain\WFMainManager.cs" />
+    <Compile Include="WFNode.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WFNodeDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WFRefference.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WFRefferenceDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WFRefference\WFRefferenceDetailManager.cs" />
+    <Compile Include="WFRefference\WFRefferenceManager.cs" />
+    <Compile Include="WHExportOrder.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WHExportOrderDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WHImportOrder.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WHImportOrderDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="FEASiteDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FEASiteDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FEASiteDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FEASiteDataModel.edmx</DependentUpon>
+      <LastGenOutput>FEASiteDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="FEASiteDataModel.edmx.diagram">
+      <DependentUpon>FEASiteDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="FEASiteDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FEASiteDataModel.edmx</DependentUpon>
+      <LastGenOutput>FEASiteDataModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FEA_Ultil\FEA_Ultil.csproj">
+      <Project>{2a0251de-f497-4678-970f-9a831ccea3e1}</Project>
+      <Name>FEA_Ultil</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@model FEA_BusinessLogic.WFRefference
+
+<script type="text/javascript">
+    function CloseGridLookup() {
+        grdUser.ConfirmCurrentSelection();
+        grdUser.HideDropDown();
+    }
+</script>
+<script type="text/javascript">
+    var selectedIDs;
+    function OnBeginCallback(s, e) {
+        //Pass all selected keys to GridView callback action
+        e.customArgs["selectedIDs"] = selectedIDs;
+    }
+    function OnSelectionChanged(s, e) {
+        s.GetSelectedFieldValues("UserID", GetSelectedFieldValuesCallback);
+    }
+    function GetSelectedFieldValuesCallback(values) {
+        //Capture all selected keys
+        selectedIDs = values.join(',');
+        $("#RefferenceList").val(selectedIDs);
+    }
+
+    // <![CDATA[
+    function OnCommentValidation(s, e) {
+        if (e.value == null || e.value == "") {
+            e.isValid = false;
+            e.errorText = "@Html.Raw(string.Format(Resources.Resource.msgInputRequite, Resources.Resource.Comment))";
+        }
+    }
+
+    function OnReferencesValidation(s, e) {
+        if ($("#RefferenceList").val().length == 0) {
+            e.isValid = false;
+            e.errorText = "@Html.Raw(string.Format(Resources.Resource.msgInputRequite, Resources.Resource.References))";
+        }
+
+    }
+
+</script>
+
+@{
+    Html.EnableClientValidation(false);
+    Html.EnableUnobtrusiveJavaScript(false);
+}
+<div class="panel-body">
+@{
+    Html.BeginForm("Index", "References", new { IsCreateNew = ViewBag.IsCreateNew }, FormMethod.Post, new { @id = "frmMainForm" });
+            @Html.HiddenFor(model => model.ID);
+            @Html.HiddenFor(model=>model.RefferenceList);
+            @Html.HiddenFor(model => model.MainDetailID);
+            @Html.HiddenFor(model => model.OrderCode);
+            @Html.HiddenFor(model => model.SenderID);
+            
+    
+        <div class="row">
+            <div class="col-lg-7 fLeft">
+                @Html.DevExpress().ValidationSummary(setting => { setting.Name = "validationSum"; }).GetHtml()
+            </div>
+        </div>
+    
+        if (ViewBag.EditStatus != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+
+                    @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                            @Html.Raw(Resources.Resource.msgSuccess)
+                        </div>
+                    }
+                    else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                            @Html.Raw(Resources.Resource.msgInsertFail)
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        if (ViewBag.IsOwner != null && (bool)ViewBag.IsOwner == true)
+        {
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="control-label">
+                       @Resources.Resource.SelectUser:
+                    </label>
+                </div>
+                <div class="col-md-8">
+
+                    @Html.Partial("_ReferencesUserPartial")
+
+                </div>
+            </div>
+        }
+
+        <div class="row row-detail">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">
+                        @Resources.Resource.Comment:
+                    </label>
+                    @Html.DevExpress().Memo(
+                        settings =>
+                        {
+                            settings.Name = "txtComment";
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.Rows = 5;
+                            settings.Properties.NullText = "";
+                            settings.ReadOnly = false;
+
+                            settings.Properties.ClientSideEvents.Validation = "OnCommentValidation";
+                            settings.ShowModelErrors = true;
+                            settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithTooltip;
+                            settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                        }
+                        ).GetHtml()
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label" style="font-weight: bold !important;">
+                    @Resources.Resource.CurrentUser @FEA_ITS_Site.Helper.UserLoginInfo.UserName
+                </label>
+                @Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.UseSubmitBehavior = true;
+                        settings.Name = "btnSentComment";
+                        settings.Width = 90;
+                        settings.Text = @Resources.Resource.Send;
+                        settings.Style.Add("float", "right");
+                    }).GetHtml()
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label">
+                    @Resources.Resource.Conversation
+                </label>
+            </div>
+        </div>
+        <!-- grid-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @{Html.RenderAction("GetListCommentBySesionPartial", "References", new { OrderCode = Model.OrderCode });}
+                </div>
+            </div>
+        </div>
+        Html.EndForm();
+        }
+</div>

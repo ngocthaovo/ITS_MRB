@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    var strCheckedIds = "";
+    function Changed(a, e, c) {
+        //alert(b.node.name);
+        if (e.node.GetChecked()) {
+            var key = e.node.name;
+            alert(key);
+        }
+
+    }
+
+
+</script>
+
+<script type="text/javascript">
+    var label = "";
+    var isChanged = false;
+
+    //$(function () {
+    //    $("#frMainForm").submit(function () {
+    //        alert(isChanged);
+    //        var flag = false;
+    //        if (isChanged) {
+    //            flag=  true;
+    //        }
+    //        else
+    //            flag = false;
+    //        alert(flag);
+    //        return flag;
+    //    });
+    //})
+
+    function OnCheckedChanged(s, e) {
+        // label.SetText("Checked nodes:");
+        isChanged = true;
+        label = "";
+        ListCheckedNodes(s);
+        // alert(label);
+
+        $("#hidden_1").val(label);
+    }
+
+    function ListCheckedNodes(parent) {
+        for (var i = 0; i < parent.GetNodeCount() ; i++) {
+            if (parent.GetNode(i).GetChecked()) {
+                if (label.length != 0)
+                    label = label + ";" + parent.GetNode(i).name;
+                else
+                    label = label + parent.GetNode(i).name;
+            }
+            if (parent.GetNode(i).GetNodeCount() != 0) {
+                ListCheckedNodes(parent.GetNode(i));
+            }
+        }
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+<body style="margin-top:-12px;">
+    @{
+        Html.BeginForm("Index", "SiteFunctionUserGroup", new { UserGroupID = ViewBag.UserGroupID }, FormMethod.Post, new { id="frMainForm" });
+        <div id="paginator-content-1" class="alert-small alert-info" style="margin-top:10px;">
+            Current Group:<strong> @Html.Raw(ViewBag.UserGroupName.ToString())</strong>
+        </div>
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "myButton";
+                    settings.Text = "Submit";
+                    //settings.EnableClientSideAPI = true;
+                    settings.UseSubmitBehavior = true;
+                }).GetHtml()
+            </div>
+        </div>
+        Html.RenderAction("GetGridView", "Base", new { frm = new FEA_BusinessLogic.SiteFunction_UserGroupManager().GetItems(int.Parse(ViewBag.UserGroupID.ToString())), GridName = FEA_ITS_Site.Models.Helper.PartialParameter.SITEFUNCTION_USERGROUP_TREEVIEW });
+
+        <input type="hidden" name="hidden_1" value="" id="hidden_1" />
+
+        if (ViewBag.UpdateStatus != null)
+        {
+            if ((Boolean)ViewBag.UpdateStatus)
+            {
+                <div id="paginator-content-1" class="alert-small alert-success">
+                    @ViewBag.UpdateMessage
+                </div>
+            }
+            else
+            {
+                <div id="paginator-content-1" class="alert-small alert-danger">
+                    @ViewBag.UpdateMessage
+                </div>
+            }
+        }
+        Html.EndForm();
+    }
+</body>

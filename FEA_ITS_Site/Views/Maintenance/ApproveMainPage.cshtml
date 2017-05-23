@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "ApproveMainPage";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+
+    function ActiveTabChange(s,e)
+    {
+        var type = GetQueryStringValue('Type');
+        var tabName=e.tab.name;
+        var item, url;
+        if (tabName == "InventoryTab")
+        {
+            item = $("#ifmApprove");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/Maintenance/ApprovePage?iStatus=-1&strType="+Type;
+            $(item).attr("src",url);
+        }
+        if(tabName =="QueryTab")
+        {
+            item =$("#ifmQuery");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/Maintenance/ApprovedManagement?Type="+type;
+            $(item).attr ("src",url);
+        }
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout }
+    )
+
+@Html.DevExpress().GetScripts(
+    new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout }
+    )
+
+@Html.DevExpress().PageControl(
+                settings =>
+                {
+                    settings.Name = "pcFeatures";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                    settings.ControlStyle.CssClass = "dxTab";
+                    settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChange";
+                    settings.TabPages.Add(Resources.Resource.PendingList, "ApproveTab").SetContent(() =>
+                    {
+                        ViewContext.Writer.Write(
+                          "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/Maintenance/ApprovePage?iStatus=-1&strType="+Request.QueryString["Type"]+"\"id=\"ifmApprove\" style=\"height: 800px;\"></iframe>"
+                          );
+                    });
+
+                    settings.TabPages.Add(Resources.Resource.Query, "QueryTab").SetContent(() =>
+                    {
+                        ViewContext.Writer.Write(
+                           "<iframe src='' id=\"ifmQuery\" style=\"height: 760px;\"></iframe>"
+                          );
+                    });
+                }
+
+).GetHtml()
+

@@ -1,0 +1,36 @@
+﻿@model List<FEA_BusinessLogic.WFNode>
+@using System.Web.UI.WebControls
+@{
+    var grid = Html.DevExpress().GridView(
+        settings =>
+        {
+            settings.Name = "detailGrid_" + ViewData["DocumentTypeID"];
+            settings.KeyFieldName = "NodeID";
+            //settings.CallbackRouteValues = new { Controller = "WorkflowManagement", Action = "EditModesPartial" };
+            //settings.CustomActionRouteValues = new { Controller = "WorkflowManagement", Action = "ChangeEditModePartial" };
+            //settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "WorkflowManagement", Action = "EditModesAddNewPartial" };
+            //settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "WorkflowManagement", Action = "EditModesUpdatePartial" };
+            //settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "WorkflowManagement", Action = "EditModesDeletePartial" };
+            //settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+            //settings.SettingsBehavior.ConfirmDelete = true;
+            //settings.SettingsPopup.EditForm.Width = Unit.Percentage(100);
+            settings.Width = Unit.Percentage(100);
+            //settings.CommandColumn.Visible = true;
+            settings.CommandColumn.Width = Unit.Percentage(20);
+            settings.CommandColumn.NewButton.Visible = true;
+            settings.CommandColumn.DeleteButton.Visible = true;
+            settings.CommandColumn.EditButton.Visible = true;
+
+            settings.Columns.Add("Sequence","Index").Width = Unit.Percentage(10);
+            settings.Columns.Add("Temp1", "Description").Width = Unit.Percentage(90);
+            settings.Columns.AddBand("View Detail");
+
+           // settings.SettingsDetail.ShowDetailRow = true;
+        });
+
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

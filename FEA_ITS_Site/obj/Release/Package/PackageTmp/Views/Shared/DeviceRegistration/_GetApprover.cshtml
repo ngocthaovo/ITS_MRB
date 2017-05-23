@@ -1,0 +1,87 @@
+﻿@model List<FEA_BusinessLogic.sp_GetApprover_Result>
+
+<script type="text/javascript">
+    // <![CDATA[
+
+   @{
+       bool isValidateApprover = true;
+       if (ViewBag.TypeUser != null && ViewBag.TypeUser.Trim() == "manager")
+       {
+           if (Model.Count == 0)
+           { isValidateApprover = false; }
+           else
+           { isValidateApprover = true; }
+       }
+       else
+       {
+           isValidateApprover = true;
+       }
+
+    }
+
+    var isValidateApprover = "@isValidateApprover";
+
+    var isSaveAndSendSubmitted = false;
+
+    if (isValidateApprover == "True") isValidateApprover = true;
+    else isValidateApprover = false;
+
+
+    /*hàm này là bắt lỗi dữ liệu của nextApproval, khi mà nhấn nút SAVE draff nếu NextApproval null thì nó sẽ báo lỗi, do yêu cầu là
+    sửa lại tại node 1 cho nên khi save xong mới hiện ra nextApproval nên em đã comment lại chổ này. Anh có cách nào chuyển function này sang cho nút SEND, nghĩa là
+    thay vì lúc trước thì SAVE bắt lỗi thì bây h SEND mới bắt lỗi chổ này.*/
+    function OnApproverValidation(s, e) {
+        //alert('validate'+isSaveAndSendSubmitted);
+        if (isValidateApprover) {
+            if (e.value == null || e.value == "") {
+                e.isValid = false;
+                e.errorText = "@Html.Raw(string.Format(Resources.Resource.msgInputRequite, Resources.Resource.Approver))";
+            }
+        }
+    }
+
+</script>
+<div class="col-md-2">
+    <label class="control-label">
+        @Resources.Resource.NextApprover
+    </label>
+</div>
+<div class="col-md-4">
+    @{
+        if (ViewBag.TypeUser != null && ViewBag.TypeUser.Trim() == "manager" && Model.Count == 0)
+        {
+            <label class="control-label">  <strong style="color: #3a87ad">@Resources.Resource.EndApprove</strong> </label>
+        }
+        else
+        {
+            Boolean isDisplayDropdown = (Model != null && Model.Count == 1) ? false : true;
+                @Html.DevExpress().ComboBox(settings =>
+                {
+                    settings.Name = "cboNextResUser";
+                    settings.CallbackRouteValues = new { Controller = "Item", Action = "ItemPartial" };
+                    settings.Properties.ValueType = typeof(string);
+                    settings.Properties.ValueField = "ApproverID";
+                    settings.Properties.TextField = "CheckUserName";  
+                    settings.Properties.CallbackPageSize = 20;
+                    settings.Properties.ClientSideEvents.Validation = "OnApproverValidation";
+                    settings.Properties.ClientSideEvents.SelectedIndexChanged = "function(s, e) {ChangeApproveUser(s,e) ; }";
+                    settings.Properties.ValidationSettings.Display = Display.Static;
+                    settings.ShowModelErrors = true;
+                    settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithTooltip;
+                    settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                    settings.ControlStyle.CssClass = "textBoxStyle";
+                    settings.ClientVisible = isDisplayDropdown;
+                    settings.SelectedIndex = (Model.Count == 1) ? 0 : -1;
+
+                    settings.Properties.CaptionSettings.RequiredMark = "(*)";
+                    settings.Properties.CaptionSettings.RequiredMarkDisplayMode = EditorRequiredMarkMode.Required;
+                    settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Right;
+                }).BindList(Model).GetHtml()
+            if (!isDisplayDropdown)
+            {
+                <label class="control-label">  <strong style="color: #3a87ad">@Model[0].CheckUserName</strong> </label>
+            }
+        }
+}
+
+</div>

@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "GADoProcessRequestOrder";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<div class="panel-body">
+    @using (Html.BeginForm("GADoProcessRequestOrder", "GA", new { }, FormMethod.Post, new { id = "frmMainForm", }))
+    {
+        string data = ViewBag.Data;
+        @Html.Hidden("mydata", data);
+
+
+                                if (ViewBag.EditStatus != null)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                                            {
+                                                <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                                                    @Html.Raw(Resources.Resource.msgSuccess)
+                                                </div>
+                                            }
+                                            else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                                            {
+                                                <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                                                    @Html.Raw(Resources.Resource.msgInsertFail)
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+
+        <!-- line-->
+                                <hr />
+
+        <!-- control group 3 column-->
+                                <a href="javascript:ContentFunction.DisplayItem('divBaseInfo','iIcon',null);"> <h4 class="group-title"><i class="icon-circle-arrow-down teal" id="iIcon"></i> Thiếp lập  xử lý đơn</h4></a>
+                                <div id="divBaseInfo">
+                                    <div class="row row-detail">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    @Resources.Resource.UserName:
+                                                </label>
+                                                @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtUserName";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ReadOnly = true;
+                                settings.Text = @FEA_ITS_Site.Helper.UserLoginInfo.UserName;
+                            }
+                        ).GetHtml()
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    @Resources.Resource.CompleteDate:
+                                                </label>
+                                                <div class="editorContainer">
+
+                                                    @Html.DevExpress().DateEdit(
+                            settings =>
+                            {
+                                settings.Name = "dtCompleteEstimateDate";
+                                settings.Properties.UseMaskBehavior = true;
+                                settings.Properties.EditFormat = EditFormat.Custom;
+                                settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);// "dd-MM-yyyy hh:mm tt";
+                                settings.Properties.TimeSectionProperties.Visible = false;
+                                settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+                                settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "hh:mm tt";
+                                settings.Date = DateTime.Now;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+
+                            }
+                        ).GetHtml()
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label"></label>
+
+
+                                                <div style="margin-top:5px">
+                                                    @Html.DevExpress().Button(
+                            settings =>
+                            {
+                                settings.Name = "btnProcess";
+                                settings.Width = 90;
+                                settings.Text = Resources.Resource.DoProcessDocument;
+                                settings.UseSubmitBehavior = true;
+                            }).GetHtml()
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        <!-- end control group-->
+    }
+</div>

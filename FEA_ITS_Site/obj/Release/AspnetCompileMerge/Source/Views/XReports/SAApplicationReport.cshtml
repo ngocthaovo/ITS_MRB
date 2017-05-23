@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "SAApplicationReport";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@{
+    Html.RenderAction("ReportPartial", new { param = ViewBag.ID, reportID = "SaApplicationReport", Temp1 = ViewBag.Type });
+    }

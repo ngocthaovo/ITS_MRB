@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "InventoryQuery";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#frmMain").submit(function () {
+            @*var x = confirm('@Html.Raw(Resources.Resource.msgConfirmMessage)');
+            if (x)
+                return true;
+            return false;*@
+        });
+
+    });
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+<div class="panel-body">
+    @using (Html.BeginForm("InventoryQuery", "ITInventory", FormMethod.Post, new {id="frmMain" }))
+    {
+            <!-- title-->
+        <h4><i class="icon-edit-sign teal"></i> Inventory</h4>
+        <!-- End title-->
+        if (ViewBag.EditStatus != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+
+                    @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                            @Html.Raw(Resources.Resource.msgSuccess)
+                        </div>
+                    }
+                    else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                            @Html.Raw(Resources.Resource.msgUpdateFailed)
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        <!--button group devexpress-->
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnInventoryCalculate";
+                    settings.Width = 90;
+                    settings.Text = Resources.Resource.InventoryCalculate;
+                    settings.UseSubmitBehavior = true;
+                    settings.ClientSideEvents.Click = "function(s, e) {e.processOnServer = confirm('" + @Html.Raw(Resources.Resource.msgConfirmMessage) + "');}";
+                }).GetHtml()
+                @*@Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnInventoryCalculate";
+                    settings.Width = 90;
+                    settings.Text = Resources.Resource.InventoryCalculate;
+                    settings.UseSubmitBehavior = true;
+                }).GetHtml()*@
+            </div>
+        </div>
+        <!--End button group-->
+        <!-- line-->
+        <hr />
+        <!--Line-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @{Html.RenderAction("InventoryEditModesPartial", "ITInventory");}
+                </div>
+            </div>
+        </div>
+    }
+</div>

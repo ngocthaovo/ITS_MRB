@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "QueryData";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+@using (Html.BeginForm("QueryShelf", "WarehouseArea", FormMethod.Post, new { id = "frmMainForm" }))
+{
+<div class="panel-body">
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnQuery";
+                    settings.Width = 90;
+                    settings.Text = Resources.Resource.Query;
+                    settings.UseSubmitBehavior = true;
+                }).GetHtml()
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnExportExcel";
+                    settings.Width = 90;
+                    settings.Text = "Export Excel";
+                    settings.UseSubmitBehavior = true;
+                    settings.Enabled = (ViewBag.IsPostBack != null && ViewBag.IsPostBack == "1") ? true : false;
+                }).GetHtml()
+            </div>
+        </div>
+
+        <!-- line-->
+        <hr />
+        <!--Line-->
+
+        <!-- control group 3 column-->
+        <a href="javascript:ContentFunction.DisplayItem('divBaseInfo','iIcon',null);"> <h4 class="group-title"><i class="icon-circle-arrow-down teal" id="iIcon"></i> Query Customer PO</h4></a>
+        <div id="divBaseInfo">
+            <div class="row row-detail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Barcode:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtSerialNo";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.Properties.NullText = "";
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = Convert.ToString(ViewBag.SerialNo);
+                                
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.CustomerPO:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtCusPoNum";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = ViewBag.CusPO;
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end control group-->
+    <a><h4 class="group-title"><i class="icon-list teal "></i> Detail data</h4></a>
+    @{
+        if (ViewBag.IsPostBack != null && ViewBag.IsPostBack == "1")
+        {
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="vertComponentContainer">
+                                @{Html.RenderAction("LoadShelfData", "WarehouseArea", new { SerialNo = ViewBag.SerialNo, CustomerPO = ViewBag.CusPO});}
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+
+        }
+    }
+</div>
+}

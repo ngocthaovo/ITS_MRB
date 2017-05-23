@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "UpdateOrderPrice";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        $("form").submit(function () {
+            var price = txtPrice.GetValue();
+            if (price == null || price == undefined)
+            { alert("Vui lòng nhập giá!"); return false; }
+            else if (price <= 0)
+            {
+                alert("Giá phải lớn hơn 0!"); return false;
+            }
+            return true;
+
+        });
+    })
+
+    function OnBtnClick(s, e) {
+
+    }
+</script>
+<div class="panel-body">
+    @{
+
+        Html.BeginForm();
+        if (ViewBag.EditStatus != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+
+                    @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                            @Html.Raw(ViewBag.EditInfo)
+                        </div>
+                    }
+                    else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                            @Html.Raw(ViewBag.EditInfo)
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="control-label" style="color:red">
+                            Danh sách các Order, Nếu nhiều  Order nằm trên 1 dòng thì mỗi FEPO cách nhau bởi dấu ",". Mỗi Order nên chỉ nằm trên 1 dòng và không có dấu "," sau cùng
+                        </label>
+                        @Html.DevExpress().Memo(
+                            settings =>
+                            {
+                                settings.Name = "txtOrders";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Properties.Rows = 30;
+                                settings.Text = ViewBag.Orders;
+
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Số tiền muốn cập nhật
+                        </label>
+                        <div class="editorContainer">
+                            @Html.DevExpress().SpinEdit(
+                        settings =>
+                        {
+                            settings.Name = "txtPrice";
+                            settings.Properties.NumberType = SpinEditNumberType.Float;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.MinValue = 0;
+                            settings.Properties.MaxValue = decimal.MaxValue;
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.NullText = "0";
+                            settings.Number = 0;
+                            settings.Properties.AllowNull = false;
+                            settings.Properties.DisplayFormatString = FEA_Ultil.FEAStringClass.DisNumberFormatString();
+                        }
+                    ).GetHtml()
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+
+                        @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnUpdate";
+                    settings.Width = 90;
+                    settings.Text = "Cập nhật";
+                    settings.UseSubmitBehavior = true;
+                    settings.ClientSideEvents.Click = "OnBtnClick";
+                }).GetHtml()
+                    </div>
+                </div>
+            </div>
+        </div>
+        Html.EndForm();
+
+    }
+</div>

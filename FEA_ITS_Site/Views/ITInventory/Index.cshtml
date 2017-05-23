@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    function ActiveTabChanged(s, e) {
+        var tabName = e.tab.name;
+        var item, url;
+        if (tabName == "InventoryQuery") {
+            item = $("#ifmInventoryQuery");
+
+            url = $(item).attr("src");
+            if (url.length == 0 || url == "") {
+                url = "@FEA_ITS_Site.Helper.Ultilities.Root/ITInventory/InventoryQuery";
+                $(item).attr("src", url);
+            }
+        }
+        else if (tabName == "DynamicInventory")
+        {
+            item = $("#ifmDynamicInventory");
+            url = $(item).attr("src");
+
+            if (url.length == 0 || url == "")
+            {
+                url = "@FEA_ITS_Site.Helper.Ultilities.Root/ITInventory/QueryDynamicInventory";
+                $(item).attr("src", url);
+            }
+        }
+    }
+
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.NavigationAndLayout})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.NavigationAndLayout})
+
+@Html.DevExpress().PageControl(
+            settings =>
+            {
+                settings.Name = "pcFeatures";
+                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                settings.ControlStyle.CssClass = "dxTab";
+                settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+                settings.TabPages.Add(Resources.Resource.InventoryQuery, "InventoryQuery").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                        "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/ITInventory/InventoryQuery\" id=\"ifmInventoryQuery\" style=\"height: 800px;\"></iframe>"
+                    );
+                    //Html.RenderAction("Index", "DeviceRegistration", new { DeviceRegID = "" });
+
+                });
+
+                settings.TabPages.Add(Resources.Resource.QueryDynamicInventory, "DynamicInventory").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                            "<iframe src='' id=\"ifmDynamicInventory\" style=\"height: 760px;\"></iframe>"
+                        );
+                });
+            }).GetHtml()

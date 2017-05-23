@@ -1,0 +1,20 @@
+﻿ @*@using(Html.BeginForm("UploadControlCallbackAction","Base")) {*@
+
+                        @Html.DevExpress().UploadControl(
+                                settings =>
+                                {
+                                    settings.Name = "uc";
+                                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                    settings.AddUploadButtonsHorizontalPosition = AddUploadButtonsHorizontalPosition.Right;
+                                    settings.ShowAddRemoveButtons = true;
+                                    settings.ShowProgressPanel = true;
+                                    settings.CallbackRouteValues = new { Controller = "Base", Action = "UploadControlCallbackAction" };
+                                    settings.ClientSideEvents.FileUploadComplete = "OnFileUploadComplete";
+                                    settings.ValidationSettings.Assign(FEA_ITS_Site.Helper.UploadControl.UploadControlValidationSettings);
+                                    settings.Enabled = (bool)ViewBag.IsEnable;
+                                    settings.AddButton.Text = @Resources.Resource.Add;
+                                    settings.RemoveButton.Text = @Resources.Resource.Delete;
+                                    settings.BrowseButton.Text = @Resources.Resource.Browse;
+                                }).GetHtml()
+                               
+@*}*@

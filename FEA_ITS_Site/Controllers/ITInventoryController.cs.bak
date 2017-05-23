@@ -1,0 +1,570 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+using FEA_BusinessLogic;
+using FEA_ITS_Site.Models.Helper;
+using FEA_ITS_Site.Models;
+using DevExpress.Web.Mvc;
+using System.Web.UI.WebControls;
+using DevExpress.Web.ASPxClasses;
+using DevExpress.Web.ASPxGridView;
+
+namespace FEA_ITS_Site.Controllers
+{
+    public class ITInventoryController : BaseController
+    {
+        //
+        // GET: /ITInventory/
+        
+        public ActionResult MainPage()
+        {
+            // Requite Permission
+            if (!Helper.UserLoginInfo.IsLogin)
+                return RedirectToAction("Login", "User", new { url = string.Format("{0}{1}", Helper.Ultilities.Root, "/ITInventory/MainPage") });
+            //
+
+            return View();
+        }
+
+        #region "Load Page"
+        /// <summary>
+        /// Create Stockin Order
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SockIn(string ID, int? editStatus, string sErrorMessage)
+        {
+            // Requite Permission
+            if (!Helper.UserLoginInfo.IsLogin)
+                return RedirectToAction("Login", "User", new { url = string.Format("{0}{1}", Helper.Ultilities.Root, "/ITInventory/SockIn") });
+            //
+
+            StockInEquipment deRegItem;
+            User uInfo = new User();
+            Boolean bIsCreateNew = false;
+
+
+            if (ID == null || ID.Trim().Length == 0) // Create New
+            {
+                // Get User Logged info
+                uInfo = new UserManager().GetItem(Helper.UserLoginInfo.UserId);
+                // get DeviceReg Info
+                deRegItem = new StockInEquipment()
+                {
+                    CreateDate = DateTime.Now,
+                    Description = "",
+                    CreatorID = Helper.UserLoginInfo.UserId,
+                    Status = (int)DeviceRegistrationManager.OrderStatus.New,
+                    OrderCode = ""//Controllers.HelperController.GenerateCode(TagPrefixParameter.STOCK_IN)
+                };
+
+                // Item Detail
+                Session["ItemInfoList"] = new List<ItemInfo>();
+                bIsCreateNew = true;
+            }
+            else // Load Info and show to View Page
+            {
+                //deRegItem = new StockInEquipment();
+                deRegItem = new StockInEquipmentManager().GetItem(ID);
+
+                if (deRegItem != null)
+                {
+                    // Get User Logged info
+                    uInfo = new UserManager().GetItem(deRegItem.CreatorID.Value);
+                    Session["ItemInfoList"] = ConvertToItemInfos(deRegItem.StockInEquipmentDetails);
+                    //GetApprover - this is partial
+
+                    bIsCreateNew = false;
+                }
+            }
+
+            if (editStatus != null)
+                ViewBag.EditStatus = editStatus;
+            ViewBag.User = uInfo;
+            ViewBag.IsCreateNew = bIsCreateNew;
+            ViewBag.ErrorMessage = sErrorMessage;
+            return View(deRegItem);
+        }
+
+        /// <summary>
+        /// Convert List of HardwareRequirementDetail to List of ItemInfo
+        /// </summary>
+        /// <param name="HardRgDetails"></param>
+        /// <returns></returns>
+        private List<ItemInfo> ConvertToItemInfos(ICollection<StockInEquipmentDetail> HardRgDetails)
+        {
+            List<ItemInfo> lstResult = new List<ItemInfo>();
+            ItemInfo _itemInfo;
+            foreach (StockInEquipmentDetail dvResDetailItem in HardRgDetails)
+            {
+                _itemInfo = new ItemInfo()
+                {
+                    ID = dvResDetailItem.ID,
+                    ItemID = dvResDetailItem.ItemID,
+                    ItemName = dvResDetailItem.Item.ItemName,
+                    ItemDetailID = dvResDetailItem.ItemDetailID,
+                    ItemDetailName = dvResDetailItem.ItemDetail.ItemDetailName,
+                    Des = dvResDetailItem.Description,
+                    Quantity = dvResDetailItem.Quantity.Value,
+                    UnitID = dvResDetailItem.UnitID,
+                    DeliveryDate = dvResDetailItem.DeliveryDate,
+                    UnitName = dvResDetailItem.Unit.NAME,
+
+                };
+                lstResult.Add(_itemInfo);
+            }
+            return lstResult;
+        }
+        #endregion
+
+
+        #region Item Detail in list Manager
+        /// <summary>
+        /// Add Item and ItemDetail to Grid
+        /// </summary>
+        /// <param name="ItemID"></param>
+        /// <param name="ItemDetail"></param>
+        /// <param name="Description"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult AddItemToOrder(string ItemID, string ItemDetail, string Description, DateTime? DeliveryDate, int? Quantity = 0)
+        {
+
+            if (ItemID.Trim().Length == 0 || ItemDetail.Trim().Length == 0
+                || Convert.ToDecimal(Quantity) <= 0 || DeliveryDate == null || DeliveryDate.Value.Date < DateTime.Now.Date)
+            {
+                string _sErr = Resources.Resource.msgInputError;
+                if (ItemID.Trim().Length == 0)
+                    _sErr += string.Format("<br/>" + Resources.Resource.msgInputRequite, Resources.Resource.ItemType);
+                if (ItemDetail.Trim().Length == 0)
+                    _sErr += string.Format("<br/>" + Resources.Resource.msgInputRequite, Resources.Resource.Specs);
+                if (Convert.ToDecimal(Quantity) <= 0)
+                    _sErr += string.Format("<br/>" + Resources.Resource.msgInputRequite, Resources.Resource.Quantity);
+                if (DeliveryDate == null || DeliveryDate.Value.Date < DateTime.Now.Date)
+                    _sErr += string.Format("<br/>" + Resources.Resource.msgInputRequite, Resources.Resource.DeliveryDate);
+
+                ViewData["EditError"] = _sErr;
+            }
+
+            else
+            {
+                var flag = FindItemDetailInList(ItemDetail);
+                if (flag) // Đã tồn tại trong list
+                    ViewData["EditError"] = Resources.Resource.msgDataduplicate;
+                else
+                {
+                    try
+                    {
+                        FEA_BusinessLogic.Unit unit;
+                        Item i = new ItemManager().GetItem(ItemID);
+
+                        ItemDetail item_detail = new ItemDetailManager().GetItem(ItemDetail);
+                        unit = new UnitManager().GetItem(item_detail == null ? "" : item_detail.Temp2); // temp2 was unit id
+
+                        Models.ItemInfo item = new ItemInfo()
+                        {
+                            ID = Guid.NewGuid().ToString(),
+                            ItemID = i.ID,
+                            ItemName = i.ItemName,
+                            ItemDetailID = item_detail.ID,
+                            ItemDetailName = item_detail.ItemDetailName,
+                            Des = Description,
+
+                            DeliveryDate = DeliveryDate,
+                            UnitID = unit == null ? "" : unit.ID,
+                            UnitName = unit == null ? "" : unit.NAME,
+                            Quantity = Quantity.Value,
+                        };
+                        var iInStock = new FEA_BusinessLogic.Base.Connection().db.sp_GetEquipmentInventory(item.ItemDetailID, item.UnitID).SingleOrDefault();
+                        item.QuanInStock = (iInStock == null) ? 0 : iInStock.InventoryQuantity.Value;
+                        item.QuanNeeded = (item.Quantity > item.QuanInStock) ? (item.Quantity - item.QuanInStock) : 0;
+
+
+
+                        List<ItemInfo> lst = new List<ItemInfo>();
+                        if (Session["ItemInfoList"] != null)
+                        {
+                            lst = (List<ItemInfo>)Session["ItemInfoList"];
+                            lst.Add(item);
+                            Session["ItemInfoList"] = lst;
+                        }
+                        else
+                        {
+                            lst.Add(item);
+                            Session["ItemInfoList"] = lst;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewData["EditError"] = ex.Message;
+                    }
+
+                }
+            }
+            ViewData["ShowCommand"] = true;
+            return GetGridView(Session["ItemInfoList"], Models.Helper.PartialParameter.ITEM_DETAIL_STOCKITEM_LIST_GRID);
+        }
+
+        private bool FindItemDetailInList(string ItemDetailID)
+        {
+            List<ItemInfo> lst = new List<ItemInfo>();
+            if (Session["ItemInfoList"] != null)
+                lst = (List<ItemInfo>)Session["ItemInfoList"];
+
+            return lst.Where(i => i.ItemDetailID == ItemDetailID).Count() > 0 ? true : false;
+        }
+
+
+        public ActionResult GetListItemDetailPartial(bool? ShowCommand = false)
+        {
+            ViewData["ShowCommand"] = ShowCommand;
+            return GetGridView((List<ItemInfo>)Session["ItemInfoList"], Models.Helper.PartialParameter.ITEM_DETAIL_STOCKITEM_LIST_GRID);
+        }
+
+        /// <summary>
+        /// Delete an Item in Grid 
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult EditModesDeleteItemDetail(string ID)
+        {
+            List<ItemInfo> lst = new List<ItemInfo>();
+            if (Session["ItemInfoList"] != null)
+                lst = (List<ItemInfo>)Session["ItemInfoList"];
+
+            ItemInfo i = lst.Where(o => o.ID == ID).SingleOrDefault();
+            lst.Remove(i);
+
+            Session["ItemInfoList"] = lst;
+            ViewData["ShowCommand"] = true;
+            return GetGridView((List<ItemInfo>)Session["ItemInfoList"], Models.Helper.PartialParameter.ITEM_DETAIL_STOCKITEM_LIST_GRID);
+        }
+
+        #endregion
+
+        #region  SaveToDB
+
+
+        /// <summary>
+        /// Save to DB for Inserting and Updateing
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        /// 
+
+        [HttpPost]
+        public ActionResult SaveData([ModelBinder(typeof(DevExpress.Web.Mvc.DevExpressEditorsBinder))] StockInEquipment o, bool CreateNew)
+        {
+
+            string sResult = "";
+            string sMessage = "";
+            if (Request.Form["btnSaveDraff"] != null) //Save Draft
+                sResult = CreateStockInOrder(o, true);
+            else if (Request.Form["btnSaveAndSend"] != null) // Save And Send
+                if (CreateNew)
+                    sResult = CreateStockInOrder(o, false);//isSaveDraff = false - Create Order;
+                else
+                    sResult = UpdateStockInOrder(o, false);//isSaveDraff = false - Update Order;
+            else if (Request.Form["btnUpdate"] != null) //Update - 
+            {
+                sResult = UpdateStockInOrder(o, true);
+            }
+            else if (Request.Form["btnCancelConfirm"] != null)
+            {
+                List<sp_CheckCancelConfirmStockin_Result> CheckItem = new FEA_BusinessLogic.ITInventoryManager().CheckCancelConfirm(o.OrderCode);
+                if (CheckItem.Count != 0)
+                {
+                    foreach (sp_CheckCancelConfirmStockin_Result item in CheckItem)
+                    {
+                        if (item.DifferentQuantity < 0)
+                        {
+                            sMessage += Resources.Resource.NotEnough + Resources.Resource.ItemNameDetail+": "+ item.ItemDetailName + " " +Resources.Resource.Quantity+": " + item.DifferentQuantity +"";
+                        }
+                    }
+                    sResult = "";
+                }
+                else
+                {
+                    sResult = UpdateCancelStockInOrder(o, true);
+                } 
+            }
+            if (sResult.Length > 0)
+                return RedirectToAction("SockIn", new { ID = sResult, editStatus = (int)Models.Helper.EditItemStatus.success });// Index(sResult,"","", (int)Models.Helper.EditItemStatus.success);
+            else
+                return RedirectToAction("SockIn", new { ID = o.ID, editStatus = (int)Models.Helper.EditItemStatus.failed, sErrorMessage = sMessage });//Index(sResult, "", "", (int)Models.Helper.EditItemStatus.failed);
+        }
+
+
+        /// <summary>
+        /// Create Device Registration Information
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="isSaveDraff"></param>
+        /// <param name="wfMain"></param>
+        /// <returns>the ID of DeviceRegistration when update success</returns>
+        private string CreateStockInOrder(StockInEquipment o, bool isSaveDraff)
+        {
+            //Master
+            o.CreatorID = Helper.UserLoginInfo.UserId;
+            o.StockInEquipmentDetails = StockInEquipmentDetailList();
+            o.OrderCode = Controllers.HelperController.GenerateCode(TagPrefixParameter.STOCK_IN);
+            o.Temp2 = "";
+            if (isSaveDraff)
+                o.Status = (int)DeviceRegistrationManager.OrderStatus.DRAFT;
+            else
+            {
+                o.Status = (int)DeviceRegistrationManager.OrderStatus.FINSHED;
+                o.Temp1 = DateTime.Now;
+            }
+            string sID = new StockInEquipmentManager().InsertItem(o, isSaveDraff);
+            return sID;
+        }
+
+        /// <summary>
+        /// this function using for Update (update, save and send) when document Returned
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="isSaveDraff"></param>
+        /// <returns>the ID of DeviceRegistration when update success</returns>
+        private string UpdateStockInOrder(StockInEquipment o, bool isSaveDraff)
+        {
+
+            //Master
+            o.CreatorID = Helper.UserLoginInfo.UserId;
+            o.StockInEquipmentDetails = StockInEquipmentDetailList();
+            o.Temp2 = "";
+            bool _result = new StockInEquipmentManager().UpdateItem(o, isSaveDraff,
+                                                                         i => i.Description);
+            return _result == true ? o.ID : "";
+        }
+           /// <summary>
+           /// Cancel confirm
+           /// </summary>
+           /// <param name="o"></param>
+           /// <param name="isSaveDraff"></param>
+           /// <returns></returns>
+        private string UpdateCancelStockInOrder(StockInEquipment o, bool isSaveDraff)
+        {
+            o.StockInEquipmentDetails = CancelStockInEquipmentDetailList();
+            o.Temp2 = "";
+            bool _result = new StockInEquipmentManager().CancelConfirmItem(o, isSaveDraff,
+                                                                         i => i.Status);
+            return _result == true ? o.ID : "";
+        }
+        /// <summary>
+        /// Get DeviceRegistrationDetail to save to DB
+        /// </summary>
+        /// <returns></returns>
+        private List<StockInEquipmentDetail> StockInEquipmentDetailList()
+        {
+            List<StockInEquipmentDetail> lst = new List<StockInEquipmentDetail>();
+            if (Session["ItemInfoList"] != null)
+            {
+                List<ItemInfo> lstItemInfo = (List<ItemInfo>)Session["ItemInfoList"];
+                StockInEquipmentDetail harddetail;
+                foreach (ItemInfo i in lstItemInfo)
+                {
+                    harddetail = new StockInEquipmentDetail()
+                    {
+                        Description = i.Des,
+                        ItemDetailID = i.ItemDetailID,
+                        ItemID = i.ItemID,
+                        Quantity = i.Quantity,
+                        UnitID = i.UnitID,
+                        DeliveryDate = i.DeliveryDate,
+                        Temp1 = "",
+                        Temp2 = ""
+                    };
+                    lst.Add(harddetail);
+                }
+            }
+            return lst;
+        }
+
+        private List<StockInEquipmentDetail> CancelStockInEquipmentDetailList()
+        {
+            List<StockInEquipmentDetail> lst = new List<StockInEquipmentDetail>();
+            if (Session["ItemInfoList"] != null)
+            {
+                List<ItemInfo> lstItemInfo = (List<ItemInfo>)Session["ItemInfoList"];
+                StockInEquipmentDetail harddetail;
+                foreach (ItemInfo i in lstItemInfo)
+                {
+                    harddetail = new StockInEquipmentDetail()
+                    {
+                        Description = i.Des,
+                        ItemDetailID = i.ItemDetailID,
+                        ItemID = i.ItemID,
+                        Quantity = i.Quantity * -1,
+                        UnitID = i.UnitID,
+                        DeliveryDate = i.DeliveryDate,
+                        Temp1 = "",
+                        Temp2 = ""
+                    };
+                    lst.Add(harddetail);
+                }
+            }
+            return lst;
+        }
+        #endregion
+
+
+        #region Query Dynamic Inventory
+        public ActionResult QueryDynamicInventory()
+        {
+            // Requite Permission
+            if (!Helper.UserLoginInfo.IsLogin)
+                return RedirectToAction("Login", "User", new { url = string.Format("{0}{1}", Helper.Ultilities.Root, "/ITInventory/QueryDynamicInventory") });
+            //
+
+            if (!IsPostback)
+            {
+                Session["Result"] = null;
+                Session["DateFrom"] = null;
+                Session["DateTo"] = null;
+            }
+            return View(Session["Result"] as Object);
+        }
+
+        [HttpPost]
+        public ActionResult QueryDynamicInventory(FormCollection frm)
+        {
+            string DateTo;
+            string DateFrom;
+            Object[] Model = new Object[1];
+            if (frm["date"].ToString().Trim() != "" && frm["date2"].ToString().Trim() != "" && frm["date"].ToString().Trim() != "1901-01-01" && frm["date2"].ToString().Trim() != "1901-01-01")
+            {
+                DateTo = Convert.ToDateTime(frm["date2"]).AddDays(1).ToString("yyyy-MM-dd");
+                DateFrom = frm["date"];
+                Model[0] = new FEA_BusinessLogic.ITInventoryManager().GetDynamicInventory(DateFrom, DateTo);
+            }
+            else
+            {
+                DateTo = "1901-01-01";
+                DateFrom = "1901-01-01";
+                ViewBag.Message = "Can't query. Please select date";
+                Model[0] = null;
+            }
+            ViewData["DateFrom"] = DateFrom;
+            ViewData["DateTo"] = DateTo;
+            Session["DateFrom"] = DateFrom;
+            Session["DateTo"] = DateTo;
+            Session["Result"] = Model;
+            if (Request.Form["btnQuery"] != null)
+            {
+                return View(Model);
+            }
+            else
+            {
+                return GridViewExtension.ExportToXlsx(CreateExportGridViewSettings(),Model[0], "IT Inventory Report - " + DateTime.Now.Year + " - " + DateTime.Now.Month, true);
+            }
+
+        }
+
+        public ActionResult CallbackDynamicInventory()
+        {
+            return GetGridView(Session["Result"] as Object, FEA_ITS_Site.Models.Helper.PartialParameter.QueryDynamicInventory);
+        }
+
+        public ActionResult CallbackDetail(string ItemDetailID)
+        {
+            string DateTo = string.Empty;
+            string DateFrom = string.Empty;
+            ViewData["ID"] = ItemDetailID;
+            DateFrom = Session["DateFrom"].ToString();
+            DateTo = Session["DateTo"].ToString();
+            ViewData["DateFrom"] = DateFrom;
+            ViewData["DateTo"] = DateTo;
+            object x = new FEA_BusinessLogic.ITInventoryManager().GetDetailDynamicInventory(DateFrom, DateTo, ItemDetailID);
+            return GetGridView(x, FEA_ITS_Site.Models.Helper.PartialParameter.QueryDetailDynamicInventory);
+        }
+
+        public ActionResult CallbackDetailDynamic(string ItemDetailID, string DateTo, string DateFrom)
+        {
+            ViewData["ID"] = ItemDetailID;
+            object x = new FEA_BusinessLogic.ITInventoryManager().GetDetailDynamicInventory(DateFrom, DateTo, ItemDetailID);
+            return GetGridView(x, FEA_ITS_Site.Models.Helper.PartialParameter.QueryDetailDynamicInventory);
+        }
+
+
+        public static DevExpress.Web.Mvc.GridViewSettings CreateExportGridViewSettings()
+        {
+            GridViewSettings settings = new GridViewSettings();
+            settings.Name = "QueryDynamicInventory";
+            settings.KeyFieldName = "ItemDetailID";
+            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+            settings.CommandColumn.Visible = false;
+            settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+            settings.Settings.VerticalScrollableHeight = 450;
+            settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+            settings.SettingsBehavior.AllowFocusedRow = true;
+            settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+            settings.Settings.ShowFilterRow = true;
+            settings.Settings.ShowFilterRowMenu = true;
+            settings.Settings.ShowFilterRowMenuLikeItem = true;
+            settings.Settings.ShowGroupPanel = true;
+            settings.SettingsDetail.ShowDetailRow = true;
+            settings.SettingsBehavior.AutoExpandAllGroups = true;
+            return settings;
+        }
+        #endregion
+
+        private string CheckCancelConfirm()
+        {
+            return "";
+        }
+
+        #region "Inventory Query"
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Created by Jason - 2014/07/12
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult InventoryQuery()
+        {
+            // Requite Permission
+            if (!Helper.UserLoginInfo.IsLogin)
+                return RedirectToAction("Login", "User", new { url = string.Format("{0}{1}", Helper.Ultilities.Root, "/ITInventory/InventoryQuery") });
+            //
+            try
+            {
+                if (Request.Form["btnInventoryCalculate"] != null)
+                {
+                    bool flag = new FEA_BusinessLogic.ITInventoryManager().InventoryCalculate();
+                    if (flag)
+                    {
+                        ViewBag.EditStatus = Models.Helper.EditItemStatus.success;
+                        ViewBag.EditMessage = Resources.Resource.msgUpdateSuccess;
+                    }
+                    else
+                    {
+                        ViewBag.EditStatus = Models.Helper.EditItemStatus.failed;
+                        ViewBag.EditMessage = Resources.Resource.msgUpdateFailed;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                ViewBag.EditStatus = Models.Helper.EditItemStatus.failed;
+                ViewBag.EditMessage = ex.Message;
+            }
+            return View();
+        }
+
+        [ValidateInput(false)]
+        public ActionResult InventoryEditModesPartial()
+        {
+            return GetGridView(new FEA_BusinessLogic.ITInventoryManager().GetItems(), "inventoy_query");
+        }
+        #endregion
+    }
+}

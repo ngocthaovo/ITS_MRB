@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "MNDynamicQuery";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@model Object
+@using FEA_ITS_Site.Helper;
+@using FEA_ITS_Site;
+
+
+<script>
+    $('document').ready(function () {
+        $("#btnQuery").click(function () {
+            $('#divLoadCommon').show();
+            var url = "@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/Maintenance/CallbackMNDynamicInventory";
+            var _date = date.GetDate().toUTCString();
+            var _date2 = date2.GetDate().toUTCString();
+            var obj = new Object();
+            obj.DateTo = _date2;
+            obj.DateFrom = _date;
+            obj.Type = '@ViewBag.DocumentType';
+            jQuery.ajax(
+                {
+                    url: url,
+                    data:obj,
+                }).done(function (data) {
+                $("#gridDetail").html(data);
+                $('#divLoadCommon').hide();
+            });
+        });
+    });
+
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.GridView},
+    new Script{ExtensionSuite = ExtensionSuite.Editors})
+@using (Html.BeginForm("MNDynamicQuery", "Maintenance", FormMethod.Post))
+{
+     <div class="loading" style="display:none" id="divLoadCommon"></div>
+    <div class="panel-body">
+        <form id="frmMainForm">
+            <div class="row buttonbar">
+                <div class="col-lg-7">
+                    @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnQuery";
+                            settings.Width = 90;
+                            settings.Text = @Resources.Resource.Query;
+                        }).GetHtml()
+
+                    @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnExport";
+                            settings.Width = 90;
+                            settings.RouteValues = new { Controller = "Maintenance", Action = "ExportToExcel", DateTo = ViewBag.DateTo, DateFrom = ViewBag.DateFrom, Type = ViewBag.DocumentType };
+                            settings.Text = @Resources.Resource.Export;
+                            settings.UseSubmitBehavior = true;
+
+                        }).GetHtml()
+                    @{
+                        if (ViewBag.Message != null)
+                        {
+                            <div id="paginator-content-1" class="alert-small alert-danger" style="margin-top:10px;">
+                                @Html.Raw((string)ViewBag.Message)
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="control-label">
+                        From:
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "date";
+                            settings.Date = DateTime.Now.AddDays(-10);
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = "yyyy-MM-dd";
+                        }
+                    ).GetHtml()
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label">
+                        To:
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "date2";
+                            settings.Date = DateTime.Now;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = "yyyy-MM-dd";
+                        }
+                    ).GetHtml()
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12" id="gridDetail">
+                    <div class="form-group">
+                        @{Html.RenderAction("CallbackMNDynamicInventory", "Maintenance", new { frm = Model, DateTo = ViewBag.DateTo, DateFrom = ViewBag.DateFrom, Type = ViewBag.DocumentType });}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}

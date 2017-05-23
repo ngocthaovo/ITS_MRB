@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "AccountManager";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    var SelectedRows = "";
+    function SelectionChanged(s, e) {
+        s.GetSelectedFieldValues("UserCodeID", GetSelectedFieldValuesCallback);
+    }
+    function GetSelectedFieldValuesCallback(values) {
+        try {
+            SelectedRows = "";
+            for (var i = 0; i < values.length; i++) {
+                {
+                    if(SelectedRows =="")
+                        SelectedRows += values[i];//SelectedRows.AddItem(values[i]);
+                    else
+                        SelectedRows += ";" + values[i];//SelectedRows.AddItem(values[i]);
+                }
+            }
+        } finally {
+        }
+    }
+
+    function ChangeUserPass()
+    {
+        if (SelectedRows.length == 0) { return;}
+
+
+        var obj = new Object();
+        obj.UserList = SelectedRows;
+
+        $.ajax({
+            url: "@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/Account/ResetUserPass",
+            type: "POST",
+            data: obj,
+            dataType: "json",
+            success: function (data) {
+                if (data.ErrorCode == 0) { // success
+                    $("#msgSuccess").css("display", "block"); $("#msgError").css("display", "none");
+
+                    $("#msgSuccess").html(data.ObjectResult);
+                }
+                else { // error
+                    $("#msgSuccess").css("display", "none"); $("#msgError").css("display", "block");
+                    $("#msgError").html(data.ObjectResult);
+                }
+            }
+        });
+    }
+    // ]]>
+</script>
+<div class="panel-body">
+    <form id="frmMainForm">
+        <!--button group devexpress-->
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnResetPass";
+                    //settings.Width = 90;
+                    settings.Text = Resources.Resource.ResetPass;
+                    settings.ClientSideEvents.Click = "function(){ChangeUserPass();}";
+                }).GetHtml()
+            </div>
+        </div>
+        <!--End button group-->
+        <!-- line-->
+        <hr />
+        <!--Line-->
+
+        <!-- grid-->
+        <div class="row">
+            <div class="col-md-12">
+                <div id="msgSuccess" class="alert-small alert-success" style="margin-top:10px;display:none">
+                    
+                </div>
+                <div id="msgError" class="alert-small alert-danger" style="margin-top: 10px; display: none">
+                    
+                </div>
+            </div>
+
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.DevExpress().RoundPanel(
+                            settings =>
+                            {
+                                settings.Name = "rpFeatures";
+                                settings.HeaderText = "List of User";
+                                settings.ShowHeader = true;
+                                settings.View = View.GroupBox;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.SetContent(() =>
+                                {
+                                    Html.RenderAction("EditModesPartial", "Account");
+                                });
+                            }).GetHtml()
+
+                </div>
+            </div>
+        </div>
+        <!-- end grid-->
+    </form>
+</div>
+

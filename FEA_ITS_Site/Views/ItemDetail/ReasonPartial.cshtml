@@ -1,0 +1,19 @@
+﻿@model List<FEA_BusinessLogic.ItemDetail>
+@Html.DevExpress().ComboBox(settings =>
+{
+    settings.Name = "cboReason";
+    settings.CallbackRouteValues = new { Controller = "ItemDetail", Action = "ReasonPartial" };
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.Properties.ValueType = typeof(string);
+    settings.Properties.TextField = "ItemDetailName";
+    settings.ControlStyle.CssClass = "textBoxStyle";
+    settings.Properties.ValueField = "ID";
+    settings.Properties.EnableCallbackMode = true;
+    settings.Properties.CallbackPageSize = 20;
+    settings.Properties.ClientSideEvents.BeginCallback = "function(s, e) {  var ItemDetailvalue = cboItemDetail.GetValue(); var RSLabel = document.getElementById('ReasonLabel'); if(ItemDetailvalue==\"fc07bf47-ebd0-4a90-869c-b01c8175abc7\"){cboReason.SetVisible(true);RSLabel.style.visibility='visible';e.customArgs['ItemID'] = ItemDetailvalue; document.getElementById('LabelText').innerHTML = 'FEPO';} else {cboReason.SetVisible(false); RSLabel.style.visibility='hidden';document.getElementById('LabelText').innerHTML = 'Description';}}";
+    settings.Properties.ClientSideEvents.SelectedIndexChanged = "function(s, e) {ReasonChanged(s,e) ; }";
+
+    settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+    settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+    settings.ClientVisible = false;
+}).BindList(Model).GetHtml()

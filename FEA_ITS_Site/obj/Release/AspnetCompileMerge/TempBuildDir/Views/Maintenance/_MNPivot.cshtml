@@ -1,0 +1,3 @@
+﻿
+                 
+@Html.DevExpress().PivotGrid(new FEA_ITS_Site.Controllers.MaintenanceController().GetSettings(ViewBag.DateFrom, ViewBag.DateTo, ViewBag.DocumentType)).Bind(Model).GetHtml()

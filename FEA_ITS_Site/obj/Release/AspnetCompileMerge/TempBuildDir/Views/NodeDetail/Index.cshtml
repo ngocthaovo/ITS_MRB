@@ -1,0 +1,103 @@
+﻿@model List<FEA_BusinessLogic.WFNodeDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<div class="well well-sm">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">
+                    Document Name:
+                </label>
+                @Html.DevExpress().TextBox(
+                settings =>
+                {
+                    settings.Name = "txtDoctype";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.Text = ViewBag.DocTypeName;
+                    settings.ReadOnly = true;
+                    settings.ControlStyle.CssClass = "textBoxStyle";
+                }
+            ).GetHtml()
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">
+                    Node Name:
+                </label>
+                <div class="editorContainer">
+                    @Html.DevExpress().TextBox(
+                settings =>
+                {
+                    settings.Name = "txtNodeName";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.Text = ViewBag.NodeName;
+                    settings.ReadOnly = true;
+                    settings.ControlStyle.CssClass = "textBoxStyle";
+                }
+            ).GetHtml()
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">
+                    Node Index:
+                </label>
+                @Html.DevExpress().TextBox(
+                settings =>
+                {
+                    settings.Name = "txtNodeIndex";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.Text = ViewBag.NodeIndex;
+                    settings.ReadOnly = true;
+                    settings.ControlStyle.CssClass = "textBoxStyle";
+                }
+            ).GetHtml()
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">
+                    @Resources.Resource.Parameter:
+                </label>
+                @Html.DevExpress().TextBox(
+                settings =>
+                {
+                    settings.Name = "txtParameter";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.Text = ViewBag.DocTypeParameter;
+                    settings.ReadOnly = true;
+                    settings.ControlStyle.CssClass = "textBoxStyle";
+                }
+            ).GetHtml()
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div id="paginator-content-1" class="alert-small alert-info">
+            List of Node Detail
+        </div>
+        @*@Html.Partial("Partials/__NodeDetailPartial", Model)*@
+        @{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.NODE_DETAIL_LIST_GRID });}
+    </div>
+    <div class="col-md-4">
+
+        <div id="paginator-content-1" class="alert-small alert-info">
+            List of User
+        </div>
+        @Html.Partial("AccountPartial/_UserAdminPartial")
+    </div>
+</div>
+
+

@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "ERPDocument";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+@{Html.RenderAction("ERPHistory", "WaitingArea");}

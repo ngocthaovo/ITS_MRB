@@ -1,0 +1,1268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FEA_ITSModelStoreContainer" CdmEntityContainer="FEA_ITSEntities">
+    <EntitySetMapping Name="CostCenters">
+      <EntityTypeMapping TypeName="FEA_ITSModel.CostCenter">
+        <MappingFragment StoreEntitySet="CostCenter">
+          <ScalarProperty Name="CostCenterCode" ColumnName="CostCenterCode" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogChangePasses">
+      <EntityTypeMapping TypeName="FEA_ITSModel.LogChangePass">
+        <MappingFragment StoreEntitySet="LogChangePass">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LogCreatePassDate" ColumnName="LogCreatePassDate" />
+          <ScalarProperty Name="LogExpiredPassDate" ColumnName="LogExpiredPassDate" />
+          <ScalarProperty Name="ChangePassLog" ColumnName="ChangePassLog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteFunctions">
+      <EntityTypeMapping TypeName="FEA_ITSModel.SiteFunction">
+        <MappingFragment StoreEntitySet="SiteFunction">
+          <ScalarProperty Name="SiteFunctionID" ColumnName="SiteFunctionID" />
+          <ScalarProperty Name="SiteFunctionName" ColumnName="SiteFunctionName" />
+          <ScalarProperty Name="SiteFunctionNameEN" ColumnName="SiteFunctionNameEN" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="IconCssClass" ColumnName="IconCssClass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteFunction_UserGroup">
+      <EntityTypeMapping TypeName="FEA_ITSModel.SiteFunction_UserGroup">
+        <MappingFragment StoreEntitySet="SiteFunction_UserGroup">
+          <ScalarProperty Name="GroupFunctionID" ColumnName="GroupFunctionID" />
+          <ScalarProperty Name="UserGroup" ColumnName="UserGroup" />
+          <ScalarProperty Name="SiteFunctionID" ColumnName="SiteFunctionID" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="FEA_ITSModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="FactoryID" ColumnName="FactoryID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserCodeID" ColumnName="UserCodeID" />
+          <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserNameEN" ColumnName="UserNameEN" />
+          <ScalarProperty Name="CostCenterCode" ColumnName="CostCenterCode" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="UserSex" ColumnName="UserSex" />
+          <ScalarProperty Name="UserPosstion" ColumnName="UserPosstion" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserStartDate" ColumnName="UserStartDate" />
+          <ScalarProperty Name="UserLastLogin" ColumnName="UserLastLogin" />
+          <ScalarProperty Name="UserExpired" ColumnName="UserExpired" />
+          <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+          <ScalarProperty Name="Temp4" ColumnName="Temp4" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPositions">
+      <EntityTypeMapping TypeName="FEA_ITSModel.UserPosition">
+        <MappingFragment StoreEntitySet="UserPosition">
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WFDelegates">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WFDelegate">
+        <MappingFragment StoreEntitySet="WFDelegate">
+          <ScalarProperty Name="DelegateID" ColumnName="DelegateID" />
+          <ScalarProperty Name="MainUserID" ColumnName="MainUserID" />
+          <ScalarProperty Name="DelegateUserID" ColumnName="DelegateUserID" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WFDocumentTypes">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WFDocumentType">
+        <MappingFragment StoreEntitySet="WFDocumentType">
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WFMains">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WFMain">
+        <MappingFragment StoreEntitySet="WFMain">
+          <ScalarProperty Name="MainID" ColumnName="MainID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="isFinished" ColumnName="isFinished" />
+          <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WFMainDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WFMainDetail">
+        <MappingFragment StoreEntitySet="WFMainDetail">
+          <ScalarProperty Name="MainDetailID" ColumnName="MainDetailID" />
+          <ScalarProperty Name="MainID" ColumnName="MainID" />
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+          <ScalarProperty Name="DelegateID" ColumnName="DelegateID" />
+          <ScalarProperty Name="PostUserID" ColumnName="PostUserID" />
+          <ScalarProperty Name="CheckUserID" ColumnName="CheckUserID" />
+          <ScalarProperty Name="CheckDate" ColumnName="CheckDate" />
+          <ScalarProperty Name="isFinished" ColumnName="isFinished" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WFNodes">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WFNode">
+        <MappingFragment StoreEntitySet="WFNode">
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WFNodeDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WFNodeDetail">
+        <MappingFragment StoreEntitySet="WFNodeDetail">
+          <ScalarProperty Name="NodeDetailID" ColumnName="NodeDetailID" />
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+          <ScalarProperty Name="CostCenterCode" ColumnName="CostCenterCode" />
+          <ScalarProperty Name="ApproverID" ColumnName="ApproverID" />
+          <ScalarProperty Name="DelegateID" ColumnName="DelegateID" />
+          <ScalarProperty Name="isDelegate" ColumnName="isDelegate" />
+          <ScalarProperty Name="Condition" ColumnName="Condition" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetFirstApprover" FunctionName="FEA_ITSModel.Store.sp_GetFirstApprover">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetFirstApprover_Result">
+          <ScalarProperty Name="ApproverID" ColumnName="ApproverID" />
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="CheckUserID" ColumnName="CheckUserID" />
+          <ScalarProperty Name="CheckUserName" ColumnName="CheckUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetNextApprover" FunctionName="FEA_ITSModel.Store.sp_GetNextApprover">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetNextApprover_Result">
+          <ScalarProperty Name="ApproverID" ColumnName="ApproverID" />
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="CheckUserID" ColumnName="CheckUserID" />
+          <ScalarProperty Name="CheckUserName" ColumnName="CheckUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_QueryPODivert" FunctionName="FEA_ITSModel.Store.sp_QueryPODivert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_QueryPODivert_Result">
+          <ScalarProperty Name="FEPOCode" ColumnName="FEPOCode" />
+          <ScalarProperty Name="Diverted_From" ColumnName="Diverted From" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_QueryPODivertDetail" FunctionName="FEA_ITSModel.Store.sp_QueryPODivertDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_QueryPODivertDetail_Result">
+          <ScalarProperty Name="FEPOCode" ColumnName="FEPOCode" />
+          <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+          <ScalarProperty Name="CustomerStyleCode" ColumnName="CustomerStyleCode" />
+          <ScalarProperty Name="CombName" ColumnName="CombName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_QuerySignFlowEland" FunctionName="FEA_ITSModel.Store.sp_QuerySignFlowEland">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_QuerySignFlowEland_Result">
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Date_Sended" ColumnName="Date Sended" />
+          <ScalarProperty Name="Date_signed" ColumnName="Date signed" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="DeviceRegistrationDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.DeviceRegistrationDetail">
+        <MappingFragment StoreEntitySet="DeviceRegistrationDetail">
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="DeviceRegistrationID" ColumnName="DeviceRegistrationID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="FEA_ITSModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.ItemDetail">
+        <MappingFragment StoreEntitySet="ItemDetail">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagPrefixes">
+      <EntityTypeMapping TypeName="FEA_ITSModel.TagPrefix">
+        <MappingFragment StoreEntitySet="TagPrefix">
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_account">
+      <EntityTypeMapping TypeName="FEA_ITSModel.user_account">
+        <MappingFragment StoreEntitySet="user_account">
+          <ScalarProperty Name="typeID" ColumnName="typeID" />
+          <ScalarProperty Name="user_status" ColumnName="user_status" />
+          <ScalarProperty Name="user_start_date" ColumnName="user_start_date" />
+          <ScalarProperty Name="user_expired_pss_date" ColumnName="user_expired_pss_date" />
+          <ScalarProperty Name="user_create_pss_date" ColumnName="user_create_pss_date" />
+          <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+          <ScalarProperty Name="user_mail" ColumnName="user_mail" />
+          <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+          <ScalarProperty Name="user_group" ColumnName="user_group" />
+          <ScalarProperty Name="user_position" ColumnName="user_position" />
+          <ScalarProperty Name="user_sex" ColumnName="user_sex" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="user_pss" ColumnName="user_pss" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroups">
+      <EntityTypeMapping TypeName="FEA_ITSModel.UserGroup">
+        <MappingFragment StoreEntitySet="UserGroup">
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="UserGroupName" ColumnName="UserGroupName" />
+          <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Currencies">
+      <EntityTypeMapping TypeName="FEA_ITSModel.Currency">
+        <MappingFragment StoreEntitySet="Currency">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Units">
+      <EntityTypeMapping TypeName="FEA_ITSModel.Unit">
+        <MappingFragment StoreEntitySet="Unit">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_HardwareRequirementTotalReport" FunctionName="FEA_ITSModel.Store.sp_HardwareRequirementTotalReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_HardwareRequirementTotalReport_Result">
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Department_Name" ColumnName="Department Name" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EstimatedPrice" ColumnName="EstimatedPrice" />
+          <ScalarProperty Name="EstimatedAmount" ColumnName="EstimatedAmount" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetEquipmentInventory" FunctionName="FEA_ITSModel.Store.sp_GetEquipmentInventory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetEquipmentInventory_Result">
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="InventoryQuantity" ColumnName="InventoryQuantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ITInventories">
+      <EntityTypeMapping TypeName="FEA_ITSModel.ITInventory">
+        <MappingFragment StoreEntitySet="ITInventory">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HardwareRequirementDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.HardwareRequirementDetail">
+        <MappingFragment StoreEntitySet="HardwareRequirementDetail">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EstimatedAmount" ColumnName="EstimatedAmount" />
+          <ScalarProperty Name="EstimatedPrice" ColumnName="EstimatedPrice" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+          <ScalarProperty Name="HardwareRequirementID" ColumnName="HardwareRequirementID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetPurchaseOrderFromITS" FunctionName="FEA_ITSModel.Store.sp_GetPurchaseOrderFromITS" />
+    <FunctionImportMapping FunctionImportName="sp_GenerateStockOutEquipment" FunctionName="FEA_ITSModel.Store.sp_GenerateStockOutEquipment" />
+    <FunctionImportMapping FunctionImportName="sp_GetDynamicInventory" FunctionName="FEA_ITSModel.Store.sp_GetDynamicInventory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetDynamicInventory_Result">
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
+          <ScalarProperty Name="BeginQuantity" ColumnName="BeginQuantity" />
+          <ScalarProperty Name="StockinQuantity" ColumnName="StockinQuantity" />
+          <ScalarProperty Name="StockOutQuantity" ColumnName="StockOutQuantity" />
+          <ScalarProperty Name="EndQuantity" ColumnName="EndQuantity" />
+          <ScalarProperty Name="InventoryQuantity" ColumnName="InventoryQuantity" />
+          <ScalarProperty Name="DifferentQuantity" ColumnName="DifferentQuantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetDetailDynamicInventory" FunctionName="FEA_ITSModel.Store.sp_GetDetailDynamicInventory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetDetailDynamicInventory_Result">
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CheckCancelConfirmStockin" FunctionName="FEA_ITSModel.Store.sp_CheckCancelConfirmStockin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_CheckCancelConfirmStockin_Result">
+          <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
+          <ScalarProperty Name="DifferentQuantity" ColumnName="DifferentQuantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_InventoryCalculate" FunctionName="FEA_ITSModel.Store.sp_InventoryCalculate" />
+    <FunctionImportMapping FunctionImportName="sp_GetWFHistory" FunctionName="FEA_ITSModel.Store.sp_GetWFHistory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetWFHistory_Result">
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Approver" ColumnName="Approver" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="CheckDate" ColumnName="CheckDate" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_DeviceRegistrationReport" FunctionName="FEA_ITSModel.Store.sp_DeviceRegistrationReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_DeviceRegistrationReport_Result">
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Complete" ColumnName="Complete" />
+          <ScalarProperty Name="TechnicianID" ColumnName="TechnicianID" />
+          <ScalarProperty Name="TechnicianName" ColumnName="TechnicianName" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_HardwareRequirementReport" FunctionName="FEA_ITSModel.Store.sp_HardwareRequirementReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_HardwareRequirementReport_Result">
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ERPUpdateStatusFPO" FunctionName="FEA_ITSModel.Store.sp_ERPUpdateStatusFPO" />
+    <FunctionImportMapping FunctionImportName="sp_ERRUpdateOrderPrice" FunctionName="FEA_ITSModel.Store.sp_ERRUpdateOrderPrice" />
+    <FunctionImportMapping FunctionImportName="sp_GetOrderRequest" FunctionName="FEA_ITSModel.Store.sp_GetOrderRequest">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetOrderRequest_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetDocumentSigned" FunctionName="FEA_ITSModel.Store.sp_GetDocumentSigned">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetDocumentSigned_Result">
+          <ScalarProperty Name="MainID" ColumnName="MainID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+          <ScalarProperty Name="Approver" ColumnName="Approver" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="isFinished" ColumnName="isFinished" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="TransferLogs">
+      <EntityTypeMapping TypeName="FEA_ITSModel.TransferLog">
+        <MappingFragment StoreEntitySet="TransferLog">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryScans">
+      <EntityTypeMapping TypeName="FEA_ITSModel.HistoryScan">
+        <MappingFragment StoreEntitySet="HistoryScan">
+          <ScalarProperty Name="TEMP3" ColumnName="TEMP3" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="PackingManifestID" ColumnName="PackingManifestID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+          <ScalarProperty Name="ObjectScan" ColumnName="ObjectScan" />
+          <ScalarProperty Name="PackingManifestDetailID" ColumnName="PackingManifestDetailID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackingManifestReturnedItems">
+      <EntityTypeMapping TypeName="FEA_ITSModel.PackingManifestReturnedItem">
+        <MappingFragment StoreEntitySet="PackingManifestReturnedItem">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ItemDes" ColumnName="ItemDes" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductStockFromERPs">
+      <EntityTypeMapping TypeName="FEA_ITSModel.ProductStockFromERP">
+        <MappingFragment StoreEntitySet="ProductStockFromERP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CompleteState" ColumnName="CompleteState" />
+          <ScalarProperty Name="OrderState" ColumnName="OrderState" />
+          <ScalarProperty Name="TotalQuantityStockOur" ColumnName="TotalQuantityStockOur" />
+          <ScalarProperty Name="TotalContainerStockOut" ColumnName="TotalContainerStockOut" />
+          <ScalarProperty Name="TotalQuantityStockIn" ColumnName="TotalQuantityStockIn" />
+          <ScalarProperty Name="TotalContainerStockIn" ColumnName="TotalContainerStockIn" />
+          <ScalarProperty Name="CombName" ColumnName="CombName" />
+          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="SizeName" ColumnName="SizeName" />
+          <ScalarProperty Name="POItem" ColumnName="POItem" />
+          <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExportItemDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.ExportItemDetail">
+        <MappingFragment StoreEntitySet="ExportItemDetail">
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Specification" ColumnName="Specification" />
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="ExportItemID" ColumnName="ExportItemID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Factories">
+      <EntityTypeMapping TypeName="FEA_ITSModel.Factory">
+        <MappingFragment StoreEntitySet="Factory">
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FactoryName" ColumnName="FactoryName" />
+          <ScalarProperty Name="FactoryID" ColumnName="FactoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SAConfigures">
+      <EntityTypeMapping TypeName="FEA_ITSModel.SAConfigure">
+        <MappingFragment StoreEntitySet="SAConfigure">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="ReasonID" ColumnName="ReasonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SADestinations">
+      <EntityTypeMapping TypeName="FEA_ITSModel.SADestination">
+        <MappingFragment StoreEntitySet="SADestination">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SAReasons">
+      <EntityTypeMapping TypeName="FEA_ITSModel.SAReason">
+        <MappingFragment StoreEntitySet="SAReason">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="isConstraint" ColumnName="isConstraint" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExportItemCheckings">
+      <EntityTypeMapping TypeName="FEA_ITSModel.ExportItemChecking">
+        <MappingFragment StoreEntitySet="ExportItemChecking">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+          <ScalarProperty Name="ExportItemDetailID" ColumnName="ExportItemDetailID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetDataForSAPivotGrid" FunctionName="FEA_ITSModel.Store.sp_GetDataForSAPivotGrid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetDataForSAPivotGrid_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetDetailSADynamicReport" FunctionName="FEA_ITSModel.Store.sp_GetDetailSADynamicReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetDetailSADynamicReport_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="ExportItemAdjustCode" ColumnName="ExportItemAdjustCode" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="SecurityEmployee" ColumnName="SecurityEmployee" />
+          <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetApproveDocumentForSADepartment" FunctionName="FEA_ITSModel.Store.sp_GetApproveDocumentForSADepartment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetApproveDocumentForSADepartment_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="Create_Date" ColumnName="Create Date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+          <ScalarProperty Name="Technician" ColumnName="Technician" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetDataForSAPivotGridUseForChart" FunctionName="FEA_ITSModel.Store.sp_GetDataForSAPivotGridUseForChart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetDataForSAPivotGridUseForChart_Result">
+          <ScalarProperty Name="CountRequest" ColumnName="CountRequest" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ExportItems">
+      <EntityTypeMapping TypeName="FEA_ITSModel.ExportItem">
+        <MappingFragment StoreEntitySet="ExportItem">
+          <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+          <ScalarProperty Name="UserProcessID" ColumnName="UserProcessID" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="ExportItemAdjustID" ColumnName="ExportItemAdjustID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ReasonName" ColumnName="ReasonName" />
+          <ScalarProperty Name="ReasonID" ColumnName="ReasonID" />
+          <ScalarProperty Name="PersonalName" ColumnName="PersonalName" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_CheckLimitForDonative" FunctionName="FEA_ITSModel.Store.sp_CheckLimitForDonative">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_CheckLimitForDonative_Result">
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetSARequestList" FunctionName="FEA_ITSModel.Store.sp_GetSARequestList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetSARequestList_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="ProcessPerson" ColumnName="ProcessPerson" />
+          <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CheckItemQuantityForSecurity" FunctionName="FEA_ITSModel.Store.sp_CheckItemQuantityForSecurity">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_CheckItemQuantityForSecurity_Result">
+          <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetSADynamicReport" FunctionName="FEA_ITSModel.Store.sp_GetSADynamicReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetSADynamicReport_Result">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ExportQuantity" ColumnName="ExportQuantity" />
+          <ScalarProperty Name="ReceivedQuantity" ColumnName="ReceivedQuantity" />
+          <ScalarProperty Name="ReturnedQuantity" ColumnName="ReturnedQuantity" />
+          <ScalarProperty Name="AdjustedQuantity" ColumnName="AdjustedQuantity" />
+          <ScalarProperty Name="RemainingQuantity" ColumnName="RemainingQuantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_QueryPurchaseReport" FunctionName="FEA_ITSModel.Store.sp_QueryPurchaseReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_QueryPurchaseReport_Result">
+          <ScalarProperty Name="PR_Code" ColumnName="PR Code" />
+          <ScalarProperty Name="PH_Code" ColumnName="PH Code" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Apply_Dept" ColumnName="Apply Dept" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Supplier_code" ColumnName="Supplier code" />
+          <ScalarProperty Name="Supplier_name" ColumnName="Supplier name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Purchase_Items" ColumnName="Purchase Items" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="Price_Px__Forecast_" ColumnName="Price Px (Forecast)" />
+          <ScalarProperty Name="Amount__Forecast_" ColumnName="Amount (Forecast)" />
+          <ScalarProperty Name="Price__Purchased_" ColumnName="Price (Purchased)" />
+          <ScalarProperty Name="Amount__Purchased_" ColumnName="Amount (Purchased)" />
+          <ScalarProperty Name="Apply_Apporve_Date" ColumnName="Apply Apporve Date" />
+          <ScalarProperty Name="Assignment" ColumnName="Assignment" />
+          <ScalarProperty Name="Purchaser" ColumnName="Purchaser" />
+          <ScalarProperty Name="Purchase_Manager_Approve" ColumnName="Purchase Manager Approve" />
+          <ScalarProperty Name="Auditor_Approve" ColumnName="Auditor Approve" />
+          <ScalarProperty Name="Division_Manager_Approve" ColumnName="Division Manager Approve" />
+          <ScalarProperty Name="GM_Approve" ColumnName="GM Approve" />
+          <ScalarProperty Name="Current_approver" ColumnName="Current approver" />
+          <ScalarProperty Name="Pending_time" ColumnName="Pending time" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="StockInEquipments">
+      <EntityTypeMapping TypeName="FEA_ITSModel.StockInEquipment">
+        <MappingFragment StoreEntitySet="StockInEquipment">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockInEquipmentDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.StockInEquipmentDetail">
+        <MappingFragment StoreEntitySet="StockInEquipmentDetail">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="StockInEquipmentID" ColumnName="StockInEquipmentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockOutEquipments">
+      <EntityTypeMapping TypeName="FEA_ITSModel.StockOutEquipment">
+        <MappingFragment StoreEntitySet="StockOutEquipment">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="DeliveryFor" ColumnName="DeliveryFor" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CofirmDate" ColumnName="CofirmDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockOutEquipmentDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.StockOutEquipmentDetail">
+        <MappingFragment StoreEntitySet="StockOutEquipmentDetail">
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="StockOutEquipmentID" ColumnName="StockOutEquipmentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITSAssetDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.ITSAssetDetail">
+        <MappingFragment StoreEntitySet="ITSAssetDetail">
+          <ScalarProperty Name="CreatedByHand" ColumnName="CreatedByHand" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UploadBy" ColumnName="UploadBy" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+          <ScalarProperty Name="Temp5" ColumnName="Temp5" />
+          <ScalarProperty Name="Temp4" ColumnName="Temp4" />
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+          <ScalarProperty Name="AssetType" ColumnName="AssetType" />
+          <ScalarProperty Name="AssetName" ColumnName="AssetName" />
+          <ScalarProperty Name="RecName" ColumnName="RecName" />
+          <ScalarProperty Name="RecCode" ColumnName="RecCode" />
+          <ScalarProperty Name="RecID" ColumnName="RecID" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Division" ColumnName="Division" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITSAssetFTies">
+      <EntityTypeMapping TypeName="FEA_ITSModel.ITSAssetFTY">
+        <MappingFragment StoreEntitySet="ITSAssetFTY">
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITSAssetRecDatas">
+      <EntityTypeMapping TypeName="FEA_ITSModel.ITSAssetRecData">
+        <MappingFragment StoreEntitySet="ITSAssetRecData">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WHExportOrders">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WHExportOrder">
+        <MappingFragment StoreEntitySet="WHExportOrder">
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="isConfirm" ColumnName="isConfirm" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WHExportOrderDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WHExportOrderDetail">
+        <MappingFragment StoreEntitySet="WHExportOrderDetail">
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="IsReturned" ColumnName="IsReturned" />
+          <ScalarProperty Name="IsExported" ColumnName="IsExported" />
+          <ScalarProperty Name="PackingManifestDetailID" ColumnName="PackingManifestDetailID" />
+          <ScalarProperty Name="ExportOrderID" ColumnName="ExportOrderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetDynamicQueryPackingManifest" FunctionName="FEA_ITSModel.Store.sp_GetDynamicQueryPackingManifest">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetDynamicQueryPackingManifest_Result">
+          <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+          <ScalarProperty Name="PONo" ColumnName="PONo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="PackingManifestType" ColumnName="PackingManifestType" />
+          <ScalarProperty Name="MainLine_" ColumnName="MainLine#" />
+          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="ContainerCount" ColumnName="ContainerCount" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="TotalContainerNotConfirmed" ColumnName="TotalContainerNotConfirmed" />
+          <ScalarProperty Name="TotalQuantityNotConfirmed" ColumnName="TotalQuantityNotConfirmed" />
+          <ScalarProperty Name="TotalContainerConfirmed" ColumnName="TotalContainerConfirmed" />
+          <ScalarProperty Name="TotalQuantityConfirmed" ColumnName="TotalQuantityConfirmed" />
+          <ScalarProperty Name="TotalReturnContainer" ColumnName="TotalReturnContainer" />
+          <ScalarProperty Name="TotalReturnQuantity" ColumnName="TotalReturnQuantity" />
+          <ScalarProperty Name="TotalContainerImported" ColumnName="TotalContainerImported" />
+          <ScalarProperty Name="TotaQuantityImported" ColumnName="TotaQuantityImported" />
+          <ScalarProperty Name="TotalStockedInContainerFromERP" ColumnName="TotalStockedInContainerFromERP" />
+          <ScalarProperty Name="TotalStockedInQuantityFromERP" ColumnName="TotalStockedInQuantityFromERP" />
+          <ScalarProperty Name="EndTotalContainer" ColumnName="EndTotalContainer" />
+          <ScalarProperty Name="EndTotalQuantity" ColumnName="EndTotalQuantity" />
+          <ScalarProperty Name="ContainerDifferences" ColumnName="ContainerDifferences" />
+          <ScalarProperty Name="QuantityDifferences" ColumnName="QuantityDifferences" />
+          <ScalarProperty Name="ContainerDifferencesBetweenWarehouseAndPacking" ColumnName="ContainerDifferencesBetweenWarehouseAndPacking" />
+          <ScalarProperty Name="QuantityDifferencesBetweenWarehouseAndPacking" ColumnName="QuantityDifferencesBetweenWarehouseAndPacking" />
+          <ScalarProperty Name="OrderState" ColumnName="OrderState" />
+          <ScalarProperty Name="TotalExportItem" ColumnName="TotalExportItem" />
+          <ScalarProperty Name="TotalExportItemFromERP" ColumnName="TotalExportItemFromERP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetApprover" FunctionName="FEA_ITSModel.Store.sp_GetApprover">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetApprover_Result">
+          <ScalarProperty Name="ApproverID" ColumnName="ApproverID" />
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="CheckUserID" ColumnName="CheckUserID" />
+          <ScalarProperty Name="CheckUserName" ColumnName="CheckUserName" />
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetWHExportOrderByMainLine" FunctionName="FEA_ITSModel.Store.sp_GetWHExportOrderByMainLine">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetWHExportOrderByMainLine_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+          <ScalarProperty Name="MainLine_" ColumnName="MainLine#" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="TotalContainer" ColumnName="TotalContainer" />
+          <ScalarProperty Name="TotalImportContainer" ColumnName="TotalImportContainer" />
+          <ScalarProperty Name="TotalReturnContainer" ColumnName="TotalReturnContainer" />
+          <ScalarProperty Name="isConfirm" ColumnName="isConfirm" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="WFRefferences">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WFRefference">
+        <MappingFragment StoreEntitySet="WFRefference">
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="RefferenceList" ColumnName="RefferenceList" />
+          <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+          <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="MainDetailID" ColumnName="MainDetailID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WFRefferenceDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WFRefferenceDetail">
+        <MappingFragment StoreEntitySet="WFRefferenceDetail">
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="RefUserName" ColumnName="RefUserName" />
+          <ScalarProperty Name="RefUserID" ColumnName="RefUserID" />
+          <ScalarProperty Name="WFRefferenceID" ColumnName="WFRefferenceID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetReferrenceDocumentList" FunctionName="FEA_ITSModel.Store.sp_GetReferrenceDocumentList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetReferrenceDocumentList_Result">
+          <ScalarProperty Name="MainID" ColumnName="MainID" />
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+          <ScalarProperty Name="MainDetailID" ColumnName="MainDetailID" />
+          <ScalarProperty Name="WFRefferenceID" ColumnName="WFRefferenceID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+          <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="isFinished" ColumnName="isFinished" />
+          <ScalarProperty Name="SignType" ColumnName="SignType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="PackingManifestDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.PackingManifestDetail">
+        <MappingFragment StoreEntitySet="PackingManifestDetail">
+          <ScalarProperty Name="UPC_EAN" ColumnName="UPC_EAN" />
+          <ScalarProperty Name="CustomerCrossReferenceNumber" ColumnName="CustomerCrossReferenceNumber" />
+          <ScalarProperty Name="MaterialStyle" ColumnName="MaterialStyle" />
+          <ScalarProperty Name="isReturns" ColumnName="isReturns" />
+          <ScalarProperty Name="TEMP3" ColumnName="TEMP3" />
+          <ScalarProperty Name="TEMP2" ColumnName="TEMP2" />
+          <ScalarProperty Name="TEMP1" ColumnName="TEMP1" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="isStockin" ColumnName="isStockin" />
+          <ScalarProperty Name="isCOnfirm" ColumnName="isCOnfirm" />
+          <ScalarProperty Name="UNIT2" ColumnName="UNIT2" />
+          <ScalarProperty Name="H" ColumnName="H" />
+          <ScalarProperty Name="W" ColumnName="W" />
+          <ScalarProperty Name="L" ColumnName="L" />
+          <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+          <ScalarProperty Name="GROSS" ColumnName="GROSS" />
+          <ScalarProperty Name="NET" ColumnName="NET" />
+          <ScalarProperty Name="NETNET" ColumnName="NETNET" />
+          <ScalarProperty Name="CtnCode" ColumnName="CtnCode" />
+          <ScalarProperty Name="R" ColumnName="R" />
+          <ScalarProperty Name="InnetPkgCount" ColumnName="InnetPkgCount" />
+          <ScalarProperty Name="ItemQtyPerCtnPack" ColumnName="ItemQtyPerCtnPack" />
+          <ScalarProperty Name="ItemQuantity" ColumnName="ItemQuantity" />
+          <ScalarProperty Name="ShipmentMethod" ColumnName="ShipmentMethod" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="MainLine_" ColumnName="MainLine#" />
+          <ScalarProperty Name="SKU_" ColumnName="SKU#" />
+          <ScalarProperty Name="BuyerItem_" ColumnName="BuyerItem#" />
+          <ScalarProperty Name="PO_" ColumnName="PO#" />
+          <ScalarProperty Name="Line_" ColumnName="Line#" />
+          <ScalarProperty Name="PackCode" ColumnName="PackCode" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="RANGE" ColumnName="RANGE" />
+          <ScalarProperty Name="PackingManifestID" ColumnName="PackingManifestID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackingManifestDetailCoordinations">
+      <EntityTypeMapping TypeName="FEA_ITSModel.PackingManifestDetailCoordination">
+        <MappingFragment StoreEntitySet="PackingManifestDetailCoordination">
+          <ScalarProperty Name="UPC_EAN" ColumnName="UPC_EAN" />
+          <ScalarProperty Name="CustomerCrossReferenceNumber" ColumnName="CustomerCrossReferenceNumber" />
+          <ScalarProperty Name="MaterialStyle" ColumnName="MaterialStyle" />
+          <ScalarProperty Name="UNIT2" ColumnName="UNIT2" />
+          <ScalarProperty Name="H" ColumnName="H" />
+          <ScalarProperty Name="W" ColumnName="W" />
+          <ScalarProperty Name="L" ColumnName="L" />
+          <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+          <ScalarProperty Name="GROSS" ColumnName="GROSS" />
+          <ScalarProperty Name="NET" ColumnName="NET" />
+          <ScalarProperty Name="NETNET" ColumnName="NETNET" />
+          <ScalarProperty Name="CtnCode" ColumnName="CtnCode" />
+          <ScalarProperty Name="R" ColumnName="R" />
+          <ScalarProperty Name="InnetPkgCount" ColumnName="InnetPkgCount" />
+          <ScalarProperty Name="ItemQtyPerCtnPack" ColumnName="ItemQtyPerCtnPack" />
+          <ScalarProperty Name="ItemQuantity" ColumnName="ItemQuantity" />
+          <ScalarProperty Name="ShipmentMethod" ColumnName="ShipmentMethod" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="MainLine_" ColumnName="MainLine#" />
+          <ScalarProperty Name="SKU_" ColumnName="SKU#" />
+          <ScalarProperty Name="BuyerItem_" ColumnName="BuyerItem#" />
+          <ScalarProperty Name="PO_" ColumnName="PO#" />
+          <ScalarProperty Name="Line_" ColumnName="Line#" />
+          <ScalarProperty Name="PackCode" ColumnName="PackCode" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="RANGE" ColumnName="RANGE" />
+          <ScalarProperty Name="PackingManifestDetailID" ColumnName="PackingManifestDetailID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackingManifests">
+      <EntityTypeMapping TypeName="FEA_ITSModel.PackingManifest">
+        <MappingFragment StoreEntitySet="PackingManifest">
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="isCoordinate" ColumnName="isCoordinate" />
+          <ScalarProperty Name="TEMP3" ColumnName="TEMP3" />
+          <ScalarProperty Name="TEMP2" ColumnName="TEMP2" />
+          <ScalarProperty Name="TEMP1" ColumnName="TEMP1" />
+          <ScalarProperty Name="AttachmentLink" ColumnName="AttachmentLink" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="isConfirm" ColumnName="isConfirm" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="PONo" ColumnName="PONo" />
+          <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HardwareRequirements">
+      <EntityTypeMapping TypeName="FEA_ITSModel.HardwareRequirement">
+        <MappingFragment StoreEntitySet="HardwareRequirement">
+          <ScalarProperty Name="ProcessedBy" ColumnName="ProcessedBy" />
+          <ScalarProperty Name="AttachmentLink" ColumnName="AttachmentLink" />
+          <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+          <ScalarProperty Name="TechnicianID" ColumnName="TechnicianID" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+          <ScalarProperty Name="EstimatedAmount" ColumnName="EstimatedAmount" />
+          <ScalarProperty Name="IsUrgent" ColumnName="IsUrgent" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetApproveDocumentForAdmin" FunctionName="FEA_ITSModel.Store.sp_GetApproveDocumentForAdmin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetApproveDocumentForAdmin_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="Create_Date" ColumnName="Create Date" />
+          <ScalarProperty Name="Last_Update" ColumnName="Last Update" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="Technician" ColumnName="Technician" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ProcessedBy" ColumnName="ProcessedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="DeviceRegistrations">
+      <EntityTypeMapping TypeName="FEA_ITSModel.DeviceRegistration">
+        <MappingFragment StoreEntitySet="DeviceRegistration">
+          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+          <ScalarProperty Name="ProcessedBy" ColumnName="ProcessedBy" />
+          <ScalarProperty Name="AttachmentLink" ColumnName="AttachmentLink" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="TechnicianID" ColumnName="TechnicianID" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="IsUrgent" ColumnName="IsUrgent" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WHImportOrders">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WHImportOrder">
+        <MappingFragment StoreEntitySet="WHImportOrder">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WHImportOrderDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.WHImportOrderDetail">
+        <MappingFragment StoreEntitySet="WHImportOrderDetail">
+          <ScalarProperty Name="ShelfID" ColumnName="ShelfID" />
+          <ScalarProperty Name="Temp3" ColumnName="Temp3" />
+          <ScalarProperty Name="Temp2" ColumnName="Temp2" />
+          <ScalarProperty Name="Temp1" ColumnName="Temp1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PackingManifestDetailID" ColumnName="PackingManifestDetailID" />
+          <ScalarProperty Name="WHImportOrderID" ColumnName="WHImportOrderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetDataForDashBoard" FunctionName="FEA_ITSModel.Store.sp_GetDataForDashBoard">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetDataForDashBoard_Result">
+          <ScalarProperty Name="ShelfCode" ColumnName="ShelfCode" />
+          <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+          <ScalarProperty Name="TotalBox___" ColumnName="TotalBox(%)" />
+          <ScalarProperty Name="TotalBox" ColumnName="TotalBox" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetDocumentApprove" FunctionName="FEA_ITSModel.Store.sp_GetDocumentApprove">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetDocumentApprove_Result">
+          <ScalarProperty Name="MainID" ColumnName="MainID" />
+          <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+          <ScalarProperty Name="MainDetailID" ColumnName="MainDetailID" />
+          <ScalarProperty Name="DelegateID" ColumnName="DelegateID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+          <ScalarProperty Name="PostUserID" ColumnName="PostUserID" />
+          <ScalarProperty Name="CheckUserID" ColumnName="CheckUserID" />
+          <ScalarProperty Name="DelegateUserID" ColumnName="DelegateUserID" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Approver" ColumnName="Approver" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="CreatorDepartment" ColumnName="CreatorDepartment" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="isFinished" ColumnName="isFinished" />
+          <ScalarProperty Name="SignType" ColumnName="SignType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,467 @@
+﻿@{
+    ViewBag.Title = "ERPListItemDetailPartial";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@model FEA_BusinessLogic.ERPDocument
+        
+<script type="text/javascript">
+    var IsDonateOK = false;
+    var IsDonateReject = false;
+    var btnClickName = "";
+    $(function () {
+        // DisplayItem('divBaseInfo', false);
+        $("#frmMainForm").submit(function () {
+            if (IsDonateReject == true) {
+                $("#" + btnClickName).click();
+            }
+            if (IsDonateOK == true) {
+                $("#" + btnClickName).click();
+            }
+            btnSign.SetVisible(false);
+            btnReject.SetVisible(false);
+        });
+    });
+</script>
+<script type="text/javascript">
+    function OnBtnClick(s, e) {
+        e.processOnServer = true;
+        btnClickName = 'btnSign';
+    }
+    //Modify by tony (2016-10-19)
+    function OnBtnClickReject(s, e) {
+        e.processOnServer = true;
+        btnClickName = 'btnReject';
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+<div class="content-wrapper">
+    <div class="panel-body">
+        @{
+
+            Html.BeginForm("SaveData", "ERPDocument", FormMethod.Post, new { @id = "frmMainForm" });
+            var _User = (FEA_BusinessLogic.User)ViewBag.User;
+            <div class="row buttonbar">
+                <div class="col-lg-7">
+                    @{
+                        bool _showRejectButton, _showSignButton, _showRefButton, _readonlyControl;
+                        bool _defaultEnable = false;
+                        _showRejectButton = _showSignButton = _showRefButton = _readonlyControl = false;
+
+                        if (Model.Status == (int)FEA_BusinessLogic.ERP.Order.OrderStatus.SENDING
+                                 || Model.Status == (int)FEA_BusinessLogic.ERP.Order.OrderStatus.CHECKED
+                                || Model.Status == (int)FEA_BusinessLogic.ERP.Order.OrderStatus.DELETED)
+                        {
+                            _readonlyControl = true;
+                        }
+
+                        if (ViewBag.TypeUser.ToString() != "manager") // User
+                        {
+                            if ((Model.Status == (int)FEA_BusinessLogic.ERP.Order.OrderStatus.FINSHED
+                                    || Model.Status == (int)FEA_BusinessLogic.ERP.Order.OrderStatus.RETURNED)
+                                    && Model.UserID == FEA_ITS_Site.Helper.UserLoginInfo.UserId)
+                            {
+                                _showRejectButton = false;
+                                _showSignButton = false;
+                                _showRefButton = false;
+
+                            }
+                            else if ((Model.Status == (int)FEA_BusinessLogic.ERP.Order.OrderStatus.SENDING)
+                                        && Model.UserID == FEA_ITS_Site.Helper.UserLoginInfo.UserId)
+                            {
+                                _showRejectButton = true;
+                                _showSignButton = true;
+                                _showRefButton = true;
+                            }
+
+                        }
+                        else
+                        {
+                            if (ViewBag.EditStatus == null)
+                            {
+                                _showRejectButton = true;
+                                _showSignButton = true;
+                                _showRefButton = true;
+                            }
+                        }
+                    }
+                    @Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.Name = "btnSign";
+                        settings.RouteValues = new { Action = "SignDocument", Controller = "ERPDocument", NodeID = ViewBag.NodeID, MainDetailID = ViewBag.MainDetailID, MainID = ViewBag.MainID, CheckUserID = ViewBag.CheckUserID, DelegateID = ViewBag.DelegateID, DelegateUserID = ViewBag.DelegateUserID, OrderCode = ViewBag.OrderCoDe, ID = ViewBag.ID };//ID = ViewBag.ID, OrderCode = ViewBag.OrderCoDe
+                        settings.Width = 100;
+                        settings.Text = Resources.Resource.Sign;
+                        settings.UseSubmitBehavior = true;
+                        settings.ClientSideEvents.Click = "OnBtnClick";
+                        settings.ClientVisible = _showSignButton;
+                    }).GetHtml()
+                    @Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.Name = "btnReject";
+                        settings.RouteValues = new { Action = "RejectDocument", Controller = "ERPDocument", NodeID = ViewBag.NodeID, MainDetailID = ViewBag.MainDetailID, MainID = ViewBag.MainID, CheckUserID = ViewBag.CheckUserID, DelegateID = ViewBag.DelegateID, DelegateUserID = ViewBag.DelegateUserID, OrderCode = ViewBag.OrderCoDe, ID = ViewBag.ID };
+                        settings.Width = 100;
+                        settings.Text = Resources.Resource.Reject;
+                        settings.UseSubmitBehavior = true;
+                        settings.ClientSideEvents.Click = "OnBtnClickReject";
+                        settings.ClientVisible = _showRejectButton;
+                        settings.CausesValidation = false;
+                    }).GetHtml()
+                    @Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.Name = "btnRef";
+                        //settings.RouteValues = new { Action = "RejectDocument", Controller = "DeviceRegistration", NodeID = ViewBag.NodeID, MainDetailID = ViewBag.MainDetailID, MainID = ViewBag.MainID, CheckUserID = ViewBag.CheckUserID, DelegateID = ViewBag.DelegateID, DelegateUserID = ViewBag.DelegateUserID };
+                        settings.Width = 100;
+                        settings.Text = @Resources.Resource.Discussion;
+                        settings.UseSubmitBehavior = false;
+                        settings.ClientSideEvents.Click = "function(){$('#RefSetup').click();}";
+                        settings.ClientVisible = true;
+                        settings.CausesValidation = false;
+                        settings.ClientVisible = _showRefButton;
+                    }).GetHtml()
+                </div><!--col-lg-7-->
+            </div><!--end button-->
+            <div class="row">
+                <div class="col-lg-7 fLeft">
+                    @Html.DevExpress().ValidationSummary(setting => { setting.Name = "validationSum"; }).GetHtml()
+                </div>
+            </div>
+            if (ViewBag.EditStatus != null)
+            {
+                <div class="row">
+                    <div class="col-md-12">
+
+                        @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                        {
+                            <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                                @Html.Raw(Resources.Resource.msgSuccess)
+                            </div>
+                        }
+                        else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                        {
+                            <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                                @Html.Raw(Resources.Resource.msgInsertFail)
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+           <h4><i class="icon-edit-sign teal"></i> @ViewBag.DocTitle</h4>
+            <hr />
+            <a href="javascript:ContentFunction.DisplayItem('divBaseInfo','iIcon',null);">
+                <h4 class=" group-title">
+                    <i class="icon-circle-arrow-down teal" id="iIcon"></i>@Resources.Resource.GeneralInfo:
+                </h4>
+            </a>
+            <div id="divBaseInfo">
+                <div class="row row-detail">
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.OrderCode:
+                            </label>
+                            @Html.HiddenFor(model => model.Status)
+                            @Html.Hidden("DocType", FEA_ITS_Site.Models.Helper.TagPrefixParameter.ACCESSORYOUT);
+                            @Html.DevExpress().TextBoxFor(model => model.ID,
+                            settings =>
+                            {
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ReadOnly = _readonlyControl;
+                                settings.ClientVisible = false;
+                            }
+                            ).GetHtml()
+
+                            @Html.DevExpress().TextBoxFor(model => model.OrderCode,
+                            settings =>
+                            {
+                                settings.Name = "txtOrderCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                            }
+                            ).GetHtml()
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.Version:
+                            </label>
+                            @Html.DevExpress().TextBoxFor(model => model.Version,
+                              settings =>
+                              {
+                                  settings.Name = "txtVersion";
+                                  settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                  settings.ControlStyle.CssClass = "textBoxStyle";
+                                  settings.ClientEnabled = false;
+                              }
+                              ).GetHtml()
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.CreateDate:
+                            </label>
+                            @Html.DevExpress().TextBoxFor(model => model.CreateDate,
+                              settings =>
+                              {
+                                  settings.Name = "txtCreateDate";
+                                  settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                  settings.ControlStyle.CssClass = "textBoxStyle";
+                                  settings.ClientEnabled = false;
+                              }
+                              ).GetHtml()
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.MaterialType:
+                            </label>
+                            @Html.DevExpress().TextBoxFor(model => model.LevelName,
+                            settings =>
+                            {
+                                settings.Name = "txtMaterialType";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                            }
+                            ).GetHtml()
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.WarehouseName:
+                            </label>
+                            @Html.DevExpress().TextBoxFor(model => model.WarehouseName,
+                            settings =>
+                            {
+                                settings.Name = "txtWarehouseName";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                            }
+                        ).GetHtml()
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.InvoiceCode:
+                            </label>
+                            @Html.DevExpress().TextBoxFor(model => model.InvoiceCode,
+                            settings =>
+                            {
+                                settings.Name = "txtInvoiceCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                            }
+                        ).GetHtml()
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="row row-detail">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.Reason:
+                            </label>
+                            @Html.DevExpress().TextBoxFor(model => model.ReasonName,
+                            settings =>
+                            {
+                                settings.Name = "txtReason";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                            }
+                        ).GetHtml()
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.TradeType:
+                            </label>
+                            @Html.DevExpress().ComboBox(
+                       settings =>
+                       {
+                           settings.Name = "cboTradeType";
+                           settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                           settings.SelectedIndex = Model.TradeType == null ? 0 : Convert.ToInt16(Model.TradeType);
+                           settings.ControlStyle.CssClass = "textBoxStyle";
+                           settings.Properties.Items.Add("");
+                           settings.Properties.Items.Add(@Resources.Resource._013617);
+                           settings.Properties.Items.Add(@Resources.Resource._013618);
+                           settings.Properties.Items.Add(@Resources.Resource._013619);
+                           settings.Properties.Items.Add(@Resources.Resource._013620);
+                           settings.Properties.Items.Add(@Resources.Resource._013621);
+                           settings.Properties.Items.Add(@Resources.Resource._013622);
+                           settings.ClientEnabled = false;
+                       }).GetHtml()
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.Department:
+                            </label>
+                            @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtDepartment";
+                                settings.Text = _User.CostCenter.Remark;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                            }
+                        ).GetHtml()
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.UserCode:
+                            </label>
+                            @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtUserCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                                settings.Text = _User.UserCodeID;
+                            }
+                        ).GetHtml()
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.UserName:
+                            </label>
+                            @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtUserName";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                                settings.Text = _User.UserName;
+                            }
+                        ).GetHtml()
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.Phone:
+                            </label>
+                            @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtPhone";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientEnabled = false;
+                                settings.Text = _User.UserPhone;
+                            }
+                        ).GetHtml()
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-detail">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.Note:
+                            </label>
+                            @Html.DevExpress().MemoFor(model => model.Remark,
+                        settings =>
+                        {
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.Rows = 3;
+                            settings.ClientEnabled = false;
+                            settings.ReadOnly = _readonlyControl;
+                        }
+                        ).GetHtml()
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a><h4 class="group-title"><i class="icon-list teal "></i>@Resources.Resource.DetailInfomation:</h4></a>
+            <div class="row row-detail">
+                <div class="col-lg-12" id="gridDetail">
+                    @{
+                        Html.RenderAction("GETERPListItemDetailPartial", "ERPDocument", new { ID = ViewBag.ID, docType = ViewBag.OrtherType });
+                    }
+                </div>
+            </div>
+            <h4 class="group-title "><i class="icon-thumbs-up teal"></i>@Resources.Resource.Sequence:</h4>
+            <div class="row row-detail">
+                <div class="col-lg-12">
+                    <div class="editorContainer">
+                        <div class="row row-detail">
+                            <!--Next Approver-->
+                            @{Html.RenderAction("GetApproverPartial", "DeviceRegistration", new
+                                {
+                                    DocTypeName = Model.OrderType,
+                                    CodeCenterCode = _User.CostCenterCode,
+                                    NodeID = ViewBag.NodeID.ToString(),
+                                    TypeUser = ViewBag.TypeUser,
+                                    OrderCode = Model.OrderCode
+                                });}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            if (Model.Status != (int)FEA_BusinessLogic.ERP.Order.OrderStatus.DRAFT && Model.Status != (int)FEA_BusinessLogic.ERP.Order.OrderStatus.New)
+            {
+                <div class="row row-detail">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label">
+                                @Resources.Resource.Comment:
+                            </label>
+                            @Html.DevExpress().Memo(settings =>
+                            {
+                                settings.Name = "txtComment";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.Properties.Rows = 3;
+                                settings.Properties.NullText = "";
+
+                            }
+                            ).GetHtml()
+                            <br />
+                            @{Html.RenderAction("GetGridViewForWF", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.WFHistory, OrderCode = Model.OrderCode });}
+                        </div>
+                    </div>
+                </div>
+                <h4 class="group-title "><i class="icon-comment teal "></i> @Resources.Resource.Conversation:</h4>
+                <div class="row row-detail">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            @{Html.RenderAction("GetListCommentBySesionPartial", "References", new { OrderCode = Model.OrderCode });}
+                        </div>
+                    </div>
+                </div>
+            }
+            Html.EndForm();
+        }
+    </div>
+</div> 

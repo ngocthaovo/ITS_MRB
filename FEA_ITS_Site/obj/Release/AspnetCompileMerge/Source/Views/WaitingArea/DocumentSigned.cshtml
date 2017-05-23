@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "DocumentSigned";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@model Object
+@using FEA_ITS_Site.Helper;
+@using FEA_ITS_Site;
+@using (Html.BeginForm("DocumentSigned", "WaitingArea", FormMethod.Post))
+{
+    <div class="panel-body">
+        <form id="frmMainForm">
+            <div class="row buttonbar">
+                <div class="col-lg-7">
+                    @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnRefresh";
+                    settings.Width = 90;
+                    settings.Text = @Resources.Resource.Refresh;
+                    settings.UseSubmitBehavior = true;
+
+                }).GetHtml()
+                </div>
+            </div>
+
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @{Html.RenderAction("DocSignedCallbackResult", "WaitingArea");}
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+}

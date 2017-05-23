@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "Statistic";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@model Object
+@using FEA_ITS_Site.Helper;
+@using FEA_ITS_Site;
+@using FEA_ITS_Site.Controllers;
+
+<script type="text/javascript">
+    var isNeedUpdateChart = false;
+
+    function OnBeforePivotGridCallback(s, e) {
+        isNeedUpdateChart = true;
+    }
+    function UpdateChart(s, e) {
+        if (isNeedUpdateChart) {
+            webChart.PerformCallback();
+            isNeedUpdateChart = false;
+        }
+    }
+    function OnBeginChartCallback(s, e) {
+        pivotGrid.FillStateObject(e.customArgs);
+    }
+
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid},
+    new StyleSheet { ExtensionSuite = ExtensionSuite.GridView},
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Chart})
+
+@Html.DevExpress().GetScripts(
+    new Script { ExtensionSuite = ExtensionSuite.Editors},
+    new Script { ExtensionSuite = ExtensionSuite.GridView},
+    new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
+    new Script { ExtensionSuite = ExtensionSuite.Chart })
+
+
+@{
+    PivotGridSettings PivotGridSettings = new FEA_ITS_Site.Controllers.SAController().PieChartSettingForPivot();
+    
+}
+
+@using (Html.BeginForm("Statistic", "SA", FormMethod.Post))
+{
+    
+<div class="panel-body">
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnQuery";
+                          //  settings.RouteValues = new { Action = "QueryReport", Controller = "Statistic" };
+                            settings.Width = 90;
+                            settings.Text = @Resources.Resource.Query;
+                            settings.UseSubmitBehavior = true;
+
+                        }).GetHtml()
+
+                @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnExport";
+                            settings.Width = 90;
+                            settings.RouteValues = new { Action = "ExportToExcel", Controller = "SA" };
+                            settings.Text = @Resources.Resource.Export;
+                            settings.UseSubmitBehavior = true;
+                        }).GetHtml()
+                @{
+                    if (ViewBag.ErrorMessage != null)
+                    {
+                            <div id="paginator-content-1" class="alert-small alert-danger" style="margin-top:10px;">
+                                @Html.Raw((string)ViewBag.ErrorMessage)
+                            </div>
+
+                    }
+                }
+            </div>
+
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <label class="control-label">
+                    @Resources.Resource.FromDate:
+                </label>
+            </div>
+            <div class="col-md-4">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "date";
+                            settings.Date = new DateTime();
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = "yyyy-MM-dd";
+                            settings.Date = Convert.ToDateTime(ViewBag.DateFrom) == null ? "" : Convert.ToDateTime(ViewBag.DateFrom);
+                        }
+                    ).GetHtml()
+            </div>
+            <div class="col-md-2">
+                <label class="control-label">
+                    @Resources.Resource.ToDate:
+                </label>
+            </div>
+            <div class="col-md-4">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "date2";
+                            //  settings.Properties.DisplayFormatString = "D";
+                            settings.Date = new DateTime();
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = "yyyy-MM-dd";
+                            settings.Date =  Convert.ToDateTime(ViewBag.DateTo) == null ? "" :  Convert.ToDateTime(ViewBag.DateTo);
+                        }
+                    ).GetHtml()
+            </div>
+        </div>
+      @*  <hr />*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="vertComponentContainer">
+                    <br /><h4>@Resources.Resource.CountApplicationBaseOnDepartment</h4><hr />
+                    @*@{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.GetDataForSAPivotGrid });}*@
+                    @{Html.RenderAction("CallbackPivotGrid", "SA", new {  frm = Model, Type="Pivot", DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo });}
+                    <br /><h4>@Resources.Resource.DynamicStatistic</h4><hr />
+                    @* @{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.GetSADynamicReport });}*@
+                    @{Html.RenderAction("CallbackPivotGrid", "SA", new { frm = Model, Type = "Dynamic", DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo });}
+                     @*<br /><h4>"Chart"</h4><hr />*@
+                    <br />
+                    <div align="center">
+                        @{Html.RenderAction("GetSADynamicReportChart", "SA", new { frm = Model, DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo });}
+                    </div>
+                   <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+     
+</div>
+}

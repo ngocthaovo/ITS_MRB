@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "ERPDocument";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@{Html.RenderAction("ERPHistory", "WaitingArea");}
+@*<script type="text/javascript">*@
+
+@*function ActiveTabChanged(s, e) {
+            var tabName = e.tab.name;
+            var item, url;
+            if(tabName =="ERPDocument")
+            {
+                item = $("#ifmERPDocument");
+                url = "@FEA_ITS_Site.Helper.Ultilities.Root/ERPDocument/MainPage";
+                $(item).attr("src", url);
+            }
+
+        }
+    </script>
+    @Html.DevExpress().PageControl(
+                settings =>
+                {
+                    settings.Name = "pcFeatures";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                    settings.ControlStyle.CssClass = "dxTab";
+                    settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+                    settings.TabPages.Add("Chứng từ ERP", "ERPDocument").SetContent(() =>
+                    {
+                        ViewContext.Writer.Write(
+                             "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/ERPDocument/MainPage?ID=\" id=\"ifmERPDocument\" style=\"height: 800px;\"></iframe>"
+                       );
+                    });
+                }).GetHtml()*@
+

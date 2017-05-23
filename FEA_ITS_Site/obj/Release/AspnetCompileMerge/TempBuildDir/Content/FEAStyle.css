@@ -1,0 +1,225 @@
+﻿body {
+    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
+    font-family: 'Segoe UI', sans-serif !important;
+}
+
+.panel-body {
+    margin-top: -21px !important;
+}
+
+hr {
+    background-color: rgb(32, 178, 170)/*#007AFF*/;
+    height: 1px;
+    color: #05B2D2;
+    border: 0;
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+    margin-right: 15px !important;
+}
+
+.teal {
+    color: #20b2aa !important;/*#007AFF*/
+}
+
+.panel-body {
+    padding: 0 15px 0 15px !important;
+}
+
+label {
+    font-weight: normal !important;
+    padding-left: 0px !important;
+}
+
+.label-info {
+    background-color: #007AFF !important;
+    color: #ffffff;
+}
+
+.label-default {
+    background-color: #3A87AD !important;
+    border-color: #3A87AD !important;
+}
+
+.btn-blue {
+    background-color: #364F6A;
+    border-color: #2d4259;
+    color: #ffffff;
+}
+
+.btn-yellow {
+    background-color: #FFB848;
+    border-color: #ffae2f;
+    color: #ffffff;
+}
+
+.fRight {
+    float: right !important;
+}
+
+.fLeft {
+    float: left !important;
+}
+
+.tCenter {
+    text-align: center !important;
+}
+.tLeft {
+    text-align: left !important;
+}
+.tRight {
+    text-align: right !important;
+}
+
+.row {
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.row-detail {
+
+}
+
+.well .row {
+    margin-bottom: 0px !important;
+}
+
+    .well .row .form-group {
+    }
+
+.textBoxStyle {
+    height: 25px;
+}
+
+.modal-lg {
+    height: 90% !important;
+}
+
+.modal-body {
+    height: 85% !important;
+}
+
+.modal {
+    border-radius: 0px !important;
+}
+
+.alert-small {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+}
+
+.control-label {
+    margin-top: 3px !important;
+}
+
+.form-group .control-label {
+    float: none !important;
+}
+
+.panel {
+    border-radius: 0px !important;
+}
+
+.buttonbar table {
+    float: left;
+    margin-right: 10px;
+}
+
+.content-region {
+    margin-top: 21px !important;
+}
+
+h1, h2, h3, h4 {
+    margin-top: 0px !important;
+}
+
+.modal-body {
+    padding: 0 20px !IMPORTANT;
+}
+
+.well-sm {
+    margin-right: 15px !important;
+}
+
+.group-title {
+    background-color: #F6F6F6;
+    margin-right: 15px;
+    padding: 5px;
+    margin-top: 5px !important;
+}
+
+.btn {
+    border-radius: 0px !important;
+}
+
+.btn-popup {
+    margin-top:-15px;
+}
+
+ul.main-navigation-menu > li.open > a, ul.main-navigation-menu > li > a:hover, ul.main-navigation-menu > li:hover > a {
+    background-color: #D9D9D9;
+    z-index: 999;
+}
+
+.dxtcLite_MetropolisBlue .dxtc-activeTab, .dxtcLite_MetropolisBlue .dxtc-activeTab a {
+    height: 24px !important;
+}
+
+.dxTab {
+    margin-top: -20px !important;
+}
+
+    .dxTab .dxtc-content {
+        width: 100% !important;
+    }
+
+iframe {
+    height: 100%;
+    width: 100%;
+    border: solid 0px;
+}
+.modal-header {
+padding: 5px !important;
+margin-bottom:5px;
+}
+
+
+.row-detail .form-group {
+margin-bottom: 5px !important;
+}
+
+#ifmMain
+{
+    height:840px !important;
+}
+
+.dxtcLite_MetropolisBlue > .dxtc-content
+{
+    padding:11px 0px !important;
+}
+.panel-body-tab {
+margin-top: 0px !important;
+}
+.navbar-tools .drop-down-wrapper
+{
+    height: 80px !important;
+}
+
+.loading {
+    background: url(../Images/loading.gif);
+    height: 50px;
+    width: 50px;
+    background-size: 50px;
+}
+
+#divLoadCommon
+{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  z-index: 999999;
+}
+
+.dxeRequiredMark_MetropolisBlue {
+    color:red !important;
+}

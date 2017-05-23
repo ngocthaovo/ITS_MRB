@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+</head>
+<body>
+
+    <link href="~/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="~/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/FEAStyle.css" rel="stylesheet" />
+
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/FEAContentFunction.js")"></script>
+
+       
+    <script type="text/javascript">
+
+        function SetModalStyle(width, height, url, title, reloadParent,mLeft,mTop) {
+            parent.ShowModelPopup();
+            parent.SetModalStyle(width, height, url, title, reloadParent, mLeft, mTop);
+        }
+    </script>
+   
+    @Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.GridView },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Chart },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
+       // new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList },
+      //  new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit }
+      //  new StyleSheet { ExtensionSuite = ExtensionSuite.SpellChecker }
+    )
+
+
+        @Html.DevExpress().GetScripts( 
+        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout }, 
+        new Script { ExtensionSuite = ExtensionSuite.HtmlEditor }, 
+        new Script { ExtensionSuite = ExtensionSuite.GridView }, 
+        new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
+        new Script { ExtensionSuite = ExtensionSuite.Editors }, 
+        new Script { ExtensionSuite = ExtensionSuite.Chart },
+        new Script { ExtensionSuite = ExtensionSuite.Report },
+     //   new Script { ExtensionSuite = ExtensionSuite.Scheduler },
+        new Script { ExtensionSuite = ExtensionSuite.TreeList },
+      //  new Script { ExtensionSuite = ExtensionSuite.Spreadsheet },
+        new Script { ExtensionSuite = ExtensionSuite.RichEdit }
+      //  new Script { ExtensionSuite = ExtensionSuite.SpellChecker }
+    )
+
+<div class="content-region">
+        @RenderBody()
+    </div>
+<br/>
+</body>
+</html>

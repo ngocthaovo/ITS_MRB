@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "ApprovedManagement";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+
+<div class="panel-body">
+    <form id="frmMainForm">
+        <h4><i class="icon-edit-sign teal"></i>Confirmed Management</h4>
+    </form>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="vertComponentContainer">
+                    @{
+                        Html.RenderAction("GetConfirmedDoc", "Maintenance", new { srtType = ViewBag.Type });
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

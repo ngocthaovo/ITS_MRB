@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome to FEA WebSite</title>
+    <!-- start: META -->
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" />
+    <!-- end: META -->
+    <!-- start: MAIN CSS -->
+    <link href="~/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="~/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/style.css">
+    <link rel="stylesheet" href="~/assets/css/main.css">
+    <link rel="stylesheet" href="~/assets/css/main-responsive.css">
+    <link rel="stylesheet" href="~/assets/plugins/iCheck/skins/all.css">
+    <link rel="stylesheet" href="~/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet" href="~/assets/css/theme_light.css" id="skin_color">
+
+    @*<link href="~/Content/FEAStyle.css" rel="stylesheet" />*@
+    <style type="text/css">
+        .box-language img {
+            width: 16px;
+            height: 12px;
+        }
+        .tabclose {
+            position: inherit;
+            z-index: 100;
+        }
+    </style>
+
+    <!--[if IE 7]>
+		<link rel="stylesheet" href="~/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+		<![endif]-->
+    <!-- end: MAIN CSS -->
+
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+		<script src="~/assets/plugins/respond.min.js"></script>
+		<script src="~/assets/plugins/excanvas.min.js"></script>
+		<![endif]-->
+    @*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>*@
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+    <script src="~/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="~/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="~/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="~/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <script src="~/Scripts/FEA_Function.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+
+</head>
+<body class="footer">
+    <!-- start: HEADER -->
+    @Html.Partial("_FEAHeader")
+    <!-- end: HEADER -->
+    <!-- start: MAIN CONTAINER -->
+    <div class="main-container">
+        <div class="navbar-content">
+            <!-- start: SIDEBAR -->
+            @Html.Partial("_FEAMainmenu")
+            <!-- end: SIDEBAR -->
+        </div>
+        <!-- start: PAGE -->
+        <div class="main-content">
+            <!-- start: PANEL CONFIGURATION MODAL FORM -->
+            <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+
+                            </button>
+                            <h4 class="modal-title">Panel Configuration</h4>
+                        </div>
+                        <div class="modal-body">
+                            Here will be a configuration form
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                Save changes
+
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+            <!-- end: SPANEL CONFIGURATION MODAL FORM -->
+            <div class="container">
+                <!-- start: PAGE HEADER -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- start: STYLE SELECTOR BOX -->
+                        @Html.Partial("_FEAStyleSelection")
+                        <!-- end: STYLE SELECTOR BOX -->
+                        <ol class="breadcrumb">
+                            <li class="box-language">
+                                <div><strong style="color:red; font-size:9px"><!--@Resources.Resource.ServerName:-->@FEA_ITS_Site.Helper.ServerManager.CurrentServerName</strong></div>
+                                <div class="lang-cn"><a href="~/Home/ChangeCurrentCulture/2"><img src="~/Images/ico-flag-china.gif" alt="Chinese" title="Chinese" /></a></div>
+                                <div class="lang-en"><a href="~/Home/ChangeCurrentCulture/1"><img src="~/Images/Englang_FLAG.png" alt="England" title="England" /></a></div>
+                                <div class="lang-vn"><a href="~/Home/ChangeCurrentCulture/0"><img src="~/Images/VN_Flag.png" alt="Tiếng Việt" title="Tiếng Việt" /></a></div>
+                                
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- end: PAGE HEADER -->
+                <!-- start: PAGE CONTENT -->
+                <div style="margin-top:5px;">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- start: PANLEL TABS -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-reorder"></i>
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    <div class="tabbable panel-tabs" id="tabs">
+                                        <ul class="nav nav-tabs">
+                                        </ul>
+                                        <div class="tab-content" id="tab-content">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end: PANLEL TABS -->
+                        </div>
+                    </div>
+                    @RenderBody()
+
+                </div>
+
+                <!-- end: PAGE CONTENT-->
+            </div>
+        </div>
+        <!-- end: PAGE -->
+    </div>
+    <!-- end: MAIN CONTAINER -->
+    <!-- start: FOOTER -->
+    @Html.Partial("_FEAFooter")
+    <!-- end: FOOTER -->
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+
+        });
+    </script>
+    <!-- end: BODY -->
+
+</body>
+@Html.Partial("ModalPartial/_IframeModal")
+
+</html>

@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "ImportData";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<style type="text/css">
+
+    .aaaaa {
+        margin-top:-25px;
+    }
+</style>
+<div class="panel-body">
+
+@using (Html.BeginForm("ImportData", "ITAssetDetail", FormMethod.Post))
+{
+    
+if (ViewBag.EditStatus != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+
+            @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+            {
+                <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                    @Html.Raw(ViewBag.EditInfo)
+                </div>
+            }
+            else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+            {
+                <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                    @Html.Raw(ViewBag.EditInfo)
+                </div>
+            }
+        </div>
+    </div>
+} 
+    
+<div class="well well-sm">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">
+                    Select File:
+                </label>
+                @Html.DevExpress().UploadControl(settings =>
+                        {
+                            settings.Name = "UploadControl";
+                            settings.ShowAddRemoveButtons = false;
+                            settings.ShowProgressPanel = true;
+                            settings.ShowClearFileSelectionButton = false;
+                            settings.ShowUploadButton = false;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(80);
+                        }).GetHtml()
+
+                <div class="editorContainer">
+                    @Html.DevExpress().Button(
+                            settings =>
+                            {
+                                settings.Name = "btnLoadExcel";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(5);
+                                settings.Text = Resources.Resource.Upload;
+                                settings.ControlStyle.CssClass = "aaaaa fRight";
+                                settings.UseSubmitBehavior = true;
+                                settings.CausesValidation = false;
+                                settings.Height = 20;
+                            }).GetHtml()
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+}
+
+</div>

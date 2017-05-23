@@ -1,0 +1,219 @@
+﻿@{
+    ViewBag.Title = "ContentLayout";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+<script type="text/javascript">
+    function OnBtnClick(s, e) {
+
+    }
+</script>
+<div class="panel-body">
+
+
+    <form id="frmMainForm">
+        <!-- title-->
+        <h4><i class="icon-edit-sign teal"></i>Demo content</h4>
+        <!-- End title-->
+
+        <!-- Button group-->
+        <div class="row buttonbar" style="">
+            <div class="col-lg-7">
+                <!-- The fileinput-button span is used to style the file input field as button -->
+                <button type="button" class="btn btn-primary start">
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>Start upload</span>
+                </button>
+                <button type="reset" class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel upload</span>
+                </button>
+                <button type="button" class="btn btn-danger delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>Delete</span>
+                </button>
+            </div>
+        </div>
+        <!-- End button group-->
+
+        <!--button group devexpress-->
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnImageAndText";
+                    settings.Width = 90;
+                    settings.Text = "Start upload";
+
+                }).GetHtml()
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnImageAndText1";
+                    settings.Width = 90;
+                    settings.Text = "Start upload";
+                }).GetHtml()
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnImageAndText2";
+                    settings.Width = 90;
+                    settings.Text = "Start upload";
+                }).GetHtml()
+            </div>
+        </div>
+        <!--End button group-->
+
+        <!-- line-->
+        <hr />
+        <!--Line-->
+
+        <!-- control group 3 column-->
+        <h4><i class="icon-edit-sign teal"></i>Demo content</h4>
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Employee ID
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "textBox1";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.Properties.DisplayFormatString = "[ 00 - 00 - 00 ]";
+                                settings.Text = "123456";
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Employee Name
+                        </label>
+                        <div class="editorContainer">
+                            @Html.DevExpress().TextBox(
+                settings =>
+                {
+                    settings.Name = "textBox2";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.Properties.NullText = "Enter your name...";
+                    settings.ControlStyle.CssClass = "textBoxStyle";
+                }
+            ).GetHtml()
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Title
+                        </label>
+                        @Html.DevExpress().DateEdit(
+                            settings =>
+                            {
+                                settings.Name = "dtTo";
+                                settings.Properties.UseMaskBehavior = true;
+                                settings.Properties.EditFormat = EditFormat.Custom;
+                                settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+                                settings.Properties.DisplayFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+
+                                settings.Date = DateTime.Now;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+
+                               
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end control group-->
+
+        <!--control group 2 column-->
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="control-label">
+                        Employee ID
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    @Html.DevExpress().TextBox(
+                                                    settings =>
+                                                    {
+                                                        settings.Name = "textBox8";
+                                                        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                                        settings.Properties.NullText = "Enter your name...";
+                                                        settings.ControlStyle.CssClass = "textBoxStyle";
+                                                    }
+                                                ).GetHtml()
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label">
+                        Employee Name
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    @Html.DevExpress().TextBox(
+                                                    settings =>
+                                                    {
+                                                        settings.Name = "textBox9";
+                                                        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                                        settings.Properties.NullText = "Enter your name...";
+                                                        settings.ControlStyle.CssClass = "textBoxStyle";
+                                                    }
+                                                ).GetHtml()
+                </div>
+            </div>
+        </div>
+        <!--end control group-->
+
+        <!-- grid-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                   
+                </div>
+            </div>
+        </div>
+        <!-- end grid-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="vertComponentContainer">
+
+                        @Html.DevExpress().RoundPanel(
+                            settings =>
+                            {
+                                settings.Name = "rpFeatures";
+                                settings.HeaderText = "Demo";
+                                settings.ShowHeader = true;
+                                settings.View = View.GroupBox;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.SetContent(() =>
+                                {
+                                     Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.QueryDivertPO });
+                                });
+                            }).GetHtml()
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </form>
+
+</div>
+
+<div class="panel-body">
+    <form id="frmMainForm">
+        <div class="row"></div>
+</form>
+</div>

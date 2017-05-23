@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "MainPage";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    function ActiveTabChanged(s, e) {
+        var tabName = e.tab.name;
+        var item, url;
+        if(tabName =="Request")
+        {
+            item = $("#ifmRequest");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/HardwareRequirement/Index?ID=";
+            $(item).attr("src", url);
+            @*url = $(item).attr("src");
+            if (url.length == 0 || url == "")
+            {
+                url = "@FEA_ITS_Site.Helper.Ultilities.Root/HardwareRequirement/Index?ID=";
+                $(item).attr("src", url);
+            }*@
+        }
+        else if(tabName =="Management")
+        {
+            item = $("#ifmManagement");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/HardwareRequirement/HardwareRequimentManagement";
+            $(item).attr("src", url);
+            @*url = $(item).attr("src");
+            
+            if (url.length == 0 || url == "")
+            {
+                url = "@FEA_ITS_Site.Helper.Ultilities.Root/HardwareRequirement/HardwareRequimentManagement";
+                $(item).attr("src", url);
+            }*@
+        }
+    }
+
+</script>
+@Html.DevExpress().PageControl(
+            settings =>
+            {
+                settings.Name = "pcFeatures";
+                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                settings.ControlStyle.CssClass = "dxTab";
+                settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+                settings.TabPages.Add(Resources.Resource.Request,"Request").SetContent(() =>
+                {
+                    
+                    ViewContext.Writer.Write(
+                        "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/HardwareRequirement/Index?ID=\" id=\"ifmRequest\" style=\"height: 800px;\"></iframe>"
+                    );
+                    //Html.RenderAction("Index", "DeviceRegistration", new { DeviceRegID = "" });
+
+                });
+
+                settings.TabPages.Add(@Resources.Resource.Management, "Management").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                            "<iframe src='' id=\"ifmManagement\" style=\"height: 760px;\"></iframe>"
+                        );
+                });
+            }).GetHtml()

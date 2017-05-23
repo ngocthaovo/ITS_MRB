@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@model Object
+@using FEA_ITS_Site.Helper;
+@using FEA_ITS_Site;
+
+
+<script type="text/javascript">
+
+
+    function SelectionChanged(s, e) {
+        s.GetSelectedFieldValues("OrderCode;DocumentTypeName;DelegateID;DelegateUserID;", GetSelectedFieldValuesCallback);
+    }
+    function GetSelectedFieldValuesCallback(selectedValues) {
+
+        try {
+            var sData = "";
+            var sDelegateData = "";
+
+            if (selectedValues.length != 0) {
+                for (i = 0; i < selectedValues.length; i++) {
+                    var obj = new Object();
+
+                    if (sData.length == 0)
+                        sData += "\"" + selectedValues[i][0] + "\"" + ":" + "\"" + selectedValues[i][1] + "\"";
+                    else
+                        sData += "," + "\"" + selectedValues[i][0] + "\"" + ":" + "\"" + selectedValues[i][1] + "\"";
+
+                    if (sDelegateData.length == 0)
+                        sDelegateData += "\"" + selectedValues[i][2] + "\"" + ":" + "\"" + selectedValues[i][3] + "\"";
+                    else
+                        sDelegateData += "," + "\"" + selectedValues[i][2] + "\"" + ":" + "\"" + selectedValues[i][3] + "\"";
+                }
+
+                sData = "{" + sData + "}";
+                sDelegateData = "{" + sDelegateData + "}";
+            }
+
+            $("#mydata").val(sData);
+            $("#DelegateData").val(sDelegateData);
+        } finally {
+        }
+    }
+
+    function CheckForLimit() {
+        var obj = new Object();
+        obj.ReasonType = ReasonID.GetValue();
+
+        return $.ajax({
+            url: '@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/GA/CheckLimited',
+            type: "POST",
+            data: obj,
+            error: function (ab, c) {
+                alert(c);
+            },
+        });
+    }
+</script>
+@using (Html.BeginForm("Index","WaitingArea", FormMethod.Post))
+{
+    @Html.Hidden("mydata");
+    @Html.Hidden("DelegateData");
+    <div class="panel-body">
+        <form id="frmMainForm">
+            <div class="row buttonbar">
+                <div class="col-lg-7">
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnSubmitAll";
+                    settings.Width = 90;
+                    settings.Text = @Resources.Resource.SubmitAll;
+                    settings.UseSubmitBehavior = true;
+                    settings.ClientVisible = false;
+
+                }).GetHtml()
+
+
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnRefresh";
+                    settings.Width = 90;
+                    settings.Text = @Resources.Resource.Refresh;
+                    settings.UseSubmitBehavior = true;
+
+                }).GetHtml()
+                </div>
+            </div>
+            <hr />
+
+
+             @{
+                 
+                if (ViewBag.EditStatus != null)
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                            {
+                                <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                                    @Html.Raw(ViewBag.EditInfo)
+                                </div>
+                            }
+                            else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                            {
+                                <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                                    @Html.Raw(ViewBag.EditInfo)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                 
+                 
+                Object[] _object = Model as Object[];
+                <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @{Html.RenderAction("GetGridView", "Base", new { frm = _object[0], GridName = FEA_ITS_Site.Models.Helper.PartialParameter.WaitingDocument });}
+                    </div>
+                </div>
+            </div>
+             <br />
+                 
+            <h4><i class="icon-edit-sign teal"></i> @Resources.Resource.Discussion </h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @{Html.RenderAction("GetGridView", "Base", new { frm = _object[1], GridName = FEA_ITS_Site.Models.Helper.PartialParameter.RefferenceList });}
+                    </div>
+                </div>
+            </div>  
+                 
+             }
+            
+           
+        </form>
+
+    </div>
+}

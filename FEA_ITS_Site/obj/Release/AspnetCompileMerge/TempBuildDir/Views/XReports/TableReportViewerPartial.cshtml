@@ -1,0 +1,11 @@
+﻿@model FEA_ITS_Site.Models.ReportsModel
+@{Html.DevExpress().DocumentViewer(
+    settings =>
+    {
+        settings.Name = Model.ReportID;
+        settings.Report = Model.Report;
+        settings.SettingsSplitter.DocumentMapCollapsed = true;
+        settings.CallbackRouteValues = new { Controller = "XReports", Action = "ReportPartial", param = Model.Parameter, reportID = Model.ReportID,Temp1 = Model.Temp1, Temp2=Model.Temp2, Temp3 = Model.Temp3 };
+        settings.ExportRouteValues = new { Controller = "XReports", Action = "ReportExportTo", param = Model.Parameter, reportID = Model.ReportID, Temp1 = Model.Temp1, Temp2 = Model.Temp2, Temp3 = Model.Temp3 };
+    }).GetHtml();
+}

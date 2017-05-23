@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "ERPDocumentMainPage";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+
+    function ActiveTabChanged(s, e) {
+        var tabName = e.tab.name;
+        var item, url;
+        if (tabName == "ERPDocumentQuery") {
+            item = $("#ifmERPDocumentQuery");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/ERPDocument/ERPDocumentQuery";
+            $(item).attr("src", url);
+        }
+       
+
+    }
+
+</script>
+@Html.DevExpress().PageControl(
+        settings =>
+        {
+            settings.Name = "pcFeatures";
+            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+            settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+            settings.ControlStyle.CssClass = "dxTab";
+            settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+
+            settings.TabPages.Add(@Resources.Resource.ERPDoc, "ERPDocumentQuery").SetContent(() =>
+            {
+                ViewContext.Writer.Write(" <iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/ERPDocument/ERPDocumentQuery\" id=\"ifmERPDocumentQuery\" style=\"height: 760px;\"></iframe>");
+            });
+
+        }).GetHtml()

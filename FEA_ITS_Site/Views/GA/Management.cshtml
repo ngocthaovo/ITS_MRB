@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Management";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+<div class="panel-body">
+    <form id="frmMainForm">
+        <!-- title-->
+        <h4><i class="icon-edit-sign teal"></i>GA Item Management</h4>
+        <!-- End title-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="vertComponentContainer">
+                        @{Html.RenderAction("GAItemEditModesPartial", "GA");}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

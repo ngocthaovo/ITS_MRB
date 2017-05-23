@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "MainPage";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    function ActiveTabChanged(s, e) {
+        var tabName = e.tab.name;
+        var item, url;
+
+        if (tabName == "ExportOrder") {
+            item = $("#ifrmExportOrder");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/WarehouseAreaExport/StockOutOrder";
+            $(item).attr("src", url);
+
+        }
+        else if (tabName == "Management") {
+            item = $("#ifmManagement");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/WarehouseAreaExport/ExportManagement";
+            $(item).attr("src", url);
+        }
+    }
+
+</script>
+@Html.DevExpress().PageControl(
+            settings =>
+            {
+                settings.Name = "pcFeatures";
+                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                settings.Height = 30;
+                settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                settings.ControlStyle.CssClass = "dxTab";
+                settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+
+                settings.TabPages.Add("Export Order", "ExportOrder").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                            "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/WarehouseAreaExport/StockOutOrder\" id=\"ifrmExportOrder\" style=\"height: 760px;\"></iframe>"
+                        );
+                });
+                settings.TabPages.Add(@Resources.Resource.Management, "Management").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                            "<iframe src='' id=\"ifmManagement\" style=\"height: 760px;\"></iframe>"
+                        );
+                });
+            }).GetHtml()

@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@model Object
+@using FEA_ITS_Site.Helper;
+@using FEA_ITS_Site;
+@using (Html.BeginForm("Index", "Statistic", FormMethod.Post))
+{
+    
+<div class="panel-body">
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnQuery";
+                          //  settings.RouteValues = new { Action = "QueryReport", Controller = "Statistic" };
+                            settings.Width = 90;
+                            settings.Text = @Resources.Resource.Query;
+                            settings.UseSubmitBehavior = true;
+
+                        }).GetHtml()
+
+                @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnExport";
+                            settings.Width = 90;
+                           // settings.RouteValues = new { Action = "ExportMethod", Controller = "ELand" };
+                            settings.Text = @Resources.Resource.Export;
+                            settings.UseSubmitBehavior = true;
+                        }).GetHtml()
+                @{
+                    if (ViewBag.ErrorMessage != null)
+                    {
+                            <div id="paginator-content-1" class="alert-small alert-danger" style="margin-top:10px;">
+                                @Html.Raw((string)ViewBag.ErrorMessage)
+                            </div>
+
+                    }
+                }
+            </div>
+
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <label class="control-label">
+                    From:
+                </label>
+            </div>
+            <div class="col-md-4">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "date";
+                            settings.Date = new DateTime();
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = "yyyy-MM-dd";
+                            settings.Date = Convert.ToDateTime(ViewBag.DateFrom) == null ? "" : Convert.ToDateTime(ViewBag.DateFrom);
+                        }
+                    ).GetHtml()
+            </div>
+            <div class="col-md-2">
+                <label class="control-label">
+                    To:
+                </label>
+            </div>
+            <div class="col-md-4">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "date2";
+                            //  settings.Properties.DisplayFormatString = "D";
+                            settings.Date = new DateTime();
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = "yyyy-MM-dd";
+                            settings.Date =  Convert.ToDateTime(ViewBag.DateTo) == null ? "" :  Convert.ToDateTime(ViewBag.DateTo);
+                        }
+                    ).GetHtml()
+            </div>
+        </div>
+      @*  <hr />*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="vertComponentContainer">
+                    <br /><h4>@Resources.Resource.DeviceRegistration</h4><hr />
+                    @{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.StatisticDR });}
+                    <br /><h4>@Resources.Resource.HardwareRequirement</h4><hr />
+                    @{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.StatisticHR });}
+                    <br /><h4>@Resources.Resource.HardwareRequirementDetail</h4><hr />
+                    @{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.StatisticHRDetail });}
+                </div>
+            </div>
+        </div>
+    </div>
+
+     
+</div>
+}

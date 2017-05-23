@@ -1,0 +1,54 @@
+﻿@Html.DevExpress().PopupControl(
+    settings =>
+    {
+        settings.Name = "pcModalMode";
+        settings.Width = 100;
+        settings.AllowDragging = true;
+        settings.CloseAction = CloseAction.CloseButton;
+        settings.CloseOnEscape = true;
+        settings.PopupAnimationType = AnimationType.None;
+        settings.HeaderText = "Nhập lý do trả về";
+        settings.Modal = true;
+        settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+        settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+        
+        settings.SetContent(() =>
+        {
+            using (Html.BeginForm("RejectMNRequest", "Maintenance", FormMethod.Post, new { id = "popupForm", @class = "edit_form", @style = "width: 400px; height:80px" }))
+            {
+                Html.Hidden("ID");
+                ViewContext.Writer.Write("<div class=\"line\">");
+               
+                Html.DevExpress().TextBox(
+                    textBoxSettings =>
+                    {
+                        textBoxSettings.Name = "Reason";
+                        textBoxSettings.ControlStyle.CssClass = "textBoxStyle";
+                        textBoxSettings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                       
+                    }
+                )
+                .Render();
+                ViewContext.Writer.Write("</div><div class=\"line\">");
+              
+               
+                ViewContext.Writer.Write("</div><div class=\"line\"></br>");
+              
+                Html.DevExpress().Button(
+                    buttonSettings =>
+                    {
+                        buttonSettings.Name = "btnReject";
+                        buttonSettings.ControlStyle.CssClass = "button";
+                        buttonSettings.Width = 80;
+                        buttonSettings.Text = "OK";
+                        buttonSettings.ClientSideEvents.Click = "RejectRequestMain";
+                    }
+                )
+                .Render();
+                
+                ViewContext.Writer.Write("</div><b class=\"Clear\"></b>");
+            }
+        });
+
+        settings.ClientSideEvents.CloseUp = "function(s, e){ ASPxClientEdit.ClearEditorsInContainer(null, '', true); }";
+    }).GetHtml()

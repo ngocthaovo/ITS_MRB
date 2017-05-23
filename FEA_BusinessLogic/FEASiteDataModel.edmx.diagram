@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6eee34b5f07244b2b790073898627401" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="FEA_ITSModel.CostCenter" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="FEA_ITSModel.LogChangePass" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FEA_ITSModel.SiteFunction_UserGroup" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FEA_ITSModel.User" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FEA_ITSModel.UserPosition" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WFDocumentType" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WFMain" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WFMainDetail" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WFNode" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WFNodeDetail" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFNodeDet__CostC__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK_USER_RELATIONS_COSTCENT" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK_LOGCHANG_RELATIONS_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFMain__CreateUs__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFMainDet__Check__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFMainDet__PostU__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFNodeDet__Appro__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK_User_UserPosition" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFMain__Document__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK_WFNode_WFDocumentType" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFMainDet__MainI__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFMainDet__NodeI__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFNodeDet__NodeI__1332DBDC" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FEA_ITSModel.DeviceRegistrationDetail" Width="2.25" PointX="6.125" PointY="20.375" />
+        <EntityTypeShape EntityType="FEA_ITSModel.Item" Width="2.75" PointX="13" PointY="16.875" />
+        <AssociationConnector Association="FEA_ITSModel.FK__DeviceReg__ItemI__403A8C7D" />
+        <EntityTypeShape EntityType="FEA_ITSModel.TagPrefix" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.user_account" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.UserGroup" Width="1.5" PointX="0.75" PointY="4.625" />
+        <AssociationConnector Association="FEA_ITSModel.FK_SITEFUNC_RELATIONS_USERGROU" />
+        <AssociationConnector Association="FEA_ITSModel.FK_User_UserGroup" />
+        <EntityTypeShape EntityType="FEA_ITSModel.Currency" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.Unit" Width="1.5" PointX="17.875" PointY="16.625" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ITInventory" Width="1.5" PointX="16.875" PointY="26" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ITInvento__UnitI__00200768" />
+        <EntityTypeShape EntityType="FEA_ITSModel.TransferLog" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.PackingManifestReturnedItem" Width="2.375" PointX="11.375" PointY="3.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ProductStockFromERP" Width="1.5" PointX="11.375" PointY="12.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.Factory" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.SAConfigure" Width="1.5" PointX="3.375" PointY="20.375" />
+        <EntityTypeShape EntityType="FEA_ITSModel.SADestination" Width="1.5" PointX="13.375" PointY="7.375" />
+        <EntityTypeShape EntityType="FEA_ITSModel.SAReason" Width="1.5" PointX="1.125" PointY="20.375" />
+        <AssociationConnector Association="FEA_ITSModel.fk_PositionIDX" />
+        <AssociationConnector Association="FEA_ITSModel.fk_ReasonID" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ExportItemChecking" Width="1.5" PointX="22.75" PointY="8.875" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ExportIte__Creat__2D1E61BF" />
+        <EntityTypeShape EntityType="FEA_ITSModel.StockInEquipment" Width="1.5" PointX="20.875" PointY="21.875" />
+        <EntityTypeShape EntityType="FEA_ITSModel.StockOutEquipment" Width="1.5" PointX="17.875" PointY="20.875" />
+        <AssociationConnector Association="FEA_ITSModel.fk_Creator2" />
+        <AssociationConnector Association="FEA_ITSModel.fk_CreatorID" />
+        <AssociationConnector Association="FEA_ITSModel.fk_DeliveryFor" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ITSAssetFTY" Width="1.5" PointX="19.375" PointY="4.5" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ITSAssetRecData" Width="2.5" PointX="18.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WHExportOrder" Width="1.5" PointX="5.25" PointY="34.5" />
+        <AssociationConnector Association="FEA_ITSModel.FK_WHExportOrder_User" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WFRefference" Width="1.5" PointX="13.75" PointY="10.875" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WFRefferenceDetail" Width="1.5" PointX="16" PointY="2.25" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFReffere__Sende__16F18B83" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFReffere__MainD__15FD674A" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFReffere__WFRef__19CDF82E" />
+        <EntityTypeShape EntityType="FEA_ITSModel.PackingManifest" Width="1.5" PointX="5.25" PointY="45.25" />
+        <AssociationConnector Association="FEA_ITSModel.FK__PackingMa__Creat__69FBBC1F" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFReffere__RefUs__5CC4E9EE" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WHImportOrder" Width="1.5" PointX="5.25" PointY="30" />
+        <AssociationConnector Association="FEA_ITSModel.fk_WHImportOrder_CreatorID" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WHImportOrderDetail" Width="1.5" PointX="10.75" PointY="40.125" />
+        <AssociationConnector Association="FEA_ITSModel.FK_WHIMPORT_REFERENCE_WHIMPORT" />
+        <EntityTypeShape EntityType="FEA_ITSModel.DeviceRegistration" Width="1.5" PointX="5.25" PointY="51.25" />
+        <EntityTypeShape EntityType="FEA_ITSModel.HardwareRequirement" Width="1.5" PointX="5.25" PointY="57" />
+        <AssociationConnector Association="FEA_ITSModel.FK__DeviceReg__Devic__37703C52" />
+        <AssociationConnector Association="FEA_ITSModel.FK__DeviceReg__Devic__48CFD27E" />
+        <AssociationConnector Association="FEA_ITSModel.FK__DeviceReg__Techn__367C1819" />
+        <AssociationConnector Association="FEA_ITSModel.fk_CreatorID4" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__Techn__2180FB33" />
+        <AssociationConnector Association="FEA_ITSModel.fk_CreatorID2" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ITSAssetDetail" Width="1.5" PointX="21.625" PointY="0.75" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ITSAssetDetail_ITSAssetFTY" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ITSAssetDetail_ITSAssetFTY1" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ITSAssetDetail_ITSAssetFTY2" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ITSAssetDetail_ITSAssetRecData" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ExportItemApproverItem" Width="1.5" PointX="20.125" PointY="11.625" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ExportItemApproverItem_CostCenter" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ExportItemApproverCostCenter_Item" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ExportItemApproverCostCenter_User" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ExportItem" Width="1.5" PointX="16.625" PointY="8.125" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ExportIte__Creat__1DDC1E2F" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ExportIte__UserP__743AEA1E" />
+        <AssociationConnector Association="FEA_ITSModel.fk_Destination" />
+        <AssociationConnector Association="FEA_ITSModel.fk_ReferID" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ExportItemDetail" Width="1.5" PointX="25.125" PointY="9.875" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ExportItemDetail_CostCenter" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ExportIte__Expor__2859ACA2" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ExportIte__Expor__1261E090" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ExportIte__Expor__2574B504" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ExportIte__UnitI__0D9D2B73" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ExportIte__UnitI__238C6C92" />
+        <EntityTypeShape EntityType="FEA_ITSModel.HistoryScan" Width="1.5" PointX="5.25" PointY="24.625" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HistorySc__Creat__6EC0713C" />
+        <EntityTypeShape EntityType="FEA_ITSModel.PackingManifestDetail" Width="1.5" PointX="7.5" PointY="44" />
+        <EntityTypeShape EntityType="FEA_ITSModel.PackingManifestDetailCoordination" Width="1.5" PointX="9.75" PointY="45" />
+        <AssociationConnector Association="FEA_ITSModel.FK_PACKINGM_REFERENCE_PACKINGM" />
+        <AssociationConnector Association="FEA_ITSModel.FK__PackingMa__Packi__658CD814" />
+        <AssociationConnector Association="FEA_ITSModel.FK_WHIMPORT_REFERENCE_PACKINGM" />
+        <EntityTypeShape EntityType="FEA_ITSModel.SiteFunction" Width="1.5" PointX="9.375" PointY="22" />
+        <AssociationConnector Association="FEA_ITSModel.FK_SITEFUNC_RELATIONS_SITEFUNC" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WHExportOrderDetail" Width="1.5" PointX="12.75" PointY="44.375" />
+        <AssociationConnector Association="FEA_ITSModel.FK_WHEXPORT_REFERENCE_PACKINGM" />
+        <AssociationConnector Association="FEA_ITSModel.FK_WHEXPORT_REFERENCE_WHEXPORT" />
+        <EntityTypeShape EntityType="FEA_ITSModel.GAAdjustment" Width="1.5" PointX="3" PointY="24.375" />
+        <AssociationConnector Association="FEA_ITSModel.FK_GAAdjustment_Reference_CostCenter" />
+        <EntityTypeShape EntityType="FEA_ITSModel.GAItemDetail" Width="1.5" PointX="23.125" PointY="22.625" />
+        <AssociationConnector Association="FEA_ITSModel.FK_GAITEMDE_REFERENCE_ITEM" />
+        <AssociationConnector Association="FEA_ITSModel.FK_GAITEMDE_REFERENCE_UNIT" />
+        <AssociationConnector Association="FEA_ITSModel.FK_CostCenter_User" />
+        <EntityTypeShape EntityType="FEA_ITSModel.vw_GetOrderFromERP" Width="1.5" PointX="13.375" PointY="21.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ShelfInformation" Width="1.5" PointX="15.125" PointY="43.875" />
+        <AssociationConnector Association="FEA_ITSModel.FK_Item_ShelfID" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ItemDetail" Width="1.5" PointX="15.125" PointY="47.375" />
+        <AssociationConnector Association="FEA_ITSModel.FK__DeviceReg__ItemD__3864608B" />
+        <AssociationConnector Association="FEA_ITSModel.FK__DeviceReg__ItemD__4AB81AF0" />
+        <AssociationConnector Association="FEA_ITSModel.fk_ReasonItemDetailID" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ExportItemDetail_ItemDetail" />
+        <AssociationConnector Association="FEA_ITSModel.FK_GAITEMDE_REFERENCE_ITEMDETA" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ItemDetai__ItemI__398D8EEE" />
+        <AssociationConnector Association="FEA_ITSModel.FK__ITInvento__ItemD__7F2BE32F" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WHImportO__Shelf__749C737F" />
+        <EntityTypeShape EntityType="FEA_ITSModel.GAItem" Width="1.5" PointX="24.625" PointY="3" />
+        <AssociationConnector Association="FEA_ITSModel.FK_GAITEM_REFERENCE_CURRENCY" />
+        <AssociationConnector Association="FEA_ITSModel.FK_GAITEM_REFERENCE_USER" />
+        <AssociationConnector Association="FEA_ITSModel.FK_GAITEMDE_REFERENCE_GAITEM" />
+        <EntityTypeShape EntityType="FEA_ITSModel.SAAuditStatu" Width="1.5" PointX="5.375" PointY="15.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.HardwareRequirementDetail" Width="1.5" PointX="20.125" PointY="37.5" />
+        <EntityTypeShape EntityType="FEA_ITSModel.StockInEquipmentDetail" Width="1.5" PointX="23.125" PointY="31.875" />
+        <EntityTypeShape EntityType="FEA_ITSModel.StockOutEquipmentDetail" Width="1.5" PointX="20.125" PointY="32.625" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__Hardw__3B40CD36" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__Hardw__41EDCAC5" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__Hardw__5FB337D6" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__ItemD__3C34F16F" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__ItemD__42E1EEFE" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__ItemD__619B8048" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__ItemI__3D2915A8" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__ItemI__43D61337" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__ItemI__60A75C0F" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__UnitI__3E1D39E1" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__UnitI__44CA3770" />
+        <AssociationConnector Association="FEA_ITSModel.FK__HardwareR__UnitI__628FA481" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__ItemI__489AC854" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__ItemI__503BEA1C" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__ItemI__787EE5A0" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockOutE__ItemI__0B91BA14" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__ItemD__47A6A41B" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__ItemD__4F47C5E3" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__ItemD__797309D9" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockOutE__ItemD__0C85DE4D" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__Stock__498EEC8D" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__Stock__51300E55" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__Stock__778AC167" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__UnitI__4A8310C6" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__UnitI__5224328E" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockInEq__UnitI__7A672E12" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockOutE__Stock__0A9D95DB" />
+        <AssociationConnector Association="FEA_ITSModel.FK__StockOutE__UnitI__0D7A0286" />
+        <EntityTypeShape EntityType="FEA_ITSModel.SAAuditExportItem" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ERPDocument" Width="1.5" PointX="5.25" PointY="63.875" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ERPDocumentDetail" Width="1.5" PointX="7.5" PointY="64" />
+        <AssociationConnector Association="FEA_ITSModel.fk_ID_ERPDocumentsID" />
+        <AssociationConnector Association="FEA_ITSModel.fk_UserID_ERPID" />
+        <EntityTypeShape EntityType="FEA_ITSModel.ComponentDesign" Width="1.5" PointX="7.375" PointY="15.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.WFDelegate" Width="1.5" PointX="10.25" PointY="17" />
+        <AssociationConnector Association="FEA_ITSModel.fk_Costcenter" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFDelegat__Deleg__02084FDA" />
+        <AssociationConnector Association="FEA_ITSModel.FK__WFDelegat__MainU__01142BA1" />
+        <AssociationConnector Association="FEA_ITSModel.fk_DocumentType" />
+        <EntityTypeShape EntityType="FEA_ITSModel.MNRequestMain" Width="1.5" PointX="15.625" PointY="29.75" />
+        <EntityTypeShape EntityType="FEA_ITSModel.MNRequestMainDetail" Width="1.5" PointX="26.125" PointY="28.625" />
+        <EntityTypeShape EntityType="FEA_ITSModel.MNStockEquipment" Width="1.5" PointX="17.875" PointY="30.375" />
+        <EntityTypeShape EntityType="FEA_ITSModel.MNStockEquipmentDetail" Width="1.5" PointX="20.125" PointY="27.375" />
+        <AssociationConnector Association="FEA_ITSModel.FK_CurrencyID" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ItemID" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ItemID3" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ItemDetailID2" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ItemDetailID3" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ConfirmID" />
+        <AssociationConnector Association="FEA_ITSModel.FK_CreatorID1" />
+        <AssociationConnector Association="FEA_ITSModel.FK_MNREQUES_REFERENCE_MNREQUES" />
+        <AssociationConnector Association="FEA_ITSModel.FK_RequestMainID" />
+        <AssociationConnector Association="FEA_ITSModel.FK_UnitID2" />
+        <AssociationConnector Association="FEA_ITSModel.FK_CreatorID3" />
+        <AssociationConnector Association="FEA_ITSModel.FK_DeliveryForID" />
+        <AssociationConnector Association="FEA_ITSModel.FK_MNSTOCKE_REFERENCE_MNSTOCKE" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ReceiveUserID" />
+        <AssociationConnector Association="FEA_ITSModel.FK_UnitID3" />
+        <EntityTypeShape EntityType="FEA_ITSModel.MNInventory" Width="1.5" PointX="23.125" PointY="28.625" />
+        <AssociationConnector Association="FEA_ITSModel.FK_ItemDetailID" />
+        <AssociationConnector Association="FEA_ITSModel.FK_UnitID" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

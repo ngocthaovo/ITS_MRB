@@ -1,0 +1,39 @@
+﻿@model List<FEA_BusinessLogic.User>
+@using System.Web.UI.WebControls
+@{
+    var grid = Html.DevExpress().GridView(
+        settings =>
+        {
+            settings.Name = "gvEditing";
+            settings.KeyFieldName = "UserID";
+            settings.CallbackRouteValues = new { Controller = "Demo", Action = "EditModesPartial" };
+            settings.CustomActionRouteValues = new { Controller = "Demo", Action = "ChangeEditModePartial" };
+            settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Demo", Action = "EditModesAddNewPartial" };
+            settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Demo", Action = "EditModesUpdatePartial" };
+            settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Demo", Action = "EditModesDeletePartial" };
+            settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+            settings.SettingsBehavior.ConfirmDelete = true;
+            settings.CommandColumn.Visible = true;
+            settings.CommandColumn.NewButton.Visible = true;
+            settings.CommandColumn.DeleteButton.Visible = true;
+            settings.CommandColumn.EditButton.Visible = true;
+
+            settings.Columns.Add("UserName");
+            settings.Columns.Add("UserNameEN");
+
+
+            settings.Settings.ShowFilterRow = false;
+            settings.Settings.ShowGroupPanel = false;
+            settings.Settings.ShowFooter = false;
+            settings.PreRender = (sender, e) =>
+            {
+                //((MVCxGridView)sender).StartEdit(1);
+            };
+        });
+
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

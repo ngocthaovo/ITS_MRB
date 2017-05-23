@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "FinishedManagementForAdmin";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+<h3></h3>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            @{Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.FinishedForManager });}
+        </div>
+    </div>
+</div>

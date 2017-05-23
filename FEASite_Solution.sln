@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEA_ITS_Site", "FEA_ITS_Site\FEA_ITS_Site.csproj", "{C535A22D-C802-4090-9C98-5BF7891FEF55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEA_BusinessLogic", "FEA_BusinessLogic\FEA_BusinessLogic.csproj", "{B08C91F5-2DDC-4B1F-B149-7AE11186BC46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEA_Ultil", "FEA_Ultil\FEA_Ultil.csproj", "{2A0251DE-F497-4678-970F-9A831CCEA3E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEA_SABusinessLogic", "FEA_SABusinessLogic\FEA_SABusinessLogic.csproj", "{D2F96846-92D8-4B54-8DAB-2B87478ADEEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITSProject_WebService", "ITSProject_WebService\ITSProject\ITSProject_WebService.csproj", "{00F998B2-B45D-468C-A0F0-87A34F59FD65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEA_GABusinessLogic", "FEA_GABusinessLogic\FEA_GABusinessLogic.csproj", "{52576406-CB44-49C3-A5AF-30C76679D374}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C535A22D-C802-4090-9C98-5BF7891FEF55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C535A22D-C802-4090-9C98-5BF7891FEF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C535A22D-C802-4090-9C98-5BF7891FEF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C535A22D-C802-4090-9C98-5BF7891FEF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B08C91F5-2DDC-4B1F-B149-7AE11186BC46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B08C91F5-2DDC-4B1F-B149-7AE11186BC46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B08C91F5-2DDC-4B1F-B149-7AE11186BC46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B08C91F5-2DDC-4B1F-B149-7AE11186BC46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A0251DE-F497-4678-970F-9A831CCEA3E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A0251DE-F497-4678-970F-9A831CCEA3E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A0251DE-F497-4678-970F-9A831CCEA3E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A0251DE-F497-4678-970F-9A831CCEA3E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2F96846-92D8-4B54-8DAB-2B87478ADEEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2F96846-92D8-4B54-8DAB-2B87478ADEEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2F96846-92D8-4B54-8DAB-2B87478ADEEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2F96846-92D8-4B54-8DAB-2B87478ADEEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00F998B2-B45D-468C-A0F0-87A34F59FD65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00F998B2-B45D-468C-A0F0-87A34F59FD65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00F998B2-B45D-468C-A0F0-87A34F59FD65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00F998B2-B45D-468C-A0F0-87A34F59FD65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52576406-CB44-49C3-A5AF-30C76679D374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52576406-CB44-49C3-A5AF-30C76679D374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52576406-CB44-49C3-A5AF-30C76679D374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52576406-CB44-49C3-A5AF-30C76679D374}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

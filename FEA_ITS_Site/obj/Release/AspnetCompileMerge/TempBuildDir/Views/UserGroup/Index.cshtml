@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+<script type="text/javascript">
+    function SetPermission(UserGroupID) {
+        var url = "@string.Format("{0}", FEA_ITS_Site.Helper.Ultilities.Root + "/SiteFunctionUserGroup/Index?UserGroupID=")";
+        url += UserGroupID;
+       // alert(url);
+        $("#ifrmSiteFunction").attr('src', url);
+    }
+
+
+
+</script>
+<script language="javascript1.1">
+    (function ($) {
+
+        $(document).ready(function () {
+            jQuery.ajax(
+                {
+                    url: '@Url.Action("SAAuditStatus","UserGroup")'
+                }).done(function (d) {
+                   
+                if(d==1)
+                {
+                    $("#chkAudit").attr("checked", true);
+                }
+                else
+                {
+                    $("#chkAudit").attr("checked", false);
+                }
+            });
+       
+            $("[id^='chkAudit']").click(function () {
+
+                if ($("#chkAudit").is(":checked")) {
+                    
+                    jQuery.ajax(
+                        {
+                            url: '@Url.Action("SAAudit", "UserGroup", new { @Status=1})'
+                        }).done(function (d) {
+                           
+                        });
+                }
+                else {
+                    jQuery.ajax(
+                         {
+                             url: '@Url.Action("SAAudit", "UserGroup", new { @Status=0})'
+                         }).done(function (d) {
+                             
+                         });
+                }
+            });
+
+        });
+    })(jQuery);
+</script>
+
+<div class="panel-body">
+    <div id="frmMainForm">
+        <!--button group devexpress-->
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnImageAndText";
+                    settings.Width = 90;
+                    settings.Text = "Refresh";
+                    settings.ClientSideEvents.Click = "function(){parent.reloadContent();}";
+                }).GetHtml()
+                
+            </div>
+            
+        </div>
+        <!--End button group-->
+        <!-- line-->
+        
+        <hr />
+        <!--Line-->
+        <!--control group 2 column-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.DevExpress().RoundPanel(
+                            settings =>
+                            {
+                                settings.Name = "rpUserGroups";
+                                settings.HeaderText = "List of Group";
+                                settings.ShowHeader = true;
+                                settings.View = View.GroupBox;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.SetContent(() =>
+                                {
+                                    Html.RenderAction("GetGridView", "Base", new { frm = Model, GridName = FEA_ITS_Site.Models.Helper.PartialParameter.USER_GROUP_LIST_GRID });
+                                });
+                            }).GetHtml()
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <!-- gridhere-->
+                <iframe id="ifrmSiteFunction" style="height:100%; width:100%;border:solid 0px; height:500px" src=""></iframe>
+            </div>
+            <div class="col-lg-7">
+                <label class="switch">
+                    <input name="chkAudit" id="chkAudit" type="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+            </div>
+        </div>
+        <!--end control group-->
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model Dictionary<int,string>
+@Html.DevExpress().ComboBox(settings =>
+{
+    settings.Name = "cboExportItemDepartment";
+    settings.CallbackRouteValues = new { Controller = "ExportItemApproverItem", Action = "ExportItemDepartmentPartial" };
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.Properties.ValueType = typeof(string);
+    settings.Properties.TextField = "Value";
+    settings.ControlStyle.CssClass = "textBoxStyle";
+    settings.Properties.ValueField = "Key";
+    settings.Properties.EnableCallbackMode = true;
+    settings.Properties.CallbackPageSize = 20;
+    settings.Properties.ClientSideEvents.BeginCallback = "function(s, e) { }";
+    settings.Properties.ClientSideEvents.SelectedIndexChanged = "function(s, e) {cboExportItem.PerformCallback();cboExportItemDetail.SetValue(null);}";
+
+    settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+    settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+
+    settings.Properties.CaptionSettings.RequiredMark = "(*)";
+    settings.Properties.CaptionSettings.RequiredMarkDisplayMode = EditorRequiredMarkMode.Required;
+    settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Right;
+
+}).BindList(Model).GetHtml()

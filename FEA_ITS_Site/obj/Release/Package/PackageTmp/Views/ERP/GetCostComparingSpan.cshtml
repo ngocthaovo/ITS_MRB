@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "GetCostComparingSpan";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+<script type="text/javascript">
+
+    $(function () {
+        // DisplayItem('divBaseInfo', false);
+        $("form").submit(function () {
+
+           // window.setTimeout(function () { $("#divLoadCommon").hide(); }, 1);
+        });
+    });
+</script>
+
+@using (Html.BeginForm())
+{
+    <div class="panel-body">
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnQuery";
+                            settings.Width = 90;
+                            settings.Text = @Resources.Resource.Query;
+                            settings.UseSubmitBehavior = true;
+
+                        }).GetHtml()
+
+                @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnExport";
+                            settings.Width = 90;
+                            // settings.RouteValues = new { Action = "ExportMethod", Controller = "ITInventory", DateTo = ViewData["DateTo"], DateFrom = ViewData["DateFrom"] };
+                            settings.Text = @Resources.Resource.Export;
+                            settings.UseSubmitBehavior = true;
+                            settings.ClientSideEvents.Click = "function(){window.setTimeout(function () { $('#divLoadCommon').remove(); }, 1);}";
+                        }).GetHtml()
+            </div>
+
+        </div>
+        <br />
+
+
+        <div class="row">
+            <div class="col-md-1">
+                <label class="control-label">
+                    FEPOCode:
+                </label>
+            </div>
+            <div class="col-md-2">
+                @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtFEPOCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = ViewBag.FEPOCode;
+                            }
+                        ).GetHtml()
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">
+                    Customer Code:
+                </label>
+            </div>
+            <div class="col-md-2">
+                @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtCustomerCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = ViewBag.CustomerCode;
+                            }
+                        ).GetHtml()
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">
+                    From:
+                </label>
+            </div>
+            <div class="col-md-2">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "dtBeginDate";
+                            settings.Date = ViewBag.BeginDate;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.EditFormat = EditFormat.Date;
+                            settings.Properties.EditFormatString = "yyyy-MM";
+                            settings.Properties.DisplayFormatString = "yyyy-MM";
+                            settings.Properties.UseMaskBehavior = true;
+                        }
+                    ).GetHtml()
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">
+                    To:
+                </label>
+            </div>
+            <div class="col-md-2">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "dtEndDate";
+                            settings.Date = ViewBag.EndDate;
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = "yyyy-MM";
+                        }
+                    ).GetHtml()
+            </div>
+        </div>
+        <hr />
+        @*<h4 class="group-title"><i class="icon-edit-sign teal"></i> @Resources.Resource.PendingList</h4>*@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                   @if (ViewBag.IsSearch == true)
+                    {
+                      Html.RenderAction("DocumentPartial", "ERP", new { FEPOCode = ViewBag.FEPOCode, CustomerCode = ViewBag.CustomerCode, BeginDate = ViewBag.BeginDate, EndDate = ViewBag.EndDate });
+                    }
+                   
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

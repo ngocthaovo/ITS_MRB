@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "GAAdjustment";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="panel-body">
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                            settings =>
+                            {
+                                settings.Name = "btnQuery";
+                                //  settings.RouteValues = new { Action = "QueryReport", Controller = "Statistic" };
+                                settings.Width = 90;
+                                settings.Text = @Resources.Resource.Query;
+                                settings.UseSubmitBehavior = true;
+
+                            }).GetHtml()
+                @Html.DevExpress().Button(
+                            settings =>
+                            {
+                                settings.Name = "btnCopy";
+                                settings.Width = 90;
+                                settings.Text = @Resources.Resource.Copy;
+                                settings.UseSubmitBehavior = true;
+                                settings.ClientSideEvents.Click = "function(s, e) {e.processOnServer = confirm('" + @Html.Raw(Resources.Resource.msgCopyMessage) + "');}";
+                            }).GetHtml()
+
+                @Html.DevExpress().Label(
+                            settings =>
+                            {
+                                settings.Name = "lblNotice";
+                                settings.Text = @Resources.Resource.msgNotice;
+                                
+                                settings.ControlStyle.ForeColor = System.Drawing.Color.Red;
+                            }
+                ).GetHtml()
+             
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+
+                @if (ViewData["Success"] != null)
+                {
+                    <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                        @Html.Raw(ViewData["Success"])
+                    </div>
+                }
+                @if (ViewData["EditError"] != null)
+                {
+                    <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                        @Html.Raw(ViewData["EditError"])
+                    </div>
+                }
+            </div>
+        </div>
+
+
+
+        <div class="row">
+           
+            <div class="col-md-1">
+                <label class="control-label">
+                   @Resources.Resource.msgMoveTo
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().DateEdit(
+                            settings =>
+                            {
+                                settings.Name = "dtEndDate";
+                                //  settings.Properties.DisplayFormatString = "D";
+                                settings.Date = ViewBag.EndDate;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.Properties.EditFormat = EditFormat.Custom;
+                                settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                            }
+                        ).GetHtml()
+            </div>
+            <div class="col-md-1">
+            <label class="control-label">
+                @Resources.Resource.msgCopyTo
+            </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().DateEdit(
+                            settings =>
+                            {
+                                settings.Name = "dtCopyMonth";
+                                settings.Date = ViewBag.CopyMonth;
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.Properties.EditFormat = EditFormat.Custom;
+                                settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                            }
+                        ).GetHtml()
+            </div>
+        </div>
+        <hr />
+
+        <form id="frmMainForm">
+            <!-- title-->
+            <h4><i class="icon-edit-sign teal"></i>GA Adjustment</h4>
+            <!-- End title-->
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @{Html.RenderAction("EditModesPartial", "GA", new { EndDate = ViewBag.EndDate, CopyMonth = ViewBag.CopyMonth });}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}

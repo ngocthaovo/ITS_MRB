@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "StockMainPage";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+<script type="text/javascript">
+   
+    function ActiveTabChange(s,e)
+    {
+        var tabName=e.tab.name;
+        var item, url;
+        if(tabName=="RequestTab")
+        {
+            item=$("#ifmRequest");
+            url="@FEA_ITS_Site.Helper.Ultilities.Root/Maintenance/StockRequest?Type=@ViewBag.Type"+"&OrderType=@ViewBag.OrderType"+"&ID=";
+            $(item).attr("src",url);
+        }
+        if(tabName =="ManagementTab")
+        {
+            item =$("#ifmManagement");
+            url="@FEA_ITS_Site.Helper.Ultilities.Root/Maintenance/StockManagement?Type=@ViewBag.Type"+"&OrderType=@ViewBag.OrderType";
+            $(item).attr ("src",url);
+        }
+    }
+</script>
+
+@Html.DevExpress().PageControl(
+                settings =>
+                {
+                    settings.Name = "pcFeatures";
+                    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                    settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                    settings.ControlStyle.CssClass = "dxTab";
+                    settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChange";
+                    settings.TabPages.Add(Resources.Resource.StockIn, "RequestTab").SetContent(() =>
+                    {
+                        ViewContext.Writer.Write(
+                          "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/Maintenance/StockRequest?Type=" + @ViewBag.Type +"&OrderType= "+@ViewBag.OrderType+ "&ID=\" id=\"ifmRequest\" style=\"height: 800px;\"></iframe>"
+                          );
+                    });
+                    settings.TabPages.Add(Resources.Resource.Management, "ManagementTab").SetContent(() =>
+                    {
+                        ViewContext.Writer.Write(
+                           "<iframe src='' id=\"ifmManagement\" style=\"height: 760px;\"></iframe>"
+                          );
+                    });
+                }
+
+).GetHtml()
+

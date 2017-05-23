@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "HardwareRequimentManagement";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+<div class="panel-body">
+    <form id="frmMainForm">
+        <!-- title-->
+        <h4><i class="icon-edit-sign teal"></i>Hardware Requirement Management</h4>
+        <!-- End title-->
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="vertComponentContainer">
+                        @{Html.RenderAction("EditModesPartial", "HardwareRequirement");}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

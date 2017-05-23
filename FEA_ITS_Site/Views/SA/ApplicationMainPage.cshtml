@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "ApplicationMainPage";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+
+    var ApplicationType=@Html.Raw(Request.QueryString["Type"]);
+
+
+    function ActiveTabChanged(s, e) {
+        var tabName = e.tab.name;
+        var item, url;
+
+        if (tabName == "Application") {
+            item = $("#ifmStockout");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/SA/Application?Type=" + ApplicationType +"&ID=";
+            $(item).attr("src", url);
+
+        }
+        else if (tabName == "Management") {
+            item = $("#ifmManagement");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/SA/ExportManagement?Type=" + ApplicationType;
+            $(item).attr("src", url);
+        }
+    }
+
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.NavigationAndLayout})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.NavigationAndLayout})
+
+@Html.DevExpress().PageControl(
+            settings =>
+            {
+                settings.Name = "pcFeatures";
+                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                settings.ControlStyle.CssClass = "dxTab";
+                settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+
+                settings.TabPages.Add(FEA_ITS_Site.Controllers.SAController.GetDocumentTypeName(int.Parse(Request.QueryString["Type"].ToString())), "Application").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                            "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/SA/Application?Type="+@Request.QueryString["Type"]+"&ID=\" id=\"ifmStockout\" style=\"height: 760px;\"></iframe>"
+                        );
+                });
+                settings.TabPages.Add(@Resources.Resource.Management, "Management").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                            "<iframe src='' id=\"ifmManagement\" style=\"height: 760px;\"></iframe>"
+                        );
+                });
+            }).GetHtml()

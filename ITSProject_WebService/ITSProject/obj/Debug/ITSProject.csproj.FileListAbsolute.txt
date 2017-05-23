@@ -1,0 +1,40 @@
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\obj\Debug\ITSProject.csprojResolveAssemblyReference.cache
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\ITSProject.dll.config
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\ITSProject.dll
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\ITSProject.pdb
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\EntityFramework.dll
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\FEA_BusinessLogic.dll
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\JsonServices.dll
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\JsonServices.Web.dll
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\Newtonsoft.Json.dll
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\FEA_Ultil.dll
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\EntityFramework.xml
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\FEA_BusinessLogic.pdb
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\bin\FEA_Ultil.pdb
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\obj\Debug\ITSProject.dll
+C:\Users\kane.vo\Desktop\ITSProject\ITSProject\obj\Debug\ITSProject.pdb
+D:\C# Project\ITSProject\ITSProject\bin\ITSProject.dll.config
+D:\C# Project\ITSProject\ITSProject\bin\ITSProject.dll
+D:\C# Project\ITSProject\ITSProject\bin\ITSProject.pdb
+D:\C# Project\ITSProject\ITSProject\bin\EntityFramework.dll
+D:\C# Project\ITSProject\ITSProject\bin\JsonServices.dll
+D:\C# Project\ITSProject\ITSProject\bin\JsonServices.Web.dll
+D:\C# Project\ITSProject\ITSProject\bin\Newtonsoft.Json.dll
+D:\C# Project\ITSProject\ITSProject\bin\FEA_Ultil.dll
+D:\C# Project\ITSProject\ITSProject\bin\EntityFramework.xml
+D:\C# Project\ITSProject\ITSProject\bin\FEA_BusinessLogic.pdb
+D:\C# Project\ITSProject\ITSProject\bin\FEA_Ultil.pdb
+D:\C# Project\ITSProject\ITSProject\obj\Debug\ITSProject.csprojResolveAssemblyReference.cache
+D:\C# Project\ITSProject\ITSProject\obj\Debug\ITSProject.dll
+D:\C# Project\ITSProject\ITSProject\obj\Debug\ITSProject.pdb
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\bin\ITSProject.dll.config
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\bin\ITSProject.dll
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\bin\ITSProject.pdb
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\bin\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\bin\FEA_Ultil.dll
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\bin\EntityFramework.xml
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\bin\FEA_BusinessLogic.pdb
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\bin\FEA_Ultil.pdb
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\obj\Debug\ITSProject.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\obj\Debug\ITSProject.dll
+C:\Users\Administrator\Desktop\ITSProject\ITSProject\ITSProject\obj\Debug\ITSProject.pdb

@@ -1,0 +1,52 @@
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.csprojResolveAssemblyReference.cache
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_GABusinessLogic.dll
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_GABusinessLogic.pdb
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\bin\Debug\EntityFramework.dll
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_Ultil.dll
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\bin\Debug\EntityFramework.xml
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_Ultil.pdb
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.dll
+D:\Source Code\ITS.Website\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.pdb
+C:\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_GABusinessLogic.dll
+C:\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_GABusinessLogic.pdb
+C:\ITS.Website\FEA_GABusinessLogic\bin\Debug\EntityFramework.dll
+C:\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+C:\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_Ultil.dll
+C:\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+C:\ITS.Website\FEA_GABusinessLogic\bin\Debug\EntityFramework.xml
+C:\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+C:\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_Ultil.pdb
+C:\ITS.Website\FEA_GABusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb
+C:\ITS.Website\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.csprojResolveAssemblyReference.cache
+C:\ITS.Website\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.dll
+C:\ITS.Website\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\bin\Debug\FEA_GABusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\bin\Debug\FEA_GABusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\bin\Debug\EntityFramework.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\bin\Debug\FEA_Ultil.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\bin\Debug\EntityFramework.xml
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\bin\Debug\FEA_Ultil.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.pdb
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.csprojResolveAssemblyReference.cache
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+D:\Source Code\ITS.Website.16.1.4\FEA_GABusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\bin\Debug\FEA_GABusinessLogic.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\bin\Debug\FEA_GABusinessLogic.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\bin\Debug\EntityFramework.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\bin\Debug\FEA_Ultil.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\bin\Debug\EntityFramework.xml
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\bin\Debug\FEA_Ultil.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.csprojResolveAssemblyReference.cache
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.dll
+D:\Source Code\Git.ITS.Website.16.1.4.2\ITS\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.pdb

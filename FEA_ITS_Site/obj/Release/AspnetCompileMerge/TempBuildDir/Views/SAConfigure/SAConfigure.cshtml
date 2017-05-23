@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "SAConfigure";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<div class="panel-body">
+    <h3>Reason Configure</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @{Html.RenderAction("GetAllReason", "SAConfigure");}
+            </div>
+        </div>
+    </div>
+    <br />
+    <h3>Destination Configure <h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @{Html.RenderAction("GetAllDestination", "SAConfigure");}
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("ModalPartial/_IframeModal")
+                                                           

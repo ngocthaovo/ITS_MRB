@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+@using (Html.BeginForm())
+{ 
+<div class="row buttonbar">
+    <div class="col-lg-7">
+        @Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.Name = "btnQuery";
+                        settings.Width = 90;
+                        settings.Text = @Resources.Resource.Query;
+                        settings.UseSubmitBehavior = true;
+                    }).GetHtml()
+    </div>
+</div>
+<hr />
+<a href="javascript:ContentFunction.DisplayItem('divBaseInfo','iIcon',null);"> <h4 class="group-title"><i class="icon-circle-arrow-down teal" id="iIcon"></i>Query Condition</h4></a>
+<div id="divBaseInfo">
+            <div class="row row-detail">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.UserCode:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtUserCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.Properties.NullText = "";
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.OrderCode:
+                        </label>
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtOrderCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.Properties.NullText = "";
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+               
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Resources.Resource.TypeQuery:
+                        </label>
+                        @Html.DevExpress().ComboBox(
+                       settings =>
+                       {
+                           settings.Name = "cbTypeQuery";
+                           settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                           settings.Properties.Items.Add("Sending");
+                           settings.Properties.Items.Add("Finished");
+                           settings.Properties.Items.Add("Returned");
+                           settings.ControlStyle.CssClass = "textBoxStyle";
+                       }).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtFEPOCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.Properties.NullText = "";
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.ClientVisible = false;
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<a><h4 class="group-title"><i class="icon-list teal "></i> Detail data</h4></a>
+     <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                       
+                        @{    Html.RenderAction("ERPDocumentQueryPartial", "ERPDocument", new { UserID = ViewBag.UserID, OrderCode = ViewBag.OrderCode, FEPOCode = ViewBag.FEPOCode, Status = ViewBag.Status });}
+                        
+                    </div>
+                </div>
+            </div>
+}

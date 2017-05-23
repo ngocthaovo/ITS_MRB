@@ -1,0 +1,18 @@
+﻿@model List<FEA_BusinessLogic.ItemDetail>
+@Html.DevExpress().ComboBox(settings =>
+{
+    settings.Name = "cboItemDetail";
+    settings.CallbackRouteValues = new { Controller = "ItemDetail", Action = "ItemDetailPartial" };
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.Properties.ValueType = typeof(string);
+    settings.Properties.TextField = "ItemDetailName";
+    settings.ControlStyle.CssClass = "textBoxStyle";
+    settings.Properties.ValueField = "ID";
+    settings.Properties.EnableCallbackMode = true;
+    settings.Properties.CallbackPageSize = 20;
+    settings.Properties.ClientSideEvents.BeginCallback = "function(s, e) { e.customArgs['ItemID'] = cboItem.GetValue(); }";
+    settings.Properties.ClientSideEvents.SelectedIndexChanged = "function(s, e) {ItemDetailChanged(s,e) ; cboReason.PerformCallback()}";
+
+    settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+    settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+}).BindList(Model).GetHtml()

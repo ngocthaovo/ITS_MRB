@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "ApproveList";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.GridView})
+
+<div class="panel-body">
+@using (Html.BeginForm("ApproveList", "WHImporter", new { }, FormMethod.Post, new { id = "frmMainForm", }))
+{
+        <h4 class="group-title"><i class="icon-edit-sign teal"></i> @Resources.Resource.WaitingArea</h4>
+    
+            <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnQuery";
+                            settings.Width = 90;
+                            settings.Text = @Resources.Resource.Query;
+                            settings.UseSubmitBehavior = true;
+                        }).GetHtml()
+                @{
+                    if (ViewBag.Message != null)
+                    {
+                        <div id="paginator-content-1" class="alert-small alert-danger" style="margin-top:10px;">
+                            @Html.Raw((string)ViewBag.Message)
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label class="control-label">
+                    @Resources.Resource.OrderCode:
+                </label>
+            </div>
+            <div class="col-md-2">
+                @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtOrderCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = ViewBag.OrderCode;
+                            }
+                        ).GetHtml()
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">
+                    @Resources.Resource.FromDate:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "dtBeginDate";
+                            settings.Date = new DateTime();
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.EditFormatString = "yyyy-MM-dd";
+                            settings.Date = Convert.ToDateTime(ViewBag.BeginDate) == null ? "" : Convert.ToDateTime(ViewBag.BeginDate);
+                        }
+                    ).GetHtml()
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">
+                    @Resources.Resource.ToDate:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "dtEndDate";
+                            //settings.Properties.DisplayFormatString = "D";
+                            settings.Date = new DateTime();
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Properties.EditFormatString = "yyyy-MM-dd";
+                            settings.Date = Convert.ToDateTime(ViewBag.EndDate) == null ? "" : Convert.ToDateTime(ViewBag.EndDate);
+                        }
+                    ).GetHtml()
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @{Html.RenderAction("ApprovePartial", "WHImporter");}
+
+                </div>
+            </div>
+        </div>
+}
+</div>

@@ -1,0 +1,127 @@
+﻿using DevExpress.Web.ASPxGridView;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using FEA_BusinessLogic;
+using DevExpress.Web.Mvc;
+using System.Data.OleDb;
+using System.Data;
+namespace FEA_ITS_Site.Controllers
+{
+    public class DemoController : BaseController
+    {
+        //
+        // GET: /Demo/
+
+        public ActionResult Edit()
+        {
+            List<FEA_BusinessLogic.User> lst = new FEA_BusinessLogic.UserManager().GetItems("", "");
+
+            HelperController.SendMailToNextApprover(2, 2, "reason", "comment");
+            return View(lst);
+        }
+        [ValidateInput(false)]
+        public ActionResult EditModesPartial()
+        {
+            return PartialView("_EditModesPartial", new FEA_BusinessLogic.UserManager().GetItems("", ""));
+        }
+        public ActionResult ChangeEditModePartial(GridViewEditingMode editMode)
+        {
+            // GridViewEditingDemosHelper.EditMode = editMode;
+            return PartialView("_EditModesPartial", new FEA_BusinessLogic.UserManager().GetItems("", ""));
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult EditModesAddNewPartial([ModelBinder(typeof(DevExpressEditorsBinder))]User product)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    //NorthwindDataProvider.InsertProduct(product);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return PartialView("_EditModesPartial", new FEA_BusinessLogic.UserManager().GetItems("", ""));
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult EditModesUpdatePartial([ModelBinder(typeof(DevExpressEditorsBinder))] User product)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    new FEA_BusinessLogic.UserManager().UpdateItem(product, p => p.UserName, p => p.UserNameEN);
+                    //  NorthwindDataProvider.UpdateProduct(product);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+
+            return PartialView("_EditModesPartial", new FEA_BusinessLogic.UserManager().GetItems("", ""));
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult EditModesDeletePartial([ModelBinder(typeof(DevExpressEditorsBinder))]int UserID)
+        {
+            if (UserID >= 0)
+            {
+                try
+                {
+                    // NorthwindDataProvider.DeleteProduct(productID);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            return PartialView("_EditModesPartial", new FEA_BusinessLogic.UserManager().GetItems("", ""));
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+        #region "Lay out"
+        public ActionResult ContentLayout()
+        {
+            return View();
+        }
+        #endregion
+
+        #region "FullPopup"
+
+        public ActionResult PopupFull()
+        {
+            return View();
+        }
+        #endregion
+
+        #region Email template
+        public ActionResult ApproveTemplete()
+        {
+            return View();
+        }
+
+        public ActionResult BlankPage()
+        {
+            return View();
+        }
+        #endregion
+
+
+
+        public ActionResult ExcelReader()
+        {
+
+            return View();
+        }
+    }
+}

@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "GetDocumentRequested";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.GridView},
+    new StyleSheet{ExtensionSuite = ExtensionSuite.TreeList})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors},
+    new Script{ExtensionSuite = ExtensionSuite.GridView},
+    new Script{ExtensionSuite = ExtensionSuite.TreeList})
+
+@using (Html.BeginForm())
+{
+    <div class="panel-body">
+        <div class="row buttonbar">
+            <div class="col-lg-7">
+                @Html.DevExpress().Button(
+                        settings =>
+                        {
+                            settings.Name = "btnQuery";
+                            //  settings.RouteValues = new { Action = "QueryReport", Controller = "Statistic" };
+                            settings.Width = 90;
+                            settings.Text = @Resources.Resource.Query;
+                            settings.UseSubmitBehavior = true;
+
+                        }).GetHtml()
+            </div>
+
+        </div>
+        <br />
+
+
+        <div class="row">
+            <div class="col-md-1">
+                <label class="control-label">
+                    OrderCode:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().TextBox(
+                            settings =>
+                            {
+                                settings.Name = "txtOrderCode";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Text = ViewBag.OrderCode;
+                            }
+                        ).GetHtml()
+            </div>
+
+            <div class="col-md-1">
+                <label class="control-label">
+                    From:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "dtBeginDate";
+                            settings.Date = ViewBag.BeginDate;
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                        }
+                    ).GetHtml()
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">
+                    To:
+                </label>
+            </div>
+            <div class="col-md-3">
+                @Html.DevExpress().DateEdit(
+                        settings =>
+                        {
+                            settings.Name = "dtEndDate";
+                            //  settings.Properties.DisplayFormatString = "D";
+                            settings.Date = ViewBag.EndDate;
+                            settings.ControlStyle.CssClass = "textBoxStyle";
+                            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.EditFormat = EditFormat.Custom;
+                            settings.Properties.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, false);
+                        }
+                    ).GetHtml()
+            </div>
+        </div>
+        <hr />
+        @*<h4 class="group-title"><i class="icon-edit-sign teal"></i> @Resources.Resource.PendingList</h4>*@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @{Html.RenderAction("DocumentRequestedPartial", "DeviceRegistration", new { OrderCode = ViewBag.OrderCode, BeginDate = ViewBag.BeginDate, EndDate = ViewBag.EndDate });}
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

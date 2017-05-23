@@ -1,0 +1,1580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountInfo" xml:space="preserve">
+    <value>账户信息</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>插入</value>
+  </data>
+  <data name="AdditionalInfo" xml:space="preserve">
+    <value>附加信息</value>
+  </data>
+  <data name="AddNew" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="AdjustApplication" xml:space="preserve">
+    <value>调整单</value>
+  </data>
+  <data name="AdjustedQuantity" xml:space="preserve">
+    <value>调整总数量</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="Approver" xml:space="preserve">
+    <value>核可人员</value>
+  </data>
+  <data name="Attachment" xml:space="preserve">
+    <value>附件档案</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="BarcodeHistory" xml:space="preserve">
+    <value>Barcode 历史</value>
+  </data>
+  <data name="BaseInfomation" xml:space="preserve">
+    <value>基本信息</value>
+  </data>
+  <data name="BeginQuantity" xml:space="preserve">
+    <value>期初数量</value>
+  </data>
+  <data name="CancelConfirm" xml:space="preserve">
+    <value>反登帐</value>
+  </data>
+  <data name="ChangePass" xml:space="preserve">
+    <value>密码修改</value>
+  </data>
+  <data name="ChangePassSlogan" xml:space="preserve">
+    <value>输入修改密码</value>
+  </data>
+  <data name="ChangePassTitle" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>密码修改</value>
+  </data>
+  <data name="CheckDate" xml:space="preserve">
+    <value>签核日期</value>
+  </data>
+  <data name="CheckedList" xml:space="preserve">
+    <value>审核清单</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="ColorName" xml:space="preserve">
+    <value>颜色名称</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>核可意见</value>
+  </data>
+  <data name="CompanyCode" xml:space="preserve">
+    <value>公司编码</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>公司名称</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="CompleteBy" xml:space="preserve">
+    <value>完成人员</value>
+  </data>
+  <data name="CompleteDate" xml:space="preserve">
+    <value>完成日期</value>
+  </data>
+  <data name="Condition" xml:space="preserve">
+    <value>搜索条件</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>登帐</value>
+  </data>
+  <data name="ConfirmPass" xml:space="preserve">
+    <value>重新输入密码</value>
+  </data>
+  <data name="CONFIRM_IN" xml:space="preserve">
+    <value>{0} 登帐</value>
+  </data>
+  <data name="CONFIRM_OUT" xml:space="preserve">
+    <value>{0} 反登帐</value>
+  </data>
+  <data name="ContactInfo" xml:space="preserve">
+    <value>联系方式</value>
+  </data>
+  <data name="ContainerCount" xml:space="preserve">
+    <value>箱数小计</value>
+  </data>
+  <data name="ContainerDifferences" xml:space="preserve">
+    <value>箱数小计差异</value>
+  </data>
+  <data name="ContainerDifferencesBetweenWarehouseAndPacking" xml:space="preserve">
+    <value>箱数小计差异 (PK vs WH)</value>
+  </data>
+  <data name="CostCenterCode" xml:space="preserve">
+    <value>部分</value>
+  </data>
+  <data name="CountApplicationBaseOnDepartment" xml:space="preserve">
+    <value>根据部门统计单</value>
+  </data>
+  <data name="CreateAccount" xml:space="preserve">
+    <value>创建账户</value>
+  </data>
+  <data name="CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Creator" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="CurrencyType" xml:space="preserve">
+    <value>幣別</value>
+  </data>
+  <data name="CurrentPass" xml:space="preserve">
+    <value>当前密码</value>
+  </data>
+  <data name="CustomerPO" xml:space="preserve">
+    <value>客户PO</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="Delagate" xml:space="preserve">
+    <value>授权</value>
+  </data>
+  <data name="DelegateFor" xml:space="preserve">
+    <value>授权</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="DeliveryDate" xml:space="preserve">
+    <value>交期</value>
+  </data>
+  <data name="DeloveryFor" xml:space="preserve">
+    <value>分配给</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>部分</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="DesRemark" xml:space="preserve">
+    <value>请输入需要IT提供支援的员工信息</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>细节</value>
+  </data>
+  <data name="DetailInfomation" xml:space="preserve">
+    <value>明细信息</value>
+  </data>
+  <data name="DeviceRegistration" xml:space="preserve">
+    <value>IT服务请求</value>
+  </data>
+  <data name="DifferentQuantity" xml:space="preserve">
+    <value>差异数量</value>
+  </data>
+  <data name="DocType" xml:space="preserve">
+    <value>单据类型</value>
+  </data>
+  <data name="DocumentTypeName" xml:space="preserve">
+    <value>文件名</value>
+  </data>
+  <data name="DonotHaveAccount" xml:space="preserve">
+    <value>如果你没有账号？</value>
+  </data>
+  <data name="DynamicStatistic" xml:space="preserve">
+    <value>动态统计</value>
+  </data>
+  <data name="EditAccount" xml:space="preserve">
+    <value>更新账户</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="emailApproveDocBody" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td style="padding:20px"&gt;
+                    &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                        &lt;tbody&gt;
+                            &lt;tr&gt;
+                                &lt;td style="padding:0"&gt;
+                                    &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                        &lt;tbody&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="background: rgb(59, 89, 152); height: 69px; padding: 10px 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                    &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                        &lt;tbody&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td style="height:30px"&gt;
+                                                                    &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                        &amp;nbsp;单据需要签核&lt;/p&gt;
+                                                                &lt;/td&gt;
+                                                                &lt;td align="right"&gt;
+                                                                    &lt;a href="{4}" style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                        &lt;/tbody&gt;
+                                                    &lt;/table&gt;
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="padding:30px"&gt;
+                                                    &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                        &lt;tbody&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                    &lt;p style="margin:0"&gt;
+                                                                        您好 &lt;strong&gt;{5}&lt;/strong&gt;,
+                                                                    &lt;/p&gt;
+                                                                    &lt;p style="margin:0"&gt;
+                                                                        FEA ITS 提醒，有如下单据请您签核&lt;/p&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td&gt;&lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                    &lt;table width="100%"&gt;
+                                                                        &lt;tbody&gt;
+                                                                            &lt;tr&gt;
+                                                                                &lt;td&gt;
+                                                                                    姓名&lt;span style="color:#666;"&gt;: &lt;strong&gt;{0}({1}) - {2}&lt;/strong&gt;&lt;br&gt;
+                                                                                        标题: &lt;strong&gt;{3}&lt;/strong&gt; &lt;br&gt;
+                                                                                        内容: &lt;strong&gt;{6}&lt;/strong&gt; &lt;br&gt;
+                                                                                        &lt;span style="color:#666;"&gt;
+                                                                                        &lt;strong style="color:#f7941d"&gt;请&lt;/strong&gt;&lt;/span&gt;&lt;strong style="color:#f7941d"&gt;登陆ITS系统签核单据.&lt;/strong&gt;
+                                                                                    &lt;/span&gt;
+                                                                                &lt;/td&gt;
+                                                                            &lt;/tr&gt;
+                                                                        &lt;/tbody&gt;
+                                                                    &lt;/table&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+
+                                                            &lt;tr&gt;
+                                                                &lt;td align="center"&gt;
+                                                                    &lt;div&gt;
+                                                                        &lt;a href="{4}" style="font-size: 35px; text-decoration: underline; color: #fff; padding: 15px 30px; color: #f7941d; display: inline-block; font-family: 'Segoe UI',sans-serif;" target="_blank"&gt; 
+                                                                        点这里进入ITS&amp;gt;&amp;gt;&lt;/a&gt;
+                                                                    &lt;/div&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                        &lt;/tbody&gt;
+                                                    &lt;/table&gt;
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                    2014 © Far Eastern Apparel(VietNam). LTD
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                        &lt;/tbody&gt;
+                                    &lt;/table&gt;
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/tbody&gt;
+                    &lt;/table&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;</value>
+  </data>
+  <data name="emailApproveDocTitle" xml:space="preserve">
+    <value>ITS System {0}  - 你在有一个单据需要签核</value>
+  </data>
+  <data name="emailResSuccessBody" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td style="padding:20px"&gt;
+                    &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                        &lt;tbody&gt;
+                            &lt;tr&gt;
+                                &lt;td style="padding:0"&gt;
+                                    &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                        &lt;tbody&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="background: rgb(59, 89, 152); height: 69px; padding: 10px 30px"&gt;
+                                                    &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                        &lt;tbody&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td style="height:30px"&gt;
+                                                                    &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                        账户信息
+                                                                    &lt;/p&gt;
+                                                                &lt;/td&gt;
+                                                                &lt;td align="right"&gt;
+                                                                    &lt;a href="{2}" style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                        &lt;/tbody&gt;
+                                                    &lt;/table&gt;
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="padding:30px"&gt;
+                                                    &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                        &lt;tbody&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                    &lt;p style="margin:0"&gt;
+                                                                        您好 &lt;strong&gt;{3}&lt;/strong&gt;,
+                                                                    &lt;/p&gt;
+                                                                    &lt;p style="margin:0"&gt;
+                                                                        FEA ITS 发送您的信息如下:
+                                                                    &lt;/p&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td&gt;&lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                    &lt;table width="100%"&gt;
+                                                                        &lt;tbody&gt;
+                                                                            &lt;tr&gt;
+                                                                                &lt;td&gt;
+                                                                                    &lt;span style="color:#666;"&gt;
+                                                                                        姓名: &lt;strong&gt;{0}&lt;/strong&gt;&lt;br&gt;
+                                                                                        密码: &lt;strong&gt;{1}&lt;/strong&gt; &lt;br&gt;
+                                                                                        &lt;strong style="color:#f7941d"&gt;请登陆ITS系统确认您的信息.&lt;/strong&gt;
+                                                                                    &lt;/span&gt;
+                                                                                &lt;/td&gt;
+                                                                            &lt;/tr&gt;
+                                                                        &lt;/tbody&gt;
+                                                                    &lt;/table&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+
+                                                            &lt;tr&gt;
+                                                                &lt;td align="center"&gt;
+                                                                    &lt;div&gt;
+                                                                        &lt;a href="{2}" style="font-size: 35px; text-decoration: underline; color: #fff; padding: 15px 30px; color: #f7941d; display: inline-block; font-family: 'Segoe UI',sans-serif; " target="_blank"&gt; 
+                                                                        点这里进入ITS &amp;gt;&amp;gt;&lt;/a&gt;
+                                                                    &lt;/div&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                        &lt;/tbody&gt;
+                                                    &lt;/table&gt;
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                    2014 © Far Eastern Apparel(VietNam). LTD.
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                        &lt;/tbody&gt;
+                                    &lt;/table&gt;
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/tbody&gt;
+                    &lt;/table&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;</value>
+  </data>
+  <data name="emailResSuccessTitle" xml:space="preserve">
+    <value>注册成功</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>允许使用</value>
+  </data>
+  <data name="EndApprove" xml:space="preserve">
+    <value>审核完成</value>
+  </data>
+  <data name="EndQuantity" xml:space="preserve">
+    <value>期未数量</value>
+  </data>
+  <data name="EndTotalContainer" xml:space="preserve">
+    <value>剩余箱子</value>
+  </data>
+  <data name="EndTotalQuantity" xml:space="preserve">
+    <value>剩余数量</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="EstiamtedAmount" xml:space="preserve">
+    <value>估计费用</value>
+  </data>
+  <data name="EstimatedPrice" xml:space="preserve">
+    <value>预估单价</value>
+  </data>
+  <data name="ExpiredPasswordDate" xml:space="preserve">
+    <value>密码过期天</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>导出excel</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>女</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>文件名</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>开始日期</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>性别</value>
+  </data>
+  <data name="GeneralInfo" xml:space="preserve">
+    <value>一般信息</value>
+  </data>
+  <data name="Grant" xml:space="preserve">
+    <value>收货公司名称</value>
+  </data>
+  <data name="HardwareRequirement" xml:space="preserve">
+    <value>采购IT设备</value>
+  </data>
+  <data name="HardwareRequirementDetail" xml:space="preserve">
+    <value>明细统计</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hi</value>
+  </data>
+  <data name="hintDelegate" xml:space="preserve">
+    <value>如你没有mail，请输入你委托人的mail</value>
+  </data>
+  <data name="hintNote" xml:space="preserve">
+    <value>注意!</value>
+  </data>
+  <data name="HistoryApprove" xml:space="preserve">
+    <value>签核记录</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>导入</value>
+  </data>
+  <data name="Input" xml:space="preserve">
+    <value>导入</value>
+  </data>
+  <data name="InputAccDetail" xml:space="preserve">
+    <value>帐户详细信息</value>
+  </data>
+  <data name="InputData" xml:space="preserve">
+    <value>导入</value>
+  </data>
+  <data name="Inventory" xml:space="preserve">
+    <value>库存</value>
+  </data>
+  <data name="InventoryCalculate" xml:space="preserve">
+    <value>库存重算</value>
+  </data>
+  <data name="InventoryQuantity" xml:space="preserve">
+    <value>库存量</value>
+  </data>
+  <data name="InventoryQuery" xml:space="preserve">
+    <value>库存查询</value>
+  </data>
+  <data name="InvoiceNum" xml:space="preserve">
+    <value>Invoice No.</value>
+  </data>
+  <data name="IsConstraint" xml:space="preserve">
+    <value>约束</value>
+  </data>
+  <data name="IsCoordinate" xml:space="preserve">
+    <value>配货</value>
+  </data>
+  <data name="IsUrgent" xml:space="preserve">
+    <value>紧急</value>
+  </data>
+  <data name="ItemName" xml:space="preserve">
+    <value>类型名称</value>
+  </data>
+  <data name="ItemNameDetail" xml:space="preserve">
+    <value>类型细节</value>
+  </data>
+  <data name="ItemType" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="LastUpdateDate" xml:space="preserve">
+    <value>最后更新日期</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="LoginWelcomeTitle" xml:space="preserve">
+    <value>请输入账号和密码</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>注销</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>男</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="MaterialName" xml:space="preserve">
+    <value>货物名称</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="msgBarcodeRequite" xml:space="preserve">
+    <value>请选择条码</value>
+  </data>
+  <data name="msgCancelConfirmWHImportFailed" xml:space="preserve">
+    <value>此单据已经确认或已经导入条码号，不能取消确认</value>
+  </data>
+  <data name="msgChangePassAccountInfo" xml:space="preserve">
+    <value>新密码 "{0}" 是: {1}</value>
+  </data>
+  <data name="msgChangePassSuccess" xml:space="preserve">
+    <value>成功修改密码</value>
+  </data>
+  <data name="msgConfirmMessage" xml:space="preserve">
+    <value>你确定？</value>
+  </data>
+  <data name="msgDataduplicate" xml:space="preserve">
+    <value>数据已存在，请重新选择</value>
+  </data>
+  <data name="msgDeleteDeviceRegFailed" xml:space="preserve">
+    <value>此单据已送签活签核，不能删除</value>
+  </data>
+  <data name="msgDeleteFail" xml:space="preserve">
+    <value>无法删除</value>
+  </data>
+  <data name="msgDeleteRealatedNeeded" xml:space="preserve">
+    <value>在你进行此操作前，请删除相应的数据</value>
+  </data>
+  <data name="msgDeleteStockInFailed" xml:space="preserve">
+    <value>此单据已经关闭或者不是你创建，你不能删除</value>
+  </data>
+  <data name="msgDeleteWHImportFailed" xml:space="preserve">
+    <value>此单据已经确认或已经导入条码号，不能删除</value>
+  </data>
+  <data name="msgDuplicateUser" xml:space="preserve">
+    <value>User 是已存在!</value>
+  </data>
+  <data name="msgEmailExtInvalid" xml:space="preserve">
+    <value>mail地址必须以@{0}结尾</value>
+  </data>
+  <data name="msgInputDDeviceReqItem" xml:space="preserve">
+    <value>请输入需求单信息</value>
+  </data>
+  <data name="msgInputDHardReItem" xml:space="preserve">
+    <value>请选择需求项</value>
+  </data>
+  <data name="msgInputError" xml:space="preserve">
+    <value>有些信息无效，请再检查</value>
+  </data>
+  <data name="msgInputFile" xml:space="preserve">
+    <value>请选择要上传的文件</value>
+  </data>
+  <data name="msgInputRequite" xml:space="preserve">
+    <value>请输入信息: {0}!</value>
+  </data>
+  <data name="msgInsertFail" xml:space="preserve">
+    <value>不能插入数据到数据库</value>
+  </data>
+  <data name="msgInvalid" xml:space="preserve">
+    <value>{0} 不是有效</value>
+  </data>
+  <data name="msgInvalidCusNumber" xml:space="preserve">
+    <value>Customer No. 不是</value>
+  </data>
+  <data name="msgInvalidDonateQuantity" xml:space="preserve">
+    <value>数量不足</value>
+  </data>
+  <data name="msgInvalidExcelFile" xml:space="preserve">
+    <value>请选择(.xls or .xlsx)格式的Excel文件</value>
+  </data>
+  <data name="msgInvalidItemInList" xml:space="preserve">
+    <value>一张单据只允许一个类型</value>
+  </data>
+  <data name="msgInvalidPONumber" xml:space="preserve">
+    <value>PO Number不是</value>
+  </data>
+  <data name="msgInvalidQuantityAdjust" xml:space="preserve">
+    <value>调整数量无效</value>
+  </data>
+  <data name="msgInvaliExportDate" xml:space="preserve">
+    <value>发货日期必须晚于当前日期</value>
+  </data>
+  <data name="msgLoginWrong" xml:space="preserve">
+    <value>账号或密码不正确</value>
+  </data>
+  <data name="msgPasswordExpired" xml:space="preserve">
+    <value>密码已过期，请更改密码</value>
+  </data>
+  <data name="msgRemoveBarcodeCount" xml:space="preserve">
+    <value>有 {0} Barcode 被删除.</value>
+  </data>
+  <data name="msgResSuccess" xml:space="preserve">
+    <value>账户注册成功。检查你的电子邮件接收密码</value>
+  </data>
+  <data name="msgSameOldPassword" xml:space="preserve">
+    <value>新密码不能和旧密码相同</value>
+  </data>
+  <data name="msgSelectItem" xml:space="preserve">
+    <value>请选择需要操作的项目</value>
+  </data>
+  <data name="msgSelectProductItem" xml:space="preserve">
+    <value>请选择需要导出的条码</value>
+  </data>
+  <data name="msgSuccess" xml:space="preserve">
+    <value>保存成功</value>
+  </data>
+  <data name="msgUpdateFailed" xml:space="preserve">
+    <value>不能更新</value>
+  </data>
+  <data name="msgUpdateSuccess" xml:space="preserve">
+    <value>成功运作</value>
+  </data>
+  <data name="msgUserCodeUsed" xml:space="preserve">
+    <value>User ID被用来</value>
+  </data>
+  <data name="msgUserExist" xml:space="preserve">
+    <value>User ID被用来</value>
+  </data>
+  <data name="msgWHSerialDuplicate" xml:space="preserve">
+    <value>条码重复</value>
+  </data>
+  <data name="MyInfo" xml:space="preserve">
+    <value>个人信息</value>
+  </data>
+  <data name="NewPass" xml:space="preserve">
+    <value>新密码</value>
+  </data>
+  <data name="NextApprover" xml:space="preserve">
+    <value>签核人员</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="NotEnough" xml:space="preserve">
+    <value>数量不足，不能取消确认，请检查如下信息</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>开放</value>
+  </data>
+  <data name="OperationType" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="OrderCode" xml:space="preserve">
+    <value> 单据编号</value>
+  </data>
+  <data name="OrderState" xml:space="preserve">
+    <value>单据状态:</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>概观</value>
+  </data>
+  <data name="Parameter" xml:space="preserve">
+    <value>参数</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="PendingList" xml:space="preserve">
+    <value>待签核单据</value>
+  </data>
+  <data name="PersonName" xml:space="preserve">
+    <value>个人名称</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>电话</value>
+  </data>
+  <data name="PONumber" xml:space="preserve">
+    <value>PO No.</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>职务</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>打印</value>
+  </data>
+  <data name="ProcessPerson" xml:space="preserve">
+    <value>負責處理人</value>
+  </data>
+  <data name="QuanInStock" xml:space="preserve">
+    <value>库存数量</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="QuantityDifferences" xml:space="preserve">
+    <value>总差别数量</value>
+  </data>
+  <data name="QuantityDifferencesBetweenWarehouseAndPacking" xml:space="preserve">
+    <value> 总差别数量 (PK vs WH)</value>
+  </data>
+  <data name="QuantityInStock" xml:space="preserve">
+    <value>库存数量</value>
+  </data>
+  <data name="QuantityNeeded" xml:space="preserve">
+    <value>需求数量</value>
+  </data>
+  <data name="Query" xml:space="preserve">
+    <value>查询</value>
+  </data>
+  <data name="QueryDynamicInventory" xml:space="preserve">
+    <value>动态查询</value>
+  </data>
+  <data name="QueryPODivert" xml:space="preserve">
+    <value>查询 PO divert</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>理由</value>
+  </data>
+  <data name="ReasonRemark" xml:space="preserve">
+    <value>请至少用2种语言(VN, CN, EN) 输入内容</value>
+  </data>
+  <data name="ReceivedByDept" xml:space="preserve">
+    <value>收到总数量</value>
+  </data>
+  <data name="ReceivedQuantity" xml:space="preserve">
+    <value>收回总数量</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>重新下载</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>退回</value>
+  </data>
+  <data name="RemainingQuantity" xml:space="preserve">
+    <value>剩余数量</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>需求</value>
+  </data>
+  <data name="RequestDetail" xml:space="preserve">
+    <value>需求细节</value>
+  </data>
+  <data name="RequestType" xml:space="preserve">
+    <value>需求种类</value>
+  </data>
+  <data name="ResetPass" xml:space="preserve">
+    <value>从新设计密码</value>
+  </data>
+  <data name="ReturnedDate" xml:space="preserve">
+    <value>还回日期</value>
+  </data>
+  <data name="ReturnedQuantity" xml:space="preserve">
+    <value>还回总数量</value>
+  </data>
+  <data name="SAExport" xml:space="preserve">
+    <value> 出库</value>
+  </data>
+  <data name="SAImport" xml:space="preserve">
+    <value>入库</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="SaveAndSend" xml:space="preserve">
+    <value>留底和寄出</value>
+  </data>
+  <data name="SaveDraff" xml:space="preserve">
+    <value> 暂时留底</value>
+  </data>
+  <data name="SA_AdjustApplication" xml:space="preserve">
+    <value>调整数量单</value>
+  </data>
+  <data name="SA_BorrowApplication" xml:space="preserve">
+    <value>借入单</value>
+  </data>
+  <data name="SA_DonativeApplication" xml:space="preserve">
+    <value>公關樣申請單</value>
+  </data>
+  <data name="SA_LendApplication" xml:space="preserve">
+    <value>借出单</value>
+  </data>
+  <data name="SA_NomalApplication" xml:space="preserve">
+    <value>物品進出廠證</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="SelectDepartment" xml:space="preserve">
+    <value>--选择部门--</value>
+  </data>
+  <data name="SelectPosition" xml:space="preserve">
+    <value>’--选择职务--</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>请愿者</value>
+  </data>
+  <data name="Sequence" xml:space="preserve">
+    <value>流量</value>
+  </data>
+  <data name="SerialNo" xml:space="preserve">
+    <value>Barcode No.</value>
+  </data>
+  <data name="ShipmentDate" xml:space="preserve">
+    <value>出货日期</value>
+  </data>
+  <data name="Sign" xml:space="preserve">
+    <value>核准</value>
+  </data>
+  <data name="SignType" xml:space="preserve">
+    <value>签核类型</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="SignupSlogan" xml:space="preserve">
+    <value>输入您的信息</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>尺寸</value>
+  </data>
+  <data name="Specs" xml:space="preserve">
+    <value>规格</value>
+  </data>
+  <data name="SQLSatement" xml:space="preserve">
+    <value>SQL Script</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>开始工作天</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="STATUS_CANCEL_CONFIRM" xml:space="preserve">
+    <value>撤消登帐</value>
+  </data>
+  <data name="STATUS_CHECKED" xml:space="preserve">
+    <value>签核完成</value>
+  </data>
+  <data name="STATUS_CONFIRMED" xml:space="preserve">
+    <value>已登帐</value>
+  </data>
+  <data name="STATUS_DELETED" xml:space="preserve">
+    <value>已删除</value>
+  </data>
+  <data name="STATUS_DRAFT" xml:space="preserve">
+    <value>草稿</value>
+  </data>
+  <data name="STATUS_FINSHED" xml:space="preserve">
+    <value>结案</value>
+  </data>
+  <data name="STATUS_NEW" xml:space="preserve">
+    <value>新建</value>
+  </data>
+  <data name="STATUS_RETURNED" xml:space="preserve">
+    <value>退回</value>
+  </data>
+  <data name="STATUS_SAVED" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="STATUS_SENDING" xml:space="preserve">
+    <value>签核中</value>
+  </data>
+  <data name="STATUS_SPENDING" xml:space="preserve">
+    <value>待处理</value>
+  </data>
+  <data name="STATUS_UNKNOW" xml:space="preserve">
+    <value>不明白</value>
+  </data>
+  <data name="StockIn" xml:space="preserve">
+    <value> 入库</value>
+  </data>
+  <data name="StockinQuantity" xml:space="preserve">
+    <value>数量本期入库</value>
+  </data>
+  <data name="STOCKIN_IN" xml:space="preserve">
+    <value>{0} 入库确认</value>
+  </data>
+  <data name="STOCKIN_OUT" xml:space="preserve">
+    <value>{0} 反登帐</value>
+  </data>
+  <data name="StockOut" xml:space="preserve">
+    <value>出库</value>
+  </data>
+  <data name="StockoutQuantity" xml:space="preserve">
+    <value>本期出库</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>款式</value>
+  </data>
+  <data name="TechnicianID" xml:space="preserve">
+    <value>负责处理 人员工号</value>
+  </data>
+  <data name="TechnicianName" xml:space="preserve">
+    <value>负责处理 人员姓名</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>结束日期</value>
+  </data>
+  <data name="TotalContainerConfirmed" xml:space="preserve">
+    <value>纸箱 (Confirmed)</value>
+  </data>
+  <data name="TotalContainerImported" xml:space="preserve">
+    <value>纸箱(Imported)</value>
+  </data>
+  <data name="TotalContainerNotConfirmed" xml:space="preserve">
+    <value>纸箱 (Not confirmed)</value>
+  </data>
+  <data name="TotalExportQuantity" xml:space="preserve">
+    <value>出库总数量</value>
+  </data>
+  <data name="TotalQuantityConfirmed" xml:space="preserve">
+    <value>总数量 (已确认)</value>
+  </data>
+  <data name="TotalQuantityNotConfirmed" xml:space="preserve">
+    <value>总数量 （还没确认)</value>
+  </data>
+  <data name="TotalReturnContainer" xml:space="preserve">
+    <value>纸箱借出总数量</value>
+  </data>
+  <data name="TotalReturnQuantity" xml:space="preserve">
+    <value>借出总数量</value>
+  </data>
+  <data name="TotalStockedInContainerFromERP" xml:space="preserve">
+    <value>纸箱入库 (ERP)</value>
+  </data>
+  <data name="TotalStockedInQuantityFromERP" xml:space="preserve">
+    <value>入库总数量 (ERP)</value>
+  </data>
+  <data name="TotaQuantityImported" xml:space="preserve">
+    <value>总数量（已入库）</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>种</value>
+  </data>
+  <data name="TypeQuery" xml:space="preserve">
+    <value>查询类型</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>上载</value>
+  </data>
+  <data name="UserCode" xml:space="preserve">
+    <value>人员工号</value>
+  </data>
+  <data name="UserGuide" xml:space="preserve">
+    <value>新人请先选择语言并阅读使用向导</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>人员姓名</value>
+  </data>
+  <data name="UserName_EN" xml:space="preserve">
+    <value>英文名称</value>
+  </data>
+  <data name="Using" xml:space="preserve">
+    <value>详细要求</value>
+  </data>
+  <data name="VietNam" xml:space="preserve">
+    <value>Tiếng việt</value>
+  </data>
+  <data name="WaitingArea" xml:space="preserve">
+    <value>签核中</value>
+  </data>
+  <data name="WelcomeSlogan" xml:space="preserve">
+    <value>Welcome to Far Eastern Apparel!</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>有</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>讨论</value>
+  </data>
+  <data name="Discussion" xml:space="preserve">
+    <value>讨论</value>
+  </data>
+  <data name="References" xml:space="preserve">
+    <value>参考</value>
+  </data>
+  <data name="emailReferences" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td style="padding:20px"&gt;
+                    &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                        &lt;tbody&gt;
+                            &lt;tr&gt;
+                                &lt;td style="padding:0"&gt;
+                                    &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                        &lt;tbody&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="background: rgb(59, 89, 152); height: 69px; padding: 10px 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                    &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                        &lt;tbody&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td style="height:30px"&gt;
+                                                                    &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                        待签核单据
+                                                                    &lt;/p&gt;
+                                                                &lt;/td&gt;
+                                                                &lt;td align="right"&gt;
+                                                                    &lt;a href="{2}" style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                        &lt;/tbody&gt;
+                                                    &lt;/table&gt;
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="padding:30px"&gt;
+                                                    &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                        &lt;tbody&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                    &lt;p style="margin:0"&gt;
+                                                                        您好 &lt;strong&gt;{0}&lt;/strong&gt;,
+                                                                    &lt;/p&gt;
+                                                                    &lt;p style="margin:0"&gt;{1} 有单据需要签核， {1} 想和您一起商议&lt;/p&gt;
+                                                                    内容: &lt;strong&gt;{3}&lt;/strong&gt; &lt;br&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td&gt;&lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                            &lt;tr&gt;
+                                                                &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                    &lt;table width="100%"&gt;
+                                                                        &lt;tbody&gt;
+                                                                            &lt;tr&gt;
+                                                                                &lt;td&gt;
+                                                                                    &lt;span style="color:#666;"&gt;
+                                                                                        &lt;strong style="color:#f7941d"&gt;请登陆ITS系统进行商议.&lt;/strong&gt;
+                                                                                    &lt;/span&gt;
+                                                                                &lt;/td&gt;
+                                                                            &lt;/tr&gt;
+                                                                        &lt;/tbody&gt;
+                                                                    &lt;/table&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+
+                                                            &lt;tr&gt;
+                                                                &lt;td align="center"&gt;
+                                                                    &lt;div&gt;
+                                                                        &lt;a href="{2}" style="font-size: 35px; text-decoration: underline; color: #fff; padding: 15px 30px; color: #f7941d; display: inline-block; font-family: 'Segoe UI',sans-serif;" target="_blank"&gt; 
+                                                                        点这里进入ITS &amp;gt;&amp;gt;&lt;/a&gt;
+                                                                    &lt;/div&gt;
+                                                                &lt;/td&gt;
+                                                            &lt;/tr&gt;
+                                                        &lt;/tbody&gt;
+                                                    &lt;/table&gt;
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                            &lt;tr&gt;
+                                                &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                    2014 © Far Eastern Apparel.
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                        &lt;/tbody&gt;
+                                    &lt;/table&gt;
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/tbody&gt;
+                    &lt;/table&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>发送</value>
+  </data>
+  <data name="CurrentUser" xml:space="preserve">
+    <value>当前用户:</value>
+  </data>
+  <data name="Conversation" xml:space="preserve">
+    <value>谈话</value>
+  </data>
+  <data name="SelectUser" xml:space="preserve">
+    <value>选择用户:</value>
+  </data>
+  <data name="CustomerCode" xml:space="preserve">
+    <value>Customer Code</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Customer Name</value>
+  </data>
+  <data name="msgGetSerialByMainline" xml:space="preserve">
+    <value>If Item value is blank, the Serials will get by Customer PO</value>
+  </data>
+  <data name="ColorCode" xml:space="preserve">
+    <value>Color Code</value>
+  </data>
+  <data name="ProcessingPerson" xml:space="preserve">
+    <value>处理人员</value>
+  </data>
+  <data name="DoProcessDocument" xml:space="preserve">
+    <value>Begin process</value>
+  </data>
+  <data name="Hardware" xml:space="preserve">
+    <value>Hardware</value>
+  </data>
+  <data name="msgDeviceResOnlyOneDoc" xml:space="preserve">
+    <value>In the application for only one type of Document Type, please select again.</value>
+  </data>
+  <data name="Software" xml:space="preserve">
+    <value>Software</value>
+  </data>
+  <data name="ShelfName" xml:space="preserve">
+    <value>Shelf Name</value>
+  </data>
+  <data name="IsShelf" xml:space="preserve">
+    <value>Is Shelf</value>
+  </data>
+  <data name="SetShelf" xml:space="preserve">
+    <value>Set Shelf</value>
+  </data>
+  <data name="ShelfMasterName" xml:space="preserve">
+    <value>Self mater name</value>
+  </data>
+  <data name="CompletedEstimateDate" xml:space="preserve">
+    <value>Complete estimate date</value>
+  </data>
+  <data name="Deliverydept" xml:space="preserve">
+    <value>发货部门</value>
+  </data>
+  <data name="ItemGroup" xml:space="preserve">
+    <value>项目类型</value>
+  </data>
+  <data name="TotalLendQuantity" xml:space="preserve">
+    <value>借入总数量</value>
+  </data>
+  <data name="000002" xml:space="preserve">
+    <value>远东服装（越南）有限公司</value>
+  </data>
+  <data name="010207" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="010294" xml:space="preserve">
+    <value>单价</value>
+  </data>
+  <data name="010394" xml:space="preserve">
+    <value>订单</value>
+  </data>
+  <data name="010789" xml:space="preserve">
+    <value>成本合计</value>
+  </data>
+  <data name="010862" xml:space="preserve">
+    <value>直接人工</value>
+  </data>
+  <data name="010863" xml:space="preserve">
+    <value>制造费用</value>
+  </data>
+  <data name="010864" xml:space="preserve">
+    <value>二次加工费</value>
+  </data>
+  <data name="010865" xml:space="preserve">
+    <value>工段加工费</value>
+  </data>
+  <data name="010963" xml:space="preserve">
+    <value>库存折价</value>
+  </data>
+  <data name="011074" xml:space="preserve">
+    <value>成本金额</value>
+  </data>
+  <data name="011427" xml:space="preserve">
+    <value>面料</value>
+  </data>
+  <data name="011687" xml:space="preserve">
+    <value>订单量</value>
+  </data>
+  <data name="011822" xml:space="preserve">
+    <value>辅料</value>
+  </data>
+  <data name="013610" xml:space="preserve">
+    <value>预估与实际成本比较</value>
+  </data>
+  <data name="013611" xml:space="preserve">
+    <value>机缝工厂</value>
+  </data>
+  <data name="013612" xml:space="preserve">
+    <value>成品名称</value>
+  </data>
+  <data name="013613" xml:space="preserve">
+    <value>预估/实际</value>
+  </data>
+  <data name="StockinAmount" xml:space="preserve">
+    <value>入庫金額</value>
+  </data>
+  <data name="AccountType" xml:space="preserve">
+    <value>Account Type</value>
+  </data>
+  <data name="DiscountAmount" xml:space="preserve">
+    <value>扣除金額</value>
+  </data>
+  <data name="011071" xml:space="preserve">
+    <value>销售数量</value>
+  </data>
+  <data name="011072" xml:space="preserve">
+    <value>销售金额</value>
+  </data>
+  <data name="011081" xml:space="preserve">
+    <value>毛利率(%)</value>
+  </data>
+  <data name="013614" xml:space="preserve">
+    <value>销售毛利</value>
+  </data>
+  <data name="013615" xml:space="preserve">
+    <value>差异</value>
+  </data>
+  <data name="SubmitAll" xml:space="preserve">
+    <value>簽核全部</value>
+  </data>
+  <data name="DocRef" xml:space="preserve">
+    <value>参考单号</value>
+  </data>
+  <data name="AllowedTypes" xml:space="preserve">
+    <value>允许上载的档案类型</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>寻找...</value>
+  </data>
+  <data name="ListWaitingConfirmation" xml:space="preserve">
+    <value>待確認的名單</value>
+  </data>
+  <data name="ListWaitingProcession" xml:space="preserve">
+    <value>待處理的名單</value>
+  </data>
+  <data name="MaximumFileSize" xml:space="preserve">
+    <value>允许上载最大的用量</value>
+  </data>
+  <data name="Nodata" xml:space="preserve">
+    <value>没有数据</value>
+  </data>
+  <data name="ExportCompany" xml:space="preserve">
+    <value>发货公司名称</value>
+  </data>
+  <data name="ServerName" xml:space="preserve">
+    <value>服务器</value>
+  </data>
+  <data name="AdjustQuantity" xml:space="preserve">
+    <value>編制數量</value>
+  </data>
+  <data name="Damged" xml:space="preserve">
+    <value>破损</value>
+  </data>
+  <data name="IsBroken" xml:space="preserve">
+    <value>退換</value>
+  </data>
+  <data name="AdjustAmount" xml:space="preserve">
+    <value>單價</value>
+  </data>
+  <data name="LastUpdateDateMonth" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="msgErrorNotBroken" xml:space="preserve">
+    <value>{0} 編制數量不夠, 數量超過編制數量: {1}</value>
+  </data>
+  <data name="msgIsNotBroken" xml:space="preserve">
+    <value>你選的物品不屬於退換的項目。</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="msgCopyMessage" xml:space="preserve">
+    <value>如果複製系統會將當月的資料刪掉，你是否確定？</value>
+  </data>
+  <data name="msgMoveTo" xml:space="preserve">
+    <value>月份查詢</value>
+  </data>
+  <data name="msgCopyTo" xml:space="preserve">
+    <value>複製到月份</value>
+  </data>
+  <data name="msgNotice" xml:space="preserve">
+    <value>如果複製系統會將當月的資料刪掉</value>
+  </data>
+  <data name="msgErrorOpenSalesOrder" xml:space="preserve">
+    <value>你正在选择‘订单开启’的项目,请输入FEPO号码 （11码），一次只有输入一笔FEPO。</value>
+  </data>
+  <data name="CheckFEPO" xml:space="preserve">
+    <value>该FEPO不存在，请重新检查。</value>
+  </data>
+  <data name="013616" xml:space="preserve">
+    <value>款式名称</value>
+  </data>
+  <data name="CheckingManagerment" xml:space="preserve">
+    <value>待簽核單據</value>
+  </data>
+  <data name="DatePush" xml:space="preserve">
+    <value>轉送日期</value>
+  </data>
+  <data name="PRCode" xml:space="preserve">
+    <value>PR 單號</value>
+  </data>
+  <data name="Push" xml:space="preserve">
+    <value>轉送ELAND</value>
+  </data>
+  <data name="Pushed" xml:space="preserve">
+    <value>已轉送</value>
+  </data>
+  <data name="PushMonth" xml:space="preserve">
+    <value>選擇月份</value>
+  </data>
+  <data name="PushPerson" xml:space="preserve">
+    <value>轉送經辦人</value>
+  </data>
+  <data name="PushStatus" xml:space="preserve">
+    <value>從前月23日到當月22日抓取數據。</value>
+  </data>
+  <data name="QueryStatus" xml:space="preserve">
+    <value>從前月23日到當月22日已轉送的單據查詢</value>
+  </data>
+  <data name="DeclarationCode" xml:space="preserve">
+    <value>报关编号</value>
+  </data>
+  <data name="DeclarationDate" xml:space="preserve">
+    <value>报关日期</value>
+  </data>
+  <data name="InvoiceCode" xml:space="preserve">
+    <value>发票编号</value>
+  </data>
+  <data name="MinimumType" xml:space="preserve">
+    <value>Minimum Type</value>
+  </data>
+  <data name="Specifications" xml:space="preserve">
+    <value>规格</value>
+  </data>
+  <data name="StorePosition" xml:space="preserve">
+    <value>储位</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="WarehouseName" xml:space="preserve">
+    <value>仓库名称</value>
+  </data>
+  <data name="MaterialType" xml:space="preserve">
+    <value>物料等级</value>
+  </data>
+  <data name="MaterialCode" xml:space="preserve">
+    <value>物料編碼</value>
+  </data>
+  <data name="ERPDoc" xml:space="preserve">
+    <value>ERP 单据</value>
+  </data>
+  <data name="Cause" xml:space="preserve">
+    <value>原因</value>
+  </data>
+  <data name="013617" xml:space="preserve">
+    <value>国内采购</value>
+  </data>
+  <data name="013618" xml:space="preserve">
+    <value>来料加工</value>
+  </data>
+  <data name="013619" xml:space="preserve">
+    <value>进料加工</value>
+  </data>
+  <data name="013620" xml:space="preserve">
+    <value>一般贸易</value>
+  </data>
+  <data name="013621" xml:space="preserve">
+    <value>外销-贸易型</value>
+  </data>
+  <data name="013622" xml:space="preserve">
+    <value>内销-贸易型</value>
+  </data>
+  <data name="TradeType" xml:space="preserve">
+    <value>Trade type</value>
+  </data>
+  <data name="SignDepartment" xml:space="preserve">
+    <value>部門之單據簽核</value>
+  </data>
+  <data name="ACCESSORYDEVELOPOUT" xml:space="preserve">
+    <value>辅料商发领用单</value>
+  </data>
+  <data name="ACCESSORYMOVEOUT" xml:space="preserve">
+    <value>辅料挪料单</value>
+  </data>
+  <data name="ACCESSORYMOVEOUTMULTI" xml:space="preserve">
+    <value>辅料挪料单（多PO）</value>
+  </data>
+  <data name="ACCESSORYOUT" xml:space="preserve">
+    <value>生产辅料领用单</value>
+  </data>
+  <data name="DEVELOPPRODUCT" xml:space="preserve">
+    <value>成品商发领用单</value>
+  </data>
+  <data name="FABRICDEVELOPOUT" xml:space="preserve">
+    <value>面料商发领用单</value>
+  </data>
+  <data name="FABRICMOVEOUT" xml:space="preserve">
+    <value>面料挪料单</value>
+  </data>
+  <data name="FABRICMOVEOUTMULTI" xml:space="preserve">
+    <value>面料挪料单（多PO）</value>
+  </data>
+  <data name="FABRICOUT" xml:space="preserve">
+    <value>生产面料领用单</value>
+  </data>
+  <data name="erpInventory" xml:space="preserve">
+    <value>ERP 库存</value>
+  </data>
+  <data name="erpQuantity" xml:space="preserve">
+    <value>ERP 数量</value>
+  </data>
+  <data name="itsInventory" xml:space="preserve">
+    <value>ITS 库存</value>
+  </data>
+  <data name="itsQuantity" xml:space="preserve">
+    <value>ITS 数量</value>
+  </data>
+  <data name="purEstimateAmount" xml:space="preserve">
+    <value>总预估采购金额</value>
+  </data>
+  <data name="purQuantity" xml:space="preserve">
+    <value>采购数量</value>
+  </data>
+  <data name="receiveDate" xml:space="preserve">
+    <value>收货日期</value>
+  </data>
+  <data name="receiveFrom" xml:space="preserve">
+    <value>接收來自</value>
+  </data>
+  <data name="requestCode" xml:space="preserve">
+    <value>需求单号</value>
+  </data>
+  <data name="requestQuantity" xml:space="preserve">
+    <value>需求数量</value>
+  </data>
+  <data name="msgErrorMaintenanceConfirm" xml:space="preserve">
+    <value>数量输入不正确，可输入数量为</value>
+  </data>
+  <data name="msgErrorInputQuantity" xml:space="preserve">
+    <value>数量输入不符合。请重新检查数量。</value>
+  </data>
+</root>

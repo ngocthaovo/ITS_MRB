@@ -1,0 +1,369 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login Page</title>
+    <!-- start: META -->
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- end: META -->
+    <!-- start: MAIN CSS -->
+    <link href="~/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="~/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/style.css">
+    <link rel="stylesheet" href="~/assets/css/main.css">
+    <link rel="stylesheet" href="~/assets/css/main-responsive.css">
+    <link rel="stylesheet" href="~/assets/plugins/iCheck/skins/all.css">
+    <link rel="stylesheet" href="~/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet" href="~/assets/css/theme_light.css" id="skin_color">
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="~/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+        <![endif]-->
+    <!-- end: MAIN CSS -->
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" href="~/assets/plugins/datepicker/css/datepicker.css">
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+        <script src="~/assets/plugins/respond.min.js"></script>
+        <script src="~/assets/plugins/excanvas.min.js"></script>
+        <![endif]-->
+    @*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>*@
+
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script src="~/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="~/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="~/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="~/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="~/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/assets/js/login.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="~/assets/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js"></script>
+    <script src="~/assets/plugins/autosize/jquery.autosize.min.js"></script>
+    <script src="~/assets/plugins/select2/select2.min.js"></script>
+    <script src="~/assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+    <script src="~/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/assets/js/form-elements.js"></script>
+    <script src="~/Scripts/FEA_LoginFunction.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+
+    <style type="text/css">
+        .box-language img {
+            width: 19px;
+            height:14px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            jQuery(document).ready(function () {
+                Main.init();
+                Login.init();
+                FormElements.init();
+            });
+
+
+            $("#res_employee_code").blur(function () {
+                var usercode = $(this).val();
+                CheckUserExists(usercode);
+            })
+
+            $("#ddlServer").change(function () {
+               // alert($("#ddlServer").val());
+                var url = "@FEA_ITS_Site.Helper.Ultilities.Root/User/Login?servername=" + $("#ddlServer").val();
+                window.location = url;
+            });
+        });
+
+        function CheckUserExists(userCode) {
+            $("#res_error_user_Exist").css("display", "none");
+            if (userCode.length < 3)
+                return;
+
+            var item = new Object();
+            item.sUserCode = userCode;
+
+            $.ajax({
+                url: "@FEA_ITS_Site.Helper.Ultilities.Root/User/CheckUserExists",
+                type: "POST",
+                data: item,
+                dataType: "json",
+                success: function (data) {
+                    if (data.ErrorCode == 0) {
+
+                        $("#res_error_user_Exist").css("display", "none");
+                    }
+                    else {
+                        $("#res_error_user_Exist").text(data.Message);
+                        $("#res_error_user_Exist").css("display", "block");
+                    }
+                }
+            });
+        }
+
+
+    </script>
+</head>
+
+<body class="login example2">
+    <div class="main-login col-sm-4 col-sm-offset-4">
+        @*<div class="logo">
+            @Resources.Resource.WelcomeSlogan
+        </div>*@
+        <!-- start: LOGIN BOX -->
+        <div class="box-login" id="box-login">
+            <img src="~/images/2.jpg">
+            @*<p>
+                @Resources.Resource.LoginWelcomeTitle
+            </p>*@
+            @*<form class="form-login" action="~/User/Login" method="post">*@
+            @using (Ajax.BeginForm("Login", null, new AjaxOptions
+                                                            {
+                                                                OnSuccess = "onLoginByAjax",
+                                                                LoadingElementId = "loader"// div with .gif loader - that is shown when data are loading
+                                                            }, new { @id = "form-login" }))
+            {
+                <div class="errorHandler alert alert-danger no-display">
+                    <i class="icon-remove-sign"></i>@Resources.Resource.msgInputError
+                </div>
+                <div class="alert alert-danger" style="display: none;" id="lblLogin_Error">
+                    <i class="icon-remove-sign"></i><i>@Resources.Resource.msgLoginWrong</i>
+                </div>
+                <fieldset>
+                    <div class="form-group form-actions">
+                        <label class="control-label">
+                            @Resources.Resource.ServerName:
+                        </label>
+                        <div class="row">
+                            <div class="col-md-12">
+                                @Html.DropDownList("ddlServer", (SelectList)ViewBag.ServerList, new { @class = "form-control" })
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="input-icon">
+                            <input type="text" class="form-control" name="username" id="log_usercode" placeholder="@Resources.Resource.UserCode">
+                            <i class="icon-user"></i>
+                        </span>
+                    </div>
+                    <div class="form-group form-actions">
+                        <span class="input-icon">
+                            <input type="password" class="form-control password" name="password" placeholder="@Resources.Resource.Password" id="log_userpass">
+                            <i class="icon-lock"></i>
+                            <a class="forgot" href="#">
+                                @Resources.Resource.ChangePassword
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="form-actions">
+                        <div id="loader"><img src="~/images/loading-ajax.gif" style="display:none" /></div>
+                        <button type="submit" class="btn btn-teal pull-right" onclick="return CheckLoginForm();">
+                            @Resources.Resource.Login <i class="icon-circle-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="readMain">
+                        @Resources.Resource.UserGuide
+                        <a href="@FEA_ITS_Site.Helper.Ultilities.Root/UserGuide/[ITS] How to create account_EN.pdf" class="read" target="_blank">
+                            EN
+                        </a>
+                        |
+                        <a href="@FEA_ITS_Site.Helper.Ultilities.Root/UserGuide/[ITS] How to create account_VI.pdf" class="read" target="_blank">
+                            VN
+                        </a>
+                    </div>
+                    <div class="new-account">
+                        @Resources.Resource.DonotHaveAccount
+                        <a href="#" class="register">
+                            @Resources.Resource.CreateAccount
+                        </a>
+                    </div>
+                    <div class="box-language">
+                        <div class="lang-cn"><a href="~/Home/ChangeCurrentCulture/2"><img src="~/Images/ico-flag-china.gif" alt="Chinese" title="Chinese" />&nbsp;&nbsp;Chinese</a></div>
+                        <div class="lang-en"><a href="~/Home/ChangeCurrentCulture/1"><img src="~/Images/Englang_FLAG.png" alt="England" title="England" />&nbsp;&nbsp;@Resources.Resource.English</a></div>
+                        <div class="lang-vn"><a href="~/Home/ChangeCurrentCulture/0"><img src="~/Images/VN_Flag.png" alt="Tiếng Việt" title="Tiếng Việt" />&nbsp;&nbsp;@Resources.Resource.VietNam</a></div>
+                    </div>
+                </fieldset>
+            }
+            @*</form>*@
+        </div>
+        <!-- end: LOGIN BOX -->
+        <!-- start: CHANGE PASS BOX -->
+        <div class="box-forgot">
+            <h3>@Resources.Resource.ChangePassTitle</h3>
+            <p>
+                @Resources.Resource.ChangePassSlogan
+            </p>
+            @*<form class="form-forgot1" action="~/User/UserChangePass" method="post">*@
+            @using (Ajax.BeginForm("UserChangePass", null, new AjaxOptions
+                                                            {
+                                                                OnSuccess = "onChangePassByAjax",
+                                                                LoadingElementId = "loader"// div with .gif loader - that is shown when data are loading
+                                                            }, new { @id = "form-changepass" }))
+            {
+                <div class="errorHandler alert alert-danger no-display">
+                    <i class="icon-remove-sign"></i>@Resources.Resource.msgInputError
+                </div>
+                <div class="alert alert-danger" id="msg_change_pass_error" style="display:none;">
+                    <i class="icon-remove-sign"></i>
+                    @Resources.Resource.msgLoginWrong
+                </div>
+                <div class="alert alert-success" id="msg_change_pass_success" style="display:none;">
+                    <i class="icon-ok-sign"></i>
+                    <div id="msg_change_pass_success_mes">@Resources.Resource.msgChangePassSuccess</div>
+                </div>
+                <fieldset>
+                    <div class="form-group">
+                        <span class="input-icon">
+                            <input type="text" class="form-control" name="change_pass_employeeid" placeholder="@Resources.Resource.UserCode" id="change_pass_employeeid">
+                            <i class="icon-user"></i>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <span class="input-icon">
+                            <input type="password" class="form-control" name="change_pass_current_pass" placeholder="@Resources.Resource.CurrentPass">
+                            <i class="icon-lock"></i>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <span class="input-icon">
+                            <input type="password" class="form-control" name="change_pass_new_pass" id="change_pass_new_pass" placeholder="@Resources.Resource.NewPass">
+                            <i class="icon-lock"></i>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <span class="input-icon">
+                            <input type="password" class="form-control" name="change_pass_confirm_pass" placeholder="@Resources.Resource.ConfirmPass">
+                            <i class="icon-lock"></i>
+                        </span>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-light-grey go-back" type="button">
+                            <i class="icon-circle-arrow-left"></i>@Resources.Resource.Back
+                        </button>
+                        <button type="submit" class="btn btn-teal pull-right" onclick="return CheckChangePassForm()">
+                            @Resources.Resource.ChangePass <i class="icon-circle-arrow-right"></i>
+                        </button>
+                    </div>
+                </fieldset>
+            }
+            @*</form>*@
+        </div>
+        <!-- end: CHANGE PASS BOX -->
+        <!-- start: REGISTER BOX -->
+        <div class="box-register">
+            <h3>@Resources.Resource.SignUp</h3>
+            <p>
+                @Resources.Resource.SignupSlogan
+            </p>
+            @*<form class="form-register">*@
+            @using (Ajax.BeginForm("UserRegistration", null, new AjaxOptions
+                                                            {
+                                                                OnSuccess = "onRegistrationByAjax",
+                                                                LoadingElementId = "loader"// div with .gif loader - that is shown when data are loading
+                                                            }, new { @id = "form-register" }))
+            {
+                <div class="errorHandler alert alert-danger no-display">
+                    <i class="icon-remove-sign"></i>@Resources.Resource.msgInputError
+                </div>
+                <fieldset>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="res_employee_code" id="res_employee_code" placeholder="@Resources.Resource.UserCode">
+                        <span id="res_error_user_Exist" class="error" style="display:none">@Resources.Resource.msgUserCodeUsed</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="res_employee_name" placeholder="@Resources.Resource.UserName">
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="res_employee_english_name" placeholder="@Resources.Resource.UserName_EN">
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label class="radio-inline">
+                                <input type="radio" class="grey" value="F" name="gender">
+                                @Resources.Resource.Female
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" class="grey" value="M" name="gender">
+                                @Resources.Resource.Male
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownList("cboCodeCenter", (SelectList)ViewBag.CodeCenters, Resources.Resource.SelectDepartment, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownList("cboUserPosition", (SelectList)ViewBag.UserPosition, Resources.Resource.SelectPosition, new { @class = "form-control" })
+                    </div>
+                    <p>
+                        @Resources.Resource.InputAccDetail
+                    </p>
+                    <div class="form-group">
+                        <span class="input-icon">
+                            <input type="email" class="form-control" name="res_email" placeholder="@Resources.Resource.Email">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" class="green" name="res_delegate">
+                                @Resources.Resource.Delagate
+                            </label>
+                            <i class="icon-envelope"></i>
+                        </span>
+                        <div class="alert alert-warning">
+                            <span class="label label-warning">@Resources.Resource.hintNote</span>
+                            <span> @Resources.Resource.hintDelegate </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="input-icon">
+                            <input class="form-control" name="res_phone" placeholder="Phone">
+                            <i class="icon-phone"></i>
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="icon-calendar"></i></span>
+                        <input type="text" data-date-format="@FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang)" data-date-viewmode="years" class="form-control date-picker" placeholder="Working Start-up Date" name="res_date_working" value="@FEA_Ultil.FEAStringClass.FormatDateString(@FEA_ITS_Site.Helper.SessionManager.CurrentLang,DateTime.Now)">
+
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-light-grey go-back" type="button">
+                            <i class="icon-circle-arrow-left"></i>@Resources.Resource.Back
+                        </button>
+                        <button type="submit" class="btn btn-teal pull-right" onclick="return CheckRegistrationForm();">
+                            @Resources.Resource.CreateAccount <i class="icon-circle-arrow-right"></i>
+                        </button>
+                    </div>
+                </fieldset>
+            }
+            @*</form>*@
+        </div>
+        <!-- end: REGISTER BOX -->
+        <!-- start: COPYRIGHT -->
+        <div class="copyright">
+            2014 &copy; Far Eastern Apparel (VietNam)
+        </div>
+        <!-- end: COPYRIGHT -->
+    </div>
+</body>
+
+
+</html>

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+@model  List<FEA_BusinessLogic.User>
+<script type="text/javascript">
+    // <![CDATA[
+    $(document).ready(function () {
+        $("#editMode").change(function () {
+            gvEditing.PerformCallback({ editMode: $("#editMode").val() });
+        });
+    });
+    // ]]>
+</script>
+<h2>Edit</h2>
+@Html.Partial("_EditModesPartial", Model)

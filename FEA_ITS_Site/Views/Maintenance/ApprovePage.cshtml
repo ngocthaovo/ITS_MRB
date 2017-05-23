@@ -1,0 +1,176 @@
+﻿@{
+    ViewBag.Title = "ApprovePage";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    var strID;
+    var comment;
+    var isEdit = false;
+    var iIndex = 0;
+    var strFieldName;
+    var getColumn;
+    var cellValidationInfo;
+    var ivalue;
+    var valueQuantity;
+    
+    function CallToAction(s, e){
+        if (gvDetailList.batchEditApi.HasChanges()) {
+            gvDetailList.UpdateEdit();
+        }
+        else {
+            gvDetailList.PerformCallback();
+        }
+    }
+
+    function DoReject(sID) {
+
+        var flag = false;
+        strID = sID;
+        comment = prompt("Nhập lí do", "");
+        if (comment != null) {
+
+            if (comment.length > 0) {
+                flag = true;
+            }
+            else
+                alert("Vui lòng nhập lí do.");
+        }
+
+        if(flag)
+        {
+            RejectRequestMain();
+        }
+    }
+
+    function RejectRequestMain(s, e) {
+       
+        $('document').ready(function () {
+            $("#btnReject").click(function () {
+                var url = "@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/Maintenance/RejectMNRequest";
+                var obj = new Object();
+                obj.ID = strID;
+                obj.Comment = comment;
+                obj.strType='@ViewBag.Type';
+                jQuery.ajax(
+                    {
+                        url: url,
+                        data: obj,
+                    }).done(function (d) {
+                        $("#gridDetail").html(d);
+                    });
+            });
+        });
+    }
+
+
+    function OnBatchEditRowValidating(s,e)
+    {
+       
+        if (strFieldName == "ITSInventory") {
+            
+            gvDetailList.GetRowValues(e.visibleIndex, "ITSInventory", OnGetCellValues);
+            getColumn = s.GetColumnByField("ITSInventory");
+            cellValidationInfo = e.validationInfo[getColumn.index];
+            ivalue = cellValidationInfo.value;
+        }
+
+        if(strFieldName=="ERPInventory")
+        {
+            gvDetailList.GetRowValues(e.visibleIndex, "ERPInventory", OnGetCellValues);
+            getColumn = s.GetColumnByField("ERPInventory");
+            cellValidationInfo = e.validationInfo[getColumn.index];
+            ivalue = cellValidationInfo.value;
+        }
+
+        if (strFieldName == "PurchaseQuantity") {
+            gvDetailList.GetRowValues(e.visibleIndex, "RequestQuantity", OnGetCellValues);
+            getColumn = s.GetColumnByField("PurchaseQuantity");
+            cellValidationInfo = e.validationInfo[getColumn.index];
+            ivalue = cellValidationInfo.value;
+        }
+    }
+
+    function CheckInputQuantity()
+    {
+        switch (strFieldName)
+        {
+            case "ITSInventory":
+                if (valueQuantity < ivalue || ivalue<0) {
+                    alert("Số lượng nhập vào không đúng. Số lượng tối đa có thể nhập:" + valueQuantity);
+                    SetITSValue();
+                }
+                break;
+            case "ERPInventory":
+                if (valueQuantity < ivalue || ivalue < 0) {
+                    alert("Số lượng nhập vào không đúng. Số lượng tối đa có thể nhập:" + valueQuantity);
+                    SetERPValue();   
+                }
+                break;
+            case "PurchaseQuantity":
+                if (valueQuantity < ivalue || ivalue < 0) {
+                    alert("Số lượng nhập vào không đúng. Số lượng tối đa có thể nhập:" + valueQuantity);
+                    SetPURValue();
+                }
+                break;
+        }
+    }
+
+    function OnGetCellValues(value)
+    {
+        valueQuantity = value;
+        CheckInputQuantity();
+    }
+
+    function SetITSValue()
+    {
+        gvDetailList.batchEditApi.SetCellValue(iIndex,"ITSInventory",valueQuantity);
+    }
+
+    function SetERPValue(index,quantity) {
+        gvDetailList.batchEditApi.SetCellValue(iIndex, "ERPInventory", valueQuantity);
+    }
+
+    function SetPURValue(index,quantity)
+    {
+        gvDetailList.batchEditApi.SetCellValue(iIndex, "PurchaseQuantity", valueQuantity);
+    }
+    function OnCellClick(visibleIndex, fieldName) {
+        iIndex = visibleIndex;
+        strFieldName = fieldName;
+    }
+
+</script>
+
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.GridView}
+    )
+@Html.DevExpress().GetScripts(
+    new Script { ExtensionSuite = ExtensionSuite.Editors},
+    new Script {ExtensionSuite = ExtensionSuite.GridView})
+
+@using (Html.BeginForm("ApprovePage", "Maintenance",FormMethod.Post))
+{
+<div class="panel-body">
+    @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+    {
+        <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+            @Html.Raw(Resources.Resource.msgSuccess)
+        </div>
+    }
+    else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+    {
+        <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+            @Html.Raw(Resources.Resource.msgInsertFail)
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12" id="gridDetail">
+            @{Html.RenderAction("GetApproveDoc", "Maintenance", new {strType=ViewBag.Type,  iStatus = ViewBag.EditStatus });}      
+        </div>
+    </div>
+</div>
+ } 

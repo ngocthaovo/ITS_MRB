@@ -1,0 +1,63 @@
+﻿
+@Html.DevExpress().GridLookup(
+                    settings =>
+                    {
+                        settings.Name = "grdUser";
+                        settings.KeyFieldName = "UserID";
+                        settings.CommandColumn.Visible = true;
+                        settings.CommandColumn.ShowSelectCheckbox = true;
+                        settings.Columns.Add("UserCodeID", @Resources.Resource.UserCode).Settings.AllowAutoFilter = DefaultBoolean.True;
+                        settings.Columns.Add("UserName", @Resources.Resource.UserName).Settings.AllowAutoFilter = DefaultBoolean.True;
+                        settings.Columns.Add("UserNameEN", @Resources.Resource.UserName_EN).Settings.AllowAutoFilter = DefaultBoolean.True;
+                        settings.Columns.Add("CostCenter.Remark",@Resources.Resource.Department).Settings.AllowAutoFilter = DefaultBoolean.True;
+                        settings.Columns["UserCodeID"].Width = System.Web.UI.WebControls.Unit.Percentage(10);
+                        settings.Columns["UserName"].Width = System.Web.UI.WebControls.Unit.Percentage(30);
+                        settings.Columns["UserNameEN"].Width = System.Web.UI.WebControls.Unit.Percentage(30);
+                        settings.Columns["CostCenter.Remark"].Width = System.Web.UI.WebControls.Unit.Percentage(30);
+                        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                        //Modify by Tony (2016-10-14)
+                        settings.Properties.SelectionMode = DevExpress.Web.GridLookupSelectionMode.Multiple;
+                        //
+                        settings.Properties.TextFormatString = "{1}({0})";
+                        //settings.Properties.DisplayFormatString = "{1}";
+                        settings.Properties.MultiTextSeparator = ", ";
+                        settings.Properties.Width = 250;
+
+                        settings.GridViewClientSideEvents.SelectionChanged = "OnSelectionChanged";
+                        settings.GridViewClientSideEvents.BeginCallback = "OnBeginCallback";
+
+
+                        settings.GridViewProperties.CallbackRouteValues = new { Controller = "References", Action = "GetReferencesListPartial" };
+                        settings.GridViewProperties.Settings.ShowFilterRow = true;
+                        settings.GridViewProperties.Settings.ShowFilterRowMenu = true;
+                        settings.GridViewProperties.Settings.ShowStatusBar = GridViewStatusBarMode.Visible;
+                        settings.GridViewProperties.SettingsPager.PageSize = 8;       
+                      
+                        settings.GridViewProperties.SetStatusBarTemplateContent(c =>
+                        {
+                            ViewContext.Writer.Write("<div style=\"padding: 2px 8px 2px 0; float right\">");
+                            Html.DevExpress().Button(
+                            btnSettings =>
+                            {
+                            btnSettings.Name = "btnClose";
+                            btnSettings.UseSubmitBehavior = false;
+                            btnSettings.Text = "Close";
+                            btnSettings.ClientSideEvents.Click = "CloseGridLookup";
+
+
+                            }
+                            )
+                            .Render();
+                            ViewContext.Writer.Write("</div>");
+                        });
+
+                        settings.DataBound = (sender, e) =>
+                        {
+                            var gridLookup = (MVCxGridLookup)sender;
+                            gridLookup.GridView.Width = 250;
+                        };
+
+                        settings.Properties.ClientSideEvents.Validation = "OnReferencesValidation";
+                        settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithTooltip;
+                        settings.Properties.ValidationSettings.Display = Display.Dynamic;
+                    }).BindList(new FEA_BusinessLogic.UserManager().GetAdminUser()).GetHtml()

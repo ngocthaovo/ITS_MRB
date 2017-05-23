@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using DevExpress.Web.ASPxUploadControl;
+
+namespace FEA_ITS_Site.Helper
+{
+    public class UploadControl
+    {
+        public static readonly DevExpress.Web.ASPxUploadControl.ValidationSettings ValidationSettings = new DevExpress.Web.ASPxUploadControl.ValidationSettings
+        {
+            AllowedFileExtensions = new string[] { ".jpg", ".jpeg", ".pdf", ".xls", ".xlsx" },
+            MaxFileSize = 3097152,
+        };
+
+        public static void uc_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
+        {
+            if (e.UploadedFile.IsValid)
+            {
+                FEA_ITS_Site.Models.ItemUpload ItemUpload = HttpContext.Current.Session["ItemUpload"] as FEA_ITS_Site.Models.ItemUpload;
+
+                string UploadFilePath = string.Empty;
+
+                if (ItemUpload.Type == FEA_ITS_Site.Models.Helper.TagPrefixParameter.SECURITYAREA)
+                    UploadFilePath = HttpContext.Current.Request.MapPath(Helper.Ultilities.Root + FEA_ITS_Site.Helper.Ultilities.SAUploadFolder);
+                else if (ItemUpload.Type == FEA_ITS_Site.Models.Helper.TagPrefixParameter.DEVICE_REGISTRATION || ItemUpload.Type == FEA_ITS_Site.Models.Helper.TagPrefixParameter.HARD_REGISTRATION)
+                    UploadFilePath= HttpContext.Current.Request.MapPath(Helper.Ultilities.Root + FEA_ITS_Site.Helper.Ultilities.UploadFolder);
+                else
+                    UploadFilePath = HttpContext.Current.Request.MapPath(Helper.Ultilities.Root + FEA_ITS_Site.Helper.Ultilities.UploadFolder);
+
+
+                string NewUploadFilePath =UploadFilePath + ItemUpload.Guid;
+                bool isExists = System.IO.Directory.Exists(NewUploadFilePath);
+                if (!isExists)
+                    System.IO.Directory.CreateDirectory(NewUploadFilePath);
+                string resultFilePath = NewUploadFilePath+ "\\" + e.UploadedFile.FileName;
+                e.UploadedFile.SaveAs(resultFilePath, true);//Code Central Mode - Uncomment This Line
+                    
+                IUrlResolutionService urlResolver = sender as IUrlResolutionService;
+                if (urlResolver != null)
+                {
+                    //e.CallbackData = Ultilities.Root + FEA_ITS_Site.Helper.Ultilities.UploadFolder + ItemUpload.Guid + "/" + e.UploadedFile.FileName; //urlResolver.ResolveClientUrl(resultFilePath);
+                    if (ItemUpload.Type == FEA_ITS_Site.Models.Helper.TagPrefixParameter.SECURITYAREA)
+                        e.CallbackData = Ultilities.Root + FEA_ITS_Site.Helper.Ultilities.SAUploadFolder + ItemUpload.Guid + "/" + e.UploadedFile.FileName;
+                    else if (ItemUpload.Type == FEA_ITS_Site.Models.Helper.TagPrefixParameter.DEVICE_REGISTRATION || ItemUpload.Type == FEA_ITS_Site.Models.Helper.TagPrefixParameter.HARD_REGISTRATION)
+                        e.CallbackData = Ultilities.Root + FEA_ITS_Site.Helper.Ultilities.UploadFolder + ItemUpload.Guid + "/" + e.UploadedFile.FileName;
+                    else
+                        e.CallbackData = Ultilities.Root + FEA_ITS_Site.Helper.Ultilities.UploadFolder + ItemUpload.Guid + "/" + e.UploadedFile.FileName;
+                }
+                                  
+                string[] ListItem = Directory.GetFiles(NewUploadFilePath);
+                ItemUpload.ListAddress = ListItem;
+                HttpContext.Current.Session["ItemUpload"] = ItemUpload;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,31 @@
+﻿@using System.Web.UI.WebControls
+@{
+    var grid = Html.DevExpress().GridView(
+        settings =>
+        {
+            settings.Name = "gvUserAdmin";
+            settings.KeyFieldName = "UserID";
+            settings.Width = Unit.Percentage(100);
+            settings.SettingsBehavior.AllowSort = false;
+            settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+            settings.Columns.Add("UserCodeID", "Employee ID").Width = Unit.Percentage(30);
+            settings.Columns.Add(column =>
+            {
+                column.Caption = "User Name";
+                column.SetDataItemTemplateContent(c =>
+                {
+                    ViewContext.Writer.Write(DataBinder.Eval(c.DataItem, "UserName") + string.Format("({0})", DataBinder.Eval(c.DataItem, "UserNameEN")));
+                });
+
+                column.Width = Unit.Percentage(70);
+                column.UnboundType = DevExpress.Data.UnboundColumnType.String;
+                column.EditFormSettings.Visible = DefaultBoolean.False;
+            });
+
+            settings.Settings.VerticalScrollBarMode = ScrollBarMode.Visible;
+            settings.Settings.VerticalScrollableHeight = 324;
+            
+            settings.SettingsBehavior.AllowFocusedRow = true;
+        });
+}
+@grid.Bind(new FEA_BusinessLogic.UserManager().GetAdminUser()).GetHtml()

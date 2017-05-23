@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "UpdateOrderStatus";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("form").submit(function () {
+            var materialType = radMaterialType.GetValue();
+            if (materialType == null || materialType == undefined)
+            { alert("Vui lòng chọn loại vật tư!"); return false; }
+
+            return true;
+
+        });
+    })
+
+    function OnBtnClick(s, e) {
+
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet{ExtensionSuite = ExtensionSuite.Editors})
+
+@Html.DevExpress().GetScripts(
+    new Script{ExtensionSuite = ExtensionSuite.Editors})
+
+<div class="panel-body">
+    @{
+
+        Html.BeginForm();
+        if (ViewBag.EditStatus != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+
+                    @if (FEA_ITS_Site.Models.Helper.EditItemStatus.success == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-info" style="margin-top:10px;">
+                            @Html.Raw(ViewBag.EditInfo)
+                        </div>
+                    }
+                    else if (FEA_ITS_Site.Models.Helper.EditItemStatus.failed == (FEA_ITS_Site.Models.Helper.EditItemStatus)ViewBag.EditStatus)
+                    {
+                        <div id="editError" class="alert-small alert-danger" style="margin-top:10px;">
+                            @Html.Raw(ViewBag.EditInfo)
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="control-label" style="color:red">
+                            Danh sách FEPO, Nếu nhiều  FEPO nằm trên 1 dòng thì mỗi FEPO cách nhau bởi dấu ",". Mỗi FEPO nên chỉ nằm trên 1 dòng và không có dấu "," sau cùng
+                        </label>
+                        @Html.DevExpress().Memo(
+                            settings =>
+                            {
+                                settings.Name = "txtFEPOs";
+                                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                                settings.ControlStyle.CssClass = "textBoxStyle";
+                                settings.Properties.Rows = 30;
+                                settings.Text = ViewBag.Fepo;
+
+                            }
+                        ).GetHtml()
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Loại vật tư
+                        </label>
+                        <div class="editorContainer">
+                            @Html.DevExpress().RadioButtonList(
+                            settings =>
+                            {
+                                settings.Name = "radMaterialType";
+                                settings.Properties.ValueField = "Key";
+                                settings.Properties.TextField = "Value";
+                                settings.Properties.RepeatLayout = System.Web.UI.WebControls.RepeatLayout.OrderedList;
+                                settings.Properties.RepeatDirection = System.Web.UI.WebControls.RepeatDirection.Horizontal;
+                                settings.Properties.RepeatColumns = 2;
+                                settings.ControlStyle.BorderStyle = System.Web.UI.WebControls.BorderStyle.None;
+                                settings.Style.Add("margin-bottom", "-15px;");
+                            }).BindList(
+                                         new Dictionary<string, string>() { { "fabric", "Vải" }, { "accessory", "Phụ liệu" } }
+                            ).GetHtml()
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+
+                        @Html.DevExpress().Button(
+                settings =>
+                {
+                    settings.Name = "btnUpdate";
+                    settings.Width = 90;
+                    settings.Text = "Cập nhật";
+                    settings.UseSubmitBehavior = true;
+                    settings.ClientSideEvents.Click = "OnBtnClick";
+                }).GetHtml()
+                    </div>
+                </div>
+            </div>
+        </div>
+        Html.EndForm();
+
+    }
+</div>
