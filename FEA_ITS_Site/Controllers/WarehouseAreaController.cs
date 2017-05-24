@@ -204,14 +204,15 @@ namespace FEA_ITS_Site.Controllers
             ViewData["dtFrom"] = dtFrom;
             ViewData["dtTo"] = dtTo;
             ViewData["TypeQuery"] = TypeQuery;
-            //if (Session["ListPackingManifest"] == null)
-            //{
-            //    Session["ListPackingManifest"] = new FEA_BusinessLogic.WarehouseArea.PackingManifestDetailManager().Query(PoNumber, CustomerPO, dtFrom, dtTo, TypeQuery, Color, Size, OrderState == null || OrderState == "" ? 1 : (OrderState == "Close" ? 0 : 1));
-            //}
-            //return GetGridView(Session["ListPackingManifest"] as List<PackingManifestDetail>, "warehouse_packingManifest_detail_data");
 
-            List<PackingManifestDetail> _result = new FEA_BusinessLogic.WarehouseArea.PackingManifestDetailManager().Query(PoNumber, CustomerPO, dtFrom, dtTo, TypeQuery, Color, Size, OrderState == null || OrderState == "" ? 1 : (OrderState == "Close" ? 0 : 1));
-            return GetGridView(_result, "warehouse_packingManifest_detail_data");
+            if (Session["ListPackingManifest"] == null)
+            {
+                Session["ListPackingManifest"] = new FEA_BusinessLogic.WarehouseArea.PackingManifestDetailManager().Query(PoNumber, CustomerPO, dtFrom, dtTo, TypeQuery, Color, Size, OrderState == null || OrderState == "" ? 1 : (OrderState == "Close" ? 0 : 1));
+            }
+            return GetGridView(Session["ListPackingManifest"] as List<PackingManifestDetail>, "warehouse_packingManifest_detail_data");
+
+            //List<PackingManifestDetail> _result = new FEA_BusinessLogic.WarehouseArea.PackingManifestDetailManager().Query(PoNumber, CustomerPO, dtFrom, dtTo, TypeQuery, Color, Size, OrderState == null || OrderState == "" ? 1 : (OrderState == "Close" ? 0 : 1));
+            //return GetGridView(_result, "warehouse_packingManifest_detail_data");
         }
 
         private PackingManifest SaveData(out string sError,string CustomerCode)
@@ -1152,16 +1153,15 @@ namespace FEA_ITS_Site.Controllers
             ViewData["dtTo"] = dtTo;
             ViewData["TypeQuery"] = TypeQuery;
             ViewData["OrderState"] = OrderState;
-            //if (Session["ListDynamic"] == null)
-            //{
-            //    Session["ListDynamic"] = new FEA_BusinessLogic.WarehouseArea.PackingManifestDetailManager().GetDynamicQueryPackingManifest(PoNumber, CustomerPO, dtFrom, dtTo, OrderState == null || OrderState == "" ? 1 : (OrderState == "Close" ? 0 : 1));
-            //}
-          
-            //return GetGridView(Session["ListDynamic"] as List<sp_GetDynamicQueryPackingManifest_Result>, "DynamicQueryPackingManifest");
+            if (Session["ListDynamic"] == null)
+            {
+                Session["ListDynamic"] = new FEA_BusinessLogic.WarehouseArea.PackingManifestDetailManager().GetDynamicQueryPackingManifest(PoNumber, CustomerPO, dtFrom, dtTo, OrderState == null || OrderState == "" ? 1 : (OrderState == "Close" ? 0 : 1));
+            }
+            return GetGridView(Session["ListDynamic"] as List<sp_GetDynamicQueryPackingManifest_Result>, "DynamicQueryPackingManifest");
 
-             List<sp_GetDynamicQueryPackingManifest_Result> _result  = new FEA_BusinessLogic.WarehouseArea.PackingManifestDetailManager().GetDynamicQueryPackingManifest(PoNumber, CustomerPO, dtFrom, dtTo, OrderState == null || OrderState == "" ? 1 : (OrderState == "Close" ? 0 : 1));
-             Session["ListDynamic"] = _result; 
-            return GetGridView(_result, "DynamicQueryPackingManifest");
+            // List<sp_GetDynamicQueryPackingManifest_Result> _result  = new FEA_BusinessLogic.WarehouseArea.PackingManifestDetailManager().GetDynamicQueryPackingManifest(PoNumber, CustomerPO, dtFrom, dtTo, OrderState == null || OrderState == "" ? 1 : (OrderState == "Close" ? 0 : 1));
+            // Session["ListDynamic"] = _result; 
+            //return GetGridView(_result, "DynamicQueryPackingManifest");
         }
 
         #endregion
