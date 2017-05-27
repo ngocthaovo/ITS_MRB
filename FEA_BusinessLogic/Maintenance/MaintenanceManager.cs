@@ -37,9 +37,9 @@ namespace FEA_BusinessLogic.Maintenance
             return db.MNRequestMains.Where(i => i.ID == sRequestID || i.OrderCode == sRequestID).SingleOrDefault();
         }
 
-        public List<MNRequestMain> GetRequestByUser(int inUserID)
+        public List<MNRequestMain> GetRequestByUser(int inUserID, string strType)
         {
-            return db.MNRequestMains.Where(i => i.CreatorID == inUserID).OrderByDescending(i=>i.OrderCode).ToList();
+            return db.MNRequestMains.Where(i => (i.CreatorID == inUserID) && (i.DocType==strType)).OrderByDescending(i=>i.OrderCode).ToList();
         }
 
         public List<MNRequestMain> GetRequestForStockIn()
