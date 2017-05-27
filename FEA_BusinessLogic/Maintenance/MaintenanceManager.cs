@@ -27,9 +27,9 @@ namespace FEA_BusinessLogic.Maintenance
         }
 
         #region Get data
-        public List<sp_GetMaintenanceApproveDocument_Result> GetDocumentForApprove(int Status, int UserID)
+        public List<sp_GetMaintenanceApproveDocument_Result> GetDocumentForApprove(int Status, int UserID, string strDocType)
         {
-            return db.sp_GetMaintenanceApproveDocument(Status, UserID).ToList();
+            return db.sp_GetMaintenanceApproveDocument(Status, UserID,strDocType).ToList();
         }
 
         public MNRequestMain GetRequest(string sRequestID)
@@ -60,9 +60,9 @@ namespace FEA_BusinessLogic.Maintenance
             return db.sp_GetMNSummaryReport(DateFrom, DateTo, DocumentType).ToList();
         }
 
-        public List<MNRequestMain> GetConfirmedRequest(int userID)
+        public List<MNRequestMain> GetConfirmedRequest(int userID,string strType)
         {
-            return db.MNRequestMains.Where(i => (i.ConfirmID == userID) && (i.Status == 4 || i.Status == 5)).OrderByDescending(i => i.ConfirmDate).ToList();
+            return db.MNRequestMains.Where(i => (i.ConfirmID == userID) && (i.Status == 4 || i.Status == 5) && (i.DocType==strType)).OrderByDescending(i => i.ConfirmDate).ToList();
         }
 
         public List<MNRequestMainDetail> GetConfirmedRequestDetails(string ID)

@@ -44,7 +44,7 @@ namespace FEA_ITS_Site.Controllers
 
         public ActionResult GetConfirmedDoc(string strType)
         {
-            List<MNRequestMain> lst = new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetConfirmedRequest(Helper.UserLoginInfo.UserId);
+            List<MNRequestMain> lst = new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetConfirmedRequest(Helper.UserLoginInfo.UserId, strType.ToUpper());
             return GetGridViewV2(lst, Models.Helper.PartialParameter.MNConfirmedGrid, strType.ToUpper());
         }
 
@@ -59,7 +59,7 @@ namespace FEA_ITS_Site.Controllers
         {
             ViewBag.EditStatus = iStatus;
             ViewBag.Type = strType.ToUpper();//Added by Tony (2017-05-17)
-            List<sp_GetMaintenanceApproveDocument_Result> lst = new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetDocumentForApprove(3, Helper.UserLoginInfo.UserId);
+            List<sp_GetMaintenanceApproveDocument_Result> lst = new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetDocumentForApprove(3, Helper.UserLoginInfo.UserId,strType.ToUpper());
             return GetGridViewV2(lst, Models.Helper.PartialParameter.MNApproveDoc, strType.ToUpper());
         }
 
@@ -288,7 +288,7 @@ namespace FEA_ITS_Site.Controllers
                 DelegateUserID = 0;
                 int status = WaitingAreaController.SignRejectDocument("Reject", "", strComment, itemRequest.DocType, main.User.CostCenterCode, NodeID, main.OrderCode, "", MainID, MainDetailID, "", main.CreateUserID.Value, CheckUserID, DelegateID, DelegateUserID, true);
             }
-            List<sp_GetMaintenanceApproveDocument_Result> lst = new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetDocumentForApprove(3, Helper.UserLoginInfo.UserId);
+            List<sp_GetMaintenanceApproveDocument_Result> lst = new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetDocumentForApprove(3, Helper.UserLoginInfo.UserId,strType.ToUpper());
             return GetGridViewV2(lst, Models.Helper.PartialParameter.MNApproveDoc, strType.ToUpper());
         }
         #endregion
