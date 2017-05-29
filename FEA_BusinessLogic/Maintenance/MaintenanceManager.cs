@@ -42,9 +42,9 @@ namespace FEA_BusinessLogic.Maintenance
             return db.MNRequestMains.Where(i => (i.CreatorID == inUserID) && (i.DocType==strType)).OrderByDescending(i=>i.OrderCode).ToList();
         }
 
-        public List<MNRequestMain> GetRequestForStockIn()
+        public List<MNRequestMain> GetRequestForStockIn(string strDocType)
         {
-           return db.MNRequestMains.Where(i => i.Status == 5).OrderBy(x=>x.ConfirmDate).ToList();
+           return db.MNRequestMains.Where(i => (i.Status == 5) && (i.DocType == strDocType.ToUpper())).OrderBy(x=>x.ConfirmDate).ToList();
         }
         public List<sp_GetMaintenanceDetailsQuantity_Result> GetDetailListQuantity(string ID)
         {

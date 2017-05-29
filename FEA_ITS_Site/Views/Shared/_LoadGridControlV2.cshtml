@@ -592,7 +592,7 @@
                 {
                     settings.Name = "gvMNInventory";
                     settings.KeyFieldName = "ID";
-                    settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "GetMNInventory" };
+                    settings.CallbackRouteValues = new { Controller = "Maintenance", Action = "GetMNInventory",strType=DocType };
 
                     settings.Width = Unit.Percentage(70);
 
@@ -605,7 +605,7 @@
                             column.Width = Unit.Percentage(50);
                             column.ColumnType = MVCxGridViewColumnType.ComboBox;
                             var comboBoxProperties = column.PropertiesEdit as ComboBoxProperties;
-                            comboBoxProperties.DataSource = new FEA_BusinessLogic.Maintenance.MNInventoryManager().GetInventory();
+                            comboBoxProperties.DataSource = new FEA_BusinessLogic.Maintenance.MNInventoryManager().GetInventory(DocType);
                             comboBoxProperties.TextField = "ItemDetailName";
                             comboBoxProperties.ValueField = "ID";
                             comboBoxProperties.ValueType = typeof(string);

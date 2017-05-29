@@ -322,7 +322,7 @@ namespace FEA_ITS_Site.Controllers
                     CreatorID = Helper.UserLoginInfo.UserId,
                     Status = (int)FEA_BusinessLogic.Maintenance.MaintenanceManager.OrderStatus.NEW,
                     CurrencyID = "",
-                    OrderCode = Controllers.HelperController.GenerateELandCode(Models.Helper.TagPrefixParameter.MAINTENANCE),
+                    OrderCode = Controllers.HelperController.GenerateELandCode(strDocType.ToUpper()),
                     IsUrgent = 0,
                     ID = Guid.NewGuid().ToString()
                 };
@@ -375,7 +375,7 @@ namespace FEA_ITS_Site.Controllers
         public ActionResult MNRequestList( string strDocType)
         {
             ViewBag.Type = strDocType.ToUpper();
-            List<MNRequestMain> lstItem = new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetRequestByUser(Helper.UserLoginInfo.UserId);
+            List<MNRequestMain> lstItem = new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetRequestByUser(Helper.UserLoginInfo.UserId, strDocType.ToUpper());
             return GetGridViewV2(lstItem, Models.Helper.PartialParameter.MNRequestList,strDocType.ToUpper());
         }
 
@@ -512,8 +512,18 @@ namespace FEA_ITS_Site.Controllers
             MNStockEquipment mnStockItem;
             User uInfo = new User();
             Boolean bIsCreateNew = false;
+            string strOrderCode="";
             if(ID==null ||ID.Trim().Length==0)
             {
+                switch (Type.ToUpper())
+                {
+                    case "MAINTENANCESTOCK":
+                        strOrderCode = (OrderType == 1) ? Controllers.HelperController.GenerateCode(TagPrefixParameter.MAINTENANCESTOCKIN) : Controllers.HelperController.GenerateCode(TagPrefixParameter.MAINTENANCESTOCKOUT);
+                        break;
+                    case "PRODUCTIONSTOCK":
+                        strOrderCode = (OrderType == 1) ? Controllers.HelperController.GenerateCode(TagPrefixParameter.PRODUCTIONSTOCKIN) : Controllers.HelperController.GenerateCode(TagPrefixParameter.PRODUCTIONSTOCKOUT);
+                        break;
+                }
                 uInfo = new UserManager().GetItem(Helper.UserLoginInfo.UserId);
                 mnStockItem = new MNStockEquipment()
                 {
@@ -521,7 +531,7 @@ namespace FEA_ITS_Site.Controllers
                     Description = "",
                     CreatorID = Helper.UserLoginInfo.UserId,
                     Status = (int)FEA_BusinessLogic.Maintenance.StockManager.OrderStatus.NEW,
-                    OrderCode = (OrderType == 1) ? Controllers.HelperController.GenerateCode(TagPrefixParameter.MAINTENANCESTOCKIN) : Controllers.HelperController.GenerateCode(TagPrefixParameter.MAINTENANCESTOCKOUT)
+                    OrderCode=strOrderCode
                 };
                 Session["ItemInfoList"] = new List<ItemInfo>();
                 bIsCreateNew = true;
@@ -545,7 +555,7 @@ namespace FEA_ITS_Site.Controllers
             {
                 ViewBag.ErrInfo= strError.Replace("\\n", "<br />");// Đổi kí tự \\n thành kí tự <br/>
             }
-            ViewBag.Type = Type;
+            ViewBag.Type = Type.ToUpper();
             return View(mnStockItem);
         }
 
@@ -789,7 +799,15 @@ namespace FEA_ITS_Site.Controllers
         {
             o.CreatorID = Helper.UserLoginInfo.UserId;
             o.MNStockEquipmentDetails = StockEquipmentDetailList();
-            o.OrderCode = (o.OrderType == 1) ? Controllers.HelperController.GenerateCode(TagPrefixParameter.MAINTENANCESTOCKIN) : Controllers.HelperController.GenerateCode(TagPrefixParameter.MAINTENANCESTOCKOUT);
+            switch (o.DocType.ToUpper())
+            {
+                case "MAINTENANCESTOCK":
+                    o.OrderCode = (o.OrderType == 1) ? Controllers.HelperController.GenerateCode(TagPrefixParameter.MAINTENANCESTOCKIN) : Controllers.HelperController.GenerateCode(TagPrefixParameter.MAINTENANCESTOCKOUT);
+                    break;
+                case "PRODUCTIONSTOCK":
+                    o.OrderCode = (o.OrderType == 1) ? Controllers.HelperController.GenerateCode(TagPrefixParameter.PRODUCTIONSTOCKIN) : Controllers.HelperController.GenerateCode(TagPrefixParameter.PRODUCTIONSTOCKOUT);
+                    break;
+            }
             if (isSaveDraft) 
                 o.Status = (int)FEA_BusinessLogic.Maintenance.MaintenanceManager.OrderStatus.DRAFT;
             else
@@ -921,6 +939,7 @@ namespace FEA_ITS_Site.Controllers
 
         public ActionResult MNInventory(string Type)
         {
+            ViewBag.Type = Type;
             return View();
         }
 
@@ -983,10 +1002,10 @@ namespace FEA_ITS_Site.Controllers
             return settings;
         }
 
-        public ActionResult GetMNInventory()
+        public ActionResult GetMNInventory(string strType)
         {
-            List<sp_CheckMaintenanceInventory_Result> lst = new FEA_BusinessLogic.Maintenance.MNInventoryManager().GetInventory();
-            return GetGridViewV2(lst, Models.Helper.PartialParameter.MNInventory, "");
+            List<sp_CheckMaintenanceInventory_Result> lst = new FEA_BusinessLogic.Maintenance.MNInventoryManager().GetInventory(strType.ToUpper());
+            return GetGridViewV2(lst, Models.Helper.PartialParameter.MNInventory, strType.ToUpper());
         }
         #endregion
 
@@ -1051,7 +1070,7 @@ namespace FEA_ITS_Site.Controllers
                     ViewData["DeleteError"] = e.Message;
                 }
             }
-            return GetGridViewV2(new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetRequestByUser(Helper.UserLoginInfo.UserId), FEA_ITS_Site.Models.Helper.PartialParameter.MNRequestList, strDocType.ToUpper());
+            return GetGridViewV2(new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetRequestByUser(Helper.UserLoginInfo.UserId,strDocType.ToUpper()), FEA_ITS_Site.Models.Helper.PartialParameter.MNRequestList, strDocType.ToUpper());
         }
 
         private decimal GetTotalAmount()
@@ -1097,7 +1116,7 @@ namespace FEA_ITS_Site.Controllers
             WFMain wfMain = new WFMain();
             o.CreatorID = Helper.UserLoginInfo.UserId;
             o.MNRequestMainDetails = MNRequestMainDetailList();
-            o.OrderCode = Controllers.HelperController.GenerateELandCode(TagPrefixParameter.MAINTENANCE);
+            o.OrderCode = Controllers.HelperController.GenerateELandCode(o.DocType);
             o.AttachmentLink = FEA_ITS_Site.Helper.Ultilities.UploadFolder + o.ID;
             if (isSaveDraft)
                 o.Status = (int)FEA_BusinessLogic.Maintenance.MaintenanceManager.OrderStatus.DRAFT;
@@ -1268,9 +1287,10 @@ namespace FEA_ITS_Site.Controllers
             List<sp_GetItemDetailName_Result> lst = new ItemManager().GetRequestItemDetail(requestMainID, itemID);
             return PartialView("_ItemDetailPartial", lst);
         }
-        //Lấy list yêu cầu với điều kiện yêu cầu đó đã được bộ phận bảo trì duyệt.
-        public ActionResult RequestListPartial(MNStockEquipment model)
+        //Lấy danh sách yêu cầu với điều kiện yêu cầu đó đã được bộ phận bảo trì/sản xuất kí duyệt
+        public ActionResult RequestListPartial(MNStockEquipment model,string docType)
         {
+            ViewBag.Type = docType;
             return PartialView("_RequestListPartial", model);
         }
         #endregion

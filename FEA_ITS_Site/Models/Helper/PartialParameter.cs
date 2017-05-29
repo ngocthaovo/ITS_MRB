@@ -145,8 +145,11 @@ namespace FEA_ITS_Site.Models.Helper
         public static string WHIMPORT { get { return "WHIMPORT"; } }
         public static string GENERALAFFAIR { get { return "GENERALAFFAIR"; } }
         public static string MAINTENANCE { get { return "MAINTENANCE"; } } //Added by Tony (2017-04-19)
+        public static string PRODUCTION { get { return "PRODUCTION"; } } //Added by Tony (2017-05-29)
         public static string MAINTENANCESTOCKIN { get { return "MAINTENANCESTOCKIN"; } }
         public static string MAINTENANCESTOCKOUT { get { return "MAINTENANCESTOCKOUT"; } }
+        public static string PRODUCTIONSTOCKIN { get { return "PRODUCTIONSTOCKIN"; } }
+        public static string PRODUCTIONSTOCKOUT { get { return "PRODUCTIONSTOCKOUT"; } }
 
         //Added by Tony (2017-02-08)
         public static string ACCESSORYOUT { get { return "ACCESSORYOUT"; } }

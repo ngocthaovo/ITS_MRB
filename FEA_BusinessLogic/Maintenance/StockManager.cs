@@ -50,9 +50,9 @@ namespace FEA_BusinessLogic.Maintenance
                                 i.ReceiveUserID = null;
                             if (!isSaveDraft)
                                 if(o.OrderType==2)
-                                    mnManager.AddItemToWarehouse(i.ItemDetailID, i.UnitID, Convert.ToInt16( - i.Quantity.Value), this.db);
+                                    mnManager.AddItemToWarehouse(i.ItemDetailID, i.UnitID, Convert.ToInt16( - i.Quantity.Value),o.DocType, this.db);
                                 else
-                                    mnManager.AddItemToWarehouse(i.ItemDetailID, i.UnitID, Convert.ToInt16(i.Quantity.Value), this.db);
+                                    mnManager.AddItemToWarehouse(i.ItemDetailID, i.UnitID, Convert.ToInt16(i.Quantity.Value),o.DocType, this.db);
                         }
                     }
                     if (isSaveDraft)
@@ -115,9 +115,9 @@ namespace FEA_BusinessLogic.Maintenance
 
                             if (!isSaveDraft)
                                 if(o.OrderType==2)
-                                    mnInManager.AddItemToWarehouse(i.ItemDetailID, i.UnitID, Convert.ToInt16(- i.Quantity.Value), this.db);
+                                    mnInManager.AddItemToWarehouse(i.ItemDetailID, i.UnitID, Convert.ToInt16(- i.Quantity.Value),o.DocType, this.db);
                                 else
-                                    mnInManager.AddItemToWarehouse(i.ItemDetailID, i.UnitID, Convert.ToInt16(i.Quantity.Value), this.db);
+                                    mnInManager.AddItemToWarehouse(i.ItemDetailID, i.UnitID, Convert.ToInt16(i.Quantity.Value),o.DocType, this.db);
                         }
                     }
 
@@ -170,7 +170,7 @@ namespace FEA_BusinessLogic.Maintenance
                         foreach(MNStockEquipmentDetail i in o.MNStockEquipmentDetails)
                         {
                             if(!isSaveDraft)
-                                mnManager.AddItemToWarehouse(i.ItemDetailID,i.UnitID, Convert.ToInt16(i.Quantity.Value), this.db);
+                                mnManager.AddItemToWarehouse(i.ItemDetailID,i.UnitID, Convert.ToInt16(i.Quantity.Value),o.DocType, this.db);
                         }
                     }
                     item.Status=(int)OrderStatus.DRAFT;

@@ -89,6 +89,16 @@ namespace FEA_ITS_Site.Controllers
                     iOrderType = 2;
                     _Result = new FEA_BusinessLogic.GenerateCode.GenerateCode().GetMNSForCheck(OrderCode, strDocType, iOrderType);
                     break;
+                case "PRODUCTIONSTOCKIN":
+                    strDocType = "PRODUCTIONSTOCK";
+                    iOrderType = 1;
+                    _Result = new FEA_BusinessLogic.GenerateCode.GenerateCode().GetMNSForCheck(OrderCode, strDocType, iOrderType);
+                    break;
+                case "PRODUCTIONSTOCKOUT":
+                    strDocType = "PRODUCTIONSTOCK";
+                    iOrderType = 2;
+                    _Result = new FEA_BusinessLogic.GenerateCode.GenerateCode().GetMNSForCheck(OrderCode, strDocType, iOrderType);
+                    break;
                 default:
                     break;
             }
@@ -130,14 +140,20 @@ namespace FEA_ITS_Site.Controllers
         {
             int NumberAutoIncrease = 9000;
             string companyCode= Helper.UserLoginInfo.CurrentUser.CostCenter.CompanyCode.ToString();
-            if (companyCode == "7910" && DocumentTypeName != FEA_ITS_Site.Models.Helper.TagPrefixParameter.MAINTENANCE)
+            if (companyCode == "7910" && (DocumentTypeName != FEA_ITS_Site.Models.Helper.TagPrefixParameter.MAINTENANCE  
+                && DocumentTypeName !=FEA_ITS_Site.Models.Helper.TagPrefixParameter.PRODUCTION))
                 NumberAutoIncrease = 9000;
-            else if (companyCode == "7920" && DocumentTypeName != FEA_ITS_Site.Models.Helper.TagPrefixParameter.MAINTENANCE)
+            else if (companyCode == "7920" && (DocumentTypeName != FEA_ITS_Site.Models.Helper.TagPrefixParameter.MAINTENANCE 
+                && DocumentTypeName!= FEA_ITS_Site.Models.Helper.TagPrefixParameter.PRODUCTION))
                 NumberAutoIncrease = 8000;
             //Added by Tony (2017-04-19) Begin 
             else if (companyCode == "7910" && DocumentTypeName == FEA_ITS_Site.Models.Helper.TagPrefixParameter.MAINTENANCE)
                 NumberAutoIncrease = 6000;
             //End
+            //Added by Tony (2017-05-29) 
+            else if (companyCode == "7910" && DocumentTypeName == FEA_ITS_Site.Models.Helper.TagPrefixParameter.PRODUCTION)
+                NumberAutoIncrease = 5000;
+
             string OrderCode = string.Empty;
             string Prefix = string.Empty;
 
@@ -182,6 +198,14 @@ namespace FEA_ITS_Site.Controllers
                 count = _Result.Count;
             }
             // End
+            //Added by Tony (2017-05-29) Begin
+            else if(DocumentTypeName==FEA_ITS_Site.Models.Helper.TagPrefixParameter.PRODUCTION)
+            {
+                List<FEA_BusinessLogic.MNRequestMain> _Result = new FEA_BusinessLogic.GenerateCode.GenerateCode().GetMNForCheck(OrderCode);
+                count = _Result.Count;
+            }
+            //End
+
             if (count > 0)
             {
                 OrderCode = CheckAvailableElandCode(Prefix, NumberAutoIncrease, DocumentTypeName);
