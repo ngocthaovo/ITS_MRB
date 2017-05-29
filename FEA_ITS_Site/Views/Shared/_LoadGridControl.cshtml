@@ -7279,13 +7279,13 @@
                             });
                             settings.Columns.Add(column =>
                             {
-                                column.FieldName = "Quantity";
+                                column.FieldName = "SAQuantity";
                                 column.Caption = @Resources.Resource.Quantity;
                                 column.Width = Unit.Percentage(5);
                                 column.SetDataItemTemplateContent(c =>
                                 {
                                     ViewContext.Writer.Write(
-                                        string.Format(FEA_Ultil.FEAStringClass.formatNumber(DataBinder.Eval(c.DataItem, "Quantity")))
+                                        string.Format(FEA_Ultil.FEAStringClass.formatNumber(DataBinder.Eval(c.DataItem, "SAQuantity")))
                                     );
                                 });
                             });

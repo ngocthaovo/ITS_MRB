@@ -987,7 +987,7 @@ namespace FEA_ITS_Site.Controllers
                     {
                         foreach (ItemInfo iInfo in lst)
                         {
-                            sValidate += CheckItemDetailProcessValidate(item.ID, iInfo.Operate, iInfo.ItemID, iInfo.Quantity, 999999999, item.OrderType.Value);
+                            sValidate += CheckItemDetailProcessValidate(item.ID, iInfo.Operate, iInfo.ItemID, iInfo.SAQuantity, 999999999, item.OrderType.Value);
 
                             if (sValidate.Length == 0)
                             {
@@ -998,7 +998,7 @@ namespace FEA_ITS_Site.Controllers
                                     ExportItemDetailID = iInfo.ItemDetailID,
                                     Note = iInfo.Des,
                                     OperationType = iInfo.Operate,
-                                    Quantity = iInfo.Quantity,
+                                    Quantity = iInfo.SAQuantity, //Modify by Tony (2017-05-29)
                                     Temp1 = item.OrderType.ToString(), // assign OrderType for Temp1 column
                                     Temp2 = ""
                                 };
@@ -1129,7 +1129,7 @@ namespace FEA_ITS_Site.Controllers
                                 ItemDetailID = ExportItemDetailID,
 
                                 Des = Description,
-                                Quantity = (int)Quantity,
+                                SAQuantity = Quantity,
 
                                 UnitID = unit.ID,
                                 UnitName = unit.NAME,
