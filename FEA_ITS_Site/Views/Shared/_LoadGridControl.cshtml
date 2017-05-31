@@ -1538,6 +1538,7 @@
                    settings.Columns.Add(c =>
                    {
                        c.FieldName = "Quantity";
+                       c.PropertiesEdit.DisplayFormatString = "f2";
                        c.Caption = @Resources.Resource.Quantity;
                        c.Visible = true;
                    });
@@ -6767,15 +6768,17 @@
                             });
                             settings.Columns.Add(column =>
                             {
-                                column.FieldName = "Quantity";
+                                column.FieldName = "SAQuantity";
                                 column.Caption = @Resources.Resource.Quantity;
                                 column.Width = Unit.Percentage(5);
+                               
                                 column.SetDataItemTemplateContent(c =>
                                 {
                                     ViewContext.Writer.Write(
-                                        string.Format(FEA_Ultil.FEAStringClass.formatNumber(DataBinder.Eval(c.DataItem, "Quantity")))
+                                        string.Format(FEA_Ultil.FEAStringClass.formatNumber(DataBinder.Eval(c.DataItem, "SAQuantity")))
                                     );
                                 });
+
                             });
 
                             if(ViewData["OrderType"] != null && int.Parse(ViewData["OrderType"].ToString()) != (int)FEA_SABusinessLogic.ExportItemManager.OrderType.Adjust && int.Parse(ViewData["OrderType"].ToString()) != (int)FEA_SABusinessLogic.ExportItemManager.OrderType.Normal)
@@ -6798,18 +6801,18 @@
                             else if (ViewData["OrderType"] != null && int.Parse(ViewData["OrderType"].ToString()) == (int)FEA_SABusinessLogic.ExportItemManager.OrderType.Normal)
                             {
                                 settings.Columns.Add(column =>
-                                 {
-                                     column.FieldName = "DeliveryDate";
-                                     column.Caption = @Resources.Resource.ShipmentDate;
-                                     column.Width = Unit.Percentage(10);
-                                     column.SetDataItemTemplateContent(c =>
-                                     {
-                                         ViewContext.Writer.Write(
-                                             string.Format(FEA_Ultil.FEAStringClass.FormatDateString(FEA_ITS_Site.Helper.SessionManager.CurrentLang, DataBinder.Eval(c.DataItem, "DeliveryDate")))
-                                         );
-                                     });
+                                {
+                                    column.FieldName = "DeliveryDate";
+                                    column.Caption = @Resources.Resource.ShipmentDate;
+                                    column.Width = Unit.Percentage(10);
+                                    column.SetDataItemTemplateContent(c =>
+                                    {
+                                        ViewContext.Writer.Write(
+                                            string.Format(FEA_Ultil.FEAStringClass.FormatDateString(FEA_ITS_Site.Helper.SessionManager.CurrentLang, DataBinder.Eval(c.DataItem, "DeliveryDate")))
+                                        );
+                                    });
 
-                                 });
+                                });
                             }
 
                             settings.Columns.Add(column =>
@@ -7486,6 +7489,7 @@
                  settings.Columns.Add(column =>
                  {
                      column.FieldName = "Quantity";
+                     column.PropertiesEdit.DisplayFormatString = "f2";
                      column.Caption = Resources.Resource.Quantity;
                      column.Width = Unit.Percentage(10);
 
