@@ -36,8 +36,7 @@
         obj.Quantity = spQuantity.GetInputElement().value;
         obj.Description = txtItemDes.GetValue();
         obj.Operate = chkCheckType.GetValue();
-
-
+      
         if (obj.ItemID == null)
             obj.ItemID = "";
         if (obj.Description == null)
@@ -199,6 +198,7 @@
                             settings.Name = "spQuantity";
                             settings.Properties.NumberType = SpinEditNumberType.Float;
                             settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                            settings.Properties.DecimalPlaces = 2; // Added by Tony (2017-05-31) Giới hạn số thập phân nhập vào là 2
                             settings.Properties.MinValue = 0;
                             settings.Properties.MaxValue = decimal.MaxValue;
                             settings.ControlStyle.CssClass = "textBoxStyle";
