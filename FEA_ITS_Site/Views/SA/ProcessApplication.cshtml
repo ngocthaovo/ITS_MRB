@@ -33,7 +33,7 @@
         obj.OrderType = @Model.OrderType;
         obj.ExportItemDetailID = cboItem.GetValue();
         
-        obj.Quantity = spQuantity.GetValue();
+        obj.Quantity = spQuantity.GetInputElement().value;
         obj.Description = txtItemDes.GetValue();
         obj.Operate = chkCheckType.GetValue();
 
@@ -197,7 +197,7 @@
                         settings =>
                         {
                             settings.Name = "spQuantity";
-                            settings.Properties.NumberType = SpinEditNumberType.Integer;
+                            settings.Properties.NumberType = SpinEditNumberType.Float;
                             settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
                             settings.Properties.MinValue = 0;
                             settings.Properties.MaxValue = decimal.MaxValue;

@@ -26,6 +26,7 @@ namespace FEA_ITS_Site.Models
         public string UnitID { get; set; }
         public string UnitName { get; set; }
         public int Quantity { get; set; }
+        public decimal SAQuantity { get; set; } //Added by Tony (2017-05-29)
         public decimal Price { get; set; }
         public decimal Amount { get; set; }
         public int QuanInStock { get; set; }
