@@ -357,7 +357,7 @@
                              @Resources.Resource.requestCode;
                          </label>
                          <div class="editorContainer">
-                             @{Html.RenderAction("RequestListPartial", "Maintenance", new { model = Model });}
+                             @{Html.RenderAction("RequestListPartial", "Maintenance", new { model = Model, docType=ViewBag.Type });}
                          </div>
                      </div>
                  </div>
@@ -406,15 +406,25 @@
                         @Resources.Resource.ItemType:
                     </label>
                     @{
-                       if(ViewBag.OrderType==2)
-                       {
-                           Html.RenderAction("ItemPartialRequest", "Maintenance", new { model = Model });
-                       }
-                       else
-                       {
-                           Html.RenderAction("ItemPartial", "Item", new { sItemType = FEA_ITS_Site.Models.Helper.TagPrefixParameter.MAINTENANCE, sOrderType = "" });
-                       }
-                    }
+                        string strType = ViewBag.Type;
+                        switch(strType)
+                        {
+                            case "MAINTENANCESTOCK":
+                                strType = "MAINTENANCE";
+                                break;
+                            case "PRODUCTIONSTOCK":
+                                strType = "PRODUCTION";
+                                break;
+                        }
+                        if(ViewBag.OrderType==2)
+                        {
+                            Html.RenderAction("ItemPartialRequest", "Maintenance", new { model = Model });
+                        }
+                        else
+                        {
+                            Html.RenderAction("ItemPartial", "Item", new { sItemType = strType, sOrderType = "" });
+                        }
+                        }
                        
                 </div>
             </div>

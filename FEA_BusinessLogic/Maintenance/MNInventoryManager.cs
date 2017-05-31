@@ -12,19 +12,30 @@ namespace FEA_BusinessLogic.Maintenance
     public class MNInventoryManager:Base.Connection
     {
         
-        public void AddItemToWarehouse(string ItemDetailID, string UnitID, int Quantity, FEA_BusinessLogic.FEA_ITSEntities dbRef)
+        public void AddItemToWarehouse(string ItemDetailID, string UnitID, int Quantity, string strDocType, FEA_BusinessLogic.FEA_ITSEntities dbRef)
         {
+            string strType = strDocType;
+            switch (strDocType)
+            {
+                case "MAINTENANCESTOCK":
+                    strType = "MAINTENANCE";
+                    break;
+                case "PRODUCTIONSTOCK":
+                    strType = "PRODUCTION";
+                    break;
+            }
             var item = dbRef.MNInventories.Where(i => (i.ItemDetailID == ItemDetailID) && (i.UnitID == UnitID)).SingleOrDefault();
             if (item != null)
                 item.Quantity += Quantity;
             else
             {
-               item =new MNInventory()
-              {
-                  ID=Guid.NewGuid().ToString(),
-                  ItemDetailID=ItemDetailID,
-                  Quantity=Quantity,
-                  UnitID=UnitID
+                item = new MNInventory()
+                {
+                    ID = Guid.NewGuid().ToString(),
+                    DocType =strType,
+                    ItemDetailID=ItemDetailID,
+                    Quantity=Quantity,
+                    UnitID=UnitID
               };
                 dbRef.MNInventories.Add(item);
             }
@@ -43,9 +54,9 @@ namespace FEA_BusinessLogic.Maintenance
             return db.sp_CheckCancelConfirmMNStockIn(OrderCode).ToList();
         }
 
-        public List<sp_CheckMaintenanceInventory_Result> GetInventory()
+        public List<sp_CheckMaintenanceInventory_Result> GetInventory(string strType)
         {
-            return db.sp_CheckMaintenanceInventory().ToList();
+            return db.sp_CheckMaintenanceInventory(strType).ToList();//Added by Tony (2017-05-29) add document type
         }
         
         public bool UpdateFinalQuantity(List<sp_GetMaintenanceDetailsQuantity_Result> o, string ID)

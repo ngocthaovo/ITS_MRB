@@ -46,7 +46,7 @@
             {
                 GridView.GetHtml();
                 @Html.Raw("<br \\>");
-                                    GridView2.GetHtml();
+                GridView2.GetHtml();
             }
             break;
         case "QuerySignFlow":
@@ -88,11 +88,11 @@
                 settings.ClientSideEvents.SelectionChanged = "SelectionChanged";
 
                 settings.Columns.Add(column =>
-                    {
-                        column.FieldName = "MainID";
-                        column.Caption = "MainID";
-                        column.SetColVisible(false);
-                    });
+                {
+                    column.FieldName = "MainID";
+                    column.Caption = "MainID";
+                    column.SetColVisible(false);
+                });
                 settings.Columns.Add(column =>
                 {
                     column.FieldName = "NodeID";
@@ -260,23 +260,26 @@
                                 Link = "/ERPDocument/ERPListItemDetailPartial?ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
                                 break;
-                           case "FABRICDEVELOPOUT":
+                            case "FABRICDEVELOPOUT":
                                 Link = "/ERPDocument/ERPListItemDetailPartial?ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
                                 break;
-                           case "ACCESSORYDEVELOPOUT":
+                            case "ACCESSORYDEVELOPOUT":
                                 Link = "/ERPDocument/ERPListItemDetailPartial?ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
                                 break;
-                           case "DEVELOPPRODUCT":
+                            case "DEVELOPPRODUCT":
                                 Link = "/ERPDocument/ERPListItemDetailPartial?ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
                                 break;
-                           case "MAINTENANCE":
+                            case "MAINTENANCE":
                                 Link = "/Maintenance/Index?Type=MAINTENANCE&ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetRequest(OrderCode).Status.ToString());
                                 break;
-                                
+                            case "PRODUCTION":
+                                Link = "/Maintenance/Index?Type=PRODUCTION&ID=";
+                                _status = int.Parse(new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetRequest(OrderCode).Status.ToString());
+                                break;
                             default:
                                 break;
                         }
@@ -319,11 +322,11 @@
                 settings.Settings.ShowFilterRowMenu = true;
                 settings.SettingsBehavior.AllowFocusedRow = true;
                 settings.Columns.Add(column =>
-                    {
-                        column.FieldName = "MainID";
-                        column.Caption = "MainID";
-                        column.SetColVisible(false);
-                    });
+                {
+                    column.FieldName = "MainID";
+                    column.Caption = "MainID";
+                    column.SetColVisible(false);
+                });
                 settings.Columns.Add(column =>
                 {
                     column.FieldName = "NodeID";
@@ -477,11 +480,11 @@
                 settings.SettingsBehavior.AllowFocusedRow = true;
                 settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
                 settings.Columns.Add(column =>
-                    {
-                        column.FieldName = "MainID";
-                        column.Caption = "MainID";
-                        column.SetColVisible(false);
-                    });
+                {
+                    column.FieldName = "MainID";
+                    column.Caption = "MainID";
+                    column.SetColVisible(false);
+                });
                 settings.Columns.Add(column =>
                 {
                     column.FieldName = "NodeID";
@@ -593,8 +596,8 @@
                             case "GENERALAFFAIR":
                                 Link = "/GA/Index?ID=";
                                 _status = int.Parse(new FEA_GABusinessLogic.GAItemManager().GetItem(OrderCode).Status.ToString());
-                               //Added by Tony (2017-02-08)
-                                 break;
+                                //Added by Tony (2017-02-08)
+                                break;
                             case "ACCESSORYOUT":
                                 Link = "/ERPDocument/ERPListItemDetailPartial?ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
@@ -620,7 +623,7 @@
                                 _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
                                 break;
 
-                           case "FABRICDEVELOPOUT":
+                            case "FABRICDEVELOPOUT":
                                 Link = "/ERPDocument/ERPListItemDetailPartial?ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
                                 break;
@@ -634,6 +637,10 @@
                                 break;
                             case "MAINTENANCE":
                                 Link = "/Maintenance/Index?Type=MAINTENANCE&ID=";
+                                _status = int.Parse(new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetRequest(OrderCode).Status.ToString());
+                                break;
+                            case "PRODUCTION":
+                                Link = "/Maintenance/Index?Type=PRODUCTION&ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetRequest(OrderCode).Status.ToString());
                                 break;
                             default:
@@ -656,59 +663,59 @@
             break;
         case "WFHistory":
             grid = Html.DevExpress().GridView(settings =>
-           {
-               settings.Name = "gvHistory";
-               settings.Width = Unit.Percentage(100);
-               settings.KeyFieldName = "";
-               settings.SettingsBehavior.AllowSort = false;
-               settings.SettingsPager.AlwaysShowPager = false;
-               settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+            {
+                settings.Name = "gvHistory";
+                settings.Width = Unit.Percentage(100);
+                settings.KeyFieldName = "";
+                settings.SettingsBehavior.AllowSort = false;
+                settings.SettingsPager.AlwaysShowPager = false;
+                settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
 
-               settings.Columns.Add(column =>
-               {
-                   column.FieldName = "OrderCode";
-                   column.Caption = @Resources.Resource.OrderCode;
-                   column.SetColVisible(true);
-               });
-               settings.Columns.Add(column =>
-               {
-                   column.FieldName = "Sender";
-                   column.Caption = @Resources.Resource.Sender;
-                   column.SetColVisible(true);
-               });
-               settings.Columns.Add(column =>
-               {
-                   column.FieldName = "Approver";
-                   column.Caption = @Resources.Resource.Approver;
-                   column.SetColVisible(true);
-               });
-               settings.Columns.Add(column =>
-               {
-                   column.FieldName = "Comment";
-                   column.Caption = @Resources.Resource.Comment;
-                   column.SetColVisible(true);
-               });
-               settings.Columns.Add(column =>
-               {
-                   column.FieldName = "CheckDate";
-                   column.Caption = @Resources.Resource.CheckDate;
-                   column.SetDataItemTemplateContent(c =>
-                   {
-                       string date = (((DateTime)DataBinder.Eval(c.DataItem, "CheckDate")).Date == new DateTime(1900, 1, 1) ? "" : FEA_Ultil.FEAStringClass.FormatDateString(FEA_ITS_Site.Helper.SessionManager.CurrentLang, DataBinder.Eval(c.DataItem, "CheckDate"), true));
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "OrderCode";
+                    column.Caption = @Resources.Resource.OrderCode;
+                    column.SetColVisible(true);
+                });
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "Sender";
+                    column.Caption = @Resources.Resource.Sender;
+                    column.SetColVisible(true);
+                });
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "Approver";
+                    column.Caption = @Resources.Resource.Approver;
+                    column.SetColVisible(true);
+                });
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "Comment";
+                    column.Caption = @Resources.Resource.Comment;
+                    column.SetColVisible(true);
+                });
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "CheckDate";
+                    column.Caption = @Resources.Resource.CheckDate;
+                    column.SetDataItemTemplateContent(c =>
+                    {
+                        string date = (((DateTime)DataBinder.Eval(c.DataItem, "CheckDate")).Date == new DateTime(1900, 1, 1) ? "" : FEA_Ultil.FEAStringClass.FormatDateString(FEA_ITS_Site.Helper.SessionManager.CurrentLang, DataBinder.Eval(c.DataItem, "CheckDate"), true));
 
-                       ViewContext.Writer.Write(
-                           string.Format(date)
-                       );
-                   });
-                   column.SetColVisible(true);
-               });
-               settings.Columns.Add(column =>
-               {
-                   column.FieldName = "Status";
-                   column.Caption = @Resources.Resource.Status;
-                   column.SetColVisible(true);
-               });
-           });
+                        ViewContext.Writer.Write(
+                            string.Format(date)
+                        );
+                    });
+                    column.SetColVisible(true);
+                });
+                settings.Columns.Add(column =>
+                {
+                    column.FieldName = "Status";
+                    column.Caption = @Resources.Resource.Status;
+                    column.SetColVisible(true);
+                });
+            });
             grid.Bind(new FEA_BusinessLogic.WaitingArea.WaitingArea().GetHistory(ViewBag.OrderCode)).GetHtml();
             break;
         case "FinishedForManager":
@@ -999,99 +1006,99 @@
         case "StatisticDR":
             Object[] Result2 = (Object[])Model;
             var DRPivot = Html.DevExpress().PivotGrid(settings =>
-             {
-                 settings.Name = "pvDeviceRegistration";
-                 settings.CallbackRouteValues = new { Controller = "Statistic", Action = "CallbackPivotGrid", Type = "DR" };
-                 settings.Width = Unit.Percentage(100);
-                 settings.OptionsView.ShowHorizontalScrollBar = true;
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.DataArea;
-                     field.AreaIndex = 0;
-                     field.FieldName = "Data";
-                     field.Caption = "Data";
-                     field.CellFormat.FormatType = FormatType.Custom;
-                     field.RunningTotal = true;
-                     field.SummaryType = PivotSummaryType.Count;
-                     field.CustomTotals.Add(PivotSummaryType.Count);
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     //field.Area = PivotArea.RowArea;
-                     field.AreaIndex = 0;
-                     field.FieldName = "Department";
-                     field.Caption = @Resources.Resource.Department;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.ColumnArea;
-                     field.AreaIndex = 0;
-                     field.FieldName = "CreateDate";
-                     field.Caption = "Year";
-                     field.GroupInterval = PivotGroupInterval.DateYear;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.ColumnArea;
-                     field.AreaIndex = 1;
-                     field.FieldName = "CreateDate";
-                     field.Caption = "Month";
-                     field.GroupInterval = PivotGroupInterval.DateMonth;
-                     // field.ValueFormat.FormatType = FormatType.Numeric;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.FilterArea;
-                     field.AreaIndex = 0;
-                     field.FieldName = "Complete";
-                     field.Caption = " Complete Year";
-                     field.GroupInterval = PivotGroupInterval.DateYear;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.FilterArea;
-                     field.AreaIndex = 1;
-                     field.FieldName = "Complete";
-                     field.Caption = " Complete Month";
-                     field.GroupInterval = PivotGroupInterval.DateMonth;
-                     field.ValueFormat.FormatType = FormatType.Numeric;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.FilterArea;
-                     field.AreaIndex = 2;
-                     field.FieldName = "TechnicianID";
-                     field.Caption = @Resources.Resource.TechnicianID;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.FilterArea;
-                     field.AreaIndex = 3;
-                     field.FieldName = "TechnicianName";
-                     field.Caption = @Resources.Resource.TechnicianName;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.FilterArea;
-                     field.AreaIndex = 4;
-                     field.FieldName = "Creator";
-                     field.Caption = @Resources.Resource.Creator;
-                 });
-                 //settings.Fields.Add(field =>
-                 //{
-                 //    field.Area = PivotArea.FilterArea;
-                 //    field.AreaIndex = 5;
-                 //    field.FieldName = "ItemName";
-                 //    field.Caption = @Resources.Resource.ItemName;
-                 //});
-                 //settings.Fields.Add(field =>
-                 //{
-                 //    field.Area = PivotArea.FilterArea;
-                 //    field.AreaIndex = 6;
-                 //    field.FieldName = "ItemDetailName";
-                 //    field.Caption = @Resources.Resource.ItemNameDetail;
-                 //});
-             }
+            {
+                settings.Name = "pvDeviceRegistration";
+                settings.CallbackRouteValues = new { Controller = "Statistic", Action = "CallbackPivotGrid", Type = "DR" };
+                settings.Width = Unit.Percentage(100);
+                settings.OptionsView.ShowHorizontalScrollBar = true;
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.DataArea;
+                    field.AreaIndex = 0;
+                    field.FieldName = "Data";
+                    field.Caption = "Data";
+                    field.CellFormat.FormatType = FormatType.Custom;
+                    field.RunningTotal = true;
+                    field.SummaryType = PivotSummaryType.Count;
+                    field.CustomTotals.Add(PivotSummaryType.Count);
+                });
+                settings.Fields.Add(field =>
+                {
+                    //field.Area = PivotArea.RowArea;
+                    field.AreaIndex = 0;
+                    field.FieldName = "Department";
+                    field.Caption = @Resources.Resource.Department;
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.ColumnArea;
+                    field.AreaIndex = 0;
+                    field.FieldName = "CreateDate";
+                    field.Caption = "Year";
+                    field.GroupInterval = PivotGroupInterval.DateYear;
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.ColumnArea;
+                    field.AreaIndex = 1;
+                    field.FieldName = "CreateDate";
+                    field.Caption = "Month";
+                    field.GroupInterval = PivotGroupInterval.DateMonth;
+                    // field.ValueFormat.FormatType = FormatType.Numeric;
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.FilterArea;
+                    field.AreaIndex = 0;
+                    field.FieldName = "Complete";
+                    field.Caption = " Complete Year";
+                    field.GroupInterval = PivotGroupInterval.DateYear;
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.FilterArea;
+                    field.AreaIndex = 1;
+                    field.FieldName = "Complete";
+                    field.Caption = " Complete Month";
+                    field.GroupInterval = PivotGroupInterval.DateMonth;
+                    field.ValueFormat.FormatType = FormatType.Numeric;
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.FilterArea;
+                    field.AreaIndex = 2;
+                    field.FieldName = "TechnicianID";
+                    field.Caption = @Resources.Resource.TechnicianID;
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.FilterArea;
+                    field.AreaIndex = 3;
+                    field.FieldName = "TechnicianName";
+                    field.Caption = @Resources.Resource.TechnicianName;
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.FilterArea;
+                    field.AreaIndex = 4;
+                    field.FieldName = "Creator";
+                    field.Caption = @Resources.Resource.Creator;
+                });
+                //settings.Fields.Add(field =>
+                //{
+                //    field.Area = PivotArea.FilterArea;
+                //    field.AreaIndex = 5;
+                //    field.FieldName = "ItemName";
+                //    field.Caption = @Resources.Resource.ItemName;
+                //});
+                //settings.Fields.Add(field =>
+                //{
+                //    field.Area = PivotArea.FilterArea;
+                //    field.AreaIndex = 6;
+                //    field.FieldName = "ItemDetailName";
+                //    field.Caption = @Resources.Resource.ItemNameDetail;
+                //});
+            }
              );
 
 
@@ -1295,70 +1302,70 @@
         case "GetDataForSAPivotGrid":
             Object[] Result10 = (Object[])Model;
             var SAPivot = Html.DevExpress().PivotGrid(settings =>
-             {
-                 settings.Name = "Export item pivot -" + DateTime.Today;
-                 settings.CallbackRouteValues = new { Controller = "SA", Action = "CallbackPivotGrid", Type = "Pivot", DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo };
-                 settings.Width = Unit.Percentage(100);
-                 settings.OptionsView.ShowHorizontalScrollBar = true;
+            {
+                settings.Name = "Export item pivot -" + DateTime.Today;
+                settings.CallbackRouteValues = new { Controller = "SA", Action = "CallbackPivotGrid", Type = "Pivot", DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo };
+                settings.Width = Unit.Percentage(100);
+                settings.OptionsView.ShowHorizontalScrollBar = true;
 
 
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.DataArea;
-                     field.AreaIndex = 0;
-                     field.FieldName = "CreateDate";
-                     field.Caption = "Data";
-                     field.CellFormat.FormatType = FormatType.Custom;
-                     field.RunningTotal = true;
-                     field.SummaryType = PivotSummaryType.Count;
-                     field.CustomTotals.Add(PivotSummaryType.Count);
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.RowArea;
-                     field.AreaIndex = 0;
-                     field.FieldName = "Remark";
-                     field.Caption = @Resources.Resource.Department;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.ColumnArea;
-                     field.AreaIndex = 0;
-                     field.FieldName = "CreateDate";
-                     field.Caption = @Resources.Resource.Year;
-                     field.GroupInterval = PivotGroupInterval.DateYear;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.ColumnArea;
-                     field.AreaIndex = 1;
-                     field.FieldName = "CreateDate";
-                     field.Caption = @Resources.Resource.Month;
-                     field.GroupInterval = PivotGroupInterval.DateMonth;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     field.Area = PivotArea.FilterArea;
-                     field.AreaIndex = 0;
-                     field.FieldName = "Creator";
-                     field.Caption = @Resources.Resource.Creator;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     // field.Area = PivotArea.FilterArea;
-                     field.AreaIndex = 2;
-                     field.FieldName = "Reason";
-                     field.Caption =  @Resources.Resource.Reason;
-                 });
-                 settings.Fields.Add(field =>
-                 {
-                     //  field.Area = PivotArea.FilterArea;
-                     field.AreaIndex = 1;
-                     field.FieldName = "TypeName";
-                     field.Caption = @Resources.Resource.DocType;
-                 });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.DataArea;
+                    field.AreaIndex = 0;
+                    field.FieldName = "CreateDate";
+                    field.Caption = "Data";
+                    field.CellFormat.FormatType = FormatType.Custom;
+                    field.RunningTotal = true;
+                    field.SummaryType = PivotSummaryType.Count;
+                    field.CustomTotals.Add(PivotSummaryType.Count);
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.RowArea;
+                    field.AreaIndex = 0;
+                    field.FieldName = "Remark";
+                    field.Caption = @Resources.Resource.Department;
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.ColumnArea;
+                    field.AreaIndex = 0;
+                    field.FieldName = "CreateDate";
+                    field.Caption = @Resources.Resource.Year;
+                    field.GroupInterval = PivotGroupInterval.DateYear;
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.ColumnArea;
+                    field.AreaIndex = 1;
+                    field.FieldName = "CreateDate";
+                    field.Caption = @Resources.Resource.Month;
+                    field.GroupInterval = PivotGroupInterval.DateMonth;
+                });
+                settings.Fields.Add(field =>
+                {
+                    field.Area = PivotArea.FilterArea;
+                    field.AreaIndex = 0;
+                    field.FieldName = "Creator";
+                    field.Caption = @Resources.Resource.Creator;
+                });
+                settings.Fields.Add(field =>
+                {
+                    // field.Area = PivotArea.FilterArea;
+                    field.AreaIndex = 2;
+                    field.FieldName = "Reason";
+                    field.Caption =  @Resources.Resource.Reason;
+                });
+                settings.Fields.Add(field =>
+                {
+                    //  field.Area = PivotArea.FilterArea;
+                    field.AreaIndex = 1;
+                    field.FieldName = "TypeName";
+                    field.Caption = @Resources.Resource.DocType;
+                });
 
-             }
+            }
              );
 
 
@@ -1375,113 +1382,113 @@
         case "GetSADynamicReport":
             Object[] Result11 = (Object[])Model;
             grid = Html.DevExpress().GridView(settings =>
-               {
+            {
 
-                   settings.Name = "StatisticDynamic";
-                   settings.KeyFieldName = "ItemID;Type";
-                   settings.Width = Unit.Percentage(100);
-                   settings.CallbackRouteValues = new { Controller = "SA", Action = "CallbackPivotGrid", Type = "Dynamic", DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo };
-                   settings.CommandColumn.Visible = false;
-                   settings.SettingsBehavior.AllowFocusedRow = true;
-                   settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
-                   settings.Settings.VerticalScrollableHeight = 450;
-                   settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
-                   settings.SettingsBehavior.AllowSelectByRowClick = true;
-                   settings.Settings.ShowFilterRow = true;
-                   settings.Settings.ShowFilterRowMenu = true;
-                   settings.Settings.ShowFooter = true;
-                   settings.SettingsBehavior.AllowFocusedRow = true;
-                   settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
-                   settings.Settings.ShowFilterRow = true;
-                   settings.Settings.ShowFilterRowMenu = true;
-                   settings.Settings.ShowFilterRowMenuLikeItem = true;
-                   settings.Settings.ShowGroupPanel = true;
-                   settings.SettingsDetail.ShowDetailRow = true;
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Quantity");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ExportQuantity");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "LendQuantity");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ReceivedQuantity");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ReturnedQuantity");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "AdjustedQuantity");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "RemainingQuantity");
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ItemID";
-                       c.Caption = "ItemID";
-                       c.SetColVisible(false);
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ItemDetailName";
-                       c.Caption = @Resources.Resource.MaterialName;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "Type";
-                       c.Caption = @Resources.Resource.DocType;
-                       c.SetColVisible(false);
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "TypeName";
-                       c.Caption = @Resources.Resource.Type;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "Unit";
-                       c.Caption = @Resources.Resource.Unit;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "Quantity";
-                       c.Caption = @Resources.Resource.Quantity;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ExportQuantity";
-                       c.Caption = @Resources.Resource.TotalExportQuantity;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "LendQuantity";
-                       c.Caption = @Resources.Resource.TotalLendQuantity;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ReceivedQuantity";
-                       c.Caption = @Resources.Resource.ReceivedQuantity;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ReturnedQuantity";
-                       c.Caption = @Resources.Resource.ReturnedQuantity;
-                       c.Visible = true;
-                   });
+                settings.Name = "StatisticDynamic";
+                settings.KeyFieldName = "ItemID;Type";
+                settings.Width = Unit.Percentage(100);
+                settings.CallbackRouteValues = new { Controller = "SA", Action = "CallbackPivotGrid", Type = "Dynamic", DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo };
+                settings.CommandColumn.Visible = false;
+                settings.SettingsBehavior.AllowFocusedRow = true;
+                settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+                settings.Settings.VerticalScrollableHeight = 450;
+                settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+                settings.SettingsBehavior.AllowSelectByRowClick = true;
+                settings.Settings.ShowFilterRow = true;
+                settings.Settings.ShowFilterRowMenu = true;
+                settings.Settings.ShowFooter = true;
+                settings.SettingsBehavior.AllowFocusedRow = true;
+                settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+                settings.Settings.ShowFilterRow = true;
+                settings.Settings.ShowFilterRowMenu = true;
+                settings.Settings.ShowFilterRowMenuLikeItem = true;
+                settings.Settings.ShowGroupPanel = true;
+                settings.SettingsDetail.ShowDetailRow = true;
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Quantity");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ExportQuantity");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "LendQuantity");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ReceivedQuantity");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ReturnedQuantity");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "AdjustedQuantity");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "RemainingQuantity");
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ItemID";
+                    c.Caption = "ItemID";
+                    c.SetColVisible(false);
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ItemDetailName";
+                    c.Caption = @Resources.Resource.MaterialName;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "Type";
+                    c.Caption = @Resources.Resource.DocType;
+                    c.SetColVisible(false);
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "TypeName";
+                    c.Caption = @Resources.Resource.Type;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "Unit";
+                    c.Caption = @Resources.Resource.Unit;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "Quantity";
+                    c.Caption = @Resources.Resource.Quantity;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ExportQuantity";
+                    c.Caption = @Resources.Resource.TotalExportQuantity;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "LendQuantity";
+                    c.Caption = @Resources.Resource.TotalLendQuantity;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ReceivedQuantity";
+                    c.Caption = @Resources.Resource.ReceivedQuantity;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ReturnedQuantity";
+                    c.Caption = @Resources.Resource.ReturnedQuantity;
+                    c.Visible = true;
+                });
 
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "AdjustedQuantity";
-                       c.Caption = @Resources.Resource.AdjustedQuantity;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "RemainingQuantity";
-                       c.Caption = @Resources.Resource.RemainingQuantity;
-                       c.Visible = true;
-                   });
-                   settings.SetDetailRowTemplateContent(c =>
-                   {
-                       Html.RenderAction("GetDetailSADynamic", new { ItemDetailID = DataBinder.Eval(c.DataItem, "ItemID"), Type = DataBinder.Eval(c.DataItem, "Type"), DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo });
-                   });
-               });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "AdjustedQuantity";
+                    c.Caption = @Resources.Resource.AdjustedQuantity;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "RemainingQuantity";
+                    c.Caption = @Resources.Resource.RemainingQuantity;
+                    c.Visible = true;
+                });
+                settings.SetDetailRowTemplateContent(c =>
+                {
+                    Html.RenderAction("GetDetailSADynamic", new { ItemDetailID = DataBinder.Eval(c.DataItem, "ItemID"), Type = DataBinder.Eval(c.DataItem, "Type"), DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo });
+                });
+            });
             if (Result11 != null)
             {
                 grid.Bind((List<FEA_BusinessLogic.sp_GetSADynamicReport_Result>)Result11[0]).GetHtml();
@@ -1719,82 +1726,82 @@
         case "QueryDynamicInventory":
             Object[] Result5 = (Object[])Model;
             grid = Html.DevExpress().GridView(settings =>
-               {
+            {
 
-                   settings.Name = "QueryDynamicInventory" + ViewData["ID"];
-                   settings.KeyFieldName = "ItemDetailID";
-                   settings.Width = Unit.Percentage(100);
-                   settings.CallbackRouteValues = new { Controller = "ITInventory", Action = "CallbackDynamicInventory", DateTo = ViewData["DateTo"], DateFrom = ViewData["DateFrom"] };
-                   settings.CommandColumn.Visible = false;
-                   settings.SettingsBehavior.AllowFocusedRow = true;
-                   settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
-                   settings.Settings.VerticalScrollableHeight = 450;
-                   settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
-                   settings.SettingsBehavior.AllowSelectByRowClick = true;
-                   settings.Settings.ShowFilterRow = true;
-                   settings.Settings.ShowFilterRowMenu = true;
-                   settings.Settings.ShowFooter = true;
-                   settings.SettingsBehavior.AllowFocusedRow = true;
-                   settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
-                   settings.Settings.ShowFilterRow = true;
-                   settings.Settings.ShowFilterRowMenu = true;
-                   settings.Settings.ShowFilterRowMenuLikeItem = true;
-                   settings.Settings.ShowGroupPanel = true;
-                   settings.SettingsDetail.ShowDetailRow = true;
+                settings.Name = "QueryDynamicInventory" + ViewData["ID"];
+                settings.KeyFieldName = "ItemDetailID";
+                settings.Width = Unit.Percentage(100);
+                settings.CallbackRouteValues = new { Controller = "ITInventory", Action = "CallbackDynamicInventory", DateTo = ViewData["DateTo"], DateFrom = ViewData["DateFrom"] };
+                settings.CommandColumn.Visible = false;
+                settings.SettingsBehavior.AllowFocusedRow = true;
+                settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+                settings.Settings.VerticalScrollableHeight = 450;
+                settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+                settings.SettingsBehavior.AllowSelectByRowClick = true;
+                settings.Settings.ShowFilterRow = true;
+                settings.Settings.ShowFilterRowMenu = true;
+                settings.Settings.ShowFooter = true;
+                settings.SettingsBehavior.AllowFocusedRow = true;
+                settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+                settings.Settings.ShowFilterRow = true;
+                settings.Settings.ShowFilterRowMenu = true;
+                settings.Settings.ShowFilterRowMenuLikeItem = true;
+                settings.Settings.ShowGroupPanel = true;
+                settings.SettingsDetail.ShowDetailRow = true;
 
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ItemDetailID";
-                       c.Caption = "ItemDetailID";
-                       c.Visible = false;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ItemDetailName";
-                       c.Caption = @Resources.Resource.ItemNameDetail;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "BeginQuantity";
-                       c.Caption = @Resources.Resource.BeginQuantity;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "StockinQuantity";
-                       c.Caption = @Resources.Resource.StockinQuantity;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "StockOutQuantity";
-                       c.Caption = @Resources.Resource.StockoutQuantity;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "EndQuantity";
-                       c.Caption = @Resources.Resource.EndQuantity;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "InventoryQuantity";
-                       c.Caption = @Resources.Resource.InventoryQuantity;
-                       c.Visible = true;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "DifferentQuantity";
-                       c.Caption = @Resources.Resource.DifferentQuantity;
-                       c.Visible = true;
-                   });
-                   settings.SetDetailRowTemplateContent(c =>
-                   {
-                       Html.RenderAction("CallbackDetail", new { ItemDetailID = DataBinder.Eval(c.DataItem, "ItemDetailID") });
-                   });
-               });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ItemDetailID";
+                    c.Caption = "ItemDetailID";
+                    c.Visible = false;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ItemDetailName";
+                    c.Caption = @Resources.Resource.ItemNameDetail;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "BeginQuantity";
+                    c.Caption = @Resources.Resource.BeginQuantity;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "StockinQuantity";
+                    c.Caption = @Resources.Resource.StockinQuantity;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "StockOutQuantity";
+                    c.Caption = @Resources.Resource.StockoutQuantity;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "EndQuantity";
+                    c.Caption = @Resources.Resource.EndQuantity;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "InventoryQuantity";
+                    c.Caption = @Resources.Resource.InventoryQuantity;
+                    c.Visible = true;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "DifferentQuantity";
+                    c.Caption = @Resources.Resource.DifferentQuantity;
+                    c.Visible = true;
+                });
+                settings.SetDetailRowTemplateContent(c =>
+                {
+                    Html.RenderAction("CallbackDetail", new { ItemDetailID = DataBinder.Eval(c.DataItem, "ItemDetailID") });
+                });
+            });
             if (Result5 != null)
             {
                 grid.Bind((List<FEA_BusinessLogic.sp_GetDynamicInventory_Result>)Result5[0]).GetHtml();
@@ -1895,223 +1902,223 @@
             break;
         case "DynamicQueryPackingManifest":
             Html.DevExpress().GridView(settings =>
-               {
+            {
 
-                   settings.Name = "DynamicQueryPackingManifest";
-                   settings.KeyFieldName = "CustomerPO;PONo;ColorName;Size";
-                   settings.Width = Unit.Percentage(100);
-                   settings.CallbackRouteValues = new { Controller = "WarehouseArea", Action = "GetDynamicQueryPackingManifest", PoNumber = ViewData["PoNumber"], CustomerPO = ViewData["CustomerPO"], dtFrom = ViewData["dtFrom"], dtTo = ViewData["dtTo"], TypeQuery = ViewData["TypeQuery"], OrderState = ViewData["OrderState"] };
-                   settings.CommandColumn.Visible = false;
-                   settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
-                   settings.Settings.VerticalScrollableHeight = 450;
-                   settings.SettingsPager.Mode = GridViewPagerMode.ShowPager;
-                   settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
-                   settings.SettingsBehavior.AllowSelectByRowClick = true;
-                   settings.Settings.ShowFooter = true;
-                  // settings.Settings.UseFixedTableLayout = true;
-                 //  settings.SettingsBehavior.AllowFocusedRow = true;
-                   settings.Settings.ShowFilterRow = true;
-                   settings.Settings.ShowFilterRowMenu = true;
-                   settings.Settings.ShowFilterRowMenuLikeItem = true;
-                 //  settings.Settings.ShowGroupPanel = true;
-                   settings.SettingsDetail.ShowDetailRow = true;
-                   settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
-                   settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ContainerCount");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Quantity");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalQuantityNotConfirmed");
+                settings.Name = "DynamicQueryPackingManifest";
+                settings.KeyFieldName = "CustomerPO;PONo;ColorName;Size";
+                settings.Width = Unit.Percentage(100);
+                settings.CallbackRouteValues = new { Controller = "WarehouseArea", Action = "GetDynamicQueryPackingManifest", PoNumber = ViewData["PoNumber"], CustomerPO = ViewData["CustomerPO"], dtFrom = ViewData["dtFrom"], dtTo = ViewData["dtTo"], TypeQuery = ViewData["TypeQuery"], OrderState = ViewData["OrderState"] };
+                settings.CommandColumn.Visible = false;
+                settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
+                settings.Settings.VerticalScrollableHeight = 450;
+                settings.SettingsPager.Mode = GridViewPagerMode.ShowPager;
+                settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
+                settings.SettingsBehavior.AllowSelectByRowClick = true;
+                settings.Settings.ShowFooter = true;
+                // settings.Settings.UseFixedTableLayout = true;
+                //  settings.SettingsBehavior.AllowFocusedRow = true;
+                settings.Settings.ShowFilterRow = true;
+                settings.Settings.ShowFilterRowMenu = true;
+                settings.Settings.ShowFilterRowMenuLikeItem = true;
+                //  settings.Settings.ShowGroupPanel = true;
+                settings.SettingsDetail.ShowDetailRow = true;
+                settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ContainerCount");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Quantity");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalQuantityNotConfirmed");
 
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalContainerNotConfirmed");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalContainerConfirmed");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalReturnContainer");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalContainerImported");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalStockedInContainerFromERP");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "EndTotalContainer");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ContainerDifferences");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalExportItem");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalExportItemFromERP");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ContainerDifferencesBetweenWarehouseAndPacking");
-                   settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "QuantityDifferencesBetweenWarehouseAndPacking");
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "CustomerPO";
-                       c.Caption = @Resources.Resource.CustomerPO;
-                       c.Visible = true;
-                       c.Width = 80;
-                       c.FixedStyle = GridViewColumnFixedStyle.Left;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "PONo";
-                       c.Caption = "PO Number";
-                       c.Visible = true;
-                       c.FixedStyle = GridViewColumnFixedStyle.Left;
-                       c.Width = 80;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "InvoiceNo";
-                       c.Caption = "Invoice No";
-                       c.Visible = true;
-                       c.Width = 80;
-                       c.FixedStyle = GridViewColumnFixedStyle.Left;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "PackingManifestType";
-                       c.Caption = @Resources.Resource.Type;
-                       c.Visible = true;
-                       c.Width = 80;
-                       c.FixedStyle = GridViewColumnFixedStyle.Left;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "MainLine_";
-                       c.Caption = "PO Item#";
-                       c.Visible = true;
-                       c.Width = 80;
-                       c.FixedStyle = GridViewColumnFixedStyle.Left;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ShortDescription";
-                       c.Caption = "COMBO";
-                       c.Visible = true;
-                       c.Width = 80;
-                       c.FixedStyle = GridViewColumnFixedStyle.Left;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ColorName";
-                       c.Caption = "Color Name";
-                       c.Visible = true;
-                       c.Width = 80;
-                       c.FixedStyle = GridViewColumnFixedStyle.Left;
-                   });
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalContainerNotConfirmed");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalContainerConfirmed");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalReturnContainer");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalContainerImported");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalStockedInContainerFromERP");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "EndTotalContainer");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ContainerDifferences");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalExportItem");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "TotalExportItemFromERP");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "ContainerDifferencesBetweenWarehouseAndPacking");
+                settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "QuantityDifferencesBetweenWarehouseAndPacking");
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "CustomerPO";
+                    c.Caption = @Resources.Resource.CustomerPO;
+                    c.Visible = true;
+                    c.Width = 80;
+                    c.FixedStyle = GridViewColumnFixedStyle.Left;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "PONo";
+                    c.Caption = "PO Number";
+                    c.Visible = true;
+                    c.FixedStyle = GridViewColumnFixedStyle.Left;
+                    c.Width = 80;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "InvoiceNo";
+                    c.Caption = "Invoice No";
+                    c.Visible = true;
+                    c.Width = 80;
+                    c.FixedStyle = GridViewColumnFixedStyle.Left;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "PackingManifestType";
+                    c.Caption = @Resources.Resource.Type;
+                    c.Visible = true;
+                    c.Width = 80;
+                    c.FixedStyle = GridViewColumnFixedStyle.Left;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "MainLine_";
+                    c.Caption = "PO Item#";
+                    c.Visible = true;
+                    c.Width = 80;
+                    c.FixedStyle = GridViewColumnFixedStyle.Left;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ShortDescription";
+                    c.Caption = "COMBO";
+                    c.Visible = true;
+                    c.Width = 80;
+                    c.FixedStyle = GridViewColumnFixedStyle.Left;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ColorName";
+                    c.Caption = "Color Name";
+                    c.Visible = true;
+                    c.Width = 80;
+                    c.FixedStyle = GridViewColumnFixedStyle.Left;
+                });
 
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "Size";
-                       c.Caption = "Size";
-                       c.Visible = true;
-                       c.Width = 80;
-                       c.FixedStyle = GridViewColumnFixedStyle.Left;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ContainerCount";
-                       c.Caption = @Resources.Resource.ContainerCount;
-                       c.Visible = true;
-                       c.Width = 100;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "Quantity";
-                       c.Caption = @Resources.Resource.Quantity;
-                       c.Visible = true;
-                       c.Width = 80;
-                   });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "Size";
+                    c.Caption = "Size";
+                    c.Visible = true;
+                    c.Width = 80;
+                    c.FixedStyle = GridViewColumnFixedStyle.Left;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ContainerCount";
+                    c.Caption = @Resources.Resource.ContainerCount;
+                    c.Visible = true;
+                    c.Width = 100;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "Quantity";
+                    c.Caption = @Resources.Resource.Quantity;
+                    c.Visible = true;
+                    c.Width = 80;
+                });
 
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "TotalQuantityNotConfirmed";
-                       c.Caption = @Resources.Resource.TotalQuantityNotConfirmed;
-                       c.Visible = true;
-                       c.Width = 180;
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "TotalQuantityNotConfirmed";
+                    c.Caption = @Resources.Resource.TotalQuantityNotConfirmed;
+                    c.Visible = true;
+                    c.Width = 180;
 
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "TotalContainerNotConfirmed";
-                       c.Caption = @Resources.Resource.TotalContainerNotConfirmed;
-                       c.Visible = true;
-                       c.Width = 180;
-                   });
-
-
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "TotalContainerConfirmed";
-                       c.Caption = @Resources.Resource.TotalContainerConfirmed;
-                       c.Visible = true;
-                       c.Width = 180;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "TotalReturnContainer";
-                       c.Caption = @Resources.Resource.TotalReturnContainer;
-                       c.Visible = true;
-                       c.Width = 180;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "TotalContainerImported";
-                       c.Caption = @Resources.Resource.TotalContainerImported;
-                       c.Visible = true;
-                       c.Width = 180;
-                   });
-
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "TotalStockedInContainerFromERP";
-                       c.Caption = @Resources.Resource.TotalStockedInContainerFromERP;
-                       c.Visible = true;
-                       c.Width = 180;
-                   });
-
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "EndTotalContainer";
-                       c.Caption = @Resources.Resource.EndTotalContainer;
-                       c.Visible = true;
-                       c.Width = 180;
-                   });
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "TotalContainerNotConfirmed";
+                    c.Caption = @Resources.Resource.TotalContainerNotConfirmed;
+                    c.Visible = true;
+                    c.Width = 180;
+                });
 
 
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ContainerDifferences";
-                       c.Caption = @Resources.Resource.ContainerDifferences;
-                       c.Visible = true;
-                       c.Width = 180;
-                   });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "TotalContainerConfirmed";
+                    c.Caption = @Resources.Resource.TotalContainerConfirmed;
+                    c.Visible = true;
+                    c.Width = 180;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "TotalReturnContainer";
+                    c.Caption = @Resources.Resource.TotalReturnContainer;
+                    c.Visible = true;
+                    c.Width = 180;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "TotalContainerImported";
+                    c.Caption = @Resources.Resource.TotalContainerImported;
+                    c.Visible = true;
+                    c.Width = 180;
+                });
 
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "TotalExportItem";
-                       c.Caption = Resources.Resource.TotalExportItem;
-                       c.Visible = true;
-                       c.Width = 180;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "TotalExportItemFromERP";
-                       c.Caption = Resources.Resource.TotalExportItemFromERP;
-                       c.Visible = true;
-                       c.Width = 180;
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "TotalStockedInContainerFromERP";
+                    c.Caption = @Resources.Resource.TotalStockedInContainerFromERP;
+                    c.Visible = true;
+                    c.Width = 180;
+                });
 
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "ContainerDifferencesBetweenWarehouseAndPacking";
-                       c.Caption = @Resources.Resource.ContainerDifferencesBetweenWarehouseAndPacking;
-                       c.Visible = true;
-                       c.Width = 180;
-                   });
-                   settings.Columns.Add(c =>
-                   {
-                       c.FieldName = "QuantityDifferencesBetweenWarehouseAndPacking";
-                       c.Caption = @Resources.Resource.QuantityDifferencesBetweenWarehouseAndPacking;
-                       c.Visible = true;
-                       c.Width = 180;
-                   });
-                   settings.SetDetailRowTemplateContent(c =>
-                   {
-                       Html.RenderAction("LoadPackingManifestDetailDetailOnQuery", new { PoNumber = DataBinder.Eval(c.DataItem, "PONo"), CustomerPO = DataBinder.Eval(c.DataItem, "CustomerPO"), dtFrom = ViewData["dtFrom"], dtTo = ViewData["dtTo"], TypeQuery = "Normal", Color = DataBinder.Eval(c.DataItem, "ColorName"), Size = DataBinder.Eval(c.DataItem, "Size") });
-                   });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "EndTotalContainer";
+                    c.Caption = @Resources.Resource.EndTotalContainer;
+                    c.Visible = true;
+                    c.Width = 180;
+                });
 
 
-               }).Bind(Model).GetHtml();
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ContainerDifferences";
+                    c.Caption = @Resources.Resource.ContainerDifferences;
+                    c.Visible = true;
+                    c.Width = 180;
+                });
+
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "TotalExportItem";
+                    c.Caption = Resources.Resource.TotalExportItem;
+                    c.Visible = true;
+                    c.Width = 180;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "TotalExportItemFromERP";
+                    c.Caption = Resources.Resource.TotalExportItemFromERP;
+                    c.Visible = true;
+                    c.Width = 180;
+
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "ContainerDifferencesBetweenWarehouseAndPacking";
+                    c.Caption = @Resources.Resource.ContainerDifferencesBetweenWarehouseAndPacking;
+                    c.Visible = true;
+                    c.Width = 180;
+                });
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "QuantityDifferencesBetweenWarehouseAndPacking";
+                    c.Caption = @Resources.Resource.QuantityDifferencesBetweenWarehouseAndPacking;
+                    c.Visible = true;
+                    c.Width = 180;
+                });
+                settings.SetDetailRowTemplateContent(c =>
+                {
+                    Html.RenderAction("LoadPackingManifestDetailDetailOnQuery", new { PoNumber = DataBinder.Eval(c.DataItem, "PONo"), CustomerPO = DataBinder.Eval(c.DataItem, "CustomerPO"), dtFrom = ViewData["dtFrom"], dtTo = ViewData["dtTo"], TypeQuery = "Normal", Color = DataBinder.Eval(c.DataItem, "ColorName"), Size = DataBinder.Eval(c.DataItem, "Size") });
+                });
+
+
+            }).Bind(Model).GetHtml();
 
             break;
         case "TotalSheldReport":
@@ -2234,11 +2241,11 @@
 
                 settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
                 settings.Columns.Add(column =>
-                    {
-                        column.FieldName = "ID";
-                        column.Visible = false;
+                {
+                    column.FieldName = "ID";
+                    column.Visible = false;
 
-                    });
+                });
 
                 settings.Columns.Add(column =>
                 {

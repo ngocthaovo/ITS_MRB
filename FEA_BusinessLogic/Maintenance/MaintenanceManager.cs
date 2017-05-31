@@ -27,9 +27,9 @@ namespace FEA_BusinessLogic.Maintenance
         }
 
         #region Get data
-        public List<sp_GetMaintenanceApproveDocument_Result> GetDocumentForApprove(int Status, int UserID)
+        public List<sp_GetMaintenanceApproveDocument_Result> GetDocumentForApprove(int Status, int UserID, string strDocType)
         {
-            return db.sp_GetMaintenanceApproveDocument(Status, UserID).ToList();
+            return db.sp_GetMaintenanceApproveDocument(Status, UserID,strDocType).ToList();
         }
 
         public MNRequestMain GetRequest(string sRequestID)
@@ -37,14 +37,14 @@ namespace FEA_BusinessLogic.Maintenance
             return db.MNRequestMains.Where(i => i.ID == sRequestID || i.OrderCode == sRequestID).SingleOrDefault();
         }
 
-        public List<MNRequestMain> GetRequestByUser(int inUserID)
+        public List<MNRequestMain> GetRequestByUser(int inUserID, string strType)
         {
-            return db.MNRequestMains.Where(i => i.CreatorID == inUserID).OrderByDescending(i=>i.OrderCode).ToList();
+            return db.MNRequestMains.Where(i => (i.CreatorID == inUserID) && (i.DocType==strType)).OrderByDescending(i=>i.OrderCode).ToList();
         }
 
-        public List<MNRequestMain> GetRequestForStockIn()
+        public List<MNRequestMain> GetRequestForStockIn(string strDocType)
         {
-           return db.MNRequestMains.Where(i => i.Status == 5).OrderBy(x=>x.ConfirmDate).ToList();
+           return db.MNRequestMains.Where(i => (i.Status == 5) && (i.DocType == strDocType.ToUpper())).OrderBy(x=>x.ConfirmDate).ToList();
         }
         public List<sp_GetMaintenanceDetailsQuantity_Result> GetDetailListQuantity(string ID)
         {
@@ -60,9 +60,9 @@ namespace FEA_BusinessLogic.Maintenance
             return db.sp_GetMNSummaryReport(DateFrom, DateTo, DocumentType).ToList();
         }
 
-        public List<MNRequestMain> GetConfirmedRequest(int userID)
+        public List<MNRequestMain> GetConfirmedRequest(int userID,string strType)
         {
-            return db.MNRequestMains.Where(i => (i.ConfirmID == userID) && (i.Status == 4 || i.Status == 5)).OrderByDescending(i => i.ConfirmDate).ToList();
+            return db.MNRequestMains.Where(i => (i.ConfirmID == userID) && (i.Status == 4 || i.Status == 5) && (i.DocType==strType)).OrderByDescending(i => i.ConfirmDate).ToList();
         }
 
         public List<MNRequestMainDetail> GetConfirmedRequestDetails(string ID)
