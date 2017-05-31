@@ -26,7 +26,6 @@ namespace FEA_ITS_Site.Models
         public string UnitID { get; set; }
         public string UnitName { get; set; }
         public int Quantity { get; set; }
-        public decimal SAQuantity { get; set; }//Added by Tony (2017-05-29)
         public decimal Price { get; set; }
         public decimal Amount { get; set; }
         public int QuanInStock { get; set; }
@@ -41,7 +40,7 @@ namespace FEA_ITS_Site.Models
 
         // For Sa Detail
         public string Operate { get; set; }
-      
+
         // for Ga detail
         public bool IsBroken { get; set; } // the item have ben broken so thay want to return and receive new equip
     }
