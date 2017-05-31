@@ -148,11 +148,11 @@ namespace FEA_ITS_Site.Controllers
                 NumberAutoIncrease = 8000;
             //Added by Tony (2017-04-19) Begin 
             else if (companyCode == "7910" && DocumentTypeName == FEA_ITS_Site.Models.Helper.TagPrefixParameter.MAINTENANCE)
-                NumberAutoIncrease = 6000;
+                NumberAutoIncrease = 6100;
             //End
             //Added by Tony (2017-05-29) 
             else if (companyCode == "7910" && DocumentTypeName == FEA_ITS_Site.Models.Helper.TagPrefixParameter.PRODUCTION)
-                NumberAutoIncrease = 5000;
+                NumberAutoIncrease = 6200;
 
             string OrderCode = string.Empty;
             string Prefix = string.Empty;
