@@ -327,7 +327,7 @@ namespace FEA_ITS_Site.Controllers
                         Note = i.Des,
                         Sex = i.Gender,
                         ReturnDate = i.DeliveryDate,
-                        Quantity = i.Quantity,
+                        Quantity = i.SAQuantity, //Added by Tony (2017-05-31) Cho phép lưu số lẻ
                         UnitID = i.UnitID,
                         Temp1 = "",
                         Temp2 = "",
@@ -418,7 +418,7 @@ namespace FEA_ITS_Site.Controllers
 
                     Des = dvResDetailItem.Note,
                     Gender = dvResDetailItem.Sex,
-                    Quantity = (int)dvResDetailItem.Quantity.Value,
+                    SAQuantity = Convert.ToDecimal(string.Format("{0:0.00}", dvResDetailItem.Quantity.Value)), //Added by Tony (2017-05-31). Hiển thị số lẻ trên grid view detail.
                     DeliveryDate = dvResDetailItem.ReturnDate,
 
 
@@ -537,7 +537,7 @@ namespace FEA_ITS_Site.Controllers
         /// <param name="Description"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult AddItemToOrder(int OrderType, string CostCenterCodeID, string ItemID, string ItemDetailID, string Gender, string Spec, string Description, DateTime? ReturnedDate, int? Quantity = 0, string ExportItemAdjustID = "")
+        public ActionResult AddItemToOrder(int OrderType, string CostCenterCodeID, string ItemID, string ItemDetailID, string Gender, string Spec, string Description, DateTime? ReturnedDate, decimal? Quantity = 0, string ExportItemAdjustID = "")
         {
 
             if (ItemDetailID.Trim().Length == 0 || ItemDetailID == null
@@ -640,7 +640,7 @@ namespace FEA_ITS_Site.Controllers
 
                                 Des = Description,
                                 Gender = Gender,
-                                Quantity = Quantity.Value,
+                                SAQuantity = Quantity.Value,  //Modify by Tony (2017-05-31). Cho phép nhập số lẻ.
                                 DeliveryDate = ReturnedDate,
 
 
@@ -998,7 +998,9 @@ namespace FEA_ITS_Site.Controllers
                                     ExportItemDetailID = iInfo.ItemDetailID,
                                     Note = iInfo.Des,
                                     OperationType = iInfo.Operate,
-                                    Quantity = iInfo.SAQuantity,
+
+                                    Quantity = iInfo.SAQuantity, //Modify by Tony (2017-05-29)
+
                                     Temp1 = item.OrderType.ToString(), // assign OrderType for Temp1 column
                                     Temp2 = ""
                                 };
