@@ -311,6 +311,13 @@ namespace FEA_BusinessLogic
             return lstItem.Count();
         }
 
+        //Added by Tony(2017-06-05) 
+        public List<DeviceRegistration> GetListItemToProcess(List<string> IDs)
+        {
+            List<DeviceRegistration> lstItem = db.DeviceRegistrations.Where(i => IDs.Contains(i.ID) || IDs.Contains(i.OrderCode)).ToList();
+            return lstItem;
+        }
+
         /// <summary>
         /// Add by Jason - Get All Order  in System(except:deleted)
         /// </summary>

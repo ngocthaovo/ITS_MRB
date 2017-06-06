@@ -250,7 +250,12 @@ namespace FEA_BusinessLogic
             db.SaveChanges();
             return lstItem.Count();
         }
-
+        //Added by Tony (2017-06-05)
+        public List<HardwareRequirement> GetListItemToProcess(List<string> IDs)
+        {
+            List<HardwareRequirement> lstItem = db.HardwareRequirements.Where(i => IDs.Contains(i.ID) || IDs.Contains(i.OrderCode)).ToList();
+            return lstItem;
+        }
 
 
         /// <summary>

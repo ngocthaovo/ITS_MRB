@@ -682,6 +682,7 @@ namespace FEA_ITS_Site.Controllers
 
                             if (iResult > 0)
                             {
+                                SendMailToUser(lstItem, false, DateTime.Now);
                                 ViewBag.EditStatus = Models.Helper.EditItemStatus.success;
                                 ViewBag.EditInfo = Resources.Resource.msgUpdateSuccess;
                             }
@@ -946,6 +947,7 @@ namespace FEA_ITS_Site.Controllers
 
                         if (iResult > 0)
                         {
+                            SendMailToUser(lstItem, true, dtCompleteEstimateDate);
                             ViewBag.EditStatus = Models.Helper.EditItemStatus.success;
                             ViewBag.EditInfo = Resources.Resource.msgUpdateSuccess;
                         }
@@ -969,6 +971,34 @@ namespace FEA_ITS_Site.Controllers
             }
 
             return View();
+        }
+
+        public void SendMailToUser(String lstItem,  bool isProcess, DateTime dtCompleteDate)
+        {
+            Dictionary<string, string> values = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(lstItem);
+            List<string> lstToProcess;
+            User _UserProcess = new FEA_BusinessLogic.UserManager().GetItem(Helper.UserLoginInfo.UserId);
+            lstToProcess   = values.Where(i => i.Value == Models.Helper.TagPrefixParameter.DEVICE_REGISTRATION).Select(i => i.Key).ToList<string>();
+            if(lstToProcess!=null)
+            {
+                List<DeviceRegistration> drItem = new DeviceRegistrationManager().GetListItemToProcess(lstToProcess);
+                foreach (DeviceRegistration item in drItem)
+                {
+                    string _content = string.Format( (isProcess ?  Resources.Resource.bodyProcessMail: Resources.Resource.bodyCompleteMail),item.OrderCode,item.User1.UserName,_UserProcess.UserName,_UserProcess.UserNameEN,_UserProcess.CostCenter.Remark,dtCompleteDate,_UserProcess.UserPhone,item.Reason);
+                    FEA_Ultil.FEASendMail.SendMailMessage(item.User1.UserEmail, "", "", "[ITS] "+item.OrderCode+" Service registration", _content);
+                }
+            }
+            lstToProcess = values.Where(i => i.Value == Models.Helper.TagPrefixParameter.HARD_REGISTRATION).Select(i => i.Key).ToList<string>();
+            if(lstToProcess !=null)
+            {
+                List<HardwareRequirement> hrItem = new HardwareRequirementManager().GetListItemToProcess(lstToProcess);
+                foreach(HardwareRequirement item in hrItem)
+                {
+                    string _content = string.Format((isProcess ? Resources.Resource.bodyProcessMail : Resources.Resource.bodyCompleteMail), item.OrderCode, item.User1.UserName, _UserProcess.UserName, _UserProcess.UserNameEN, _UserProcess.CostCenter.Remark, dtCompleteDate,_UserProcess.UserPhone,item.Reason);
+                    FEA_Ultil.FEASendMail.SendMailMessage(item.User1.UserEmail, "", "", "[ITS] "+ item.OrderCode+" Hardware requirement", _content);
+                }
+            }
+
         }
 
     }
