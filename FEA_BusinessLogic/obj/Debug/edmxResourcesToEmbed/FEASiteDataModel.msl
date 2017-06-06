@@ -1431,6 +1431,7 @@
     <EntitySetMapping Name="GAItems">
       <EntityTypeMapping TypeName="FEA_ITSModel.GAItem">
         <MappingFragment StoreEntitySet="GAItem">
+          <ScalarProperty Name="CMCKCode" ColumnName="CMCKCode" />
           <ScalarProperty Name="PRCode" ColumnName="PRCode" />
           <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
           <ScalarProperty Name="OrderType" ColumnName="OrderType" />
@@ -1768,29 +1769,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_CheckMaintenanceInventory" FunctionName="FEA_ITSModel.Store.sp_CheckMaintenanceInventory">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_CheckMaintenanceInventory_Result">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
-          <ScalarProperty Name="ITSInventory" ColumnName="ITSInventory" />
-          <ScalarProperty Name="ERPInventory" ColumnName="ERPInventory" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_GetMaintenanceApproveDocument" FunctionName="FEA_ITSModel.Store.sp_GetMaintenanceApproveDocument">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetMaintenanceApproveDocument_Result">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
-          <ScalarProperty Name="Creator" ColumnName="Creator" />
-          <ScalarProperty Name="Department" ColumnName="Department" />
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="Reason" ColumnName="Reason" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_GetMaintenanceDetailsQuantity" FunctionName="FEA_ITSModel.Store.sp_GetMaintenanceDetailsQuantity">
       <ResultMapping>
         <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetMaintenanceDetailsQuantity_Result">
@@ -1906,6 +1884,29 @@
           <ScalarProperty Name="Temp1" ColumnName="Temp1" />
           <ScalarProperty Name="Temp2" ColumnName="Temp2" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetMaintenanceApproveDocument" FunctionName="FEA_ITSModel.Store.sp_GetMaintenanceApproveDocument">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetMaintenanceApproveDocument_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CheckMaintenanceInventory" FunctionName="FEA_ITSModel.Store.sp_CheckMaintenanceInventory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_CheckMaintenanceInventory_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ITSInventory" ColumnName="ITSInventory" />
+          <ScalarProperty Name="ERPInventory" ColumnName="ERPInventory" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

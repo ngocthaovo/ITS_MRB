@@ -818,24 +818,6 @@ namespace FEA_BusinessLogic
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CheckCancelConfirmMNStockIn_Result>("sp_CheckCancelConfirmMNStockIn", orderCodeParameter);
         }
     
-        public virtual ObjectResult<sp_CheckMaintenanceInventory_Result> sp_CheckMaintenanceInventory()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CheckMaintenanceInventory_Result>("sp_CheckMaintenanceInventory");
-        }
-    
-        public virtual ObjectResult<sp_GetMaintenanceApproveDocument_Result> sp_GetMaintenanceApproveDocument(Nullable<int> status, Nullable<int> userID)
-        {
-            var statusParameter = status.HasValue ?
-                new ObjectParameter("Status", status) :
-                new ObjectParameter("Status", typeof(int));
-    
-            var userIDParameter = userID.HasValue ?
-                new ObjectParameter("UserID", userID) :
-                new ObjectParameter("UserID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetMaintenanceApproveDocument_Result>("sp_GetMaintenanceApproveDocument", statusParameter, userIDParameter);
-        }
-    
         public virtual ObjectResult<sp_GetMaintenanceDetailsQuantity_Result> sp_GetMaintenanceDetailsQuantity(string iD)
         {
             var iDParameter = iD != null ?
@@ -959,6 +941,32 @@ namespace FEA_BusinessLogic
                 new ObjectParameter("ItemID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetItemDetailName_Result>("sp_GetItemDetailName", requestMainParameter, itemIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_GetMaintenanceApproveDocument_Result> sp_GetMaintenanceApproveDocument(Nullable<int> status, Nullable<int> userID, string docType)
+        {
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var docTypeParameter = docType != null ?
+                new ObjectParameter("DocType", docType) :
+                new ObjectParameter("DocType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetMaintenanceApproveDocument_Result>("sp_GetMaintenanceApproveDocument", statusParameter, userIDParameter, docTypeParameter);
+        }
+    
+        public virtual ObjectResult<sp_CheckMaintenanceInventory_Result> sp_CheckMaintenanceInventory(string docType)
+        {
+            var docTypeParameter = docType != null ?
+                new ObjectParameter("DocType", docType) :
+                new ObjectParameter("DocType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CheckMaintenanceInventory_Result>("sp_CheckMaintenanceInventory", docTypeParameter);
         }
     }
 }

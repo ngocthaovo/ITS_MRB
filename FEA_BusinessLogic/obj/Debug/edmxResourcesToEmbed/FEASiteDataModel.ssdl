@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="FEA_ITSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="FEA_ITSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="ComponentDesign">
     <Key>
       <PropertyRef Name="CD_ID" />
@@ -227,6 +227,7 @@
     <Property Name="OrderType" Type="int" />
     <Property Name="DeliveryDate" Type="date" />
     <Property Name="PRCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="CMCKCode" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="GAItemDetail">
     <Key>
@@ -2702,7 +2703,9 @@ warning 6002: The table/view 'ITS_TEST.dbo.vw_GetOrderFromERP' does not have a p
     <Parameter Name="CreateDate" Type="datetime" Mode="In" />
     <Parameter Name="Quantity" Type="int" Mode="In" />
   </Function>
-  <Function Name="sp_CheckMaintenanceInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CheckMaintenanceInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocType" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_CopyGAAdjustment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ToMonth" Type="datetime" Mode="In" />
     <Parameter Name="CreateTime" Type="datetime" Mode="In" />
@@ -2837,6 +2840,7 @@ warning 6002: The table/view 'ITS_TEST.dbo.vw_GetOrderFromERP' does not have a p
   <Function Name="sp_GetMaintenanceApproveDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Status" Type="int" Mode="In" />
     <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="DocType" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_GetMaintenanceDetailsQuantity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="nvarchar" Mode="In" />

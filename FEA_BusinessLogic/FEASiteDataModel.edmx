@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FEA_ITSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FEA_ITSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ComponentDesign">
           <Key>
             <PropertyRef Name="CD_ID" />
@@ -232,6 +232,7 @@
           <Property Name="OrderType" Type="int" />
           <Property Name="DeliveryDate" Type="date" />
           <Property Name="PRCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CMCKCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="GAItemDetail">
           <Key>
@@ -2707,7 +2708,9 @@ warning 6002: The table/view 'ITS_TEST.dbo.vw_GetOrderFromERP' does not have a p
           <Parameter Name="CreateDate" Type="datetime" Mode="In" />
           <Parameter Name="Quantity" Type="int" Mode="In" />
         </Function>
-        <Function Name="sp_CheckMaintenanceInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_CheckMaintenanceInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DocType" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_CopyGAAdjustment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ToMonth" Type="datetime" Mode="In" />
           <Parameter Name="CreateTime" Type="datetime" Mode="In" />
@@ -2842,6 +2845,7 @@ warning 6002: The table/view 'ITS_TEST.dbo.vw_GetOrderFromERP' does not have a p
         <Function Name="sp_GetMaintenanceApproveDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Status" Type="int" Mode="In" />
           <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="DocType" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_GetMaintenanceDetailsQuantity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="nvarchar" Mode="In" />
@@ -4787,11 +4791,6 @@ FROM [dbo].[vw_GetOrderFromERP] AS [vw_GetOrderFromERP]</DefiningQuery>
           <FunctionImport Name="sp_CheckCancelConfirmMNStockIn" ReturnType="Collection(FEA_ITSModel.sp_CheckCancelConfirmMNStockIn_Result)">
           <Parameter Name="OrderCode" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_CheckMaintenanceInventory" ReturnType="Collection(FEA_ITSModel.sp_CheckMaintenanceInventory_Result)" />
-          <FunctionImport Name="sp_GetMaintenanceApproveDocument" ReturnType="Collection(FEA_ITSModel.sp_GetMaintenanceApproveDocument_Result)">
-            <Parameter Name="Status" Mode="In" Type="Int32" />
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="sp_GetMaintenanceDetailsQuantity" ReturnType="Collection(FEA_ITSModel.sp_GetMaintenanceDetailsQuantity_Result)">
           <Parameter Name="ID" Mode="In" Type="String" />
           </FunctionImport>
@@ -4830,6 +4829,14 @@ FROM [dbo].[vw_GetOrderFromERP] AS [vw_GetOrderFromERP]</DefiningQuery>
           <FunctionImport Name="sp_GetItemDetailName" ReturnType="Collection(FEA_ITSModel.sp_GetItemDetailName_Result)">
             <Parameter Name="RequestMain" Mode="In" Type="String" />
             <Parameter Name="ItemID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetMaintenanceApproveDocument" ReturnType="Collection(FEA_ITSModel.sp_GetMaintenanceApproveDocument_Result)">
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="DocType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CheckMaintenanceInventory" ReturnType="Collection(FEA_ITSModel.sp_CheckMaintenanceInventory_Result)">
+            <Parameter Name="DocType" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="sp_GetFirstApprover_Result">
@@ -6856,6 +6863,7 @@ FROM [dbo].[vw_GetOrderFromERP] AS [vw_GetOrderFromERP]</DefiningQuery>
           <NavigationProperty Name="Currency" Relationship="FEA_ITSModel.FK_GAITEM_REFERENCE_CURRENCY" FromRole="GAItem" ToRole="Currency" />
           <NavigationProperty Name="User" Relationship="FEA_ITSModel.FK_GAITEM_REFERENCE_USER" FromRole="GAItem" ToRole="User" />
           <NavigationProperty Name="GAItemDetails" Relationship="FEA_ITSModel.FK_GAITEMDE_REFERENCE_GAITEM" FromRole="GAItem" ToRole="GAItemDetail" />
+          <Property Name="CMCKCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_GAITEM_REFERENCE_CURRENCY">
           <End Type="FEA_ITSModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -7840,21 +7848,6 @@ FROM [dbo].[vw_GetOrderFromERP] AS [vw_GetOrderFromERP]</DefiningQuery>
           <Property Type="String" Name="ItemDetailName" Nullable="true" MaxLength="255" />
           <Property Type="Decimal" Name="DifferentQuantity" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
-        <ComplexType Name="sp_CheckMaintenanceInventory_Result">
-          <Property Type="String" Name="ID" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="ItemDetailName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Unit" Nullable="false" MaxLength="30" />
-          <Property Type="Decimal" Name="ITSInventory" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="ERPInventory" Nullable="true" Precision="38" Scale="6" />
-        </ComplexType>
-        <ComplexType Name="sp_GetMaintenanceApproveDocument_Result">
-          <Property Type="String" Name="ID" Nullable="false" MaxLength="36" />
-          <Property Type="String" Name="OrderCode" Nullable="true" MaxLength="36" />
-          <Property Type="String" Name="Creator" Nullable="false" MaxLength="512" />
-          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
-          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
-        </ComplexType>
         <ComplexType Name="sp_GetMaintenanceDetailsQuantity_Result">
           <Property Type="String" Name="ItemDetailID" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="ItemDetailName" Nullable="true" MaxLength="255" />
@@ -7939,6 +7932,21 @@ FROM [dbo].[vw_GetOrderFromERP] AS [vw_GetOrderFromERP]</DefiningQuery>
           <Property Type="String" Name="Temp1" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="Temp2" Nullable="true" MaxLength="255" />
           <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_GetMaintenanceApproveDocument_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="36" />
+          <Property Type="String" Name="OrderCode" Nullable="true" MaxLength="36" />
+          <Property Type="String" Name="Creator" Nullable="false" MaxLength="512" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_CheckMaintenanceInventory_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ItemDetailName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Unit" Nullable="false" MaxLength="30" />
+          <Property Type="Decimal" Name="ITSInventory" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="ERPInventory" Nullable="true" Precision="38" Scale="6" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -9376,6 +9384,7 @@ FROM [dbo].[vw_GetOrderFromERP] AS [vw_GetOrderFromERP]</DefiningQuery>
           <EntitySetMapping Name="GAItems">
             <EntityTypeMapping TypeName="FEA_ITSModel.GAItem">
               <MappingFragment StoreEntitySet="GAItem">
+                <ScalarProperty Name="CMCKCode" ColumnName="CMCKCode" />
                 <ScalarProperty Name="PRCode" ColumnName="PRCode" />
                 <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
                 <ScalarProperty Name="OrderType" ColumnName="OrderType" />
@@ -9713,29 +9722,6 @@ FROM [dbo].[vw_GetOrderFromERP] AS [vw_GetOrderFromERP]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_CheckMaintenanceInventory" FunctionName="FEA_ITSModel.Store.sp_CheckMaintenanceInventory">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="FEA_ITSModel.sp_CheckMaintenanceInventory_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="ITSInventory" ColumnName="ITSInventory" />
-                <ScalarProperty Name="ERPInventory" ColumnName="ERPInventory" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_GetMaintenanceApproveDocument" FunctionName="FEA_ITSModel.Store.sp_GetMaintenanceApproveDocument">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetMaintenanceApproveDocument_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
-                <ScalarProperty Name="Creator" ColumnName="Creator" />
-                <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_GetMaintenanceDetailsQuantity" FunctionName="FEA_ITSModel.Store.sp_GetMaintenanceDetailsQuantity">
             <ResultMapping>
               <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetMaintenanceDetailsQuantity_Result">
@@ -9851,6 +9837,29 @@ FROM [dbo].[vw_GetOrderFromERP] AS [vw_GetOrderFromERP]</DefiningQuery>
                 <ScalarProperty Name="Temp1" ColumnName="Temp1" />
                 <ScalarProperty Name="Temp2" ColumnName="Temp2" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetMaintenanceApproveDocument" FunctionName="FEA_ITSModel.Store.sp_GetMaintenanceApproveDocument">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FEA_ITSModel.sp_GetMaintenanceApproveDocument_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CheckMaintenanceInventory" FunctionName="FEA_ITSModel.Store.sp_CheckMaintenanceInventory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FEA_ITSModel.sp_CheckMaintenanceInventory_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemDetailName" ColumnName="ItemDetailName" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ITSInventory" ColumnName="ITSInventory" />
+                <ScalarProperty Name="ERPInventory" ColumnName="ERPInventory" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

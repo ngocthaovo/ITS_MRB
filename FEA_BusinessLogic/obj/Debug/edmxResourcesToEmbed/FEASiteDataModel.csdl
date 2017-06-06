@@ -1152,11 +1152,6 @@
     <FunctionImport Name="sp_CheckCancelConfirmMNStockIn" ReturnType="Collection(FEA_ITSModel.sp_CheckCancelConfirmMNStockIn_Result)">
       <Parameter Name="OrderCode" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_CheckMaintenanceInventory" ReturnType="Collection(FEA_ITSModel.sp_CheckMaintenanceInventory_Result)" />
-    <FunctionImport Name="sp_GetMaintenanceApproveDocument" ReturnType="Collection(FEA_ITSModel.sp_GetMaintenanceApproveDocument_Result)">
-      <Parameter Name="Status" Mode="In" Type="Int32" />
-      <Parameter Name="UserID" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="sp_GetMaintenanceDetailsQuantity" ReturnType="Collection(FEA_ITSModel.sp_GetMaintenanceDetailsQuantity_Result)">
       <Parameter Name="ID" Mode="In" Type="String" />
     </FunctionImport>
@@ -1195,6 +1190,14 @@
     <FunctionImport Name="sp_GetItemDetailName" ReturnType="Collection(FEA_ITSModel.sp_GetItemDetailName_Result)">
       <Parameter Name="RequestMain" Mode="In" Type="String" />
       <Parameter Name="ItemID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetMaintenanceApproveDocument" ReturnType="Collection(FEA_ITSModel.sp_GetMaintenanceApproveDocument_Result)">
+      <Parameter Name="Status" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="DocType" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CheckMaintenanceInventory" ReturnType="Collection(FEA_ITSModel.sp_CheckMaintenanceInventory_Result)">
+      <Parameter Name="DocType" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_GetFirstApprover_Result">
@@ -3221,6 +3224,7 @@
     <NavigationProperty Name="Currency" Relationship="FEA_ITSModel.FK_GAITEM_REFERENCE_CURRENCY" FromRole="GAItem" ToRole="Currency" />
     <NavigationProperty Name="User" Relationship="FEA_ITSModel.FK_GAITEM_REFERENCE_USER" FromRole="GAItem" ToRole="User" />
     <NavigationProperty Name="GAItemDetails" Relationship="FEA_ITSModel.FK_GAITEMDE_REFERENCE_GAITEM" FromRole="GAItem" ToRole="GAItemDetail" />
+    <Property Name="CMCKCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_GAITEM_REFERENCE_CURRENCY">
     <End Type="FEA_ITSModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -4205,21 +4209,6 @@
     <Property Type="String" Name="ItemDetailName" Nullable="true" MaxLength="255" />
     <Property Type="Decimal" Name="DifferentQuantity" Nullable="true" Precision="38" Scale="2" />
   </ComplexType>
-  <ComplexType Name="sp_CheckMaintenanceInventory_Result">
-    <Property Type="String" Name="ID" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="ItemDetailName" Nullable="true" MaxLength="255" />
-    <Property Type="String" Name="Unit" Nullable="false" MaxLength="30" />
-    <Property Type="Decimal" Name="ITSInventory" Nullable="true" Precision="38" Scale="2" />
-    <Property Type="Decimal" Name="ERPInventory" Nullable="true" Precision="38" Scale="6" />
-  </ComplexType>
-  <ComplexType Name="sp_GetMaintenanceApproveDocument_Result">
-    <Property Type="String" Name="ID" Nullable="false" MaxLength="36" />
-    <Property Type="String" Name="OrderCode" Nullable="true" MaxLength="36" />
-    <Property Type="String" Name="Creator" Nullable="false" MaxLength="512" />
-    <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
-    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
-    <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
-  </ComplexType>
   <ComplexType Name="sp_GetMaintenanceDetailsQuantity_Result">
     <Property Type="String" Name="ItemDetailID" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="ItemDetailName" Nullable="true" MaxLength="255" />
@@ -4304,5 +4293,20 @@
     <Property Type="String" Name="Temp1" Nullable="true" MaxLength="255" />
     <Property Type="String" Name="Temp2" Nullable="true" MaxLength="255" />
     <Property Type="Int32" Name="Status" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetMaintenanceApproveDocument_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="36" />
+    <Property Type="String" Name="OrderCode" Nullable="true" MaxLength="36" />
+    <Property Type="String" Name="Creator" Nullable="false" MaxLength="512" />
+    <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="sp_CheckMaintenanceInventory_Result">
+    <Property Type="String" Name="ID" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ItemDetailName" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Unit" Nullable="false" MaxLength="30" />
+    <Property Type="Decimal" Name="ITSInventory" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="ERPInventory" Nullable="true" Precision="38" Scale="6" />
   </ComplexType>
 </Schema>
