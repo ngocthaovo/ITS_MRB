@@ -985,7 +985,7 @@ namespace FEA_ITS_Site.Controllers
                 foreach (DeviceRegistration item in drItem)
                 {
                     string _content = string.Format( (isProcess ?  Resources.Resource.bodyProcessMail: Resources.Resource.bodyCompleteMail),item.OrderCode,item.User1.UserName,_UserProcess.UserName,_UserProcess.UserNameEN,_UserProcess.CostCenter.Remark,dtCompleteDate,_UserProcess.UserPhone,item.Reason);
-                    FEA_Ultil.FEASendMail.SendMailMessage(item.User1.UserEmail, "", "", "[ITS] "+item.OrderCode+" Service registration", _content);
+                    FEA_Ultil.FEASendMail.SendMailMessage(item.User1.UserEmail, "", "itservices@feavn.com.vn", "[ITS] "+item.OrderCode+" Service registration", _content);
                 }
             }
             lstToProcess = values.Where(i => i.Value == Models.Helper.TagPrefixParameter.HARD_REGISTRATION).Select(i => i.Key).ToList<string>();
@@ -995,7 +995,7 @@ namespace FEA_ITS_Site.Controllers
                 foreach(HardwareRequirement item in hrItem)
                 {
                     string _content = string.Format((isProcess ? Resources.Resource.bodyProcessMail : Resources.Resource.bodyCompleteMail), item.OrderCode, item.User1.UserName, _UserProcess.UserName, _UserProcess.UserNameEN, _UserProcess.CostCenter.Remark, dtCompleteDate,_UserProcess.UserPhone,item.Reason);
-                    FEA_Ultil.FEASendMail.SendMailMessage(item.User1.UserEmail, "", "", "[ITS] "+ item.OrderCode+" Hardware requirement", _content);
+                    FEA_Ultil.FEASendMail.SendMailMessage(item.User1.UserEmail, "", "itservices@feavn.com.vn", "[ITS] "+ item.OrderCode+" Hardware requirement", _content);
                 }
             }
 
