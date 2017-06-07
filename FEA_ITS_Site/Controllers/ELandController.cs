@@ -165,6 +165,11 @@ namespace FEA_ITS_Site.Controllers
             });
             settings.Columns.Add(column =>
             {
+                column.FieldName = "TaxName";
+                // column.Width = System.Web.UI.WebControls.Unit.Percentage(10);
+            });
+            settings.Columns.Add(column =>
+            {
                 column.FieldName = "Unit";
                 column.Caption = "Unit";
                 column.Width = 100;
