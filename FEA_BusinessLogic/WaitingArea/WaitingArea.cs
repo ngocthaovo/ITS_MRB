@@ -408,5 +408,17 @@ namespace FEA_BusinessLogic.WaitingArea
         {
             return db.sp_GetDataForMultiSign(OrderCode).SingleOrDefault();
         }
+        //Added by Tony (2017-06-09)
+        public bool UpdateWFMainDeatailReject(string MainID)
+        {
+            List<WFMainDetail> lstDetail = db.WFMainDetails.Where(i => (i.MainID == MainID) && (i.Temp3 != "1" || i.Temp3 == null || i.Temp3 == string.Empty)).ToList();
+            bool _result = false;
+            foreach (WFMainDetail itemDetail in lstDetail)
+            {
+                itemDetail.Temp3 = "1";
+                _result = new WFMainDetailManager().UpdateItem(itemDetail, i => i.Temp3);
+            }
+            return _result;
+        }
     }
 }
