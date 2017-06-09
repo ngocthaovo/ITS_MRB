@@ -351,7 +351,8 @@ namespace FEA_BusinessLogic.WaitingArea
                         _result = new WFMainDetailManager().UpdateItem(WFMUpdate, i => i.MainDetailID, i => i.isFinished, i => i.CheckDate, i => i.Comment, i => i.Temp2, i => i.DelegateID);
 
                     _result = new WFMainDetailManager().InsertItem(WFMDInsert);
-                    if (_result)
+                    bool isReturn = UpdateWFMainDeatailReject(MainID);
+                    if (_result && isReturn)
                     {
                         scope.Complete();
                     }
@@ -406,6 +407,18 @@ namespace FEA_BusinessLogic.WaitingArea
         public sp_GetDataForMultiSign_Result GetDataMultiSign(string OrderCode)
         {
             return db.sp_GetDataForMultiSign(OrderCode).SingleOrDefault();
+        }
+        //Added by Tony (2017-06-09)
+        public bool UpdateWFMainDeatailReject(string MainID)
+        {
+            List<WFMainDetail> lstDetail = db.WFMainDetails.Where(i => (i.MainID == MainID) && (i.Temp3 != "1" || i.Temp3 == null || i.Temp3 == string.Empty)).ToList();
+            bool _result = false;
+            foreach (WFMainDetail itemDetail in lstDetail)
+            {
+                itemDetail.Temp3 = "1";
+                _result = new WFMainDetailManager().UpdateItem(itemDetail, i => i.Temp3);
+            }
+            return _result;
         }
     }
 }
