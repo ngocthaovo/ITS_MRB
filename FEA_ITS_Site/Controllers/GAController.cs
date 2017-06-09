@@ -1456,6 +1456,7 @@ namespace FEA_ITS_Site.Controllers
                 ViewBag.showCreatePerson = false;
                 ViewBag.showDatePush = false;
                 ViewBag.showPRCode = false;
+                ViewBag.CMCKCode = false;
             }
             else
             {
@@ -1463,6 +1464,7 @@ namespace FEA_ITS_Site.Controllers
                 ViewBag.showCreatePerson = true;
                 ViewBag.showDatePush = true;
                 ViewBag.showPRCode = true;
+                ViewBag.CMCKCode = true;
             }
            
             var frm = new FEA_GABusinessLogic.GAItemManager().GetGaPushDataList(ViewBag.OrderCode, ViewBag.BeginDate,ViewBag.EndDate, ViewBag.Status);
@@ -1479,5 +1481,13 @@ namespace FEA_ITS_Site.Controllers
         
         #endregion
         //Tony
+
+        //Added by Tony (2017-06-08)
+        public string GenerateERPCode(string GAID)
+        {
+            ObjectParameter orderCode;
+            orderCode = new FEA_GABusinessLogic.GAItemManager().AutoGenerateCodeERP(GAID, Helper.UserLoginInfo.UserCode);
+            return (orderCode.Value.ToString() == "NORMAL") ? Resources.Resource.msgHaveOrderCode : orderCode.Value.ToString();
+        }
     }
 }

@@ -1585,4 +1585,13 @@
   <data name="msgErrorInputQuantity" xml:space="preserve">
     <value>The input quantity not match. Please check quantity again !</value>
   </data>
+  <data name="CreateERPOrder" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="msgAutoCodeError" xml:space="preserve">
+    <value>Error when create common order code. Please check again.</value>
+  </data>
+  <data name="msgHaveOrderCode" xml:space="preserve">
+    <value>Please delete common order code on ERP before create new common order code</value>
+  </data>
 </root>

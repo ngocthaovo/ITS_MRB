@@ -626,6 +626,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tạo phiếu.
+        /// </summary>
+        internal static string CreateERPOrder {
+            get {
+                return ResourceManager.GetString("CreateERPOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Người làm.
         /// </summary>
         internal static string Creator {
@@ -1675,6 +1684,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lỗi trong quá trình tạo phiếu. Vui lòng kiểm tra lại.
+        /// </summary>
+        internal static string msgAutoCodeError {
+            get {
+                return ResourceManager.GetString("msgAutoCodeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vui lòng cung cấp danh sách các Barcode cần xuất trong đơn.
         /// </summary>
         internal static string msgBarcodeRequite {
@@ -1878,6 +1896,15 @@ namespace Resources {
         internal static string msgGetSerialByMainline {
             get {
                 return ResourceManager.GetString("msgGetSerialByMainline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã phiếu xuất lãnh cho chứng từ này đã được tạo trên ERP. Vui lòng xóa mã phiếu xuất lãnh trên ERP trước khi tạo mã phiếu xuất lãnh mới !.
+        /// </summary>
+        internal static string msgHaveOrderCode {
+            get {
+                return ResourceManager.GetString("msgHaveOrderCode", resourceCulture);
             }
         }
         
