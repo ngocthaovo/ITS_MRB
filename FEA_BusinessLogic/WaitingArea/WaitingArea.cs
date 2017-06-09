@@ -351,8 +351,7 @@ namespace FEA_BusinessLogic.WaitingArea
                         _result = new WFMainDetailManager().UpdateItem(WFMUpdate, i => i.MainDetailID, i => i.isFinished, i => i.CheckDate, i => i.Comment, i => i.Temp2, i => i.DelegateID);
 
                     _result = new WFMainDetailManager().InsertItem(WFMDInsert);
-                    bool isReject = new WFMainDetailManager().UpdateWFDetail(MainID); //Added by Tony (2017-06-08)
-                    if (_result && isReject)
+                    if (_result)
                     {
                         scope.Complete();
                     }

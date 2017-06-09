@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using System.Transactions;
 
 namespace FEA_BusinessLogic
 {
@@ -41,30 +40,6 @@ namespace FEA_BusinessLogic
                 return false;
             }
             return true;
-        }
-        //Added by Tony (2017-06-08) Cập nhật giá trị của cột temp3 về 1 khi có một đơn bị trả về
-        public bool UpdateWFDetail(string mainID)
-        {
-            List<WFMainDetail> lstItem = db.WFMainDetails.Where(i => i.MainID == mainID).ToList();
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                try
-                {
-                    foreach (WFMainDetail item in lstItem)
-                    {
-                        item.Temp3 = "1";
-                    }
-                    db.SaveChanges();
-                    transaction.Complete();
-                    return true;
-                }
-                catch
-                {
-                    transaction.Dispose();
-                    return false;
-                }
-                
-            }
         }
 
         /// <summary>
