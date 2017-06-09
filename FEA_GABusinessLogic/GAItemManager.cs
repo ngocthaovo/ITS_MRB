@@ -22,6 +22,7 @@ namespace FEA_GABusinessLogic
             CHECKED = 3,
             RETURNED = 4,
             FINSHED = 5,
+            PUSHED=7,
             DELETED = 0,
             NEW = -1
         }
@@ -382,6 +383,14 @@ namespace FEA_GABusinessLogic
         }
         #endregion
         //Tony
+
+        //Added by Tony (2017-06-08)
+        public ObjectParameter AutoGenerateCodeERP (string GAID, string UserCode)
+        {
+            ObjectParameter outParam = new ObjectParameter("OrderCodeOut", typeof(string));
+            db.sp_GetCommonOrderCodeGA(GAID, UserCode, outParam);
+            return outParam;
+        }
     }
 
 }

@@ -268,6 +268,33 @@
 
 
         }
+
+        function CreateERPOrder()
+        {
+            $('#btnCreateERP').click(function () {
+                var url = "@Html.Raw(FEA_ITS_Site.Helper.Ultilities.Root)/GA/GenerateERPCode";
+                var obj = new Object();
+                $('#divLoadCommon').show();
+                obj.GAID = "@Model.ID";
+
+                jQuery.ajax({
+                    url: url,
+                    data: obj,
+                }).done(function (d) {
+                    if (d != 'ERROR') {
+                        $('#divLoadCommon').hide();
+                        $("#btnCreateERP").hide();
+                        $('#AutoCode').show();
+                        $('#AutoCode').html(d);
+                    }
+                    else {
+                        $('#divLoadCommon').hide();
+                        $('#AutoCodeError').show();
+                    }
+
+                });
+            });
+        }
     </script>
 
 
@@ -295,14 +322,14 @@
             var _User = (FEA_BusinessLogic.User)ViewBag.User;
             bool IsCreateNew = (Boolean)ViewBag.IsCreateNew;
 
-
+            <div class="loading" style="display:none" id="divLoadCommon"></div>
             <!--button group devexpress-->
             <div class="row buttonbar">
                 <div class="col-lg-7">
                     @{
-                        bool _showSaveSendButton, _showSaveDraffButton, _showUpdateButton, _showSignButton, _readonlyControl;
+                        bool _showSaveSendButton, _showSaveDraffButton, _showUpdateButton, _showSignButton, _readonlyControl, _showCreateOrderERP;
                         bool _defaultEnable = false;
-                        _showSaveSendButton = _showSaveDraffButton = _showUpdateButton = _showSignButton = _readonlyControl = false;
+                        _showSaveSendButton = _showSaveDraffButton = _showUpdateButton = _showSignButton = _readonlyControl = _showCreateOrderERP= false;
 
                         if (Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.SENDING
                             || Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.CHECKED
@@ -340,6 +367,7 @@
                                     _showSaveDraffButton = _showSaveSendButton = _showUpdateButton = false;
                                 }
                             }
+                            _showCreateOrderERP = (Model.Status == (int)FEA_GABusinessLogic.GAItemManager.OrderStatus.PUSHED && (FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.CostCenterCode == 79101160 || FEA_ITS_Site.Helper.UserLoginInfo.CurrentUser.CostCenterCode == 79101075)) ? true : false; //Added by Tony(2017-06-02)
                         }
                         else
                         {
@@ -424,6 +452,18 @@
                         settings.CausesValidation = false;
                         settings.ClientVisible = _showSignButton;
                     }).GetHtml()
+
+                    @Html.DevExpress().Button(
+                    settings =>
+                    {
+                        settings.Name = "btnCreateERP";
+                        settings.Width = 100;
+                        settings.Text = Resources.Resource.CreateERPOrder;
+                        settings.ClientSideEvents.Click = "CreateERPOrder";
+                        settings.ClientVisible = _showCreateOrderERP;
+                    }).GetHtml()
+
+
                 </div>
             </div>
             <!--End button group-->
@@ -451,7 +491,12 @@
                         }
                     </div>
                 </div>
-            }
+                        }
+                        <div id="AutoCode" class="alert-small alert-info" style="display:none; margin-top:10px;"></div>
+                        <div id="AutoCodeError" class="aalert-small alert-danger" style="display:none; margin-top:10px;">
+                            @Html.Raw(Resources.Resource.msgAutoCodeError)
+                        </div>
+
 
             <!-- line-->
             <hr />

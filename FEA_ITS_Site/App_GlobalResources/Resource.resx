@@ -1870,4 +1870,13 @@
     &lt;/tbody&gt;
 &lt;/table&gt;</value>
   </data>
+  <data name="CreateERPOrder" xml:space="preserve">
+    <value>Tạo phiếu</value>
+  </data>
+  <data name="msgAutoCodeError" xml:space="preserve">
+    <value>Lỗi trong quá trình tạo phiếu. Vui lòng kiểm tra lại</value>
+  </data>
+  <data name="msgHaveOrderCode" xml:space="preserve">
+    <value>Mã phiếu xuất lãnh cho chứng từ này đã được tạo trên ERP. Vui lòng xóa mã phiếu xuất lãnh trên ERP trước khi tạo mã phiếu xuất lãnh mới !</value>
+  </data>
 </root>

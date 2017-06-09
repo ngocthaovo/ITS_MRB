@@ -1577,4 +1577,13 @@
   <data name="msgErrorInputQuantity" xml:space="preserve">
     <value>数量输入不符合。请重新检查数量。</value>
   </data>
+  <data name="CreateERPOrder" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="msgAutoCodeError" xml:space="preserve">
+    <value>Error when create common order code. Please check again.</value>
+  </data>
+  <data name="msgHaveOrderCode" xml:space="preserve">
+    <value>该单据在ERP已经生成了领用单。请在ERP先删除该领用单，后续才能生成新的领用单。</value>
+  </data>
 </root>

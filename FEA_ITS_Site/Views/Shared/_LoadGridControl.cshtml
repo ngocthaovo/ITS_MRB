@@ -9415,6 +9415,15 @@
 
                    });
 
+                   settings.Columns.Add(c =>
+                   {
+                       c.FieldName = "CMCKCode";
+                       c.Caption = "CMCK Code";
+                       c.Width = Unit.Percentage(8);
+                       c.Visible = ViewBag.CMCKCode;
+                   });
+
+
                    settings.CommandColumn.Visible = ViewBag.Checkbox;
                    settings.CommandColumn.ShowSelectCheckbox = true;
                    settings.CommandColumn.Width = Unit.Percentage(5);
