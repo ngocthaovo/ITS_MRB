@@ -359,6 +359,19 @@ namespace FEA_ITS_Site.Controllers
             catch {}
         }
         //
+
+        //Added by Tony (2017-06-26) Send mail to MN DEPT.
+        public static void SendMailToMaintenance(int senderID, string sReason, string sComment)
+        {
+            try
+            {
+                User _sender = new FEA_BusinessLogic.UserManager().GetItem(senderID);
+                string _mail = Helper.Ultilities.MNMailService;
+                string _content = string.Format(Resources.Resource.emailApproveDocBody, _sender.UserName, _sender.UserNameEN, _sender.CostCenter.Remark, sReason, Helper.Ultilities.SiteAddress, _sender.UserName, sComment);
+                FEA_Ultil.FEASendMail.SendMailMessage(_mail, "", "", "Document(s) need to approved", _content);
+            }
+            catch { }
+        }
         #endregion
 
         #region "References"
