@@ -187,6 +187,10 @@ namespace FEA_ITS_Site.Controllers
                                 {
                                     Controllers.HelperController.SendMailToGAServices(CreatorID, string.Format("{0}-", OrderCode) + Reason, comment);
                                 }
+                                else if(DocumentTypeName == TagPrefixParameter.MAINTENANCE)
+                                {
+                                    Controllers.HelperController.SendMailToMaintenance(CreatorID, string.Format("{0}-", OrderCode) + Reason, comment);
+                                }
                                 else
                                 {
                                     Controllers.HelperController.SendMailToITServices(CreatorID, string.Format("{0}-", OrderCode) + Reason, comment);

@@ -34,7 +34,8 @@ namespace FEA_ITS_Site.Helper
 
         public static string ITSecurityService { get { return ConfigurationManager.AppSettings["ITSecurityService"] == null ? "security@feavn.com.vn" : ConfigurationManager.AppSettings["ITSecurityService"].ToString(); } }
         public static string GAMailService { get { return ConfigurationManager.AppSettings["GAMailService"] == null ? "nguyen.tran@feavn.com.vn" : ConfigurationManager.AppSettings["GAMailService"].ToString(); } }
-
+        //Added by Tony (2017-06-26)
+        public static string MNMailService { get { return ConfigurationManager.AppSettings["MNMailService"] == null ? "bao.do@feavn.com.vn" : ConfigurationManager.AppSettings["MNMailService"].ToString(); } }
 
         /// <summary>
         /// Get Image avatar by Gender
