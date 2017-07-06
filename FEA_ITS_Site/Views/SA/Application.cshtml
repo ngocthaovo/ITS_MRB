@@ -331,8 +331,8 @@ new StyleSheet{ExtensionSuite=ExtensionSuite.GridView})
                     if (Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.SENDING
                         || Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.CHECKED
                         || Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.DELETED
-                        || Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.SPENDING
-                        || Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.FINSHED)
+                        || Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.SPENDING)
+                      //  || Model.Status == (int)FEA_SABusinessLogic.ExportItemManager.OrderStatus.FINSHED)
                     {
                         _readonlyControl = true;
                         _showPrintButton = true;
