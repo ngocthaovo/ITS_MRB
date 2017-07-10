@@ -75,6 +75,7 @@ namespace FEA_BusinessLogic.Maintenance
                                 item.ITSQuantity = lst.ITSInventory;
                                 item.ERPQuantity = lst.ERPInventory;
                                 item.PurchaseQuantity = lst.PurchaseQuantity;
+                                item.PurchaseEstimateAmount = item.EstimatePrice * lst.PurchaseQuantity; //Added by Tony (2017-07-10)
                             }
                         }
                     }
