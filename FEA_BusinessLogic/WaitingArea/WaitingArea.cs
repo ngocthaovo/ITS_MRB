@@ -128,6 +128,10 @@ namespace FEA_BusinessLogic.WaitingArea
                              ERPDocument erpdp = new ERPDocument() { OrderCode = OrderCode, Status = 3 };
                             _result = new FEA_BusinessLogic.ERP.Order().UpdateStatus(erpdp, i => i.Status);
                             break;
+                        case "SUGGESTRUINOUT":
+                            ERPDocument suggestruinout = new ERPDocument() { OrderCode = OrderCode, Status = 3 };
+                            _result = new FEA_BusinessLogic.ERP.Order().UpdateStatus(suggestruinout, i => i.Status);
+                            break; 
                         case "MAINTENANCE":
                              MNRequestMain mnr = new MNRequestMain() { OrderCode = OrderCode, Status = 3 };
                             _result = new FEA_BusinessLogic.Maintenance.MaintenanceManager().UpdateStatus(mnr, i => i.Status);
@@ -329,6 +333,10 @@ namespace FEA_BusinessLogic.WaitingArea
                         case "DEVELOPPRODUCT":
                             ERPDocument erppd = new ERPDocument() { OrderCode = OrderCode, Status = 4 };
                             _result = new FEA_BusinessLogic.ERP.Order().UpdateStatus(erppd, i => i.Status);
+                            break;
+                        case "SUGGESTRUINOUT":
+                            ERPDocument suggestruinout = new ERPDocument() { OrderCode = OrderCode, Status = 4 };
+                            _result = new FEA_BusinessLogic.ERP.Order().UpdateStatus(suggestruinout, i => i.Status);
                             break;
                         case "MAINTENANCE":
                             MNRequestMain mnr = new MNRequestMain() { OrderCode = OrderCode, Status = 4 ,ConfirmID=CurrentApproverID,ConfirmDate=DateTime.Now};

@@ -272,6 +272,10 @@
                                 Link = "/ERPDocument/ERPListItemDetailPartial?ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
                                 break;
+                            case "SUGGESTRUINOUT":
+                                Link= "/ERPDocument/ERPListItemDetailPartial?ID=";
+                                _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
+                                break;
                             case "MAINTENANCE":
                                 Link = "/Maintenance/Index?Type=MAINTENANCE&ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.Maintenance.MaintenanceManager().GetRequest(OrderCode).Status.ToString());
@@ -632,6 +636,10 @@
                                 _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
                                 break;
                             case "DEVELOPPRODUCT":
+                                Link = "/ERPDocument/ERPListItemDetailPartial?ID=";
+                                _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
+                                break;
+                            case "SUGGESTRUINOUT":
                                 Link = "/ERPDocument/ERPListItemDetailPartial?ID=";
                                 _status = int.Parse(new FEA_BusinessLogic.ERP.Order().GetItem(OrderCode).Status.ToString());
                                 break;

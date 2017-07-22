@@ -155,8 +155,9 @@ namespace FEA_ITS_Site.Controllers
                             || DocumentTypeName == TagPrefixParameter.FABRICMOVEOUT
                             || DocumentTypeName == TagPrefixParameter.FABRICMOVEOUTMULTI
                             || DocumentTypeName == TagPrefixParameter.FABRICDEVELOPOUT
-                            || DocumentTypeName== TagPrefixParameter.ACCESSORYDEVELOPOUT
-                            || DocumentTypeName== TagPrefixParameter.DEVELOPPRODUCT)
+                            || DocumentTypeName == TagPrefixParameter.ACCESSORYDEVELOPOUT
+                            || DocumentTypeName == TagPrefixParameter.DEVELOPPRODUCT
+                            || DocumentTypeName == TagPrefixParameter.SUGGESTRUINOUT)
                         {
                             int update = new FEA_BusinessLogic.ERP.Order().ERPUpdateStatus(OrderCode, comment, 3);
                             if (update == 1)
@@ -227,7 +228,8 @@ namespace FEA_ITS_Site.Controllers
                         || DocumentTypeName == TagPrefixParameter.FABRICMOVEOUTMULTI
                         || DocumentTypeName == TagPrefixParameter.FABRICDEVELOPOUT
                         || DocumentTypeName == TagPrefixParameter.ACCESSORYDEVELOPOUT
-                        || DocumentTypeName== TagPrefixParameter.DEVELOPPRODUCT)
+                        || DocumentTypeName == TagPrefixParameter.DEVELOPPRODUCT
+                        || DocumentTypeName == TagPrefixParameter.SUGGESTRUINOUT)
                     {
                        
                         int update = new FEA_BusinessLogic.ERP.Order().ERPUpdateStatus(OrderCode, comment, 4);
