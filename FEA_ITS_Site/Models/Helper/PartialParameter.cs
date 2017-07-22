@@ -161,8 +161,9 @@ namespace FEA_ITS_Site.Models.Helper
         public static string FABRICDEVELOPOUT { get { return "FABRICDEVELOPOUT"; } }
         public static string ACCESSORYDEVELOPOUT { get { return "ACCESSORYDEVELOPOUT"; } }
         public static string DEVELOPPRODUCT { get { return "DEVELOPPRODUCT"; } }
+        public static string SUGGESTRUINOUT { get { return "SUGGESTRUINOUT"; } } //Added by Tony (2017-07-15)
 
-      
+
     }
 
     public class ItemIDDefault
