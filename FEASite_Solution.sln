@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEA_ITS_Site", "FEA_ITS_Site\FEA_ITS_Site.csproj", "{C535A22D-C802-4090-9C98-5BF7891FEF55}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITSProject_WebService", "ITSProject_WebService\ITSProject\ITSProject_WebService.csproj", "{00F998B2-B45D-468C-A0F0-87A34F59FD65}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEA_GABusinessLogic", "FEA_GABusinessLogic\FEA_GABusinessLogic.csproj", "{52576406-CB44-49C3-A5AF-30C76679D374}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEA.MRB.BusinessLogic", "FEA.MRB.BusinessLogic\FEA.MRB.BusinessLogic.csproj", "{5565D16C-69F6-4A5F-8B5D-D50F12D65E92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{52576406-CB44-49C3-A5AF-30C76679D374}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52576406-CB44-49C3-A5AF-30C76679D374}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52576406-CB44-49C3-A5AF-30C76679D374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5565D16C-69F6-4A5F-8B5D-D50F12D65E92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5565D16C-69F6-4A5F-8B5D-D50F12D65E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5565D16C-69F6-4A5F-8B5D-D50F12D65E92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5565D16C-69F6-4A5F-8B5D-D50F12D65E92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
