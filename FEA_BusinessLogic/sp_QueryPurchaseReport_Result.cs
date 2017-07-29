@@ -25,6 +25,7 @@ namespace FEA_BusinessLogic
         public string Purchase_Items { get; set; }
         public Nullable<decimal> Quantity { get; set; }
         public string Unit { get; set; }
+        public string TaxName { get; set; }
         public string Currency { get; set; }
         public Nullable<decimal> Price_Px__Forecast_ { get; set; }
         public Nullable<decimal> Amount__Forecast_ { get; set; }

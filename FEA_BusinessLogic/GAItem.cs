@@ -37,6 +37,7 @@ namespace FEA_BusinessLogic
         public Nullable<int> OrderType { get; set; }
         public Nullable<System.DateTime> DeliveryDate { get; set; }
         public string PRCode { get; set; }
+        public string CMCKCode { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual User User { get; set; }

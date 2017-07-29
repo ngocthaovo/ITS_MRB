@@ -1692,4 +1692,191 @@
   <data name="msgErrorInputQuantity" xml:space="preserve">
     <value>Số lượng nhập vào không phù hợp.Vui lòng kiểm tra số lượng</value>
   </data>
+  <data name="bodyCompleteMail" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td style="padding:20px"&gt;
+                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td style="padding:0"&gt;
+                                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                    &lt;tbody&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="background: rgb(32, 178, 170); height: 69px; padding: 10px 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="height:30px"&gt;
+                                                                &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                    Your order code: &lt;strong&gt;{0}&lt;/strong&gt; was completed 
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                            &lt;td align="right"&gt;
+                                                                &lt;a  style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="padding:30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Hello  &lt;strong&gt;{1}&lt;/strong&gt;,
+                                                                &lt;/p&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Your IT service request was completed. Please check detail information about employee complete and complete date below:
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;table width="100%"&gt;
+                                                                    &lt;tbody&gt;
+                                                                        &lt;tr&gt;
+                                                                            &lt;td&gt;
+                                                                                &lt;span style="color:#666;"&gt;
+                                                                                    Employee complete: &lt;strong&gt;{2}({3}) - {4}&lt;/strong&gt;&lt;br&gt;
+                                                                                    EXT: &lt;strong&gt;{6}&lt;/strong&gt; &lt;br&gt;
+                                                                                    Complete date: &lt;strong&gt;{5}&lt;/strong&gt; &lt;br&gt;
+                                                                                    Content: {7}
+                                                                                &lt;/span&gt;
+                                                                            &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                    &lt;/tbody&gt;
+                                                                &lt;/table&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+
+                                                        &lt;tr&gt;
+                                                            &lt;td align="center"&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                2017 © Far Eastern Apparel.
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</value>
+  </data>
+  <data name="bodyProcessMail" xml:space="preserve">
+    <value>&lt;table width="100%"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td style="padding:20px"&gt;
+                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 600px; max-width: 640px; margin-bottom: 50px; border: solid 1px rgb(219, 219, 219);"&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td style="padding:0"&gt;
+                                &lt;table align="center" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:white" width="100%"&gt;
+                                    &lt;tbody&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="background: rgb(32, 178, 170); height: 69px; padding: 10px 30px; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="height:30px"&gt;
+                                                                &lt;p style="margin: 0; font-size: 24px; color: #fff; font-weight: bold; font-family: 'Segoe UI',sans-serif; "&gt;
+                                                                   Your order code: {0} being processed
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                            &lt;td align="right"&gt;
+                                                                &lt;a style="border:none;outline:none" target="_blank"&gt; &lt;img height="60" src="http://portal.feavn.com.vn/ITS/Images/its_logo.png" style="border:none;outline:none" width="146"&gt; &lt;/a&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="padding:30px"&gt;
+                                                &lt;table cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"&gt;
+                                                    &lt;tbody&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="font-size: 14px; line-height: 24px; color: #555; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Hello  &lt;strong&gt;{1}&lt;/strong&gt;,
+                                                                &lt;/p&gt;
+                                                                &lt;p style="margin:0"&gt;
+                                                                    Your IT Service request are being processed. Please check detail information about employee process and estimate complete time below:
+                                                                &lt;/p&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td style="padding: 10px 0px; font-size: 14px; line-height: 20px; color: #666; border-bottom: 1px #ddd solid; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                                &lt;table width="100%"&gt;
+                                                                    &lt;tbody&gt;
+                                                                        &lt;tr&gt;
+                                                                            &lt;td&gt;
+                                                                                &lt;span style="color:#666;"&gt;
+                                                                                    Employee process: &lt;strong&gt;{2}({3}) - {4}&lt;/strong&gt;&lt;br&gt;
+                                                                                    EXT:  &lt;strong&gt;{6}&lt;/strong&gt;&lt;br&gt;
+                                                                                    Estimate complete time: &lt;strong&gt;{5}&lt;/strong&gt; &lt;br&gt;
+                                                                                    Content: &lt;strong&gt;{7}&lt;/strong&gt;
+                                                                                &lt;/span&gt;
+                                                                            &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                    &lt;/tbody&gt;
+                                                                &lt;/table&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+
+                                                        &lt;tr&gt;
+                                                            &lt;td align="center"&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/tbody&gt;
+                                                &lt;/table&gt;
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                            &lt;td style="font-size: 11px; color: #999; text-align: center; padding-bottom: 30px; font-family: 'Segoe UI',sans-serif;"&gt;
+                                                2017 © Far Eastern Apparel.
+                                            &lt;/td&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</value>
+  </data>
+  <data name="CreateERPOrder" xml:space="preserve">
+    <value>Tạo phiếu</value>
+  </data>
+  <data name="msgAutoCodeError" xml:space="preserve">
+    <value>Lỗi trong quá trình tạo phiếu. Vui lòng kiểm tra lại</value>
+  </data>
+  <data name="msgHaveOrderCode" xml:space="preserve">
+    <value>Mã phiếu xuất lãnh cho chứng từ này đã được tạo trên ERP. Vui lòng xóa mã phiếu xuất lãnh trên ERP trước khi tạo mã phiếu xuất lãnh mới !</value>
+  </data>
 </root>
