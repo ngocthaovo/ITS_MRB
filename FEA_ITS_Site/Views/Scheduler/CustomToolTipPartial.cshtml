@@ -1,0 +1,45 @@
+﻿@Html.DevExpress().GetStyleSheets(
+new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler }
+)
+@Html.DevExpress().GetScripts(
+new Script { ExtensionSuite = ExtensionSuite.Scheduler }
+)
+@{ string errorText = ViewData["SchedulerErrorText"] != null ? (string)ViewData["SchedulerErrorText"] : null; }
+@Html.DevExpress().Scheduler(
+    settings =>
+    {
+        settings.Name = "Scheduler";
+        settings.CallbackRouteValues = new { Controller = "Scheduler", Action = "CustomToolTipPartial" };
+        settings.EditAppointmentRouteValues = new { Controller = "Scheduler", Action = "CustomToolTipEditAppointment" };
+        settings.ActiveViewType = SchedulerViewType.Day;
+        settings.GroupType = SchedulerGroupType.Resource;
+        settings.Start = new DateTime(2016, 10, 10);
+        settings.Width =System.Web.UI.WebControls.Unit.Percentage(100);
+
+        settings.Views.DayView.ResourcesPerPage = 1;
+        settings.Views.FullWeekView.Enabled = true;
+        settings.Views.WeekView.Enabled = false;
+        settings.Views.MonthView.ResourcesPerPage = 1;
+        settings.Views.MonthView.AppointmentDisplayOptions.ShowRecurrence = true;
+        settings.Views.TimelineView.ResourcesPerPage = 2;
+
+        settings.Storage.EnableReminders = false;
+        settings.Storage.Appointments.Assign(FEA_ITS_Site.Helper.MRB.SchedulerStorageProvider.DefaultAppointmentStorage);
+        settings.Storage.Resources.Assign(FEA_ITS_Site.Helper.MRB.SchedulerStorageProvider.DefaultResourceStorage);
+
+        settings.ClientSideEvents.ToolTipDisplaying = "OnToolTipDisplaying";
+        settings.OptionsToolTips.SetAppointmentToolTipTemplateContent(() =>
+        {
+            Html.RenderPartial("CustomAppointmentToolTip");
+        });
+        settings.OptionsToolTips.SetAppointmentDragToolTipTemplateContent(() =>
+        {
+            Html.RenderPartial("CustomAppointmentDragToolTip");
+        });
+        settings.OptionsToolTips.SetSelectionToolTipTemplateContent(() =>
+        {
+            Html.RenderPartial("CustomSelectionToolTip");
+        });
+        settings.OptionsToolTips.AppointmentToolTipCornerType = ToolTipCornerType.None;
+        settings.OptionsToolTips.SelectionToolTipCornerType = ToolTipCornerType.None;
+    }).Bind(Model.Appointments, Model.Resources).SetErrorText(errorText).GetHtml()
