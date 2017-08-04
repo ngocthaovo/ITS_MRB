@@ -1,0 +1,12 @@
+﻿<script type="text/javascript">
+    function OnAppointmentDragTipDisplaying(s, e) {
+        var newIntervalText = e.toolTip.ConvertIntervalToString(e.data.GetInterval());
+        $('#AptDragToolTipInterval').html(newIntervalText);
+    }
+</script>
+
+<div style="white-space:nowrap;">
+    <strong><span id="AptDragToolTipInterval"></span></strong>
+    <br />
+    <span>Press ESC to cancel operation</span>
+</div>

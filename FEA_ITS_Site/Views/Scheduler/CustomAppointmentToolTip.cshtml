@@ -1,0 +1,74 @@
+﻿<script type="text/javascript">
+    function OnAppointmentTipDisplaying(s, e) {
+        var currentApt = GetCurrentApt();
+        if (!currentApt.updated) {
+            Scheduler.RefreshClientAppointmentProperties(currentApt, AppointmentPropertyNames.Normal, OnAppointmentRefresh);
+            SetAptToolTipSubject("Loading...");
+            //setAptToolTipDescription("Loading...");
+        } else {
+            SetAptToolTipSubject("Subject: "+currentApt.GetSubject());
+          //  setAptToolTipDescription("Location: "+currentApt.GetDescription());
+        }
+        
+        var textInterval = e.toolTip.ConvertIntervalToString(currentApt.interval);
+        $('#AptToolTipInterval').html(textInterval);
+    }
+    function GetCurrentApt() {
+        return toolTipContext.data.GetAppointment();
+    }
+    function SetAptToolTipSubject(text) {
+        $('#AptToolTipSubject').html(ASPx.Str.EncodeHtml(text));
+    }
+    function setAptToolTipDescription(text) {
+        $("#AptToolTipDescription").html(ASPx.Str.EncodeHtml(text));
+    }
+    function OnAppointmentRefresh(apt) {
+        apt.updated = true;
+        SetAptToolTipSubject(apt.GetSubject());
+        setAptToolTipDescription(currentApt.GetDescription())
+    }
+    function OnAptToolTipDeleteClick(s, e) {
+        Scheduler.DeleteAppointment(GetCurrentApt());
+    }
+    function OnAptToolTipEditClick(s, e) {
+        Scheduler.ShowAppointmentFormByClientId(GetCurrentApt().GetId());
+    }
+    function OnAptToolTipShowMenuClick() {
+        toolTipContext.toolTip.ShowAppointmentMenu();
+    }
+</script>
+@Html.DevExpress().RoundPanel(settings =>
+{
+    settings.Name = "CustomAppointmentPanel";
+    settings.ControlStyle.CssClass = "toolTipPanel";
+    settings.SetHeaderContentTemplateContent((c) =>
+    {
+        ViewContext.Writer.Write("<span id=\"AptToolTipInterval\" class=\"toolTipLablel\"></span>");
+        ViewContext.Writer.Write("<br />");
+        ViewContext.Writer.Write("<span id=\"AptToolTipSubject\" class=\"toolTipLablel\"></span>");
+        ViewContext.Writer.Write("<br/>");
+        ViewContext.Writer.Write("<span id=\"AptToolTipDescription\" class=\"toolTipLabel\"></span>");
+
+    });
+    settings.ContentPaddings.Padding = System.Web.UI.WebControls.Unit.Pixel(0);
+    settings.ContentPaddings.PaddingRight = System.Web.UI.WebControls.Unit.Pixel(6);
+    settings.SetContent(() =>
+    {
+        Html.DevExpress().Button(s =>
+        {
+            s.Name = "AptToolTipDelete";
+            s.Text = "Delete";
+            s.RenderMode = ButtonRenderMode.Link;
+            s.ControlStyle.CssClass = "toolTipButton";
+            s.ClientSideEvents.Click = "OnAptToolTipDeleteClick";
+        }).Render();
+        Html.DevExpress().Button(s =>
+        {
+            s.Name = "AptToolTipEdit";
+            s.Text = "Edit";
+            s.RenderMode = ButtonRenderMode.Link;
+            s.ControlStyle.CssClass = "toolTipButton";
+            s.ClientSideEvents.Click = "OnAptToolTipEditClick";
+        }).Render();
+    });
+}).GetHtml()
