@@ -1,0 +1,75 @@
+﻿@Html.DevExpress().GetStyleSheets(
+new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler }
+)
+@Html.DevExpress().GetScripts(
+new Script { ExtensionSuite = ExtensionSuite.Scheduler }
+)
+@functions{
+    AppointmentRecurrenceFormSettings CreateAppointmentRecurrenceFormSettings(FEA_ITS_Site.Helper.MRB.CustomAppointmentFormTemplateContainer container)
+    {
+        return new AppointmentRecurrenceFormSettings
+        {
+            Name = "appointmentRecurrenceForm",
+            Width = System.Web.UI.WebControls.Unit.Percentage(100),
+            IsRecurring = container.Appointment.IsRecurring,
+            DayNumber = container.RecurrenceDayNumber,
+            End = container.RecurrenceEnd,
+            Month = container.RecurrenceMonth,
+            OccurrenceCount = container.RecurrenceOccurrenceCount,
+            Periodicity = container.RecurrencePeriodicity,
+            RecurrenceRange = container.RecurrenceRange,
+            Start = container.Start,
+            WeekDays = container.RecurrenceWeekDays,
+            WeekOfMonth = container.RecurrenceWeekOfMonth,
+            RecurrenceType = container.RecurrenceType,
+            IsFormRecreated = container.IsFormRecreated
+        };
+    }
+}
+@Html.DevExpress().Scheduler(
+settings =>
+{
+    settings.Name = "scheduler";
+    settings.CallbackRouteValues = new { Controller = "Scheduler", Action = "SchedulerPartial" };
+    settings.EditAppointmentRouteValues = new { Controller = "Scheduler", Action = "EditAppointment" };
+
+    settings.Storage.Appointments.Assign(FEA_ITS_Site.Helper.MRB.SchedulerStorageProvider.DefaultAppointmentStorage);
+    settings.Storage.Resources.Assign(FEA_ITS_Site.Helper.MRB.SchedulerStorageProvider.DefaultResourceStorage);
+
+    settings.Storage.EnableReminders = true;
+    settings.GroupType = SchedulerGroupType.Resource;
+
+    //select with Id
+
+
+    settings.ActiveViewType = SchedulerViewType.FullWeek;
+    //  settings.Views.FullWeekView.Styles.ScrollAreaHeight = 600;
+    settings.AppointmentFormShowing = (sender, e) =>
+    {
+        var scheduler = sender as MVCxScheduler;
+        if (scheduler != null)
+            e.Container = new FEA_ITS_Site.Helper.MRB.CustomAppointmentFormTemplateContainer(scheduler);
+    };
+    settings.OptionsForms.SetAppointmentFormTemplateContent(c =>
+    {
+        var container = (FEA_ITS_Site.Helper.MRB.CustomAppointmentFormTemplateContainer)c;
+        var schedule = ViewData["EditableSchedule"] != null
+            ? (FEA_ITS_Site.Helper.MRB.FormNewAppointment)ViewData["EditableSchedule"]
+            : new FEA_ITS_Site.Helper.MRB.FormNewAppointment()
+            {
+                ID = container.Appointment.Id == null ? -1 : (int)container.Appointment.Id,
+                Subject = container.Appointment.Subject,
+                StartTime = container.Appointment.Start,
+                EndTime = container.Appointment.End,
+                Description = container.Appointment.Description,
+                UserList = container.UserList,
+                RoomId = Convert.ToInt32(container.Appointment.ResourceId),
+                ItemList = container.ItemList,
+                ItemId=container.ItemId
+            };
+        ViewBag.DeleteButtonEnabled = container.CanDeleteAppointment;
+        ViewBag.IsRecurring = container.Appointment.IsRecurring;
+        ViewBag.AppointmentRecurrenceFormSettings = CreateAppointmentRecurrenceFormSettings(container);
+        Html.RenderPartial("CustomFormNewAppointmentPartial", schedule);
+    });
+}).Bind(Model.Appointments, Model.Resources).SetErrorText(ViewBag.SchedulerErrorText).GetHtml()

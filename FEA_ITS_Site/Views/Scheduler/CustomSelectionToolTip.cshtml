@@ -1,0 +1,119 @@
+﻿<script type="text/javascript">
+    function OnSelectionTipDisplaying(s, e) {
+        var newIntervalText = e.toolTip.ConvertIntervalToString(e.data.GetInterval());
+        $('#SelectionToolTipInterval').html(newIntervalText);
+        SelectionToolTipSubject.SetText('');
+        SelectionToolTipSubject.SetIsValid(true);
+        SelectionToolTipDescription.SetText('');
+        SelectionToolTipDescription.SetIsValid(true);
+        setTimeout(function() { SelectionToolTipSubject.Focus(); }, 0);
+    }
+    function OnSelectionToolTipCloseButtonClick(s, e) {
+        toolTipContext.toolTip.Close();
+    }
+    function OnSelectionToolTipSubjectKeyDown(s, e) {
+        if (e.htmlEvent.keyCode == 13) {
+            ASPxClientUtils.PreventEvent(e.htmlEvent);
+            OnSelectionToolTipCreateClick();
+        }
+        else if (e.htmlEvent.keyCode == 27) {
+            toolTipContext.toolTip.Close();
+        }
+    }
+    function OnSelectionToolTipDescriptionKeyDown(s, e) {
+        if (e.htmlEvent.keyCode == 13) {
+            ASPxClientUtils.PreventEvent(e.htmlEvent);
+            OnSelectionToolTipCreateClick();
+        }
+        else if (e.htmlEvent.keyCode == 27) {
+            toolTipContext.toolTip.Close();
+        }
+    }
+    function OnSelectionToolTipCreateClick(s, e) {
+        SelectionToolTipSubject.Validate();
+        SelectionToolTipDescription.Validate();
+        if(!SelectionToolTipSubject.GetIsValid()) return;
+
+        var apt = CreateAppointmentFromSelectionInterval();
+        var textSubject = SelectionToolTipSubject.GetText();
+        var textDescription = SelectionToolTipDescription.GetText();
+        SelectionToolTipSubject.Clear();
+        SelectionToolTipDescription.Clear();
+        apt.SetSubject(textSubject);
+        apt.SetDescription(textDescription);
+        Scheduler.InsertAppointment(apt);
+    }
+    function CreateAppointmentFromSelectionInterval() {
+        var apt = new ASPxClientAppointment();
+        var selectedInterval = Scheduler.GetSelectedInterval();
+        apt.SetStart(selectedInterval.GetStart());
+        apt.SetEnd(selectedInterval.GetEnd());
+        apt.AddResource(Scheduler.GetSelectedResource());
+        apt.SetLabelId(0);
+        apt.SetStatusId(0);
+        return apt;
+    }
+    function OnSelectionToolTipShowMenuClick() {
+        toolTipContext.toolTip.ShowViewMenu();
+    }
+</script>
+@Html.DevExpress().RoundPanel(settings =>
+{
+    settings.Name = "CustomSelectionToolTipPanel";
+    settings.ControlStyle.CssClass = "toolTipPanel";
+    settings.Styles.Header.CssClass = "toolTipPanelHeader";
+    settings.SetHeaderContentTemplateContent((c) =>
+    {
+        Html.DevExpress().Button(s =>
+        {
+            s.Name = "SelectionToolTipCloseButton";
+            s.ControlStyle.CssClass = "toolTipCloseButton";
+            s.Height = System.Web.UI.WebControls.Unit.Pixel(16);
+            s.Text = " ";
+            s.RenderMode = ButtonRenderMode.Link;
+            s.ImagePosition = ImagePosition.Right;
+            s.Images.Image.IconID = DevExpress.Web.ASPxThemes.IconID.ActionsClose16x16;
+            s.ClientSideEvents.Click = "OnSelectionToolTipCloseButtonClick";
+        }).Render();
+        ViewContext.Writer.Write("<span id=\"SelectionToolTipInterval\" class=\"toolTipLablel\"></span>");
+    });
+    settings.SetContent(() =>
+    {
+        Html.DevExpress().TextBox(s =>
+        {
+            s.Name = "SelectionToolTipSubject";
+            s.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+            s.ControlStyle.CssClass = "toolTipTextBox";
+            s.Properties.Caption = "Tên cuộc họp";
+            s.Properties.CaptionSettings.VerticalAlign = EditorCaptionVerticalAlign.Middle;
+            s.Properties.HelpText = "họp thông thường, khách vip";
+            s.Properties.ValidationSettings.RequiredField.IsRequired = true;
+            s.Properties.ValidationSettings.RequiredField.ErrorText = "Tên cuộc họp không được để trống";
+            s.Properties.ValidationSettings.Display = Display.Dynamic;
+            s.Properties.ClientSideEvents.KeyDown = "OnSelectionToolTipSubjectKeyDown";
+        }).Render();
+        Html.DevExpress().TextBox(s =>
+        {
+            s.Name = "SelectionToolTipDescription";
+            s.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+            s.ControlStyle.CssClass = "toolTipTextBox";
+            s.Properties.Caption = "Nội dung";
+            s.Properties.CaptionSettings.VerticalAlign = EditorCaptionVerticalAlign.Middle;
+            s.Properties.HelpText = "Mô tả tổng quan";
+            s.Properties.ValidationSettings.RequiredField.IsRequired = true;
+            s.Properties.ValidationSettings.RequiredField.ErrorText = "Nội dung không được rỗng";
+            s.Properties.ValidationSettings.Display = Display.Dynamic;
+            s.Properties.ClientSideEvents.KeyDown = "OnSelectionToolTipDescriptionKeyDown";
+
+        }).Render();
+        Html.DevExpress().Button(s =>
+        {
+            s.Name = "SelectionToolTipCreate";
+            s.Text = "Create";
+            s.ControlStyle.CssClass = "toolTipButton";
+            s.RenderMode = ButtonRenderMode.Link;
+            s.ControlStyle.CssClass = "toolTipButton";
+            s.ClientSideEvents.Click = "OnSelectionToolTipCreateClick";
+        }).Render();
+    });
+}).GetHtml()
