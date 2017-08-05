@@ -1263,10 +1263,117 @@
                     @Html.Raw((string)ViewData["EditSuccess"])
                 </div>
             }
-            break;    
-            
+            break;
+
+        case "MRBRoomInformation":
+            grid = Html.DevExpress().GridView(
+                        settings =>
+                        {
+                            settings.Name = "MRBRoomInformation";
+                            settings.KeyFieldName = "ID";
+                            settings.CallbackRouteValues = new { Controller = "Sheduler", Action = "RoomInformation", OrderCode = ViewBag.OrderCode, DateFrom = ViewBag.DateFrom, DateTo = ViewBag.DateTo, DocumentType = ViewBag.DocumentType };
+                            settings.Width = Unit.Percentage(100);
+                            settings.SettingsBehavior.ColumnResizeMode = ColumnResizeMode.Control;
+                            settings.SettingsPager.PageSize = FEA_ITS_Site.Helper.Ultilities.PageSize;
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "ID";
+                                column.SetColVisible(false);
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "OrderCode";
+                                column.Caption = Resources.Resource.OrderCode;
+                                column.Width = Unit.Percentage(10);
+                                column.CellStyle.CssClass = "tCenter";
+                                column.EditFormSettings.Visible = DefaultBoolean.False;
+                                column.SetDataItemTemplateContent(c =>
+                                {
+                                    string url = "";
+                                    url = FEA_ITS_Site.Helper.Ultilities.Root + "/Maintenance/Index?Type=Maintenance&ID=" + DataBinder.Eval(c.DataItem, "ID") + "&TypeUser=admin','" + Resources.Resource.OrderCode + ": " + DataBinder.Eval(c.DataItem, "OrderCode");
+
+                                    ViewContext.Writer.Write(
+                                        "<a title='" + @Resources.Resource.Select + "' href='#responsive' data-toggle='modal' data-target='.bs-example-modal-lg' onclick=\"SetModalStyle('','','" + url + "')\">" + DataBinder.Eval(c.DataItem, "OrderCode") + "</a>"
+                                    );
+                                });
+                            });
+
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "Creator";
+                                column.Caption = Resources.Resource.Creator;
+                                column.Width = Unit.Percentage(10);
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "Department";
+                                column.Caption = Resources.Resource.Department;
+                                column.Width = Unit.Percentage(15);
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "Reason";
+                                column.Caption = Resources.Resource.Reason;
+                                column.Width = Unit.Percentage(20);
+                            });
+
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "CreateDate";
+                                column.Caption = Resources.Resource.CreateDate;
+                                column.Width = Unit.Percentage(10);
+                                column.ColumnType = MVCxGridViewColumnType.DateEdit;
+
+                                DateEditProperties dateEdit = column.PropertiesEdit as DateEditProperties;
+                                dateEdit.DisplayFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+                                dateEdit.DisplayFormatInEditMode = true;
+                                dateEdit.EditFormatString = FEA_Ultil.FEAStringClass.DataDateFormat(FEA_ITS_Site.Helper.SessionManager.CurrentLang, false, true);
+                            });
+
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "ProcessPerson";
+                                column.Caption = Resources.Resource.ProcessPerson;
+                                column.Width = Unit.Percentage(10);
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "ConfirmDate";
+                                column.Caption = Resources.Resource.Confirm;
+                                column.Width = Unit.Percentage(10);
+                            });
+                            settings.Columns.Add(column =>
+                            {
+                                column.FieldName = "Status";
+                                column.Caption = Resources.Resource.Status;
+                                column.Width = Unit.Percentage(10);
+                                column.ColumnType = MVCxGridViewColumnType.ComboBox;
+
+                                var comboBox = column.PropertiesEdit as ComboBoxProperties;
+                                comboBox.DataSource = FEA_ITS_Site.Controllers.HelperController.GetStatusList();
+                                comboBox.TextField = "Value";
+                                comboBox.ValueField = "Key";
+                                comboBox.ValueType = typeof(int);
+                                comboBox.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+                                comboBox.DropDownStyle = DropDownStyle.DropDown;
+                            });
+
+                            settings.Settings.ShowFilterRowMenu = true;
+                            settings.Settings.ShowFilterRow = true;
+                            settings.Settings.ShowFooter = true;
+                            settings.Settings.ShowGroupPanel = true;
+
+                            settings.PreRender = (sender, e) =>
+                            {
+                                ((MVCxGridView)sender).CollapseAll();
+                            };
+                        });
+
+
+
+
         default:
             break;
-    
-}
+
+    }
 }

@@ -90,6 +90,11 @@ namespace FEA_ITS_Site.Controllers
         {
             return View();
         }
-        
+
+        public ActionResult RoomInformation()
+        {
+            return GetGridViewV2(new FEA_BusinessLogic.Maintenance.MaintenanceManager().MRBRoomInformation();
+        }
+
     }
 }

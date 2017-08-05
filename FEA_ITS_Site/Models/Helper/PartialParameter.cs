@@ -131,6 +131,8 @@ namespace FEA_ITS_Site.Models.Helper
         public static string ERPHistory { get { return "ERPHistory"; } }
         public static string QueryMNDynamicInventory { get { return "QueryMNDynamicInventory"; } }
         public static string MNQueryRequestList { get { return "MNQueryRequestList"; } }
+        //Added by Iris(2017-08-05)
+        public static string MRBRoomInformation { get { return "MRBRoomInformation"; } }
     }
 
     public class TagPrefixParameter
