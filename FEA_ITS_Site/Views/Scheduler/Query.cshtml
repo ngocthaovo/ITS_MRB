@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Query";
+    Layout = "~/Views/Shared/_FEAContentLayout.cshtml";
+}
+
+<script type="text/javascript">
+    function ActiveTabChanged(s, e) {
+        var tabName = e.tab.name;
+        var item, url;
+        if(tabName =="Information")
+        {
+            item = $("#ifmRequest");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/Scheduler/RoomInformation";
+            $(item).attr("src", url);
+            
+        }
+        else if(tabName =="Statics")
+        {
+            item = $("#ifmManagement");
+            url = "@FEA_ITS_Site.Helper.Ultilities.Root/Scheduler/Statics";
+            $(item).attr("src", url);
+        }
+    }
+</script>
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout })
+
+@Html.DevExpress().GetScripts(
+    new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout })
+
+@Html.DevExpress().PageControl(
+            settings =>
+            {
+                settings.Name = "pcFeatures";
+                settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+                settings.ActivateTabPageAction = ActivateTabPageAction.Click;
+                settings.ControlStyle.CssClass = "dxTab";
+                settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+                settings.TabPages.Add(Resources.Resource.Information, "Information").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                        "<iframe src=\"" + @FEA_ITS_Site.Helper.Ultilities.Root + "/Scheduler/RoomInformation\"ifmRequest\" style=\"height: 800px;\"></iframe>"
+                    );
+
+                });
+
+                settings.TabPages.Add(@Resources.Resource.Statistic, "Statistic").SetContent(() =>
+                {
+
+                    ViewContext.Writer.Write(
+                            "<iframe src='' id=\"Statistic\" style=\"height: 760px;\"></iframe>"
+                        );
+                });
+            }).GetHtml()

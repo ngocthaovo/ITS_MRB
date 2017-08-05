@@ -1,0 +1,15 @@
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\FEA.MRB.BusinessLogic.dll
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\FEA.MRB.BusinessLogic.pdb
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\FEA_BusinessLogic.dll
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\FEA_Ultil.dll
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\EntityFramework.dll
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\FEA_SABusinessLogic.dll
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\FEA_GABusinessLogic.dll
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\FEA_BusinessLogic.pdb
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\FEA_Ultil.pdb
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\EntityFramework.xml
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\FEA_SABusinessLogic.pdb
+D:\ITS_MRB\FEA.MRB.BusinessLogic\bin\Debug\FEA_GABusinessLogic.pdb
+D:\ITS_MRB\FEA.MRB.BusinessLogic\obj\Debug\FEA.MRB.BusinessLogic.csprojResolveAssemblyReference.cache
+D:\ITS_MRB\FEA.MRB.BusinessLogic\obj\Debug\FEA.MRB.BusinessLogic.dll
+D:\ITS_MRB\FEA.MRB.BusinessLogic\obj\Debug\FEA.MRB.BusinessLogic.pdb

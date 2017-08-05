@@ -9,7 +9,7 @@ using DevExpress.Web.Mvc;
 using FEA_BusinessLogic;
 namespace FEA_ITS_Site.Controllers
 {
-    public class SchedulerController : Controller
+    public class SchedulerController : BaseController
     {
         //
         // GET: /Scheduler/
@@ -85,5 +85,11 @@ namespace FEA_ITS_Site.Controllers
                 new SchedulerManager().RemoveAppointment(appt);
             }
         }
+
+        public ActionResult Query()
+        {
+            return View();
+        }
+        
     }
 }

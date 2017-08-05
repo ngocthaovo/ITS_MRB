@@ -48,6 +48,7 @@ namespace FEA_BusinessLogic
             this.MNStockEquipments = new HashSet<MNStockEquipment>();
             this.MNStockEquipments1 = new HashSet<MNStockEquipment>();
             this.MNStockEquipmentDetails = new HashSet<MNStockEquipmentDetail>();
+            this.MRBBookingDetail_Test = new HashSet<MRBBookingDetail_Test>();
         }
     
         public int UserID { get; set; }
@@ -107,5 +108,6 @@ namespace FEA_BusinessLogic
         public virtual ICollection<MNStockEquipment> MNStockEquipments { get; set; }
         public virtual ICollection<MNStockEquipment> MNStockEquipments1 { get; set; }
         public virtual ICollection<MNStockEquipmentDetail> MNStockEquipmentDetails { get; set; }
+        public virtual ICollection<MRBBookingDetail_Test> MRBBookingDetail_Test { get; set; }
     }
 }

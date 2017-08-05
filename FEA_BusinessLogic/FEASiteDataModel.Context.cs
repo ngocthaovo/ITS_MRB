@@ -94,6 +94,14 @@ namespace FEA_BusinessLogic
         public DbSet<MNStockEquipment> MNStockEquipments { get; set; }
         public DbSet<MNStockEquipmentDetail> MNStockEquipmentDetails { get; set; }
         public DbSet<MNInventory> MNInventories { get; set; }
+        public DbSet<MRBBookingDetail> MRBBookingDetails { get; set; }
+        public DbSet<MRBBookingDetail_Test> MRBBookingDetail_Test { get; set; }
+        public DbSet<MRBRoom> MRBRooms { get; set; }
+        public DbSet<MRBRoomEquipment> MRBRoomEquipments { get; set; }
+        public DbSet<MRBRoomType> MRBRoomTypes { get; set; }
+        public DbSet<SAAuditCostCenter> SAAuditCostCenters { get; set; }
+        public DbSet<SAAuditCustom> SAAuditCustoms { get; set; }
+        public DbSet<SAAuditExportItem> SAAuditExportItems { get; set; }
     
         public virtual ObjectResult<sp_GetFirstApprover_Result> sp_GetFirstApprover(string documentTypeName, Nullable<int> costCenterCode)
         {
@@ -967,6 +975,24 @@ namespace FEA_BusinessLogic
                 new ObjectParameter("DocType", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CheckMaintenanceInventory_Result>("sp_CheckMaintenanceInventory", docTypeParameter);
+        }
+    
+        public virtual ObjectResult<sp_MRBRoomDetail_Result> sp_MRBRoomDetail()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MRBRoomDetail_Result>("sp_MRBRoomDetail");
+        }
+    
+        public virtual int sp_GetCommonOrderCodeGA(string gAID, string userCode, ObjectParameter orderCodeOut)
+        {
+            var gAIDParameter = gAID != null ?
+                new ObjectParameter("GAID", gAID) :
+                new ObjectParameter("GAID", typeof(string));
+    
+            var userCodeParameter = userCode != null ?
+                new ObjectParameter("UserCode", userCode) :
+                new ObjectParameter("UserCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_GetCommonOrderCodeGA", gAIDParameter, userCodeParameter, orderCodeOut);
         }
     }
 }

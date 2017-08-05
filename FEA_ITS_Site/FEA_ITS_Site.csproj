@@ -187,8 +187,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\FEA_BusinessLogic\bin\Debug\FEA_BusinessLogic.dll</HintPath>
     </Reference>
-    <Reference Include="FEA_GABusinessLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="FEA_GABusinessLogic">
       <HintPath>..\FEA_GABusinessLogic\bin\Debug\FEA_GABusinessLogic.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
@@ -403,6 +402,7 @@
     <Compile Include="Controllers\ReferencesController.cs" />
     <Compile Include="Controllers\SAConfigureController.cs" />
     <Compile Include="Controllers\SAController.cs" />
+    <Compile Include="Controllers\SchedulerController.cs" />
     <Compile Include="Controllers\SiteFunctionController.cs" />
     <Compile Include="Controllers\SiteFunctionUserGroupController.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
@@ -417,6 +417,11 @@
     <Compile Include="Controllers\WorkflowManagementController.cs" />
     <Compile Include="Controllers\XReportsController.cs" />
     <Compile Include="Helper\ITAsset\ConvertData.cs" />
+    <Compile Include="Helper\MRB\CustomAppointmentFormTemplateContainer.cs" />
+    <Compile Include="Helper\MRB\FormNewAppointment.cs" />
+    <Compile Include="Helper\MRB\ScheduleBase.cs" />
+    <Compile Include="Helper\MRB\SchedulerAgendaPersonal.cs" />
+    <Compile Include="Helper\MRB\SchedulerStorageProvider.cs" />
     <Compile Include="Helper\ServerManager.cs" />
     <Compile Include="Helper\WarehouseArea\ConvertData.cs" />
     <Compile Include="Helper\SessionManager.cs" />
@@ -995,6 +1000,16 @@
     <Content Include="Views\Maintenance\MNStatistic.cshtml" />
     <Content Include="Views\Maintenance\_MNPivot.cshtml" />
     <Content Include="Views\Maintenance\_LoadRejectForm.cshtml" />
+    <Content Include="Views\Scheduler\CustomAppointmentDragToolTip.cshtml" />
+    <Content Include="Views\Scheduler\CustomAppointmentToolTip.cshtml" />
+    <Content Include="Views\Scheduler\CustomFormNewAppointmentPartial.cshtml" />
+    <Content Include="Views\Scheduler\CustomSelectionToolTip.cshtml" />
+    <Content Include="Views\Scheduler\CustomToolTipPartial.cshtml" />
+    <Content Include="Views\Scheduler\PersonalMeeting.cshtml" />
+    <Content Include="Views\Scheduler\SchedulerPartial.cshtml" />
+    <Content Include="Views\Scheduler\Query.cshtml" />
+    <Content Include="Views\Scheduler\RoomInformation.cshtml" />
+    <Content Include="Views\Scheduler\Statistic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

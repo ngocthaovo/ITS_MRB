@@ -1910,5 +1910,119 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="MRBBookingDetails">
+      <EntityTypeMapping TypeName="FEA_ITSModel.MRBBookingDetail">
+        <MappingFragment StoreEntitySet="MRBBookingDetail">
+          <ScalarProperty Name="ItemList" ColumnName="ItemList" />
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserList" ColumnName="UserList" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AllDay" ColumnName="AllDay" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MRBBookingDetail_Test">
+      <EntityTypeMapping TypeName="FEA_ITSModel.MRBBookingDetail_Test">
+        <MappingFragment StoreEntitySet="MRBBookingDetail_Test">
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="ItemList" ColumnName="ItemList" />
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserList" ColumnName="UserList" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AllDay" ColumnName="AllDay" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MRBRooms">
+      <EntityTypeMapping TypeName="FEA_ITSModel.MRBRoom">
+        <MappingFragment StoreEntitySet="MRBRoom">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="NumberOfPeople" ColumnName="NumberOfPeople" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+          <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MRBRoomEquipments">
+      <EntityTypeMapping TypeName="FEA_ITSModel.MRBRoomEquipment">
+        <MappingFragment StoreEntitySet="MRBRoomEquipment">
+          <ScalarProperty Name="MRBRoomEquipmentName" ColumnName="MRBRoomEquipmentName" />
+          <ScalarProperty Name="ItemDetailID" ColumnName="ItemDetailID" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MRBRoomTypes">
+      <EntityTypeMapping TypeName="FEA_ITSModel.MRBRoomType">
+        <MappingFragment StoreEntitySet="MRBRoomType">
+          <ScalarProperty Name="RoomTypeName" ColumnName="RoomTypeName" />
+          <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SAAuditCostCenters">
+      <EntityTypeMapping TypeName="FEA_ITSModel.SAAuditCostCenter">
+        <MappingFragment StoreEntitySet="SAAuditCostCenter">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="CostCenterCode" ColumnName="CostCenterCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SAAuditCustoms">
+      <EntityTypeMapping TypeName="FEA_ITSModel.SAAuditCustom">
+        <MappingFragment StoreEntitySet="SAAuditCustom">
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SAAuditExportItems">
+      <EntityTypeMapping TypeName="FEA_ITSModel.SAAuditExportItem">
+        <MappingFragment StoreEntitySet="SAAuditExportItem">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_MRBRoomDetail" FunctionName="FEA_ITSModel.Store.sp_MRBRoomDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FEA_ITSModel.sp_MRBRoomDetail_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Num_of_people" ColumnName="Num of people" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="Discription" ColumnName="Discription" />
+          <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetCommonOrderCodeGA" FunctionName="FEA_ITSModel.Store.sp_GetCommonOrderCodeGA" />
   </EntityContainerMapping>
 </Mapping>

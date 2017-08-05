@@ -1879,4 +1879,10 @@
   <data name="msgHaveOrderCode" xml:space="preserve">
     <value>Mã phiếu xuất lãnh cho chứng từ này đã được tạo trên ERP. Vui lòng xóa mã phiếu xuất lãnh trên ERP trước khi tạo mã phiếu xuất lãnh mới !</value>
   </data>
+  <data name="Information" xml:space="preserve">
+    <value>Thông tin phòng</value>
+  </data>
+  <data name="Statistic" xml:space="preserve">
+    <value>Thống kê</value>
+  </data>
 </root>

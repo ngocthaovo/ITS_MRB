@@ -200,6 +200,18 @@
         <EntityTypeShape EntityType="FEA_ITSModel.MNInventory" Width="1.5" PointX="23.125" PointY="28.625" />
         <AssociationConnector Association="FEA_ITSModel.FK_ItemDetailID" />
         <AssociationConnector Association="FEA_ITSModel.FK_UnitID" />
+        <EntityTypeShape EntityType="FEA_ITSModel.MRBBookingDetail" Width="1.5" PointX="20.375" PointY="16.25" />
+        <EntityTypeShape EntityType="FEA_ITSModel.MRBBookingDetail_Test" Width="1.5" PointX="29.875" PointY="11.875" />
+        <EntityTypeShape EntityType="FEA_ITSModel.MRBRoom" Width="1.5" PointX="27.625" PointY="18.5" />
+        <EntityTypeShape EntityType="FEA_ITSModel.MRBRoomEquipment" Width="1.5" PointX="29.875" PointY="35.125" />
+        <EntityTypeShape EntityType="FEA_ITSModel.MRBRoomType" Width="1.5" PointX="25.375" PointY="19.375" />
+        <EntityTypeShape EntityType="FEA_ITSModel.SAAuditCostCenter" Width="1.5" PointX="22.375" PointY="14.25" />
+        <EntityTypeShape EntityType="FEA_ITSModel.SAAuditCustom" Width="1.5" PointX="22.375" PointY="17.25" />
+        <AssociationConnector Association="FEA_ITSModel.FK_MRBRoomEquipmen_ItemDetail" />
+        <AssociationConnector Association="FEA_ITSModel.FK_MRBBookingDetail_Test_MRBRoom" />
+        <AssociationConnector Association="FEA_ITSModel.FK_MRBBookingDetail_Test_User" />
+        <AssociationConnector Association="FEA_ITSModel.FK_MRBRoom_MRBRoomType" />
+        <AssociationConnector Association="FEA_ITSModel.FK_MRBRoomEquipment_MRBRoom" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

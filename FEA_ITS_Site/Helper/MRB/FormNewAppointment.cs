@@ -28,8 +28,8 @@ namespace FEA_ITS_Site.Helper.MRB
             if (mrb != null)
             {
                 Subject = mrb.Subject;
-                StartTime = mrb.StartTime.Value;
-                EndTime = mrb.EndTime.Value;
+                //StartTime = mrb.StartTime.Value;
+                //EndTime = mrb.EndTime.Value;
                 Description = mrb.Description;
                 UserList = mrb.UserList;
                 ItemList = mrb.ItemList;

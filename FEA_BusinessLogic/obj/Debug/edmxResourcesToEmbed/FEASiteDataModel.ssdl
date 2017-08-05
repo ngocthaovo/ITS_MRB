@@ -486,6 +486,75 @@
     <Property Name="Description" Type="nvarchar" MaxLength="255" />
     <Property Name="ReceiveUserID" Type="int" />
   </EntityType>
+  <EntityType Name="MRBBookingDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="StartTime" Type="smalldatetime" />
+    <Property Name="EndTime" Type="smalldatetime" Nullable="false" />
+    <Property Name="AllDay" Type="bit" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Label" Type="int" />
+    <Property Name="RoomId" Type="int" />
+    <Property Name="UserList" Type="ntext" />
+    <Property Name="UserID" Type="varchar" MaxLength="50" />
+    <Property Name="ItemID" Type="varchar" MaxLength="36" />
+    <Property Name="ItemDetailID" Type="varchar" MaxLength="36" />
+    <Property Name="ItemList" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="MRBBookingDetail_Test">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="StartTime" Type="smalldatetime" />
+    <Property Name="EndTime" Type="smalldatetime" />
+    <Property Name="AllDay" Type="bit" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Label" Type="nvarchar" MaxLength="100" />
+    <Property Name="RoomId" Type="int" />
+    <Property Name="UserList" Type="ntext" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="ItemID" Type="varchar" MaxLength="100" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="ItemList" Type="nvarchar" MaxLength="250" />
+    <Property Name="Location" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MRBRoom">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomTypeId" Type="int" Nullable="false" />
+    <Property Name="RoomName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="100" />
+    <Property Name="NumberOfPeople" Type="int" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="255" />
+    <Property Name="Detail" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MRBRoomEquipment">
+    <Key>
+      <PropertyRef Name="RoomId" />
+      <PropertyRef Name="ItemDetailID" />
+    </Key>
+    <Property Name="RoomId" Type="int" Nullable="false" />
+    <Property Name="ItemDetailID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MRBRoomEquipmentName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="MRBRoomType">
+    <Key>
+      <PropertyRef Name="RoomTypeId" />
+    </Key>
+    <Property Name="RoomTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomTypeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
   <EntityType Name="PackingManifest">
     <Key>
       <PropertyRef Name="ID" />
@@ -615,6 +684,29 @@
     <Property Name="OrderState" Type="int" />
     <Property Name="CompleteState" Type="int" />
     <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SAAuditCostCenter">
+    <Key>
+      <PropertyRef Name="CostCenterCode" />
+    </Key>
+    <Property Name="CostCenterCode" Type="int" Nullable="false" />
+    <Property Name="CompanyCode" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SAAuditCustom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompanyCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SAAuditExportItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="int" />
   </EntityType>
   <EntityType Name="SAAuditStatus">
     <Key>
@@ -2405,6 +2497,66 @@ warning 6002: The table/view 'ITS_TEST.dbo.vw_GetOrderFromERP' does not have a p
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_MRBBookingDetail_Test_MRBRoom">
+    <End Role="MRBRoom" Type="Self.MRBRoom" Multiplicity="0..1" />
+    <End Role="MRBBookingDetail_Test" Type="Self.MRBBookingDetail_Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MRBRoom">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="MRBBookingDetail_Test">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRBBookingDetail_Test_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="MRBBookingDetail_Test" Type="Self.MRBBookingDetail_Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="MRBBookingDetail_Test">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRBRoom_MRBRoomType">
+    <End Role="MRBRoomType" Type="Self.MRBRoomType" Multiplicity="1" />
+    <End Role="MRBRoom" Type="Self.MRBRoom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MRBRoomType">
+        <PropertyRef Name="RoomTypeId" />
+      </Principal>
+      <Dependent Role="MRBRoom">
+        <PropertyRef Name="RoomTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRBRoomEquipmen_ItemDetail">
+    <End Role="ItemDetail" Type="Self.ItemDetail" Multiplicity="1" />
+    <End Role="MRBRoomEquipment" Type="Self.MRBRoomEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MRBRoomEquipment">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRBRoomEquipment_MRBRoom">
+    <End Role="MRBRoom" Type="Self.MRBRoom" Multiplicity="1" />
+    <End Role="MRBRoomEquipment" Type="Self.MRBRoomEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MRBRoom">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="MRBRoomEquipment">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PACKINGM_REFERENCE_PACKINGM">
     <End Role="PackingManifest" Type="Self.PackingManifest" Multiplicity="1" />
     <End Role="PackingManifestDetail" Type="Self.PackingManifestDetail" Multiplicity="*" />
@@ -2757,6 +2909,11 @@ warning 6002: The table/view 'ITS_TEST.dbo.vw_GetOrderFromERP' does not have a p
     <Parameter Name="OrderCode" Type="nvarchar" Mode="In" />
     <Parameter Name="UserID" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_GetCommonOrderCodeGA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GAID" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="OrderCodeOut" Type="nvarchar" Mode="InOut" />
+  </Function>
   <Function Name="sp_GetDataForDashBoard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ShelfID" Type="nvarchar" Mode="In" />
   </Function>
@@ -2915,6 +3072,7 @@ warning 6002: The table/view 'ITS_TEST.dbo.vw_GetOrderFromERP' does not have a p
     <Parameter Name="DateFrom" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_InventoryCalculate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_MRBRoomDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_PushGADataToEland" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="OrderCodeList" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="MonthCondition" Type="nvarchar" Mode="In" />
@@ -2977,11 +3135,19 @@ warning 6002: The table/view 'ITS_TEST.dbo.vw_GetOrderFromERP' does not have a p
     <EntitySet Name="MNRequestMainDetail" EntityType="Self.MNRequestMainDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MNStockEquipment" EntityType="Self.MNStockEquipment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MNStockEquipmentDetail" EntityType="Self.MNStockEquipmentDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MRBBookingDetail" EntityType="Self.MRBBookingDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MRBBookingDetail_Test" EntityType="Self.MRBBookingDetail_Test" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MRBRoom" EntityType="Self.MRBRoom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MRBRoomEquipment" EntityType="Self.MRBRoomEquipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MRBRoomType" EntityType="Self.MRBRoomType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PackingManifest" EntityType="Self.PackingManifest" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PackingManifestDetail" EntityType="Self.PackingManifestDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PackingManifestDetailCoordination" EntityType="Self.PackingManifestDetailCoordination" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PackingManifestReturnedItem" EntityType="Self.PackingManifestReturnedItem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductStockFromERP" EntityType="Self.ProductStockFromERP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SAAuditCostCenter" EntityType="Self.SAAuditCostCenter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SAAuditCustom" EntityType="Self.SAAuditCustom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SAAuditExportItem" EntityType="Self.SAAuditExportItem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SAAuditStatus" EntityType="Self.SAAuditStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SAConfigure" EntityType="Self.SAConfigure" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SADestination" EntityType="Self.SADestination" Schema="dbo" store:Type="Tables" />
@@ -3536,6 +3702,26 @@ FROM [dbo].[vw_GetOrderFromERP] AS [vw_GetOrderFromERP]</DefiningQuery>
     <AssociationSet Name="FK_MNSTOCKE_REFERENCE_MNSTOCKE" Association="Self.FK_MNSTOCKE_REFERENCE_MNSTOCKE">
       <End Role="MNStockEquipment" EntitySet="MNStockEquipment" />
       <End Role="MNStockEquipmentDetail" EntitySet="MNStockEquipmentDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRBBookingDetail_Test_MRBRoom" Association="Self.FK_MRBBookingDetail_Test_MRBRoom">
+      <End Role="MRBRoom" EntitySet="MRBRoom" />
+      <End Role="MRBBookingDetail_Test" EntitySet="MRBBookingDetail_Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRBBookingDetail_Test_User" Association="Self.FK_MRBBookingDetail_Test_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="MRBBookingDetail_Test" EntitySet="MRBBookingDetail_Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRBRoom_MRBRoomType" Association="Self.FK_MRBRoom_MRBRoomType">
+      <End Role="MRBRoomType" EntitySet="MRBRoomType" />
+      <End Role="MRBRoom" EntitySet="MRBRoom" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRBRoomEquipmen_ItemDetail" Association="Self.FK_MRBRoomEquipmen_ItemDetail">
+      <End Role="ItemDetail" EntitySet="ItemDetail" />
+      <End Role="MRBRoomEquipment" EntitySet="MRBRoomEquipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRBRoomEquipment_MRBRoom" Association="Self.FK_MRBRoomEquipment_MRBRoom">
+      <End Role="MRBRoom" EntitySet="MRBRoom" />
+      <End Role="MRBRoomEquipment" EntitySet="MRBRoomEquipment" />
     </AssociationSet>
     <AssociationSet Name="FK_PACKINGM_REFERENCE_PACKINGM" Association="Self.FK_PACKINGM_REFERENCE_PACKINGM">
       <End Role="PackingManifest" EntitySet="PackingManifest" />

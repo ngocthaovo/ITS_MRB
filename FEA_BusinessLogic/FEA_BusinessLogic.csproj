@@ -34,10 +34,10 @@
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="FEA_GABusinessLogic">
-      <HintPath>..\FEA_GABusinessLogic\obj\Debug\FEA_GABusinessLogic.dll</HintPath>
+      <HintPath>..\FEA_GABusinessLogic\bin\Debug\FEA_GABusinessLogic.dll</HintPath>
     </Reference>
     <Reference Include="FEA_SABusinessLogic">
-      <HintPath>..\FEA_SABusinessLogic\obj\Debug\FEA_SABusinessLogic.dll</HintPath>
+      <HintPath>..\FEA_SABusinessLogic\bin\Debug\FEA_SABusinessLogic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -187,6 +187,22 @@
     <Compile Include="MNStockEquipmentDetail.cs">
       <DependentUpon>FEASiteDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MRBBookingDetail.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MRBBookingDetail_Test.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MRBRoom.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MRBRoomEquipment.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MRBRoomType.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MRBScheduler\SchedulerManager.cs" />
     <Compile Include="NodeDetail\NodeDetailManager.cs" />
     <Compile Include="Node\NodeManager.cs" />
     <Compile Include="PackingManifest.cs">
@@ -205,7 +221,15 @@
       <DependentUpon>FEASiteDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SAAuditExportItem.cs" />
+    <Compile Include="SAAuditCostCenter.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAAuditCustom.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAAuditExportItem.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SAAuditStatu.cs">
       <DependentUpon>FEASiteDataModel.tt</DependentUpon>
     </Compile>
@@ -362,6 +386,9 @@
       <DependentUpon>FEASiteDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_HardwareRequirementTotalReport_Result.cs">
+      <DependentUpon>FEASiteDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_MRBRoomDetail_Result.cs">
       <DependentUpon>FEASiteDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_QueryPODivertDetail_Result.cs">

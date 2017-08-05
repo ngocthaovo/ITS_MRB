@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Transactions;
+using FEA_BusinessLogic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Data;
+using System.Data.Objects;
 namespace FEA_BusinessLogic.MRBScheduler
 {
     public class SchedulerManager : Base.Connection
@@ -160,8 +164,8 @@ namespace FEA_BusinessLogic.MRBScheduler
             if (mrb != null)
             {
                 Subject = mrb.Subject;
-                StartTime = mrb.StartTime.Value;
-                EndTime = mrb.EndTime.Value;
+                //StartTime = mrb.StartTime.Value;
+                //EndTime = mrb.EndTime.Value;
                 Description = mrb.Description;
                 UserList = mrb.UserList;
                 ItemList = mrb.ItemList;
@@ -176,8 +180,8 @@ namespace FEA_BusinessLogic.MRBScheduler
             if (mrbs != null)
             {
                 Subject = mrbs.Subject;
-                StartTime = mrbs.StartTime;
-                EndTime = mrbs.EndTime;
+                //StartTime = mrbs.StartTime;
+                //EndTime = mrbs.EndTime;
                 Description = mrbs.Description;
                 UserList = mrbs.UserList;
                 ItemList = mrbs.ItemList;

@@ -1594,4 +1594,11 @@
   <data name="msgHaveOrderCode" xml:space="preserve">
     <value>Please delete common order code on ERP before create new common order code</value>
   </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+    <comment>information of meeting room</comment>
+  </data>
+  <data name="Statistic" xml:space="preserve">
+    <value>Statistic</value>
+  </data>
 </root>

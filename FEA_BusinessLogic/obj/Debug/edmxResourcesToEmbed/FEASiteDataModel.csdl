@@ -99,6 +99,7 @@
     <NavigationProperty Name="MNStockEquipments" Relationship="FEA_ITSModel.FK_CreatorID3" FromRole="User" ToRole="MNStockEquipment" />
     <NavigationProperty Name="MNStockEquipments1" Relationship="FEA_ITSModel.FK_DeliveryForID" FromRole="User" ToRole="MNStockEquipment" />
     <NavigationProperty Name="MNStockEquipmentDetails" Relationship="FEA_ITSModel.FK_ReceiveUserID" FromRole="User" ToRole="MNStockEquipmentDetail" />
+    <NavigationProperty Name="MRBBookingDetail_Test" Relationship="FEA_ITSModel.FK_MRBBookingDetail_Test_User" FromRole="User" ToRole="MRBBookingDetail_Test" />
   </EntityType>
   <EntityType Name="UserPosition">
     <Key>
@@ -1198,6 +1199,40 @@
     </FunctionImport>
     <FunctionImport Name="sp_CheckMaintenanceInventory" ReturnType="Collection(FEA_ITSModel.sp_CheckMaintenanceInventory_Result)">
       <Parameter Name="DocType" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="MRBBookingDetails" EntityType="FEA_ITSModel.MRBBookingDetail" />
+    <EntitySet Name="MRBBookingDetail_Test" EntityType="FEA_ITSModel.MRBBookingDetail_Test" />
+    <EntitySet Name="MRBRooms" EntityType="FEA_ITSModel.MRBRoom" />
+    <EntitySet Name="MRBRoomEquipments" EntityType="FEA_ITSModel.MRBRoomEquipment" />
+    <EntitySet Name="MRBRoomTypes" EntityType="FEA_ITSModel.MRBRoomType" />
+    <EntitySet Name="SAAuditCostCenters" EntityType="FEA_ITSModel.SAAuditCostCenter" />
+    <EntitySet Name="SAAuditCustoms" EntityType="FEA_ITSModel.SAAuditCustom" />
+    <EntitySet Name="SAAuditExportItems" EntityType="FEA_ITSModel.SAAuditExportItem" />
+    <AssociationSet Name="FK_MRBRoomEquipmen_ItemDetail" Association="FEA_ITSModel.FK_MRBRoomEquipmen_ItemDetail">
+      <End Role="ItemDetail" EntitySet="ItemDetails" />
+      <End Role="MRBRoomEquipment" EntitySet="MRBRoomEquipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRBBookingDetail_Test_MRBRoom" Association="FEA_ITSModel.FK_MRBBookingDetail_Test_MRBRoom">
+      <End Role="MRBRoom" EntitySet="MRBRooms" />
+      <End Role="MRBBookingDetail_Test" EntitySet="MRBBookingDetail_Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRBBookingDetail_Test_User" Association="FEA_ITSModel.FK_MRBBookingDetail_Test_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="MRBBookingDetail_Test" EntitySet="MRBBookingDetail_Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRBRoom_MRBRoomType" Association="FEA_ITSModel.FK_MRBRoom_MRBRoomType">
+      <End Role="MRBRoomType" EntitySet="MRBRoomTypes" />
+      <End Role="MRBRoom" EntitySet="MRBRooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRBRoomEquipment_MRBRoom" Association="FEA_ITSModel.FK_MRBRoomEquipment_MRBRoom">
+      <End Role="MRBRoom" EntitySet="MRBRooms" />
+      <End Role="MRBRoomEquipment" EntitySet="MRBRoomEquipments" />
+    </AssociationSet>
+    <FunctionImport Name="sp_MRBRoomDetail" ReturnType="Collection(FEA_ITSModel.sp_MRBRoomDetail_Result)" />
+    <FunctionImport Name="sp_GetCommonOrderCodeGA">
+      <Parameter Name="GAID" Mode="In" Type="String" />
+      <Parameter Name="UserCode" Mode="In" Type="String" />
+      <Parameter Name="OrderCodeOut" Mode="InOut" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_GetFirstApprover_Result">
@@ -3102,6 +3137,7 @@
     <NavigationProperty Name="MNRequestMainDetails" Relationship="FEA_ITSModel.FK_ItemDetailID2" FromRole="ItemDetail" ToRole="MNRequestMainDetail" />
     <NavigationProperty Name="MNStockEquipmentDetails" Relationship="FEA_ITSModel.FK_ItemDetailID3" FromRole="ItemDetail" ToRole="MNStockEquipmentDetail" />
     <NavigationProperty Name="MNInventories" Relationship="FEA_ITSModel.FK_ItemDetailID" FromRole="ItemDetail" ToRole="MNInventory" />
+    <NavigationProperty Name="MRBRoomEquipments" Relationship="FEA_ITSModel.FK_MRBRoomEquipmen_ItemDetail" FromRole="ItemDetail" ToRole="MRBRoomEquipment" />
   </EntityType>
   <Association Name="FK__DeviceReg__ItemD__3864608B">
     <End Type="FEA_ITSModel.ItemDetail" Role="ItemDetail" Multiplicity="1" />
@@ -4308,5 +4344,175 @@
     <Property Type="String" Name="Unit" Nullable="false" MaxLength="30" />
     <Property Type="Decimal" Name="ITSInventory" Nullable="true" Precision="38" Scale="2" />
     <Property Type="Decimal" Name="ERPInventory" Nullable="true" Precision="38" Scale="6" />
+  </ComplexType>
+  <EntityType Name="MRBBookingDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StartTime" Type="DateTime" Precision="0" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AllDay" Type="Boolean" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Label" Type="Int32" />
+    <Property Name="RoomId" Type="Int32" />
+    <Property Name="UserList" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="ItemDetailID" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="ItemList" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MRBBookingDetail_Test">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="StartTime" Type="DateTime" Precision="0" />
+    <Property Name="EndTime" Type="DateTime" Precision="0" />
+    <Property Name="AllDay" Type="Boolean" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Label" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RoomId" Type="Int32" />
+    <Property Name="UserList" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="ItemID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ItemDetailID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ItemList" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MRBRoom" Relationship="FEA_ITSModel.FK_MRBBookingDetail_Test_MRBRoom" FromRole="MRBBookingDetail_Test" ToRole="MRBRoom" />
+    <NavigationProperty Name="User" Relationship="FEA_ITSModel.FK_MRBBookingDetail_Test_User" FromRole="MRBBookingDetail_Test" ToRole="User" />
+  </EntityType>
+  <EntityType Name="MRBRoom">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
+    <Property Name="RoomName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfPeople" Type="Int32" />
+    <Property Name="ImageUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MRBBookingDetail_Test" Relationship="FEA_ITSModel.FK_MRBBookingDetail_Test_MRBRoom" FromRole="MRBRoom" ToRole="MRBBookingDetail_Test" />
+    <NavigationProperty Name="MRBRoomType" Relationship="FEA_ITSModel.FK_MRBRoom_MRBRoomType" FromRole="MRBRoom" ToRole="MRBRoomType" />
+    <NavigationProperty Name="MRBRoomEquipments" Relationship="FEA_ITSModel.FK_MRBRoomEquipment_MRBRoom" FromRole="MRBRoom" ToRole="MRBRoomEquipment" />
+  </EntityType>
+  <EntityType Name="MRBRoomEquipment">
+    <Key>
+      <PropertyRef Name="RoomId" />
+      <PropertyRef Name="ItemDetailID" />
+    </Key>
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <Property Name="ItemDetailID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MRBRoomEquipmentName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ItemDetail" Relationship="FEA_ITSModel.FK_MRBRoomEquipmen_ItemDetail" FromRole="MRBRoomEquipment" ToRole="ItemDetail" />
+    <NavigationProperty Name="MRBRoom" Relationship="FEA_ITSModel.FK_MRBRoomEquipment_MRBRoom" FromRole="MRBRoomEquipment" ToRole="MRBRoom" />
+  </EntityType>
+  <EntityType Name="MRBRoomType">
+    <Key>
+      <PropertyRef Name="RoomTypeId" />
+    </Key>
+    <Property Name="RoomTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomTypeName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MRBRooms" Relationship="FEA_ITSModel.FK_MRBRoom_MRBRoomType" FromRole="MRBRoomType" ToRole="MRBRoom" />
+  </EntityType>
+  <EntityType Name="SAAuditCostCenter">
+    <Key>
+      <PropertyRef Name="CostCenterCode" />
+    </Key>
+    <Property Name="CostCenterCode" Type="Int32" Nullable="false" />
+    <Property Name="CompanyCode" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SAAuditCustom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SAAuditExportItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_MRBRoomEquipmen_ItemDetail">
+    <End Type="FEA_ITSModel.ItemDetail" Role="ItemDetail" Multiplicity="1" />
+    <End Type="FEA_ITSModel.MRBRoomEquipment" Role="MRBRoomEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MRBRoomEquipment">
+        <PropertyRef Name="ItemDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRBBookingDetail_Test_MRBRoom">
+    <End Type="FEA_ITSModel.MRBRoom" Role="MRBRoom" Multiplicity="0..1" />
+    <End Type="FEA_ITSModel.MRBBookingDetail_Test" Role="MRBBookingDetail_Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MRBRoom">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="MRBBookingDetail_Test">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRBBookingDetail_Test_User">
+    <End Type="FEA_ITSModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="FEA_ITSModel.MRBBookingDetail_Test" Role="MRBBookingDetail_Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="MRBBookingDetail_Test">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRBRoom_MRBRoomType">
+    <End Type="FEA_ITSModel.MRBRoomType" Role="MRBRoomType" Multiplicity="1" />
+    <End Type="FEA_ITSModel.MRBRoom" Role="MRBRoom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MRBRoomType">
+        <PropertyRef Name="RoomTypeId" />
+      </Principal>
+      <Dependent Role="MRBRoom">
+        <PropertyRef Name="RoomTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRBRoomEquipment_MRBRoom">
+    <End Type="FEA_ITSModel.MRBRoom" Role="MRBRoom" Multiplicity="1" />
+    <End Type="FEA_ITSModel.MRBRoomEquipment" Role="MRBRoomEquipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MRBRoom">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="MRBRoomEquipment">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_MRBRoomDetail_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Room_Name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Location" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Num_of_people" Nullable="true" />
+    <Property Type="String" Name="ImageUrl" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Discription" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Equipment" Nullable="true" MaxLength="255" />
   </ComplexType>
 </Schema>

@@ -27,7 +27,6 @@ namespace FEA_BusinessLogic
         public string PersonPush { get; set; }
         public string Temp2 { get; set; }
         public string PRCode { get; set; }
-        public string CMCKCode { get; set; }
         public string OrderType { get; set; }
     }
 }
