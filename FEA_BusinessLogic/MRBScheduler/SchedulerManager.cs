@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Transactions;
 using FEA_BusinessLogic;
 using System.Text;
@@ -238,6 +239,12 @@ namespace FEA_BusinessLogic.MRBScheduler
             }
         }
 
-        
+            public List<sp_GetMaintenanceApproveDocument_Result> GetDocumentForApprove(int Status, int UserID, string strDocType)
+        {
+            return (Status, UserID, strDocType).ToList();
+        }
+
+
+
     }
 }
